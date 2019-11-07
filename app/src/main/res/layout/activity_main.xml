@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <SearchView
@@ -16,5 +18,31 @@
         android:iconifiedByDefault="false"
         android:queryHint="חפש" />
 
+    <TextView
+        android:id="@+id/categoryText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="קטגוריות"
+        android:padding="10px"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="10pt" />
 
-</RelativeLayout>
+    <GridLayout
+        android:columnCount="2"
+        android:rowCount="5"
+        android:alignmentMode="alignMargins"
+        android:columnOrderPreserved="false"
+        android:padding="10px"
+        android:layout_weight="8"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <!-- Row 1 -->
+        <!-- Column 1 -->
+
+    </GridLayout>
+
+</LinearLayout>
