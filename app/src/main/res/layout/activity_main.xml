@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,6 +8,23 @@
     android:background="@drawable/background"
     android:orientation="vertical"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="442dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/profile" />
+
+    <TextView
+        android:id="@+id/MenuText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10px"
+        android:textAlignment="center"
+        android:text="Menu Text | Menu Text | Menu Text "
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="10pt" />
+
 
     <SearchView
         android:id="@+id/categorySearch"
@@ -25,16 +41,19 @@
         android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="קטגוריות"
         android:padding="10px"
+        android:text="קטגוריות"
         android:textColor="@android:color/darker_gray"
         android:textSize="10pt" />
 
     <GridView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="10px"
         android:id="@+id/grid_view"
-        android:numColumns="2"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:horizontalSpacing="10dp"
+        android:numColumns="2"
+        android:verticalSpacing="10dp" />
+
 
 </LinearLayout>
+
