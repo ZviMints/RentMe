@@ -20,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
             "קטגוריה 4",
             "קטגוריה 5",
             "קטגוריה 6",
-            "קטגוריה 7"};
+            "קטגוריה 7",
+            "Checking Exception"};
 
 
     int[] numberImages = {

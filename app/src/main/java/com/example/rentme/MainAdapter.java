@@ -24,7 +24,7 @@ public class MainAdapter extends BaseAdapter  {
 
     @Override
     public int getCount() {
-        return titles.length;
+        return Math.min(titles.length,numberImages.length);
     }
 
     @Override
