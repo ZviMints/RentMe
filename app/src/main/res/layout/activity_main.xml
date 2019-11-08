@@ -30,19 +30,11 @@
         android:textColor="@android:color/darker_gray"
         android:textSize="10pt" />
 
-    <GridLayout
-        android:columnCount="2"
-        android:rowCount="5"
-        android:alignmentMode="alignMargins"
-        android:columnOrderPreserved="false"
-        android:padding="10px"
-        android:layout_weight="8"
+    <GridView
         android:layout_width="match_parent"
-        android:layout_height="0dp">
-
-        <!-- Row 1 -->
-        <!-- Column 1 -->
-
-    </GridLayout>
+        android:layout_height="match_parent"
+        android:padding="10px"
+        android:id="@+id/grid_view"
+        android:numColumns="2"/>
 
 </LinearLayout>
