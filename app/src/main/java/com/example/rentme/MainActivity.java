@@ -25,9 +25,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     int[] numberImages = {
-            R.drawable.chairs,
-            R.drawable.electricity,
-            R.drawable.worktools,
+            R.drawable.vacation,
+            R.drawable.sport,
+            R.drawable.party,
             R.drawable.chairs,
             R.drawable.electricity,
             R.drawable.worktools,
