@@ -140,6 +140,11 @@
                 android:textStyle="bold" />
         </RelativeLayout>
 
+        <ListView
+            android:id="@+id/products_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
     </RelativeLayout>
     <!-- Content -->
 
