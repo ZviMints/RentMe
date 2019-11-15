@@ -7,18 +7,21 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LastAdsActivity extends AppCompatActivity {
     String items[] = new String[] {"apple", "orange","potato","tomato","apple", "orange","potato","tomato","apple", "orange","potato","tomato","apple", "orange","potato","tomato","apple", "orange","potato","tomato"};
     Button homePageBtn;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.last_ads);
 
-        ListView listView = (ListView) findViewById(R.id.products_list);
+        ListView listView = findViewById(R.id.products_list);
         homePageBtn = findViewById((R.id.MainPage));
         homePageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
