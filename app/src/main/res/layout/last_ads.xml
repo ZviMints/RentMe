@@ -12,19 +12,19 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#fff">
-
+        android:background="#fff"
+        >
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="25dp"
+            android:layout_height="75dp">
 
             <Button
                 android:id="@+id/Profile"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="15dp"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
                 android:background="@color/DarkBlue"
                 android:drawableTop="@drawable/ic_portrait_black_24dp"
                 android:padding="4dp"
@@ -47,8 +47,9 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_marginTop="15dp"
             android:layout_marginRight="5dp"
+            android:layout_alignParentRight="true"
             android:background="@drawable/logo" />
 
     </RelativeLayout>
@@ -62,7 +63,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/MainPage"
+            android:id="@+id/LastAds"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -76,7 +77,7 @@
 
 
         <Button
-            android:id="@+id/LastAds"
+            android:id="@+id/MainPage"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2.5dp"
@@ -101,7 +102,10 @@
         tools:context=".MainActivity">
 
         <!--- Last Ads -->
-
+        <ListView
+            android:id="@+id/products_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
         <!-- Finish Last Ads -->
 
         <!-- Footer aligned to bottom -->
@@ -139,11 +143,6 @@
                 android:text="פרסם עכשיו"
                 android:textStyle="bold" />
         </RelativeLayout>
-
-        <ListView
-            android:id="@+id/products_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
     </RelativeLayout>
     <!-- Content -->

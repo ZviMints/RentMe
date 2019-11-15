@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LastAdsActivity extends AppCompatActivity {
@@ -18,6 +17,14 @@ public class LastAdsActivity extends AppCompatActivity {
         setContentView(R.layout.last_ads);
 
         ListView listView = (ListView) findViewById(R.id.products_list);
+        homePageBtn = findViewById((R.id.MainPage));
+        homePageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent);
+            }
+        });
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,items);
         listView.setAdapter(adapter);
     }
