@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "376274192510",
+    "firebase_url": "https://rentme-cdf84.firebaseio.com",
+    "project_id": "rentme-cdf84",
+    "storage_bucket": "rentme-cdf84.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:376274192510:android:b5bb9e1f88fa1de213f02f",
+        "android_client_info": {
+          "package_name": "com.example.rentme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "376274192510-p9udqmt33lf8ran3s22p7gjpnq6985gc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rentme",
+            "certificate_hash": "06f3dc4e00e9c51e932f78c5227f8b57294daa3e"
+          }
+        },
+        {
+          "client_id": "376274192510-nggki64j472emrotcctj8i5vrdaiicnn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxRg-z9P9ZEg8ddyshstBWVQJh-w_g8vQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "376274192510-nggki64j472emrotcctj8i5vrdaiicnn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
