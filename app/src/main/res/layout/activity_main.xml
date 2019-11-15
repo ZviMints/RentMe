@@ -10,11 +10,48 @@
 
 
     <!-- Head -->
-    <ImageView
-        android:id="@+id/Head"
-        android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/profile"></ImageView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/Profile"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="15dp"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@color/DarkBlue"
+                android:drawableTop="@drawable/ic_portrait_black_24dp"
+                android:padding="4dp"
+                android:text="פרופיל"
+                android:textColor="#fff"></Button>
+
+            <Button
+                android:id="@+id/Search"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@color/DarkGreen"
+                android:drawableTop="@drawable/ic_search_black_24dp"
+                android:padding="4dp"
+                android:text="חפש"
+                android:textColor="#fff"></Button>
+
+
+        </LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/logo" />
+
+    </RelativeLayout>
     <!-- Head -->
 
     <!-- Menu -->
@@ -27,7 +64,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#B2BEC3"
+            android:background="@color/lightGray"
             android:drawableTop="@drawable/ic_assignment_black_24dp"
             android:textColor="#000"
             android:id="@+id/MainPage"
@@ -41,7 +78,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#34495e"
+            android:background="@color/DarkGray"
             android:drawableTop="@drawable/ic_apps_black_24dp"
             android:textColor="#fff"
             android:padding="4dp"
