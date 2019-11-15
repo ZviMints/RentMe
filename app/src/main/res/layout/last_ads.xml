@@ -9,7 +9,7 @@
 
 
     <!-- Head -->
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#fff">
@@ -52,7 +52,7 @@
             android:layout_marginRight="5dp"
             android:background="@drawable/logo" />
 
-    </RelativeLayout>
+    </LinearLayout>
     <!-- Head -->
 
     <!-- Menu -->
