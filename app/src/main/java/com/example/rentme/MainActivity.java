@@ -13,8 +13,6 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Main Categories
-     * Delete ZVi Mints Changes On ZVimints-branch
-     * Added local changes in branch
      **/
     GridView gridView;
     String[] titles = {
