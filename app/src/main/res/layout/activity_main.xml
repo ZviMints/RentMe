@@ -44,6 +44,7 @@
 
 
         </LinearLayout>
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -91,7 +92,8 @@
     <!--Menu-->
 
     <!-- Content -->
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#DFE6E9"
@@ -99,24 +101,51 @@
         tools:context=".MainActivity"
         >
 
-        <TextView
-            android:id="@+id/CategoriesTest"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textAlignment="center"
-            android:text="קטגוריות" />
-
         <GridView
             android:id="@+id/grid_view"
             android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:background="#DFE6E9"
+            android:layout_height="wrap_content"
+            android:background="@color/BlueGray"
             android:horizontalSpacing="15dp"
             android:numColumns="2"
             android:padding="10dp"
             android:verticalSpacing="10dp"></GridView>
-    </LinearLayout>
+
+        <!-- Footer aligned to bottom -->
+        <RelativeLayout
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/lightGray"
+            android:gravity="center" >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="אודות" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:text="צור קשר" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"
+                android:text="פרסם עכשיו"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
     <!-- Content -->
 
 </LinearLayout>
