@@ -2,9 +2,11 @@ package com.example.rentme;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -15,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
      * Main Categories
      **/
     GridView gridView;
+    Button lastAdsBtn;
+
     String[] titles = {
             "קטגוריה 1",
             "קטגוריה 2",
@@ -41,11 +45,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        lastAdsBtn = findViewById(R.id.LastAds);
         gridView = findViewById(R.id.grid_view);
+
+        lastAdsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), LastAdsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         MainAdapter adapter = new MainAdapter(MainActivity.this,titles,numberImages);
         gridView.setAdapter(adapter);
-
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
