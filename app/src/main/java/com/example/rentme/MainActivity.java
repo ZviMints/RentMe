@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Main Categories
-     *
+     * Zvi Changes
      **/
     GridView gridView;
     String[] titles = {
