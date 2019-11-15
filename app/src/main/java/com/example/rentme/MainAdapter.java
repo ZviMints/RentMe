@@ -43,7 +43,7 @@ public class MainAdapter extends BaseAdapter  {
             inflater = (LayoutInflater) context.getSystemService((Context.LAYOUT_INFLATER_SERVICE));
         }
         if(convertView == null) {
-            convertView = inflater.inflate(R.layout.row_item,null);
+            convertView = inflater.inflate(R.layout.category_square,null);
         }
         ImageView imageView = convertView.findViewById(R.id.image_view);
         TextView textView = convertView.findViewById(R.id.text_view);
