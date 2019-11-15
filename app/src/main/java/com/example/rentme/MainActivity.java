@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Main Categories
+     *
      **/
     GridView gridView;
     String[] titles = {
