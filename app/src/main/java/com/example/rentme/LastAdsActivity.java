@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class LastAdsActivity extends AppCompatActivity {
     String items[] = new String[] {"apple", "orange","potato","tomato","apple", "orange","potato","tomato","apple", "orange","potato","tomato","apple", "orange","potato","tomato","apple", "orange","potato","tomato"};
+    Button homePageBtn;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
