@@ -1,96 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
 
-    <!-- Head -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fff">
+    <!-- Header -->
+    <include layout="@layout/header"/>
+    <!-- End Header-->
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="75dp"
-            android:layout_marginTop="25dp">
-
-            <Button
-                android:id="@+id/Profile"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="15dp"
-                android:background="@color/DarkBlue"
-                android:drawableTop="@drawable/ic_portrait_black_24dp"
-                android:padding="4dp"
-                android:text="פרופיל"
-                android:textColor="#fff"></Button>
-
-            <Button
-                android:id="@+id/Search"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:background="@color/DarkGreen"
-                android:drawableTop="@drawable/ic_search_black_24dp"
-                android:padding="4dp"
-                android:text="חפש"
-                android:textColor="#fff"></Button>
-
-
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/logo" />
-
-    </LinearLayout>
-    <!-- Head -->
 
     <!-- Menu -->
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/LastAds"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="2.5dp"
-            android:layout_weight="1"
-            android:background="@color/DarkGray"
-            android:drawableTop="@drawable/ic_assignment_black_24dp_white"
-            android:padding="4dp"
-            android:text="מודעות אחרונות"
-            android:textColor="#fff"></Button>
-
-
-        <Button
-            android:id="@+id/MainPage"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2.5dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:background="@color/lightGray"
-            android:drawableTop="@drawable/ic_apps_black_24dp_black"
-            android:padding="4dp"
-            android:text="דף הבית"
-            android:textColor="#000"></Button>
-
-    </LinearLayout>
-    <!--Menu-->
+    <include layout="@layout/menu_from_lastads"/>
+    <!-- End Menu -->
 
     <!-- Content -->
 
@@ -110,42 +33,10 @@
         <!-- Finish Last Ads -->
 
         <!-- Footer aligned to bottom -->
-        <RelativeLayout
-            android:id="@+id/footer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="@color/lightGray"
-            android:gravity="center">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:text="אודות" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:text="צור קשר" />
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="15dp"
-                android:text="פרסם עכשיו"
-                android:textStyle="bold" />
-        </RelativeLayout>
+        <include layout="@layout/footer"/>
+        <!-- End Footer -->
 
     </RelativeLayout>
-    <!-- Content -->
+    <!-- End Content -->
 
 </LinearLayout>
