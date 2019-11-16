@@ -2,19 +2,20 @@ package com.example.rentme;
 
 import android.content.Context;
 import android.graphics.Point;
+import com.squareup.picasso.Picasso;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.BaseAdapter;
-import android.widget.ListView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+
 
 import java.util.ArrayList;
+
 
 public class ProductListAdapter extends BaseAdapter {
     private ArrayList<Product> items = new ArrayList<Product>();
@@ -60,6 +61,8 @@ public class ProductListAdapter extends BaseAdapter {
         holder.title.setText(items.get(position).getTitle());
         holder.category.setText(items.get(position).getCategory());
         holder.details.setText(items.get(position).getDetails());
+        holder.image.setImageResource(R.drawable.chairs);
+
         return convertView;
     }
 
@@ -67,11 +70,13 @@ public class ProductListAdapter extends BaseAdapter {
         private TextView title;
         private TextView category;
         private TextView details;
+        private ImageView image;
 
         public Holder(View view) {
             title = view.findViewById(R.id.product_title);
             category = view.findViewById(R.id.product_category);;
             details = view.findViewById(R.id.product_details);;
+            image = view.findViewById(R.id.product_image);
         }
 
     }

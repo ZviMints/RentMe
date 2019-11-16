@@ -3,14 +3,23 @@
     android:id="@+id/footer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
-    android:background="@color/lightGray"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:paddingTop="1dp"
+    android:background="#e17055"
+    android:layout_alignParentBottom="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="#ffeaa7"
+        android:gravity="center"
+        android:paddingTop="5dp"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -28,9 +37,28 @@
 
     <TextView
         android:layout_width="wrap_content"
+        android:background="@color/Orange"
         android:layout_height="wrap_content"
+        android:textColor="#fff"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp"
-        android:text="פרסם עכשיו"
+        android:layout_marginRight="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="פרסם עכשיו  "
+        android:drawableLeft="@drawable/ic_add_circle_white_24dp"
         android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="22dp"
+        android:background="#ffeaa7"
+        android:layout_height="22dp"
+        android:id="@+id/clear"
+        android:drawableRight="@drawable/ic_clear_black_24dp"
+        ></Button>
+
+
 </RelativeLayout>
