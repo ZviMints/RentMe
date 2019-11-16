@@ -2,7 +2,6 @@ package com.example.rentme;
 
 import android.content.Context;
 import android.graphics.Point;
-import com.squareup.picasso.Picasso;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
