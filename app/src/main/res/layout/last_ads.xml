@@ -22,13 +22,15 @@
         android:layout_height="wrap_content"
         android:background="#DFE6E9"
         android:orientation="vertical"
-        tools:context=".MainActivity">
+        tools:context=".LastAdsActivity">
 
         <!--- Last Ads -->
         <ListView
             android:id="@+id/products_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></ListView>
+            android:layout_height="match_parent">
+
+        </ListView>
 
         <!-- Finish Last Ads -->
 
