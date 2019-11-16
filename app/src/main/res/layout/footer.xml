@@ -50,15 +50,15 @@
 
     </RelativeLayout>
 
-    <Button
+    <TextView
         android:layout_marginTop="5dp"
         android:layout_marginLeft="10dp"
         android:layout_width="22dp"
         android:background="#ffeaa7"
         android:layout_height="22dp"
         android:id="@+id/clear"
-        android:drawableRight="@drawable/ic_clear_black_24dp"
-        ></Button>
+        android:drawableTop="@drawable/ic_clear_black_24dp"
+        ></TextView>
 
 
 </RelativeLayout>

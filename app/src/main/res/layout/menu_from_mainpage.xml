@@ -1,35 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="5dp"
     android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/LastAds"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="2.5dp"
-        android:layout_weight="1"
-        android:background="@color/lightGray"
-        android:drawableTop="@drawable/ic_assignment_black_24dp_black"
-        android:padding="4dp"
-        android:text="מודעות אחרונות"
-        android:textColor="#000"></Button>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent">
+
+        <Button
+            android:id="@+id/LastAds"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="35dp"
+            android:paddingRight="35dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@color/lightGray"
+            android:drawableTop="@drawable/ic_assignment_black_24dp_black"
+            android:text="מודעות אחרונות"
+            android:textColor="#000">
+
+        </Button>
+    </LinearLayout>
 
 
     <Button
         android:id="@+id/MainPage"
         android:layout_width="fill_parent"
+        android:layout_marginRight="10dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="2.5dp"
-        android:layout_marginRight="5dp"
         android:layout_weight="1"
-        android:background="@color/DarkGray"
+        android:background="@drawable/main_header_selector"
         android:drawableTop="@drawable/ic_apps_black_24dp_white"
         android:padding="4dp"
         android:text="דף הבית"
-        android:textColor="#fff"></Button>
+        android:textColor="#000"></Button>
 </LinearLayout>
