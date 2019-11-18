@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
      **/
     GridView gridView;
     Button lastAdsBtn;
+    Button profileBtn;
 
     String[] titles = {
             "קטגוריה 1",
@@ -46,8 +47,17 @@ public class MainActivity extends AppCompatActivity {
 
 
         lastAdsBtn = findViewById(R.id.LastAds);
+        profileBtn = findViewById(R.id.Profile);
         gridView = findViewById(R.id.grid_view);
 
+
+        profileBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
         lastAdsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

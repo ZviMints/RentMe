@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/Sky"
+    android:orientation="vertical">
+
+
+    <!-- Header -->
+    <include layout="@layout/header" />
+    <!-- End Header-->
+
+    <!-- Menu -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/lightGray"/>
+
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="התחבר"
+            android:textColor="@color/DarkGray"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
+            android:orientation="vertical"
+            android:layout_marginRight="20dp">
+            <!-- Email -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_height="wrap_content"
+                android:text="איימל" />
+
+            <EditText
+                android:id="@+id/email_form"
+                android:layout_width="335dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/form"
+                android:hint="example@gmail.com"
+                android:padding="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:text="סיסמא" />
+            <!-- Password -->
+            <EditText
+                android:id="@+id/password_form"
+                android:layout_width="336dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/form"
+                android:hint="******"
+                android:padding="10dp" />
+
+        </LinearLayout> <!-- Finish Form -->
+        <Button
+            android:layout_marginTop="20dp"
+            android:id="@+id/loginBtn"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="100dp"
+            android:layout_gravity="center"
+            android:layout_height="50dp"
+            android:background="@color/DarkBlue"
+            android:drawableLeft="@drawable/ic_chevron_left_white_24dp"
+            android:padding="4dp"
+            android:text="כניסה"
+            android:textColor="#fff"></Button>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_height="1dp"
+            android:background="@color/lightGray"/>
+
+
+        <!--No Account-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="25dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textDirection="rtl"
+                android:text="אין לך משתמש?" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="#0097e6"
+                android:text=" הרשם עכשיו" />
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/lightGray"
+            android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
+            android:text=" חזור לדף הקודם"
+            android:layout_alignParentTop="true"
+            android:textColor="@color/DarkGray"
+            android:textStyle="bold" />
+
+
+
+    </LinearLayout>
+
+
+    <!-- Content -->
+
+    <!-- End Content -->
+
+
+</LinearLayout>

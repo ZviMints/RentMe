@@ -89,6 +89,51 @@
         </LinearLayout>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="18dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/product_price"
+            android:layout_width="wrap_content"
+            android:background="@drawable/money_border"
+            android:layout_height="wrap_content"
+            android:text="50"
+            android:textSize="25sp"
+            android:textColor="@color/DarkGray"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:layout_gravity="center"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/shekels"
+            android:textSize="10sp"
+            android:layout_marginRight="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="שקלים"
+            />
+
+        <TextView
+            android:id="@+id/product_price_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:layout_gravity="center"
+            android:text="ליום"
+            android:textStyle="bold"
+            android:textDirection="rtl"/>
+
+
+    </LinearLayout>
+
+
     <Button
         android:layout_width="0dp"
         android:layout_height="wrap_content"
