@@ -65,7 +65,7 @@ public class ProductListAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public class Holder{
+    public class Holder {
         private TextView title;
         private TextView category;
         private TextView details;
