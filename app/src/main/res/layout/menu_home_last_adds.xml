@@ -6,15 +6,17 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent">
+        android:layout_marginBottom="5dp"
+        android:layout_height="wrap_content">
 
         <Button
             android:id="@+id/LastAds"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="35dp"
-            android:paddingRight="35dp"
-            android:layout_marginRight="5dp"
+            android:paddingLeft="45dp"
+            android:paddingRight="50dp"
+            android:paddingTop="3dp"
+
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
             android:background="@color/lightGray"
@@ -29,13 +31,14 @@
     <Button
         android:id="@+id/MainPage"
         android:layout_width="fill_parent"
-        android:layout_marginRight="10dp"
+        android:paddingTop="3dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="2.5dp"
-        android:layout_weight="1"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
         android:background="@drawable/main_header_selector"
         android:drawableTop="@drawable/ic_apps_black_24dp_white"
-        android:padding="4dp"
         android:text="דף הבית"
         android:textColor="#000"></Button>
 </LinearLayout>

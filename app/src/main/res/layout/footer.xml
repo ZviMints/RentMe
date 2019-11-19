@@ -3,9 +3,7 @@
     android:id="@+id/footer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="1dp"
-    android:background="#e17055"
-    android:layout_alignParentBottom="true">
+    android:background="#e17055">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -49,16 +47,6 @@
         android:textStyle="bold" />
 
     </RelativeLayout>
-
-    <TextView
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_width="22dp"
-        android:background="#ffeaa7"
-        android:layout_height="22dp"
-        android:id="@+id/clear"
-        android:drawableTop="@drawable/ic_clear_black_24dp"
-        ></TextView>
 
 
 </RelativeLayout>
