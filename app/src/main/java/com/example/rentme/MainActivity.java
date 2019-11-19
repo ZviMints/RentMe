@@ -1,9 +1,11 @@
 package com.example.rentme;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -40,11 +42,25 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         lastAdsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 lastAdsBtn.setBackgroundResource(R.drawable.main_header_selector);
                 homePageBtn.setBackgroundColor(getResources().getColor(R.color.lightGray));
+                lastAdsBtn.setCompoundDrawablesWithIntrinsicBounds(
+                        null,
+                        getResources().getDrawable(R.drawable.ic_apps_black_24dp_white),
+                        null,
+                        null
+                );
+                homePageBtn.setCompoundDrawablesWithIntrinsicBounds(
+                        null,
+                        getResources().getDrawable(R.drawable.ic_assignment_black_24dp_black),
+                        null,
+                        null
+                );
+
                 if (productsListFragment == null)
                     productsListFragment  = new ProductsListFragment();
 
@@ -70,6 +86,19 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 lastAdsBtn.setBackgroundColor(getResources().getColor(R.color.lightGray));
                 homePageBtn.setBackgroundResource(R.drawable.main_header_selector);
+                lastAdsBtn.setCompoundDrawablesWithIntrinsicBounds(
+                        null,
+                        getResources().getDrawable(R.drawable.ic_apps_black_24dp_black),
+                        null,
+                        null
+                );
+                homePageBtn.setCompoundDrawablesWithIntrinsicBounds(
+                        null,
+                        getResources().getDrawable(R.drawable.ic_assignment_black_24dp_white),
+                        null,
+                        null
+                );
+
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
                 // Replace whatever is in the fragment_container view with this fragment,

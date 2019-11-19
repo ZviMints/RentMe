@@ -32,10 +32,6 @@
 
         </FrameLayout>
 
-        <!-- Footer aligned to bottom -->
-        <include layout="@layout/footer"/>
-        <!-- End Footer -->
-
     </LinearLayout>
     <!-- End Content -->
 

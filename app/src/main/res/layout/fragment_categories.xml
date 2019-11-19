@@ -15,4 +15,16 @@
         android:padding="10dp"
         android:verticalSpacing="10dp"></GridView>
 
+    <!-- Footer aligned to bottom -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
+        <include layout="@layout/footer"/>
+
+    </RelativeLayout>
+    <!-- End Footer -->
+
 </FrameLayout>
+
+
