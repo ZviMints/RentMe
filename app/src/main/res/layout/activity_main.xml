@@ -11,33 +11,32 @@
     <!-- End Header-->
 
     <!-- Menu -->
-    <include layout="@layout/menu_from_mainpage"/>
+    <include layout="@layout/menu_home_last_adds"/>
     <!-- End Menu -->
 
 
     <!-- Content -->
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="#DFE6E9"
         android:orientation="vertical"
+        android:weightSum="1"
         tools:context=".MainActivity">
 
-        <GridView
-            android:id="@+id/grid_view"
+        <FrameLayout
+            android:id="@+id/fragmentContainer"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/BlueGray"
-            android:horizontalSpacing="15dp"
-            android:numColumns="2"
-            android:padding="10dp"
-            android:verticalSpacing="10dp"></GridView>
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+        </FrameLayout>
 
         <!-- Footer aligned to bottom -->
         <include layout="@layout/footer"/>
         <!-- End Footer -->
 
-    </RelativeLayout>
+    </LinearLayout>
     <!-- End Content -->
 
 </LinearLayout>
