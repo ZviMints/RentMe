@@ -1,31 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
-
-    <!-- Header -->
-    <include layout="@layout/header"/>
-    <!-- End Header-->
-
-
-    <!-- Menu -->
-    <include layout="@layout/menu_from_lastads"/>
-    <!-- End Menu -->
-
-    <!-- Content -->
+    tools:context=".ProductsListFragment">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#DFE6E9"
-        android:orientation="vertical"
-        tools:context=".LastAdsActivity">
+        android:weightSum="1"
+        android:orientation="vertical">
 
-        <!--- Last Ads -->
-
-        <!-- Finish Last Ads -->
         <ListView
             android:id="@+id/products_list"
             android:layout_width="match_parent"
@@ -33,7 +17,6 @@
             android:layout_weight="1">
 
         </ListView>
-
 
         <Button
             android:layout_width="match_parent"
@@ -44,14 +27,6 @@
             android:textStyle="bold"
             android:drawableTop="@drawable/ic_expand_more_white_24dp"
             android:text="עוד תוצאות" />
-
-        <!-- Footer aligned to bottom
-        <include layout="@layout/footer"/>
-            End Footer -->
-
-
     </LinearLayout>
-    <!-- End Content -->
 
-
-</LinearLayout>
+</FrameLayout>
