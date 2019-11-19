@@ -3,19 +3,25 @@ package com.example.rentme;
 import android.content.Context;
 import android.os.Bundle;
 
+
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.Toast;
+
 
 
 public class CategoriesFragment extends Fragment {
 
     private GridView gridView;
+    ProductsListFragment productsListFragment;
 
 
     String[] titles = {
@@ -42,6 +48,7 @@ public class CategoriesFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -58,6 +65,14 @@ public class CategoriesFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getContext(),"You Clicked" + titles[+position], Toast.LENGTH_LONG).show();
+
+                if (productsListFragment == null)
+                    productsListFragment  = new ProductsListFragment();
+
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragmentContainer, productsListFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 
