@@ -25,8 +25,8 @@ public class CategoriesFragment extends Fragment {
 
 
     String[] titles = {
-            "קטגוריה 1",
-            "קטגוריה 2",
+            "אביזרים",
+            "מוצרי חשמל",
             "קטגוריה 3",
             "קטגוריה 4",
             "קטגוריה 5",
@@ -69,6 +69,11 @@ public class CategoriesFragment extends Fragment {
                 if (productsListFragment == null)
                     productsListFragment  = new ProductsListFragment();
 
+                //send to the new fragment what category was clicked
+                Bundle bundle = new Bundle();
+                bundle.putString("category",titles[+position]);
+                productsListFragment.setArguments(bundle);
+                //change the current fragment
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragmentContainer, productsListFragment);
                 transaction.addToBackStack(null);
