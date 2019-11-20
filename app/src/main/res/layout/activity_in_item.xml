@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent">
+
+    <!-- Header -->
+    <include layout="@layout/header"/>
+    <!-- End Header-->
+
+
+    <!-- Content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#DFE6E9"
+        android:orientation="vertical"
+        android:weightSum="1"
+        tools:context=".MainActivity">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/lightGray"/>ֿֿ
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textDirection="rtl"
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:text="כותרת של המוצר"
+            android:textStyle="bold"/>
+
+
+
+        <!--Horizon Menu -->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_marginLeft="5dp"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:background="@color/Orange"
+                android:drawableLeft="@drawable/ic_local_offer_black_24dp"
+                android:padding="10dp"
+                android:text="בצע הזמנה"
+                android:textAlignment="center"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:textColor="#fff"></Button>
+
+
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:padding="10dp"
+                android:textAlignment="center"
+                android:layout_marginRight="5dp"
+                android:background="@color/DarkBlue"
+                android:drawableRight="@drawable/ic_chevron_right_sky_24dp"
+                android:text="חזור לדף הקודם"
+                android:textColor="#fff"
+                android:layout_weight="1"
+                android:gravity="end"></Button>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/lightGray"/>ֿֿ
+
+
+        <!-- Info About the Product -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textDirection="rtl"
+                android:textSize="20sp"
+                android:text="מידע על המוצר עם התמונות"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/lightGray"/>ֿֿ
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="מערכת תגובות"
+            android:textDirection="rtl"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+    <!-- End Content -->
+
+</LinearLayout>
+
