@@ -15,7 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
-
         </ListView>
 
         <Button
@@ -27,6 +26,7 @@
             android:textStyle="bold"
             android:drawableTop="@drawable/ic_expand_more_white_24dp"
             android:text="עוד תוצאות" />
+
     </LinearLayout>
 
 </FrameLayout>
