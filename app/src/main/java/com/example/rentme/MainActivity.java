@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     Button homePageBtn;
     Button lastAdsBtn;
     Button profileBtn;
+    Button searchBtn;
+
     FrameLayout fragmentContainer;
     ProductsListFragment productsListFragment;
     CategoriesFragment categoriesFragment;
@@ -33,12 +35,20 @@ public class MainActivity extends AppCompatActivity {
         lastAdsBtn = findViewById(R.id.LastAds);
         profileBtn = findViewById(R.id.Profile);
         fragmentContainer = findViewById(R.id.fragmentContainer);
+        searchBtn = findViewById(R.id.Search);
 
 
         profileBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        searchBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
                 startActivity(intent);
             }
         });
