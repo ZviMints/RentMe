@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/Sky"
+    android:orientation="vertical">
+
+
+    <!-- Header -->
+    <include layout="@layout/header" />
+    <!-- End Header-->
+
+    <!-- Menu -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/lightGray"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/tvUserEmail"
+                android:textSize="15sp"/>
+
+            <Button
+                android:id="@+id/backToMain"
+                android:layout_width="0dp"
+                android:layout_weight="0.4"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:background="#fafafa"
+                android:layout_marginLeft="10dp"
+                android:padding="10dp"
+                android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
+                android:text="דף הבית"
+                android:textColor="@color/DarkGray"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/signOut"
+            android:layout_marginTop="25dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/lightGray"
+            android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
+            android:text="התנתק"
+            android:layout_alignParentTop="true"
+            android:textColor="@color/DarkGray"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+    <!-- Content -->
+
+    <!-- End Content -->
+
+
+</LinearLayout>
