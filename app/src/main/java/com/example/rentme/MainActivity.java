@@ -85,10 +85,6 @@ public class MainActivity extends AppCompatActivity {
                 if (productsListFragment == null)
                     productsListFragment  = new ProductsListFragment();
 
-                //send to the new fragment what category was clicked
-                Bundle bundle = new Bundle();
-                bundle.putString("category","מעורב");
-                productsListFragment.setArguments(bundle);
 
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
