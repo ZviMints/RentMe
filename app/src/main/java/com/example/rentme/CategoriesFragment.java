@@ -1,6 +1,7 @@
 package com.example.rentme;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 
@@ -66,18 +67,10 @@ public class CategoriesFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getContext(),"You Clicked" + titles[+position], Toast.LENGTH_LONG).show();
 
-                if (productsListFragment == null)
-                    productsListFragment  = new ProductsListFragment();
+                Intent intent = new Intent(getActivity(), InsideCategoryActivity.class);
+                intent.putExtra("category",titles[+position]);
+                startActivity(intent);
 
-                //send to the new fragment what category was clicked
-                Bundle bundle = new Bundle();
-                bundle.putString("category",titles[+position]);
-                productsListFragment.setArguments(bundle);
-                //change the current fragment
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragmentContainer, productsListFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
             }
         });
 
