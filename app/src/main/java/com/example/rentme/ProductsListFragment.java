@@ -1,6 +1,7 @@
 package com.example.rentme;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -59,6 +60,5 @@ public class ProductsListFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
     }
-
 
 }

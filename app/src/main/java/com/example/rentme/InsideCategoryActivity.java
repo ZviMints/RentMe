@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-public class InsideCategoryActivity extends AppCompatActivity {
+public class InsideCategoryActivity extends AppCompatActivity implements ProductListAdapter.MoreDetailsButtonListener{
 
     Button homePageBtn;
 
@@ -76,6 +76,13 @@ public class InsideCategoryActivity extends AppCompatActivity {
         //set the category title
         TextView CategoryTitle = findViewById(R.id.category_title);
         CategoryTitle.setText(category);
+
+    }
+
+    @Override
+    public void showMoreDetails() {
+        Intent intent = new Intent(getApplicationContext(), InItemActivity.class);
+        startActivity(intent);
 
     }
 }

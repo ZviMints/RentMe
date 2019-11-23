@@ -26,10 +26,10 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:orientation="vertical"
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
-            android:layoutDirection="rtl">
+            android:layoutDirection="rtl"
+            android:orientation="vertical">
 
             <!-- Category and Text -->
             <LinearLayout
@@ -44,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:textDirection="rtl"
                     android:textSize="20sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <!-- Category -->
                 <LinearLayout
@@ -57,15 +57,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="קטגורייה: "
-                        android:textStyle="bold"
-                        android:textDirection="rtl"/>
+                        android:textDirection="rtl"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/product_category"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.3"
-                        android:textDirection="rtl"/>
+                        android:textDirection="rtl" />
 
                 </LinearLayout> <!-- Finish Category Text -->
 
@@ -82,7 +82,7 @@
                     android:id="@+id/product_details"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textDirection="rtl"/>
+                    android:textDirection="rtl" />
 
             </LinearLayout>
 
@@ -135,15 +135,16 @@
 
 
     <Button
-        android:layout_width="0dp"
+        android:id="@+id/more_product_details"
+        android:layout_width="67dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
         android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
         android:layout_weight="0.3"
         android:background="@color/DarkBlue"
+        android:text="עוד פרטים"
         android:textColor="#fff"
-        android:textStyle="bold"
-        android:text="עוד פרטים"/>
+        android:textStyle="bold" />
 
 
 </LinearLayout>

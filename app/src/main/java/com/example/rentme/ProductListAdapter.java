@@ -1,6 +1,7 @@
 package com.example.rentme;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Point;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,12 +19,27 @@ import java.util.ArrayList;
 
 
 public class ProductListAdapter extends BaseAdapter {
+
+    public interface MoreDetailsButtonListener{
+        void showMoreDetails();
+    }
+
+    private MoreDetailsButtonListener listener;
     private ArrayList<Product> items = new ArrayList<Product>();
     private Context context;
 
     public ProductListAdapter(ArrayList<Product> items, Context context) {
         this.items = items;
         this.context = context;
+
+
+        try {
+           this.listener = (MoreDetailsButtonListener) context;
+
+        } catch (ClassCastException e) {
+
+            throw new ClassCastException(context.toString() + " must implement showButtons");
+        }
     }
 
     @Override
@@ -62,6 +79,13 @@ public class ProductListAdapter extends BaseAdapter {
         holder.details.setText(items.get(position).getDetails());
         holder.image.setImageResource(R.drawable.chairs);
 
+        holder.MoreDetailsBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                listener.showMoreDetails();
+            }
+        });
+
         return convertView;
     }
 
@@ -70,13 +94,17 @@ public class ProductListAdapter extends BaseAdapter {
         private TextView category;
         private TextView details;
         private ImageView image;
+        private Button MoreDetailsBtn;
 
         public Holder(View view) {
             title = view.findViewById(R.id.product_title);
             category = view.findViewById(R.id.product_category);;
             details = view.findViewById(R.id.product_details);;
             image = view.findViewById(R.id.product_image);
+            MoreDetailsBtn = view.findViewById(R.id.more_product_details);
         }
 
     }
+
 }
+

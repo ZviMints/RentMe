@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ProductListAdapter.MoreDetailsButtonListener {
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
@@ -131,5 +131,11 @@ public class MainActivity extends AppCompatActivity {
         categoriesFragment = new CategoriesFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.fragmentContainer, categoriesFragment).commit();
 
+    }
+
+    @Override
+    public void showMoreDetails() {
+        Intent intent = new Intent(getApplicationContext(), InItemActivity.class);
+        startActivity(intent);
     }
 }
