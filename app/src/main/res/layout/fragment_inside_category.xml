@@ -22,16 +22,6 @@
         android:layout_height="1dp"
         android:background="@color/lightGray" />ֿֿ
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/lightGray"
-        android:textStyle="bold"
-        android:textColor="@color/DarkGray"
-        android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
-        android:text="חזור לדף הקודם" />
-
 
     <View
         android:layout_width="match_parent"
