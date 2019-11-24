@@ -6,10 +6,6 @@
     android:orientation="vertical">
 
 
-    <!-- Header -->
-    <include layout="@layout/header" />
-    <!-- End Header-->
-
     <!-- Menu -->
     <LinearLayout
         android:layout_width="fill_parent"

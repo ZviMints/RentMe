@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context=".MainFragment">
+
+    <!-- Menu -->
+    <include layout="@layout/menu_home_last_adds"/>
+    <!-- End Menu -->
+
+
+    <!-- Content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#DFE6E9"
+        android:orientation="vertical"
+        android:weightSum="1"
+        tools:context=".MainActivity">
+
+        <FrameLayout
+            android:id="@+id/fragmentContainer"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+        </FrameLayout>
+
+    </LinearLayout>
+    <!-- End Content -->
+
+</LinearLayout>

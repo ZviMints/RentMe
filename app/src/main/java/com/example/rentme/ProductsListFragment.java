@@ -1,7 +1,6 @@
 package com.example.rentme;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -48,7 +47,7 @@ public class ProductsListFragment extends Fragment {
         items3.add(r7);
         //delete after database ready/////////////////////////////////////////////////////////////
 
-        ProductListAdapter adapter = new ProductListAdapter(items3,getContext());//suppose to get from the data base
+        ProductListAdapter adapter = new ProductListAdapter(items3,getActivity());//suppose to get from the data base
         listView.setAdapter(adapter);
 
 

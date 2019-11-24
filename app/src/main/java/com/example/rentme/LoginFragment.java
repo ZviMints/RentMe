@@ -1,26 +1,25 @@
 package com.example.rentme;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.Arrays;
-import java.util.List;
-
-public class LoginActivity extends AppCompatActivity {
+public class LoginFragment extends Fragment {
     Button back;
     Button loginBtn;
     Button signUpBtn;
@@ -30,18 +29,28 @@ public class LoginActivity extends AppCompatActivity {
     ProgressBar progressBar;
     Toast emptyEmailOrPassword;
 
+    MainFragment mainFragment;
+    SignUpFragment signUpFragment;
+    ProfileFragment profileFragment;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+    }
 
-        back = findViewById(R.id.backToMain);
-        loginBtn = findViewById(R.id.btnLogin);
-        signUpBtn = findViewById(R.id.btnGoToSignUp);
-        userEmail = findViewById(R.id.email_form_login);
-        userPassword = findViewById(R.id.password_form_login);
-        progressBar = findViewById(R.id.progressbar);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
+
+
+        back = view.findViewById(R.id.backToMain);
+        loginBtn = view.findViewById(R.id.btnLogin);
+        signUpBtn = view.findViewById(R.id.btnGoToSignUp);
+        userEmail = view.findViewById(R.id.email_form_login);
+        userPassword = view.findViewById(R.id.password_form_login);
+        progressBar = view.findViewById(R.id.progressbar);
 
         firebaseAuth = FirebaseAuth.getInstance();
         // FireBash Button
@@ -52,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                 String usernameText = userEmail.getText().toString();
                 String passwordText = userPassword.getText().toString();
                 if(usernameText.length() < 1 || passwordText.length() < 1 ) {
-                    Toast.makeText(LoginActivity.this,"איימל או סיסמא לא יכולים להיות ריקים",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"איימל או סיסמא לא יכולים להיות ריקים",Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
                 }
                 else {
@@ -65,10 +74,13 @@ public class LoginActivity extends AppCompatActivity {
                                     // Check for the result
                                     progressBar.setVisibility(View.GONE);
                                     if (task.isSuccessful()) {
-                                        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-                                        startActivity(intent);
+
+                                        if (profileFragment == null)
+                                            profileFragment = new ProfileFragment();
+                                        outerTransaction(profileFragment);
+
                                     } else {
-                                        Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                     }
                                 }
                             });
@@ -81,8 +93,9 @@ public class LoginActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+                if (mainFragment == null)
+                    mainFragment = new MainFragment();
+                outerTransaction(mainFragment);
             }
         });
 
@@ -91,10 +104,24 @@ public class LoginActivity extends AppCompatActivity {
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
-                startActivity(intent);
+                if (signUpFragment == null)
+                    signUpFragment = new SignUpFragment();
+                outerTransaction(signUpFragment);
+
             }
         });
+        return view;
+    }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
     }
 
+    private void outerTransaction(Fragment fragment){
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.OuterFragmentContainer, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 }
+

@@ -6,11 +6,6 @@
     android:background="#DFE6E9"
     android:orientation="vertical">
 
-    <!-- Header -->
-    <include layout="@layout/header" />
-    <!-- End Header-->
-
-
     <!-- Content -->
 
     <!--Horizon Menu -->
@@ -242,6 +237,7 @@
 
 
         <Button
+            android:id="@+id/backToLastPage"
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:layout_marginLeft="5dp"
@@ -346,5 +342,13 @@
 
 
 </LinearLayout><!-- End Content -->
+
+
+
+
+
+
+
+
 
 
