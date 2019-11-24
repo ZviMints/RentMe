@@ -5,11 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-    <!-- Header -->
-    <include layout="@layout/header"/>
-    <!-- End Header-->
-
     <!-- Content -->
     <LinearLayout
         android:layout_width="match_parent"
