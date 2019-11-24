@@ -17,8 +17,9 @@ import android.widget.Toast;
 public class SearchFragment extends Fragment  implements AdapterView.OnItemSelectedListener {
     Button backBtn;
 
-    String[] categoryNames={"מוצרי חשמל","אביזרים","מטבח","גינה","ספורט"};
-    String[] areaNames={"השרון","דרום","צפון","ירושלים","שומרון"};
+    String[] categoryNames={"בחר קטגורייה...","אביזרים","מוצרי חשמל","מטבח","גינה","ספורט"};
+    String[] areaNames={"בחר אזור...","השרון","דרום","צפון","ירושלים","שומרון"};
+
     MainFragment mainFragment;
 
     Spinner mainCategorySpin;
@@ -34,16 +35,18 @@ public class SearchFragment extends Fragment  implements AdapterView.OnItemSelec
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search, container, false);
+        backBtn = view.findViewById(R.id.backToMain);
 
 
         //start category spinner
         mainCategorySpin = (Spinner) view.findViewById(R.id.MainCategory);
+
         mainCategorySpin.setOnItemSelectedListener(this);
         ArrayAdapter aaCategory = new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item,categoryNames);
         aaCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mainCategorySpin.setAdapter(aaCategory);
         //end category spinner
-
+      
         //start area spinner
         areaSpin = (Spinner) view.findViewById(R.id.area);
         areaSpin.setOnItemSelectedListener(this);
@@ -52,12 +55,18 @@ public class SearchFragment extends Fragment  implements AdapterView.OnItemSelec
         areaSpin.setAdapter(aaArea);
         //end area spinner
 
+        //Creating the ArrayAdapter instance having the bank name list
+        //ArrayAdapter aa = new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item,bankNames);
+
+
+        //aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //Setting the ArrayAdapter data on the Spinner
+        //mainCategorySpin.setAdapter(aa);
+
+
         // save the selections
-        String selectedCategory = mainCategorySpin.getItemAtPosition(mainCategorySpin.getSelectedItemPosition()).toString();
-        String selectedArea = areaSpin.getItemAtPosition(areaSpin.getSelectedItemPosition()).toString();
-
-
-
+      //  String selectedCategory = mainCategorySpin.getItemAtPosition(mainCategorySpin.getSelectedItemPosition()).toString();
+        //String selectedArea = areaSpin.getItemAtPosition(areaSpin.getSelectedItemPosition()).toString();
 
         backBtn = view.findViewById(R.id.back);
         backBtn.setOnClickListener(new View.OnClickListener() {

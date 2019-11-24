@@ -40,8 +40,6 @@ public class MainActivity extends AppCompatActivity implements ProductListAdapte
         profileBtn = findViewById(R.id.Profile);
 
 
-
-
         profileBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
