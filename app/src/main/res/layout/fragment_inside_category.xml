@@ -43,7 +43,8 @@
             android:textDirection="rtl"
             android:layout_marginTop="5dp"
             android:layout_gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="3dp">
 
 
             <TextView
