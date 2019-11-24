@@ -17,7 +17,10 @@ import android.widget.Toast;
 public class SearchFragment extends Fragment  implements AdapterView.OnItemSelectedListener {
     Button backBtn;
 
-    String[] bankNames={"אביזרים","מוצרי חשמל","מטבח","גינה","ספורט"};
+    String[] bankNames={"בחר קטגורייה...","אביזרים","מוצרי חשמל","מטבח","גינה","ספורט"};
+    String[] under_category={"אביזרים","מוצרי חשמל","מטבח","גינה","ספורט"};
+    String[] from_area={"אביזרים","מוצרי חשמל","מטבח","גינה","ספורט"};
+
     MainFragment mainFragment;
 
     @Override
@@ -30,19 +33,26 @@ public class SearchFragment extends Fragment  implements AdapterView.OnItemSelec
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search, container, false);
+        backBtn = view.findViewById(R.id.backToMain);
 
         //Getting the instance of Spinner and applying OnItemSelectedListener on it
-        Spinner mainCategorySpin = (Spinner) view.findViewById(R.id.MainCategoty);
+        Spinner mainCategorySpin = (Spinner) view.findViewById(R.id.MainCategory);
+        Spinner underCategorySpin = (Spinner) view.findViewById(R.id.under_category);
+        Spinner areaCategorySpin = (Spinner) view.findViewById(R.id.from_area);
+
         mainCategorySpin.setOnItemSelectedListener(this);
+
+
+        Spinner from_areaSpin = (Spinner) view.findViewById(R.id.from_area);
+        from_areaSpin.setOnItemSelectedListener(this);
 
         //Creating the ArrayAdapter instance having the bank name list
         ArrayAdapter aa = new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item,bankNames);
+
+
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Setting the ArrayAdapter data on the Spinner
         mainCategorySpin.setAdapter(aa);
-
-
-
 
 
         backBtn = view.findViewById(R.id.back);

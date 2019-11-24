@@ -27,15 +27,19 @@
             android:layout_gravity="center"
             android:text="קטגוריה"
             android:textColor="@color/DarkGray"
+            android:layout_marginBottom="3dp"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <Spinner
-            android:id="@+id/MainCategoty"
+            android:id="@+id/MainCategory"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:background="#FFFFFF"
-            android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
             android:layout_alignParentTop="true"
             android:textColor="@color/DarkBlue"
             android:textStyle="bold"
@@ -49,37 +53,47 @@
             android:text="תת קטגוריה"
             android:textColor="@color/DarkGray"
             android:textSize="20sp"
+            android:layout_marginBottom="3dp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/categoty2"
+        <Spinner
+            android:id="@+id/under_category"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:background="#FFFFFF"
-            android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
             android:layout_alignParentTop="true"
             android:textColor="@color/DarkBlue"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"/>
 
         <TextView
             android:id="@+id/title3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginBottom="3dp"
             android:text="איזור"
             android:textColor="@color/DarkGray"
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/categoty3"
+        <Spinner
+            android:id="@+id/from_area"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:background="#FFFFFF"
-            android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
             android:layout_alignParentTop="true"
             android:textColor="@color/DarkBlue"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"/>
 
         <TextView
             android:id="@+id/pricetitle"
@@ -87,6 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="מחיר"
+            android:layout_marginBottom="3dp"
             android:textColor="@color/DarkGray"
             android:textSize="20sp"
             android:textStyle="bold" />

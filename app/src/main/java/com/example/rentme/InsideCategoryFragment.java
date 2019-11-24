@@ -16,9 +16,9 @@ import java.util.ArrayList;
 
 public class InsideCategoryFragment extends Fragment{
 
-    Button homePageBtn;
-
+    Button backBtn;
     InItemFragment inItemFragment;
+    LoginFragment mainFragment;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,7 @@ public class InsideCategoryFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_inside_category, container, false);
+        backBtn = view.findViewById(R.id.back_to_last_page);
 
         ListView listView = view.findViewById(R.id.products_list);
 
@@ -88,6 +89,15 @@ public class InsideCategoryFragment extends Fragment{
         //set the category title
         TextView CategoryTitle = view.findViewById(R.id.category_title);
         CategoryTitle.setText(category);
+
+
+        // Back To Main Activity
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
 
         return view;
     }

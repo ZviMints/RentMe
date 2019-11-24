@@ -12,6 +12,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/lightGray"
         android:textStyle="bold"
+        android:id="@+id/back_to_last_page"
         android:textColor="@color/DarkGray"
         android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
         android:text="חזור לדף הקודם" />
@@ -40,9 +41,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textDirection="rtl"
+            android:layout_marginTop="5dp"
             android:layout_gravity="center"
             android:orientation="horizontal">
-
 
 
             <TextView
