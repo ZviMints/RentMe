@@ -1,28 +1,38 @@
 package com.example.rentme;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ArrayAdapter;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.ArrayList;
 
-public class InsideCategoryActivity extends AppCompatActivity implements ProductListAdapter.MoreDetailsButtonListener{
+public class InsideCategoryFragment extends Fragment{
 
     Button homePageBtn;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inside_category);
+    InItemFragment inItemFragment;
 
-        ListView listView = findViewById(R.id.products_list);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_inside_category, container, false);
+
+        ListView listView = view.findViewById(R.id.products_list);
 
         //need to delete and change for data base/////////////////////////////////////////////////
         ArrayList<Product> items = new ArrayList<Product>();
@@ -58,32 +68,43 @@ public class InsideCategoryActivity extends AppCompatActivity implements Product
         items2.add(q7);
 
         //need to delete and change for data base/////////////////////////////////////////////////
-        String category = "none";
-        Intent intent = getIntent();
-        ProductListAdapter adapter;
 
         //get the category name that was clicked
-        if (null != intent) //Null Checking
-            category = intent.getStringExtra("category");
+        String category = "none";
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            category = bundle.getString("category");
+        }
+
+        ProductListAdapter adapter;
 
         if (category.equals("אביזרים"))
-            adapter = new ProductListAdapter(items, InsideCategoryActivity.this);//suppose to get from the data base
+            adapter = new ProductListAdapter(items, getActivity());//suppose to get from the data base
         else
-            adapter = new ProductListAdapter(items2, InsideCategoryActivity.this);//suppose to get from the data base
+            adapter = new ProductListAdapter(items2, getActivity());//suppose to get from the data base
 
         listView.setAdapter(adapter);
 
         //set the category title
-        TextView CategoryTitle = findViewById(R.id.category_title);
+        TextView CategoryTitle = view.findViewById(R.id.category_title);
         CategoryTitle.setText(category);
 
+        return view;
     }
-
+/*
     @Override
     public void showMoreDetails() {
-        Intent intent = new Intent(getApplicationContext(), InItemActivity.class);
-        startActivity(intent);
+        if (inItemFragment == null)
+            inItemFragment = new InItemFragment();
+        outerTransaction(inItemFragment);
 
+    }
+*/
+    private void outerTransaction(Fragment fragment){
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.OuterFragmentContainer, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }
 

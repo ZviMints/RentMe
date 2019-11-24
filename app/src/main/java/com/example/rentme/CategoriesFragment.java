@@ -1,7 +1,6 @@
 package com.example.rentme;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 
@@ -13,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -23,6 +21,7 @@ public class CategoriesFragment extends Fragment {
 
     private GridView gridView;
     ProductsListFragment productsListFragment;
+    InsideCategoryFragment insideCategoryFragment;
 
 
     String[] titles = {
@@ -67,9 +66,13 @@ public class CategoriesFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getContext(),"You Clicked" + titles[+position], Toast.LENGTH_LONG).show();
 
-                Intent intent = new Intent(getActivity(), InsideCategoryActivity.class);
-                intent.putExtra("category",titles[+position]);
-                startActivity(intent);
+                if (insideCategoryFragment == null)
+                    insideCategoryFragment = new InsideCategoryFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("category",titles[+position]);
+                insideCategoryFragment.setArguments(bundle);
+                outerTransaction(insideCategoryFragment);
+
 
             }
         });
@@ -83,4 +86,10 @@ public class CategoriesFragment extends Fragment {
 
     }
 
+    private void outerTransaction(Fragment fragment){
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.OuterFragmentContainer, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 }

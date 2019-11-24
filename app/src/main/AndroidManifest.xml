@@ -9,11 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".InsideCategoryActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".InItemActivity" />
-        <activity android:name=".SearchActivity" />
+        <activity android:name=".InsideCategoryFragment" />
+        <activity android:name=".SignUpFragment" />
+        <activity android:name=".ProfileFragment" />
+        <activity android:name=".InItemFragment" />
+        <activity android:name=".SearchFragment" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginFragment" />
     </application>
 
 </manifest>
