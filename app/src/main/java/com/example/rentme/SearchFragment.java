@@ -25,6 +25,10 @@ public class SearchFragment extends Fragment  implements AdapterView.OnItemSelec
     Spinner mainCategorySpin;
     Spinner areaSpin;
 
+
+    String selectedCategory;
+    String selectedArea;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,9 +68,7 @@ public class SearchFragment extends Fragment  implements AdapterView.OnItemSelec
         //mainCategorySpin.setAdapter(aa);
 
 
-        // save the selections
-      //  String selectedCategory = mainCategorySpin.getItemAtPosition(mainCategorySpin.getSelectedItemPosition()).toString();
-        //String selectedArea = areaSpin.getItemAtPosition(areaSpin.getSelectedItemPosition()).toString();
+
 
         backBtn = view.findViewById(R.id.back);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +101,9 @@ public class SearchFragment extends Fragment  implements AdapterView.OnItemSelec
                 "\ncategory : "+ String.valueOf(mainCategorySpin.getSelectedItem()) +
                         "\narea : "+ String.valueOf(areaSpin.getSelectedItem()),
                 Toast.LENGTH_SHORT).show();
+
+        selectedCategory = mainCategorySpin.getItemAtPosition(mainCategorySpin.getSelectedItemPosition()).toString();
+        selectedArea = areaSpin.getItemAtPosition(areaSpin.getSelectedItemPosition()).toString();
     }
 
     @Override
