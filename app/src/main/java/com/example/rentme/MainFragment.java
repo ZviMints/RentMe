@@ -51,8 +51,8 @@ public class MainFragment extends Fragment {
                         null
                 );
 
-                if (productsListFragment == null)
-                    productsListFragment  = new ProductsListFragment();
+                //if (productsListFragment == null)
+                productsListFragment  = new ProductsListFragment();
 
 
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();

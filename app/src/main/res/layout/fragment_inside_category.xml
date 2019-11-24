@@ -41,7 +41,8 @@
             android:layout_height="wrap_content"
             android:textDirection="rtl"
             android:layout_gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="3dp">
 
 
 

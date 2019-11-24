@@ -17,8 +17,12 @@ import android.widget.Toast;
 public class SearchFragment extends Fragment  implements AdapterView.OnItemSelectedListener {
     Button backBtn;
 
-    String[] bankNames={"אביזרים","מוצרי חשמל","מטבח","גינה","ספורט"};
+    String[] categoryNames={"מוצרי חשמל","אביזרים","מטבח","גינה","ספורט"};
+    String[] areaNames={"השרון","דרום","צפון","ירושלים","שומרון"};
     MainFragment mainFragment;
+
+    Spinner mainCategorySpin;
+    Spinner areaSpin;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,16 +35,26 @@ public class SearchFragment extends Fragment  implements AdapterView.OnItemSelec
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search, container, false);
 
-        //Getting the instance of Spinner and applying OnItemSelectedListener on it
-        Spinner mainCategorySpin = (Spinner) view.findViewById(R.id.MainCategoty);
+
+        //start category spinner
+        mainCategorySpin = (Spinner) view.findViewById(R.id.MainCategory);
         mainCategorySpin.setOnItemSelectedListener(this);
+        ArrayAdapter aaCategory = new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item,categoryNames);
+        aaCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mainCategorySpin.setAdapter(aaCategory);
+        //end category spinner
 
-        //Creating the ArrayAdapter instance having the bank name list
-        ArrayAdapter aa = new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item,bankNames);
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //Setting the ArrayAdapter data on the Spinner
-        mainCategorySpin.setAdapter(aa);
+        //start area spinner
+        areaSpin = (Spinner) view.findViewById(R.id.area);
+        areaSpin.setOnItemSelectedListener(this);
+        ArrayAdapter aaArea = new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item,areaNames);
+        aaArea.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        areaSpin.setAdapter(aaArea);
+        //end area spinner
 
+        // save the selections
+        String selectedCategory = mainCategorySpin.getItemAtPosition(mainCategorySpin.getSelectedItemPosition()).toString();
+        String selectedArea = areaSpin.getItemAtPosition(areaSpin.getSelectedItemPosition()).toString();
 
 
 
@@ -72,7 +86,10 @@ public class SearchFragment extends Fragment  implements AdapterView.OnItemSelec
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(getContext(), bankNames[position], Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(),
+                "\ncategory : "+ String.valueOf(mainCategorySpin.getSelectedItem()) +
+                        "\narea : "+ String.valueOf(areaSpin.getSelectedItem()),
+                Toast.LENGTH_SHORT).show();
     }
 
     @Override

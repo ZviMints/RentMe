@@ -31,38 +31,20 @@
             android:textStyle="bold" />
 
         <Spinner
-            android:id="@+id/MainCategoty"
-            android:layout_width="fill_parent"
+            android:id="@+id/MainCategory"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
             android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
             android:layout_alignParentTop="true"
             android:textColor="@color/DarkBlue"
             android:textStyle="bold"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"/>
+
+
 
         <TextView
-            android:id="@+id/title2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="תת קטגוריה"
-            android:textColor="@color/DarkGray"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/categoty2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="#FFFFFF"
-            android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
-            android:layout_alignParentTop="true"
-            android:textColor="@color/DarkBlue"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/title3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -71,15 +53,17 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/categoty3"
-            android:layout_width="fill_parent"
+        <Spinner
+            android:id="@+id/area"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
             android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
             android:layout_alignParentTop="true"
             android:textColor="@color/DarkBlue"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"/>
 
         <TextView
             android:id="@+id/pricetitle"
