@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
     android:background="@color/Sky"
     android:orientation="vertical">
-
 
     <!-- Menu -->
     <LinearLayout
@@ -46,7 +44,7 @@
                 android:text="איימל" />
 
             <EditText
-                android:id="@+id/email_form_signup"
+                android:id="@+id/emailForm"
                 android:layout_width="335dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -61,7 +59,7 @@
                 android:text="סיסמא" />
             <!-- Password -->
             <EditText
-                android:id="@+id/password_form_signup"
+                android:id="@+id/passwordForm"
                 android:layout_width="336dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -69,6 +67,7 @@
                 android:background="@drawable/form"
                 android:hint="******"
                 android:padding="10dp" />
+
 
         </LinearLayout> <!-- Finish Form -->
 
@@ -86,7 +85,14 @@
             android:text="הרשם"
             android:textColor="#fff"></Button>
 
-
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:visibility="gone"
+            style="?android:attr/progressBarStyle"
+            android:id="@+id/progressbar"/>
 
 
         <Button

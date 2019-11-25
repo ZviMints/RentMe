@@ -27,7 +27,6 @@ public class LoginFragment extends Fragment {
     EditText userEmail;
     EditText userPassword;
     ProgressBar progressBar;
-    Toast emptyEmailOrPassword;
 
     MainFragment mainFragment;
     SignUpFragment signUpFragment;
