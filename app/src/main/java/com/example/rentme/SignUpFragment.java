@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpFragment extends Fragment {
     Button back;
@@ -28,6 +29,13 @@ public class SignUpFragment extends Fragment {
     FirebaseAuth firebaseAuth;
     EditText email;
     EditText password;
+
+    EditText area;
+    EditText name;
+    EditText lastname;
+    EditText number;
+
+
     ProgressBar progressBar;
     ProfileFragment profileFragment;
     LoginFragment loginFragment;
@@ -51,9 +59,14 @@ public class SignUpFragment extends Fragment {
         signUpBtn = view.findViewById(R.id.btnSignUp);
 
 
-        email = (EditText)view.findViewById(R.id.emailForm);
+        email = (EditText) view.findViewById(R.id.emailForm);
+        password = (EditText) view.findViewById(R.id.passwordForm);
 
-        password = (EditText)view.findViewById(R.id.passwordForm);
+        name = (EditText) view.findViewById(R.id.nameForm);
+        lastname = (EditText) view.findViewById(R.id.lastnameForm);
+        area = (EditText) view.findViewById(R.id.areaForm);
+        number = (EditText) view.findViewById(R.id.numberForm);
+
 
         progressBar = view.findViewById(R.id.progressbar);
 
@@ -62,11 +75,10 @@ public class SignUpFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
-                if(email.getText().length() < 1 || password.getText().length() < 1 ) {
-                    Toast.makeText(getContext(),"איימל או סיסמא לא יכולים להיות ריקים",Toast.LENGTH_SHORT).show();
+                if (email.getText().length() < 1 || password.getText().length() < 1) {
+                    Toast.makeText(getContext(), "איימל או סיסמא לא יכולים להיות ריקים", Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
-                }
-                else {
+                } else {
                     firebaseAuth.createUserWithEmailAndPassword(
                             email.getText().toString(),
                             password.getText().toString())
@@ -74,15 +86,34 @@ public class SignUpFragment extends Fragment {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     // Check for the result
-                                    progressBar.setVisibility(View.GONE);
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(getContext(),"הרשמה בוצעה בהצלחה",Toast.LENGTH_SHORT).show();
-                                        if (profileFragment == null)
-                                            profileFragment = new ProfileFragment();
-                                        outerTransaction(profileFragment);
+                                        User user = new User(name.getText().toString(),
+                                                lastname.getText().toString(),
+                                                area.getText().toString(),
+                                                number.getText().toString());
 
+                                        FirebaseDatabase.getInstance().getReference("Users")
+                                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                                .setValue(user)
+                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                               if(task.isSuccessful()) {
+                                                   progressBar.setVisibility(View.GONE);
+                                                   Toast.makeText(getContext(), "הרשמה בוצעה בהצלחה", Toast.LENGTH_SHORT).show();
+                                                   if (profileFragment == null)
+                                                       profileFragment = new ProfileFragment();
+                                                   outerTransaction(profileFragment);
+                                               }
+                                               else {
+                                                   progressBar.setVisibility(View.GONE);
+                                                   Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                               }
+                                            }
+                                        });
                                     } else {
                                         Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                        progressBar.setVisibility(View.GONE);
                                     }
                                 }
                             });
@@ -107,7 +138,7 @@ public class SignUpFragment extends Fragment {
         super.onAttach(context);
     }
 
-    private void outerTransaction(Fragment fragment){
+    private void outerTransaction(Fragment fragment) {
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.OuterFragmentContainer, fragment);
         transaction.addToBackStack(null);
