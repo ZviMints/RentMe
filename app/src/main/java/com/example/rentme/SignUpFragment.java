@@ -25,7 +25,6 @@ import com.google.firebase.database.FirebaseDatabase;
 public class SignUpFragment extends Fragment {
     Button back;
     Button signUpBtn;
-    SignUpFragment signUpFragment;
     FirebaseAuth firebaseAuth;
     EditText email;
     EditText password;
@@ -37,7 +36,6 @@ public class SignUpFragment extends Fragment {
 
 
     ProgressBar progressBar;
-    ProfileFragment profileFragment;
     LoginFragment loginFragment;
 
     @Override
@@ -101,9 +99,9 @@ public class SignUpFragment extends Fragment {
                                                if(task.isSuccessful()) {
                                                    progressBar.setVisibility(View.GONE);
                                                    Toast.makeText(getContext(), "הרשמה בוצעה בהצלחה", Toast.LENGTH_SHORT).show();
-                                                   if (profileFragment == null)
-                                                       profileFragment = new ProfileFragment();
-                                                   outerTransaction(profileFragment);
+                                                   if (loginFragment == null)
+                                                       loginFragment = new LoginFragment();
+                                                   outerTransaction(loginFragment);
                                                }
                                                else {
                                                    progressBar.setVisibility(View.GONE);
