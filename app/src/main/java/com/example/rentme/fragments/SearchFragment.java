@@ -99,10 +99,6 @@ public class SearchFragment extends Fragment  implements AdapterView.OnItemSelec
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(getContext(),
-                "\ncategory : "+ String.valueOf(mainCategorySpin.getSelectedItem()) +
-                        "\narea : "+ String.valueOf(areaSpin.getSelectedItem()),
-                Toast.LENGTH_SHORT).show();
 
         selectedCategory = mainCategorySpin.getItemAtPosition(mainCategorySpin.getSelectedItemPosition()).toString();
         selectedArea = areaSpin.getItemAtPosition(areaSpin.getSelectedItemPosition()).toString();
