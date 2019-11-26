@@ -9,19 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".InsideCategoryFragment" />
-        <activity android:name=".SignUpFragment" />
-        <activity android:name=".ProfileFragment" />
-        <activity android:name=".InItemFragment" />
-        <activity android:name=".SearchFragment" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".fragments.InsideCategoryFragment" />
+        <activity android:name=".fragments.SignUpFragment" />
+        <activity android:name=".fragments.ProfileFragment" />
+        <activity android:name=".fragments.InItemFragment" />
+        <activity android:name=".fragments.SearchFragment" />
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginFragment" />
+        <activity android:name=".fragments.LoginFragment" />
     </application>
 
 </manifest>

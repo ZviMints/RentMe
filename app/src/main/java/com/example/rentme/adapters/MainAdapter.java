@@ -1,4 +1,4 @@
-package com.example.rentme;
+package com.example.rentme.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.rentme.R;
 
 public class MainAdapter extends BaseAdapter  {
 

@@ -1,6 +1,5 @@
-package com.example.rentme;
+package com.example.rentme.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +10,10 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.example.rentme.model.Product;
+import com.example.rentme.adapters.ProductListAdapter;
+import com.example.rentme.R;
 
 import java.util.ArrayList;
 

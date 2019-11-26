@@ -1,4 +1,4 @@
-package com.example.rentme;
+package com.example.rentme.fragments;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+
+import com.example.rentme.R;
 
 public class InItemFragment extends Fragment {
     Button backBtn;

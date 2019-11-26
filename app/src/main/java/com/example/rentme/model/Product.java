@@ -1,4 +1,4 @@
-package com.example.rentme;
+package com.example.rentme.model;
 
 public class Product {
     private String title;

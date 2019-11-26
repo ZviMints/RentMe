@@ -1,4 +1,4 @@
-package com.example.rentme;
+package com.example.rentme.adapters;
 
 import android.content.Context;
 import android.graphics.Point;
@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.example.rentme.model.Product;
+import com.example.rentme.R;
 
 import java.util.ArrayList;
 
