@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/Sky"
+    android:orientation="vertical">
+
+    <!-- Menu -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/lightGray"/>
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text=" פרסם את המוצר שלך כאן"
+            android:textColor="@color/DarkGray"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
+            android:orientation="vertical"
+            android:layout_marginRight="20dp">
+            <!-- product name -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_height="wrap_content"
+                android:text="שם המוצר" />
+
+            <EditText
+
+                android:layout_width="335dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/form"
+                android:hint="example@gmail.com"
+                android:padding="10dp" />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="קטגוריה" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_height="wrap_content"
+                    android:text="מצב מוצר" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/form"
+
+                    android:padding="10dp" />
+
+                <EditText
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/form"
+
+                    android:padding="10dp" />
+
+            </LinearLayout>
+
+            <!-- מחיר -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="מחיר לשעה" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_height="wrap_content"
+                    android:text="מחיר ליום" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/form"
+                    android:hint="20"
+                    android:padding="10dp" />
+
+                <EditText
+
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/form"
+                    android:hint="100"
+                    android:padding="10dp" />
+
+            </LinearLayout>
+
+
+
+            <!-- Area -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="פרטים נוספים" />
+
+            <EditText
+                android:id="@+id/areaForm"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/form"
+                android:hint="...."
+                android:layout_gravity="center"
+                android:padding="10dp" />
+
+
+        </LinearLayout> <!-- Finish Form -->
+
+        <Button
+
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/DarkBlue"
+            android:drawableLeft="@drawable/ic_chevron_left_white_24dp"
+            android:padding="4dp"
+            android:text="הרשם"
+            android:textColor="#fff"></Button>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:visibility="gone"
+            android:layout_marginLeft="15dp"
+            style="?android:attr/progressBarStyle"
+            android:id="@+id/progressbar"/>
+
+
+        <Button
+            android:layout_marginTop="15dp"
+            android:id="@+id/backToLogin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/lightGray"
+            android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
+            android:text=" חזור לדף התחברות"
+            android:layout_alignParentTop="true"
+            android:textColor="@color/DarkGray"
+            android:textStyle="bold" />
+
+        <Switch
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Switch" />
+
+
+    </LinearLayout>
+
+
+    <!-- Content -->
+
+    <!-- End Content -->
+
+
+</LinearLayout>
