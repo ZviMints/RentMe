@@ -52,6 +52,7 @@ public class LoginFragment extends Fragment {
         progressBar = view.findViewById(R.id.progressbar);
 
         firebaseAuth = FirebaseAuth.getInstance();
+
         // FireBash Button
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +74,8 @@ public class LoginFragment extends Fragment {
                                     // Check for the result
                                     progressBar.setVisibility(View.GONE);
                                     if (task.isSuccessful()) {
-
+                                        ((MainActivity)getContext()).setFirebaseAuth(FirebaseAuth.getInstance());
+                                        ((MainActivity)getContext()).setFirebaseUser(FirebaseAuth.getInstance().getCurrentUser());
                                         if (profileFragment == null)
                                             profileFragment = new ProfileFragment();
                                         outerTransaction(profileFragment);

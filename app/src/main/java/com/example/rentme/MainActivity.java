@@ -13,8 +13,10 @@ import com.google.firebase.auth.FirebaseUser;
 
 
 public class MainActivity extends AppCompatActivity implements ProductListAdapter.MoreDetailsButtonListener {
-    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-    FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
+
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
 
     /**
      * Main Categories
@@ -34,6 +36,9 @@ public class MainActivity extends AppCompatActivity implements ProductListAdapte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
 
         searchBtn = findViewById(R.id.Search);
         profileBtn = findViewById(R.id.Profile);
@@ -85,4 +90,13 @@ public class MainActivity extends AppCompatActivity implements ProductListAdapte
         transaction.commit();
     }
 
+    public void setFirebaseAuth(FirebaseAuth firebaseAuth) {
+        this.firebaseAuth = firebaseAuth;
+    }
+
+    public void setFirebaseUser(FirebaseUser firebaseUser) {
+        this.firebaseUser = firebaseUser;
+        profileBtn.setText((firebaseUser != null) ? "פרופיל" : "התחבר/הרשם");
+
+    }
 }
