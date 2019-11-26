@@ -89,7 +89,6 @@ public class SignUpFragment extends Fragment {
                                                 lastname.getText().toString(),
                                                 area.getText().toString(),
                                                 number.getText().toString());
-
                                         FirebaseDatabase.getInstance().getReference("Users")
                                                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                                 .setValue(user)

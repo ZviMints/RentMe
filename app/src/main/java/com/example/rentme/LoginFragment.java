@@ -79,7 +79,6 @@ public class LoginFragment extends Fragment {
                                         if (profileFragment == null)
                                             profileFragment = new ProfileFragment();
                                         outerTransaction(profileFragment);
-
                                     } else {
                                         Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                     }

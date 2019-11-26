@@ -32,7 +32,7 @@ dependencies {
     // FirebaseUI for Firebase Auth
     implementation 'com.firebaseui:firebase-ui-auth:6.1.0'
 
-// Firebase dependencies
+    // Firebase dependencies
     implementation 'com.google.firebase:firebase-database:19.2.0'
 
 
