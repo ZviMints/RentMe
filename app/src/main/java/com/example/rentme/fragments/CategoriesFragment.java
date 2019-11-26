@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -24,6 +25,8 @@ public class CategoriesFragment extends Fragment {
     private GridView gridView;
     ProductsListFragment productsListFragment;
     InsideCategoryFragment insideCategoryFragment;
+    Button publishBtn;
+    PublishFragment publishFragment;
 
 
     String[] titles = {
@@ -76,6 +79,16 @@ public class CategoriesFragment extends Fragment {
                 outerTransaction(insideCategoryFragment);
 
 
+            }
+        });
+        publishBtn = view.findViewById(R.id.publish);
+        publishBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "פרסם נלחץ", Toast.LENGTH_SHORT).show();
+                if (publishFragment ==null)
+                    publishFragment = new PublishFragment();
+                outerTransaction(publishFragment);
             }
         });
 
