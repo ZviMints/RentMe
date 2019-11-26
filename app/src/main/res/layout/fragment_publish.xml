@@ -78,20 +78,27 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <EditText
-
-                    android:layout_width="150dp"
+                <Spinner
+                    android:id="@+id/select_category"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/form"
+                    android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
+                    android:layout_alignParentTop="true"
+                    android:textColor="@color/DarkBlue"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:spinnerMode="dropdown"/>
 
-                    android:padding="10dp" />
-
-                <EditText
-                    android:layout_width="150dp"
+                <Spinner
+                    android:id="@+id/product_condition"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/form"
+                    android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
+                    android:layout_alignParentTop="true"
+                    android:textColor="@color/DarkBlue"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:spinnerMode="dropdown"/>
 
                     android:padding="10dp" />
 
@@ -125,7 +132,7 @@
 
                 <EditText
 
-                    android:layout_width="150dp"
+                    android:layout_width="160dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:background="@drawable/form"
@@ -134,7 +141,7 @@
 
                 <EditText
 
-                    android:layout_width="150dp"
+                    android:layout_width="160dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:background="@drawable/form"
@@ -143,9 +150,7 @@
 
             </LinearLayout>
 
-
-
-            <!-- Area -->
+            <!--  -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -155,7 +160,7 @@
             <EditText
                 android:id="@+id/areaForm"
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="150dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/form"
                 android:hint="...."
@@ -183,6 +188,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
+            android:foregroundGravity="bottom"
             android:visibility="gone"
             android:layout_marginLeft="15dp"
             style="?android:attr/progressBarStyle"
@@ -195,17 +201,11 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@color/lightGray"
+            android:layout_gravity="bottom"
             android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
             android:text=" חזור לדף התחברות"
-            android:layout_alignParentTop="true"
             android:textColor="@color/DarkGray"
             android:textStyle="bold" />
-
-        <Switch
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Switch" />
 
 
     </LinearLayout>
