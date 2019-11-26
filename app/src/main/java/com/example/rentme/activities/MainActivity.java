@@ -1,4 +1,4 @@
-package com.example.rentme;
+package com.example.rentme.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -8,6 +8,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.rentme.R;
+import com.example.rentme.adapters.ProductListAdapter;
+import com.example.rentme.fragments.InItemFragment;
+import com.example.rentme.fragments.LoginFragment;
+import com.example.rentme.fragments.MainFragment;
+import com.example.rentme.fragments.ProfileFragment;
+import com.example.rentme.fragments.SearchFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 

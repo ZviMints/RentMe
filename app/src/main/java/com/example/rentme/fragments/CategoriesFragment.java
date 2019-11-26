@@ -1,4 +1,4 @@
-package com.example.rentme;
+package com.example.rentme.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -15,6 +15,8 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.example.rentme.adapters.MainAdapter;
+import com.example.rentme.R;
 
 
 public class CategoriesFragment extends Fragment {

@@ -1,4 +1,4 @@
-package com.example.rentme;
+package com.example.rentme.model;
 
 public class User {
     private String name;
@@ -6,13 +6,16 @@ public class User {
     private String area;
     private String number;
 
+    public User() {
+        // Default constructor required for calls to DataSnapshot.getValue(User.class)
+    }
+
     public User(String name, String lastname, String area, String number) {
         this.name = name;
         this.lastname = lastname;
         this.area = area;
         this.number = number;
     }
-
 
     public String getName() {
         return name;

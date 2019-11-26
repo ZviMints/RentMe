@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
 
-    tools:context=".MainFragment">
+    tools:context=".fragments.MainFragment">
 
     <!-- Menu -->
     <include layout="@layout/menu_home_last_adds"/>
@@ -19,7 +19,7 @@
         android:background="#DFE6E9"
         android:orientation="vertical"
         android:weightSum="1"
-        tools:context=".MainActivity">
+        tools:context=".activities.MainActivity">
 
         <FrameLayout
             android:id="@+id/fragmentContainer"

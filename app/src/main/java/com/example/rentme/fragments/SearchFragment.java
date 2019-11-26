@@ -1,4 +1,4 @@
-package com.example.rentme;
+package com.example.rentme.fragments;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -13,6 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.example.rentme.R;
 
 public class SearchFragment extends Fragment  implements AdapterView.OnItemSelectedListener {
     Button backBtn;
