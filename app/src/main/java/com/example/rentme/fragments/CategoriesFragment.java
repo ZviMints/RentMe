@@ -69,8 +69,6 @@ public class CategoriesFragment extends Fragment {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getContext(),"You Clicked" + titles[+position], Toast.LENGTH_LONG).show();
-
                 if (insideCategoryFragment == null)
                     insideCategoryFragment = new InsideCategoryFragment();
                 Bundle bundle = new Bundle();
@@ -85,7 +83,6 @@ public class CategoriesFragment extends Fragment {
         publishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "פרסם נלחץ", Toast.LENGTH_SHORT).show();
                 if (publishFragment ==null)
                     publishFragment = new PublishFragment();
                 outerTransaction(publishFragment);

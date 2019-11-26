@@ -1,6 +1,7 @@
 package com.example.rentme.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,10 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.rentme.R;
+import com.example.rentme.activities.MainActivity;
 
 public class MainFragment extends Fragment {
     Button homePageBtn;

@@ -5,12 +5,27 @@
     android:background="@color/Sky"
     android:orientation="vertical">
 
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
     <!-- Menu -->
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layoutDirection="rtl"
         android:orientation="vertical">
+
+        <Button
+            android:id="@+id/backToLogin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/lightGray"
+            android:layout_gravity="bottom"
+            android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
+            android:text=" חזור לדף הראשי"
+            android:textColor="@color/DarkGray"
+            android:textStyle="bold" />
 
         <View
             android:layout_width="match_parent"
@@ -34,6 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layoutDirection="rtl"
+            android:layout_marginTop="10dp"
             android:orientation="vertical"
             android:layout_marginRight="20dp">
             <!-- product name -->
@@ -49,13 +65,14 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:background="@drawable/form"
-                android:hint="example@gmail.com"
+                android:hint="מקדחה 555"
                 android:padding="10dp" />
 
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -79,8 +96,9 @@
                 android:orientation="horizontal">
 
                 <Spinner
+                    android:inputType="textNoSuggestions"
                     android:id="@+id/select_category"
-                    android:layout_width="match_parent"
+                    android:layout_width="170dp"
                     android:layout_height="wrap_content"
                     android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
                     android:layout_alignParentTop="true"
@@ -90,8 +108,9 @@
                     android:spinnerMode="dropdown"/>
 
                 <Spinner
+                    android:inputType="textNoSuggestions"
                     android:id="@+id/product_condition"
-                    android:layout_width="match_parent"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
                     android:layout_alignParentTop="true"
@@ -108,6 +127,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -150,8 +170,38 @@
 
             </LinearLayout>
 
-            <!--  -->
+
+            <!-- Image -->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="130dp"
+                    android:background="@drawable/images_example" />
+
+                <Button
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@color/DarkGray"
+                    android:drawableLeft="@drawable/ic_photo_black_24dp"
+                    android:gravity="start"
+                    android:padding="10dp"
+                    android:text="הוסף תמונות"
+                    android:textAlignment="center"
+                    android:textColor="#fff"></Button>
+
+            </LinearLayout>
+
+            <!--  More Details -->
             <TextView
+                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -161,9 +211,9 @@
                 android:id="@+id/areaForm"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:layout_margin="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
                 android:background="@drawable/form"
-                android:hint="...."
                 android:layout_gravity="center"
                 android:padding="10dp" />
 
@@ -171,17 +221,18 @@
         </LinearLayout> <!-- Finish Form -->
 
         <Button
-
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
-            android:background="@color/DarkBlue"
-            android:drawableLeft="@drawable/ic_chevron_left_white_24dp"
-            android:padding="4dp"
-            android:text="הרשם"
-            android:textColor="#fff"></Button>
+            android:id="@+id/addBtn"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:background="@color/Orange"
+            android:layout_gravity="bottom"
+            android:drawableTop="@drawable/ic_file_upload_black_24dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="הוסף"
+            android:textColor="#fff"
+            android:textStyle="bold" />
 
         <ProgressBar
             android:layout_width="wrap_content"
@@ -195,19 +246,6 @@
             android:id="@+id/progressbar"/>
 
 
-        <Button
-            android:layout_marginTop="15dp"
-            android:id="@+id/backToLogin"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/lightGray"
-            android:layout_gravity="bottom"
-            android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
-            android:text=" חזור לדף התחברות"
-            android:textColor="@color/DarkGray"
-            android:textStyle="bold" />
-
-
     </LinearLayout>
 
 
@@ -215,5 +253,6 @@
 
     <!-- End Content -->
 
+    </ScrollView>
 
 </LinearLayout>

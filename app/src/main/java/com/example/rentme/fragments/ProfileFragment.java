@@ -60,6 +60,7 @@ public class ProfileFragment extends Fragment {
         firebaseUser = firebaseAuth.getCurrentUser();
 
         UserDAO dao = new UserDAO(FirebaseDatabase.getInstance(),firebaseUser.getUid());
+
         titleName.setText(dao.getFirstName());
         titleLastName.setText(dao.getLastName());
 

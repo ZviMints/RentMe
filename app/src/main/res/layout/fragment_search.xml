@@ -19,9 +19,21 @@
             android:layout_marginBottom="5dp"
             android:background="@color/lightGray"/>
 
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="חפש"
+            android:layout_marginBottom="13dp"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+
+
 
         <TextView
-            android:id="@+id/title1"
+            android:id="@+id/category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -32,6 +44,7 @@
             android:textStyle="bold" />
 
         <Spinner
+            android:inputType="textNoSuggestions"
             android:id="@+id/MainCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,6 +67,7 @@
             android:textStyle="bold" />
 
         <Spinner
+            android:inputType="textNoSuggestions"
             android:id="@+id/area"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
