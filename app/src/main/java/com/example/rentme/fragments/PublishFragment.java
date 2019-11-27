@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,16 +23,19 @@ import com.example.rentme.model.Product;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Random;
+
 public class PublishFragment extends Fragment implements AdapterView.OnItemSelectedListener  {
 
-    Button publishBtn;
+    private Button publishBtn;
+    private Button backMenu;
 
     private Spinner categorySelectedSpin;
     private Spinner productConditionSpin;
-    EditText titleLayer;
-    EditText detailsLayer;
-    EditText pricePerDayLayer;
-    EditText pricePerHourLayer;
+    private EditText titleLayer;
+    private EditText detailsLayer;
+    private EditText pricePerDayLayer;
+    private EditText pricePerHourLayer;
 
     private String[] categoryNames={"בחר קטגורייה...","אביזרים","מוצרי חשמל","מטבח","גינה","ספורט"};
     private String[] statusNames={"בחר מצב...","חדש","כמו חדש","משומש","שבור"};
@@ -43,6 +47,8 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
     public String PricePerDay = "";
     public String image = "";
     public String details = "";
+
+    private MainFragment mainFragment;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,6 +67,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         detailsLayer = (EditText)view.findViewById(R.id.details);
         pricePerDayLayer = (EditText)view.findViewById(R.id.price_per_day);
         pricePerHourLayer = (EditText)view.findViewById(R.id.price_per_hour);
+        backMenu = view.findViewById(R.id.backMain);
 
         //start category spinner
         categorySelectedSpin.setOnItemSelectedListener(this);
@@ -83,21 +90,29 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
                 details = detailsLayer.getText().toString();
                 PricePerDay = pricePerDayLayer.getText().toString();
                 PricePerHour = pricePerHourLayer.getText().toString();
-                //take the values////////////////++++++++++++++++
 
 
-                if ((productTitle !="")&& (selectedCategory != "קטגורייה...")&& (details != "") &&
-                        (selectedCondition !=  "בחר מצב...") && (PricePerDay != "") && (PricePerHour != "")) {
+
+                if ((productTitle.length() > 0)&& (selectedCategory != "בחר קטגורייה...")&& (details.length() > 0) &&
+                        (selectedCondition !=  "בחר מצב...") && (PricePerDay.length() > 0) && (PricePerHour.length() > 0)) {
                     Product addedProduct = new Product(productTitle, selectedCategory, details, selectedCondition, PricePerDay, PricePerHour);
                     FirebaseDatabase.getInstance().getReference("category")
-                            .child(selectedCategory)
-                            .setValue(addedProduct);
-                   // push database//////////////++++++++++++++++++
+                            .child(selectedCategory).child(getRandomString()+": "+productTitle).setValue(addedProduct);
+
                 }
                 else
                     Toast.makeText(getContext(),"קלט לא חוקי", Toast.LENGTH_SHORT).show();
             }
          });
+
+        backMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mainFragment == null)
+                    mainFragment = new MainFragment();
+                outerTransaction(mainFragment);
+            }
+        });
 
         return view;
     }
@@ -122,5 +137,24 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    private String getRandomString(){
+        Random r = new Random();
+
+        String alphabet = "123xyz";
+        String ans="";
+        for (int i = 0; i < 15; i++) {
+            ans+=alphabet.charAt(r.nextInt(alphabet.length()));
+        }
+        return ans;
+    }
+
+
+    private void outerTransaction(Fragment fragment){
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.OuterFragmentContainer, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }
