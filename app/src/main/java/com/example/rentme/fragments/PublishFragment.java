@@ -12,7 +12,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.rentme.R;
@@ -67,7 +69,15 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         publishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                productTitle =  ((EditText)view.findViewById(R.id.product_title)).getText().toString();
+                selectedCategory =  ((EditText)view.findViewById(R.id.product_title)).getText().toString();
+                details = ((EditText)view.findViewById(R.id.product_title)).getText().toString();
+                selectedCondition = ((EditText)view.findViewById(R.id.product_title)).getText().toString();
+                PricePerDay = Integer.parseInt(((EditText)view.findViewById(R.id.product_title)).getText().toString());
+                PricePerHour = Integer.parseInt(((EditText)view.findViewById(R.id.product_title)).getText().toString());
                 //take the values////////////////++++++++++++++++
+
+
                 if ((productTitle !="")&& (selectedCategory != "קטגורייה...")&& (details != "") &&
                         (selectedCondition !=  "בחר מצב...") && (PricePerDay != -1) && (PricePerHour != -1)) {
                     Product addedProduct = new Product(productTitle, selectedCategory, details, selectedCondition, PricePerDay, PricePerHour);
