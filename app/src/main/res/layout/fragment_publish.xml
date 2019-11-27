@@ -17,7 +17,7 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/backToLogin"
+            android:id="@+id/backMain"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@color/lightGray"

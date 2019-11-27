@@ -47,6 +47,19 @@ public class Product {
         return details;
     }
 
-    public String getImage() { return image; }
+    public String getImage() {
+        return image;
+    }
 
+    public String getCondition() {
+        return condition;
+    }
+
+    public String getPricePerDay() {
+        return pricePerDay;
+    }
+
+    public String getPricePerhour() {
+        return pricePerhour;
+    }
 }
