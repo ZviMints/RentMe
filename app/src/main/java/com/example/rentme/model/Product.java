@@ -5,12 +5,34 @@ public class Product {
     private String category;
     private String details;
     private String image;
+    private String condition;
+    private int pricePerDay;
+    private int pricePerhour;
+    private final String DEF_IMAGE = "https://www.bitsinc.com/sca-dev-montblanc/img/no_image_available.jpeg";
 
-    public Product(String title, String category, String details, String image){
+
+    public Product(String title, String category, String details,String condition,  int pricePerDay ,int pricePerhour){
+        this.title = title;
+        this.category = category;
+        this.condition = condition;
+        this.details = details;
+        this.pricePerDay = pricePerDay;
+        this.pricePerhour = pricePerhour;
+        this.image = DEF_IMAGE;
+    }
+
+    public Product(String title, String category, String details, String condition, int pricePerDay ,int pricePerhour, String image){
         this.title = title;
         this.category = category;
         this.details = details;
-        this.image = image;
+        if (image=="")
+            this.image = DEF_IMAGE;
+        else
+            this.image = image;
+
+        this.condition = condition;
+        this.pricePerDay = pricePerDay;
+        this.pricePerhour = pricePerhour;
     }
 
     public String getTitle() {

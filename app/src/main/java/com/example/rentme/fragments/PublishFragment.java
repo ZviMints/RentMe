@@ -11,18 +11,30 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.rentme.R;
+import com.example.rentme.model.Product;
 
 public class PublishFragment extends Fragment implements AdapterView.OnItemSelectedListener  {
 
-    Spinner categorySelectedSpin;
-    Spinner productConditionSpin;
+    Button publishBtn;
 
-    String[] categoryNames={"בחר קטגורייה...","אביזרים","מוצרי חשמל","מטבח","גינה","ספורט"};
-    String[] statusNames={"בחר מצב...","חדש","כמו חדש","משומש","שבור"};
+    private Spinner categorySelectedSpin;
+    private Spinner productConditionSpin;
+
+    private String[] categoryNames={"בחר קטגורייה...","אביזרים","מוצרי חשמל","מטבח","גינה","ספורט"};
+    private String[] statusNames={"בחר מצב...","חדש","כמו חדש","משומש","שבור"};
+
+    private String selectedCategory = "קטגורייה...";
+    private String selectedCondition = "בחר מצב...";
+    private String productTitle = "";
+    private int PricePerHour = -1;
+    private int PricePerDay = -1;
+    private String image = "";
+    private String details = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,6 +48,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         View view = inflater.inflate(R.layout.fragment_publish, container, false);
         categorySelectedSpin = (Spinner)view.findViewById(R.id.select_category);
         productConditionSpin = (Spinner)view.findViewById(R.id.product_condition);
+        publishBtn = view.findViewById(R.id.addBtn);
 
         //start category spinner
         categorySelectedSpin.setOnItemSelectedListener(this);
@@ -44,12 +57,27 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         categorySelectedSpin.setAdapter(aaCategory);
         //end category spinner
 
-        //start area spinner
+        //start condition spinner
         productConditionSpin.setOnItemSelectedListener(this);
         ArrayAdapter aaArea = new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item,statusNames);
         aaArea.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         productConditionSpin.setAdapter(aaArea);
-        //end area spinner
+        //end condition spinner
+
+        publishBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //take the values////////////////++++++++++++++++
+                if ((productTitle !="")&& (selectedCategory != "קטגורייה...")&& (details != "") &&
+                        (selectedCondition !=  "בחר מצב...") && (PricePerDay != -1) && (PricePerHour != -1)) {
+                    Product addedProduct = new Product(productTitle, selectedCategory, details, selectedCondition, PricePerDay, PricePerHour);
+                    //push database//////////////++++++++++++++++++
+                }
+                else
+                    Toast.makeText(getContext(),"קלט לא חוקי", Toast.LENGTH_SHORT).show();
+            }
+         });
+
         return view;
     }
 
@@ -61,13 +89,13 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//        Toast.makeText(getContext(),
-//                "\ncategory : "+ String.valueOf(mainCategorySpin.getSelectedItem()) +
-//                        "\narea : "+ String.valueOf(areaSpin.getSelectedItem()),
-//                Toast.LENGTH_SHORT).show();
-//
-//        selectedCategory = mainCategorySpin.getItemAtPosition(mainCategorySpin.getSelectedItemPosition()).toString();
-//        selectedArea = areaSpin.getItemAtPosition(areaSpin.getSelectedItemPosition()).toString();
+        Toast.makeText(getContext(),
+                "\ncategory : "+ String.valueOf(categorySelectedSpin.getSelectedItem()) +
+                        "\narea : "+ String.valueOf(productConditionSpin.getSelectedItem()),
+                Toast.LENGTH_SHORT).show();
+
+        selectedCategory = categorySelectedSpin.getItemAtPosition(categorySelectedSpin.getSelectedItemPosition()).toString();
+        selectedCondition = productConditionSpin.getItemAtPosition(productConditionSpin.getSelectedItemPosition()).toString();
     }
 
     @Override

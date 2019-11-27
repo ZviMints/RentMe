@@ -34,13 +34,13 @@ public class ProductsListFragment extends Fragment {
 
         //delete after database ready/////////////////////////////////////////////////////////////
         ArrayList<Product> items3 = new ArrayList<Product>();
-        Product r1 = new Product("מברגה חשמלית", "מוצרי חשמל", "מוצר מעולה עובד טוב","chairs");
-        Product r2 = new Product("לפטופ", "גינה", "השכרה גם לשבוע","chairs");
-        Product r3 = new Product("כיסאות", "למטבח", "מאזור אשדוד","chairs");
-        Product r4 = new Product("אחר", "סקי", "אחר אחר","chairs");
-        Product r5 = new Product("אחר 2", "ספורט", "אחר אחר","chairs");
-        Product r6 = new Product("אחר", "מחנאות", "אחר אחר","chairs");
-        Product r7 = new Product("אחר 2", "פנאי", "אחר אחר","chairs");
+        Product r1 = new Product("מברגה חשמלית", "מוצרי חשמל", "מוצר מעולה עובד טוב","good",5,99);
+        Product r2 = new Product("לפטופ", "גינה", "השכרה גם לשבוע","good",5,99);
+        Product r3 = new Product("כיסאות", "למטבח", "מאזור אשדוד","good",5,99);
+        Product r4 = new Product("אחר", "סקי", "אחר אחר","good",5,99);
+        Product r5 = new Product("אחר 2", "ספורט", "אחר אחר","good",5,99);
+        Product r6 = new Product("אחר", "מחנאות", "אחר אחר","good",5,99);
+        Product r7 = new Product("אחר 2", "פנאי", "אחר אחר","good",5,99);
         items3.add(r1);
         items3.add(r2);
         items3.add(r3);
