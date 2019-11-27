@@ -6,12 +6,12 @@ public class Product {
     private String details;
     private String image;
     private String condition;
-    private int pricePerDay;
-    private int pricePerhour;
+    private String pricePerDay;
+    private String pricePerhour;
     private final String DEF_IMAGE = "https://www.bitsinc.com/sca-dev-montblanc/img/no_image_available.jpeg";
 
 
-    public Product(String title, String category, String details,String condition,  int pricePerDay ,int pricePerhour){
+    public Product(String title, String category, String details,String condition,  String pricePerDay ,String pricePerhour){
         this.title = title;
         this.category = category;
         this.condition = condition;
@@ -21,7 +21,7 @@ public class Product {
         this.image = DEF_IMAGE;
     }
 
-    public Product(String title, String category, String details, String condition, int pricePerDay ,int pricePerhour, String image){
+    public Product(String title, String category, String details, String condition,String pricePerDay ,String pricePerhour, String image){
         this.title = title;
         this.category = category;
         this.details = details;
