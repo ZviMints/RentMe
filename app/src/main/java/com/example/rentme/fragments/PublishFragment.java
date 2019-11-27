@@ -19,6 +19,8 @@ import android.widget.Toast;
 
 import com.example.rentme.R;
 import com.example.rentme.model.Product;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class PublishFragment extends Fragment implements AdapterView.OnItemSelectedListener  {
 
@@ -26,17 +28,21 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
 
     private Spinner categorySelectedSpin;
     private Spinner productConditionSpin;
+    EditText titleLayer;
+    EditText detailsLayer;
+    EditText pricePerDayLayer;
+    EditText pricePerHourLayer;
 
     private String[] categoryNames={"בחר קטגורייה...","אביזרים","מוצרי חשמל","מטבח","גינה","ספורט"};
     private String[] statusNames={"בחר מצב...","חדש","כמו חדש","משומש","שבור"};
 
-    private String selectedCategory = "קטגורייה...";
-    private String selectedCondition = "בחר מצב...";
-    private String productTitle = "";
-    private int PricePerHour = -1;
-    private int PricePerDay = -1;
-    private String image = "";
-    private String details = "";
+    public String selectedCategory = "קטגורייה...";
+    public String selectedCondition = "בחר מצב...";
+    public String productTitle = "";
+    public String PricePerHour = "";
+    public String PricePerDay = "";
+    public String image = "";
+    public String details = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,6 +57,10 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         categorySelectedSpin = (Spinner)view.findViewById(R.id.select_category);
         productConditionSpin = (Spinner)view.findViewById(R.id.product_condition);
         publishBtn = view.findViewById(R.id.addBtn);
+        titleLayer = (EditText)view.findViewById(R.id.product_title);
+        detailsLayer = (EditText)view.findViewById(R.id.details);
+        pricePerDayLayer = (EditText)view.findViewById(R.id.price_per_day);
+        pricePerHourLayer = (EditText)view.findViewById(R.id.price_per_hour);
 
         //start category spinner
         categorySelectedSpin.setOnItemSelectedListener(this);
@@ -69,19 +79,20 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         publishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                productTitle =  ((EditText)view.findViewById(R.id.product_title)).getText().toString();
-                selectedCategory =  ((EditText)view.findViewById(R.id.product_title)).getText().toString();
-                details = ((EditText)view.findViewById(R.id.product_title)).getText().toString();
-                selectedCondition = ((EditText)view.findViewById(R.id.product_title)).getText().toString();
-                PricePerDay = Integer.parseInt(((EditText)view.findViewById(R.id.product_title)).getText().toString());
-                PricePerHour = Integer.parseInt(((EditText)view.findViewById(R.id.product_title)).getText().toString());
+                productTitle =  titleLayer.getText().toString();
+                details = detailsLayer.getText().toString();
+                PricePerDay = pricePerDayLayer.getText().toString();
+                PricePerHour = pricePerHourLayer.getText().toString();
                 //take the values////////////////++++++++++++++++
 
 
                 if ((productTitle !="")&& (selectedCategory != "קטגורייה...")&& (details != "") &&
-                        (selectedCondition !=  "בחר מצב...") && (PricePerDay != -1) && (PricePerHour != -1)) {
+                        (selectedCondition !=  "בחר מצב...") && (PricePerDay != "") && (PricePerHour != "")) {
                     Product addedProduct = new Product(productTitle, selectedCategory, details, selectedCondition, PricePerDay, PricePerHour);
-                    //push database//////////////++++++++++++++++++
+                    FirebaseDatabase.getInstance().getReference("category")
+                            .child(selectedCategory)
+                            .setValue(addedProduct);
+                   // push database//////////////++++++++++++++++++
                 }
                 else
                     Toast.makeText(getContext(),"קלט לא חוקי", Toast.LENGTH_SHORT).show();

@@ -40,13 +40,13 @@ public class InsideCategoryFragment extends Fragment{
 
         //need to delete and change for data base/////////////////////////////////////////////////
         ArrayList<Product> items = new ArrayList<Product>();
-        Product p1 = new Product("מברגה חשמלית", "אביזרים", "מוצר מעולה עובד טוב","good" ,3,44);
-        Product p2 = new Product("מברגה חשמלית", "אביזרים", "מוצר מעולה עובד טוב","good" ,3,44);
-        Product p3 = new Product("כיסאות", "אביזרים", "מאזור אשדוד","good",5,44);
-        Product p4 = new Product("אחר", "אביזרים", "אחר אחר","goof",3,33);
-        Product p5 = new Product("אחר 2", "אביזרים", "אחר אחר", "good",4,55);
-        Product p6 = new Product("אחר", "אביזרים", "אחר אחר", "good",4,22);
-        Product p7 = new Product("אחר 2", "אביזרים", "אחר אחר", "good",5,33);
+        Product p1 = new Product("מברגה חשמלית", "אביזרים", "מוצר מעולה עובד טוב","good" ,"8","99");
+        Product p2 = new Product("מברגה חשמלית", "אביזרים", "מוצר מעולה עובד טוב","good" ,"8","99");
+        Product p3 = new Product("כיסאות", "אביזרים", "מאזור אשדוד","good","8","99");
+        Product p4 = new Product("אחר", "אביזרים", "אחר אחר","goof","8","99");
+        Product p5 = new Product("אחר 2", "אביזרים", "אחר אחר", "good","8","99");
+        Product p6 = new Product("אחר", "אביזרים", "אחר אחר", "good","8","99");
+        Product p7 = new Product("אחר 2", "אביזרים", "אחר אחר", "good","8","99");
         items.add(p1);
         items.add(p2);
         items.add(p3);
@@ -56,13 +56,13 @@ public class InsideCategoryFragment extends Fragment{
         items.add(p7);
 
         ArrayList<Product> items2 = new ArrayList<Product>();
-        Product q1 = new Product("מברגה חשמלית", "מוצרי חשמל", "מוצר מעולה עובד טוב", "dd",4,55);
-        Product q2 = new Product("לפטופ", "מוצרי חשמל", "השכרה גם לשבוע", "good",5,99);
-        Product q3 = new Product("כיסאות", "מוצרי חשמל", "מאזור אשדוד", "good",5,99);
-        Product q4 = new Product("אחר", "מוצרי חשמל", "אחר אחר", "good",5,99);
-        Product q5 = new Product("אחר 2", "מוצרי חשמל", "אחר אחר", "good",5,99);
-        Product q6 = new Product("אחר", "מוצרי חשמל", "אחר אחר","good",5,99);
-        Product q7 = new Product("אחר 2", "מוצרי חשמל", "אחר אחר","good",5,99);
+        Product q1 = new Product("מברגה חשמלית", "מוצרי חשמל", "מוצר מעולה עובד טוב", "dd","8","99");
+        Product q2 = new Product("לפטופ", "מוצרי חשמל", "השכרה גם לשבוע", "good","8","99");
+        Product q3 = new Product("כיסאות", "מוצרי חשמל", "מאזור אשדוד", "good","8","99");
+        Product q4 = new Product("אחר", "מוצרי חשמל", "אחר אחר", "good","8","99");
+        Product q5 = new Product("אחר 2", "מוצרי חשמל", "אחר אחר", "good","8","99");
+        Product q6 = new Product("אחר", "מוצרי חשמל", "אחר אחר","good","8","99");
+        Product q7 = new Product("אחר 2", "מוצרי חשמל", "אחר אחר","good","8","99");
         items2.add(q1);
         items2.add(q2);
         items2.add(q3);
