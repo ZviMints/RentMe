@@ -1,14 +1,20 @@
 package com.example.rentme.fragments;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.ImageView;
+
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,23 +23,25 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.rentme.R;
+import com.example.rentme.activities.MainActivity;
 import com.example.rentme.model.Product;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Date;
-import java.util.Random;
+
+import static android.app.Activity.RESULT_OK;
 
 public class PublishFragment extends Fragment implements AdapterView.OnItemSelectedListener  {
 
     private Button publishBtn;
     private Button backMenu;
+    private Button addCameraPicBtm;
+    private Button addGaleryPicBtm;
     private ProgressBar progressBar;
     private Spinner categorySelectedSpin;
     private Spinner productConditionSpin;
@@ -41,6 +49,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
     private EditText titleLayer;
     private EditText detailsLayer;
     private EditText priceLayer;
+    public ImageView imageview;
 
 
 
@@ -71,11 +80,14 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         productConditionSpin = (Spinner)view.findViewById(R.id.product_condition);
         rentPeriodSpin = (Spinner)view.findViewById(R.id.rent_period);
         publishBtn = view.findViewById(R.id.addBtn);
+        addCameraPicBtm = view.findViewById(R.id.add_camera_pic_Btm);
+        addGaleryPicBtm = view.findViewById(R.id.add_galery_pic_Btm);
         titleLayer = (EditText)view.findViewById(R.id.product_title);
         detailsLayer = (EditText)view.findViewById(R.id.details);
         priceLayer = (EditText)view.findViewById(R.id.price);
         backMenu = view.findViewById(R.id.backMain);
         progressBar = view.findViewById(R.id.progressbar);
+        imageview = view.findViewById(R.id.product_pic);
 
 
         //start category spinner
@@ -136,6 +148,25 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
             }
          });
 
+        addCameraPicBtm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(takePicture, 0);//zero can be replaced with any action code (called requestCode)
+//                Toast.makeText(getContext(), ((MainActivity)(getActivity())).getImageview().toString(), Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+        addGaleryPicBtm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent pickPhoto = new Intent(Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(pickPhoto , 1);//one can be replaced with any action code
+            }
+        });
+
         backMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -190,4 +221,28 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
+        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
+        switch(requestCode) {
+            case 0:
+                if(resultCode == RESULT_OK){
+                    Uri selectedImage = imageReturnedIntent.getData();
+                    imageview.setImageURI(selectedImage);//check why not present photo
+//                    Bitmap photo = (Bitmap) imageReturnedIntent.getExtras().get("imageReturnedIntent");
+//                    imageview.setImageBitmap(photo);
+
+//                    Toast.makeText(getContext(),selectedImage.toString(), Toast.LENGTH_SHORT).show();
+                }
+
+                break;
+            case 1:
+                if(resultCode == RESULT_OK){
+                    Uri selectedImage = imageReturnedIntent.getData();
+                    imageview.setImageURI(selectedImage);
+                }
+                break;
+        }
+    }
+
 }
