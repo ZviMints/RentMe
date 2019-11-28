@@ -6,22 +6,22 @@ public class Product {
     private String details;
     private String image;
     private String condition;
-    private String pricePerDay;
-    private String pricePerhour;
+    private String price;
+    private String rentPeriod;
     private final String DEF_IMAGE = "https://www.bitsinc.com/sca-dev-montblanc/img/no_image_available.jpeg";
 
 
-    public Product(String title, String category, String details,String condition,  String pricePerDay ,String pricePerhour){
+    public Product(String title, String category, String details,String condition,  String price, String rentPeriod){
         this.title = title;
         this.category = category;
         this.condition = condition;
         this.details = details;
-        this.pricePerDay = pricePerDay;
-        this.pricePerhour = pricePerhour;
+        this.price = price;
+        this.rentPeriod = rentPeriod;
         this.image = DEF_IMAGE;
     }
 
-    public Product(String title, String category, String details, String condition,String pricePerDay ,String pricePerhour, String image){
+    public Product(String title, String category, String details, String condition,String price, String rentPeriod,String image){
         this.title = title;
         this.category = category;
         this.details = details;
@@ -29,10 +29,9 @@ public class Product {
             this.image = DEF_IMAGE;
         else
             this.image = image;
-
+        this.rentPeriod = rentPeriod;
         this.condition = condition;
-        this.pricePerDay = pricePerDay;
-        this.pricePerhour = pricePerhour;
+        this.price = price;
     }
 
     public String getTitle() {
@@ -41,6 +40,10 @@ public class Product {
 
     public String getCategory() {
         return category;
+    }
+
+    public String getRentPeriod() {
+        return rentPeriod;
     }
 
     public String getDetails() {
@@ -55,11 +58,7 @@ public class Product {
         return condition;
     }
 
-    public String getPricePerDay() {
-        return pricePerDay;
-    }
-
-    public String getPricePerhour() {
-        return pricePerhour;
+    public String getPrice() {
+        return price;
     }
 }
