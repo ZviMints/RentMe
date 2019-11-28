@@ -27,6 +27,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Date;
 import java.util.Random;
 
 public class PublishFragment extends Fragment implements AdapterView.OnItemSelectedListener  {
@@ -110,7 +111,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
                         (selectedCondition !=  "בחר מצב...") &&  (Price.length() > 0)) {
                     Product addedProduct = new Product(productTitle, selectedCategory, details, selectedCondition, Price, rentPeriod );
                     FirebaseDatabase.getInstance().getReference("category")
-                            .child(selectedCategory).child(getRandomString()+": "+productTitle).setValue(addedProduct)
+                            .child(selectedCategory).child(new Date().getTime()+": "+productTitle).setValue(addedProduct)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
@@ -170,17 +171,17 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
-    private String getRandomString(){
-        Random r = new Random();
-
-        String alphabet = "123xyz";
-        String ans="";
-        for (int i = 0; i < 15; i++) {
-            ans+=alphabet.charAt(r.nextInt(alphabet.length()));
-        }
-        return ans;
-    }
+//
+//    private String getRandomString(){
+//        Random r = new Random();
+//
+//        String alphabet = "123xyz";
+//        String ans="";
+//        for (int i = 0; i < 15; i++) {
+//            ans+=alphabet.charAt(r.nextInt(alphabet.length()));
+//        }
+//        return ans;
+//    }
 
 
     private void outerTransaction(Fragment fragment){
