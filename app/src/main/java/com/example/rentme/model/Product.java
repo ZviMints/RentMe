@@ -1,5 +1,9 @@
 package com.example.rentme.model;
 
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Product {
     private String title;
     private String category;
@@ -8,8 +12,10 @@ public class Product {
     private String condition;
     private String price;
     private String rentPeriod;
-    private final String DEF_IMAGE = "https://www.bitsinc.com/sca-dev-montblanc/img/no_image_available.jpeg";
+    private String uploadTime;
 
+    private final String DEF_IMAGE = "https://www.bitsinc.com/sca-dev-montblanc/img/no_image_available.jpeg";
+    private final SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
     public Product(String title, String category, String details,String condition,  String price, String rentPeriod){
         this.title = title;
@@ -18,6 +24,8 @@ public class Product {
         this.details = details;
         this.price = price;
         this.rentPeriod = rentPeriod;
+
+        this.uploadTime = formatter.format(new Date());
         this.image = DEF_IMAGE;
     }
 
@@ -32,6 +40,8 @@ public class Product {
         this.rentPeriod = rentPeriod;
         this.condition = condition;
         this.price = price;
+        this.uploadTime = formatter.format(new Date());
+
     }
 
     public String getTitle() {
@@ -60,5 +70,9 @@ public class Product {
 
     public String getPrice() {
         return price;
+    }
+
+    public String getUploadTime() {
+        return uploadTime;
     }
 }
