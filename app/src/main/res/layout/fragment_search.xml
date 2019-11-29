@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="חפש"
+            android:text="חיפוש"
             android:layout_marginBottom="13dp"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -141,7 +141,7 @@
         android:background="@color/DarkBlue"
         android:drawableLeft="@drawable/ic_chevron_left_white_24dp"
         android:padding="4dp"
-        android:text="חפש"
+        android:text="חיפוש"
         android:textColor="#fff"></Button>
 
 
