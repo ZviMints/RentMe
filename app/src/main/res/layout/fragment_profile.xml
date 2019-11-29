@@ -41,12 +41,13 @@
             <Button
                 android:id="@+id/change_name_btn"
                 android:layout_width="wrap_content"
-                android:layout_height="25dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="15dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/circle_profile"
                 android:text="ערוך פרופיל"
+                android:drawableLeft="@drawable/ic_format_align_center_black_24dp"
+                android:padding="10dp"
                 android:textColor="#fff"
                 android:textStyle="bold" />
 
