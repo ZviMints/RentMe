@@ -33,11 +33,16 @@ public class ProfileFragment extends Fragment {
 
     TextView titleName;
     TextView titleLastName;
+    TextView titleNumber;
+    TextView titleArea;
+    TextView titleEmail;
+
 
     Button logoutBtn;
     Button back;
 
     LinearLayout mainLinear;
+    LinearLayout informationLinear;
 
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
@@ -61,9 +66,15 @@ public class ProfileFragment extends Fragment {
         titleLastName = view.findViewById(R.id.tvLastName);
         progressBar = view.findViewById(R.id.progressbar);
 
+        titleNumber = view.findViewById(R.id.tvNumber);
+        titleArea = view.findViewById(R.id.tvArea);
+        titleEmail = view.findViewById(R.id.tvEmail);
+
         logoutBtn = view.findViewById(R.id.signOut);
         back = view.findViewById(R.id.backToMain);
         mainLinear = view.findViewById(R.id.mainLinear);
+        informationLinear = view.findViewById(R.id.InformationLinear);
+
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
@@ -111,13 +122,21 @@ public class ProfileFragment extends Fragment {
 
         progressBar.setVisibility(View.GONE);
         mainLinear.setVisibility(LinearLayout.VISIBLE);
+        informationLinear.setVisibility(LinearLayout.VISIBLE);
+        logoutBtn.setVisibility(LinearLayout.VISIBLE);
 
         String name = user.getName();
         String lastname = user.getLastname();
         String area = user.getArea();
-        String number = user.getArea();
+        String number = user.getNumber();
+        String email = user.getEmail();
+
         this.titleName.setText(name);
         this.titleLastName.setText(lastname);
+        this.titleNumber.setText(number);
+        this.titleArea.setText(area);
+        this.titleEmail.setText(email);
+
     }
 
     @Override
