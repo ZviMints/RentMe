@@ -11,17 +11,16 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.rentme.model.Product;
-import com.example.rentme.adapters.ProductListAdapter;
 import com.example.rentme.R;
+import com.example.rentme.adapters.ProductListAdapter;
+import com.example.rentme.model.Product;
 
 import java.util.ArrayList;
 
 public class InsideCategoryFragment extends Fragment{
 
     Button backBtn;
-    InItemFragment inItemFragment;
-    LoginFragment mainFragment;
+    MainFragment mainFragment;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -98,6 +97,9 @@ public class InsideCategoryFragment extends Fragment{
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (mainFragment == null)
+                    mainFragment = new MainFragment();
+                outerTransaction(mainFragment);
             }
         });
 

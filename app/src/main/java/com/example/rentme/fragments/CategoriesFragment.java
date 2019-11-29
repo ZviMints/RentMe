@@ -2,28 +2,24 @@ package com.example.rentme.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
-import android.widget.Toast;
 
-import com.example.rentme.adapters.MainAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.example.rentme.R;
+import com.example.rentme.adapters.MainAdapter;
 
 
 public class CategoriesFragment extends Fragment {
 
     private GridView gridView;
-    ProductsListFragment productsListFragment;
+    LastProductsListFragment productsListFragment;
     InsideCategoryFragment insideCategoryFragment;
     Button publishBtn;
     PublishFragment publishFragment;

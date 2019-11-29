@@ -17,74 +17,303 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginBottom="5dp"
-            android:background="@color/lightGray"/>
+            android:background="@color/lightGray" />
+
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="35dp" />
+
 
         <LinearLayout
+            android:id="@+id/mainLinear"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
-            <TextView
+
+            <Button
+                android:id="@+id/change_name_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="ברוכים הבאים"
-                android:layout_marginTop="15dp"
-                android:textSize="15sp"/>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:id="@+id/tvFirstName"
-                android:text="שם פרטי"
-                android:layout_marginTop="15dp"
-                android:textStyle="bold"
-                android:textSize="15sp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:textStyle="bold"
-                android:id="@+id/tvLastName"
-                android:text="שם משפחה"
                 android:layout_marginLeft="20dp"
-                android:textSize="15sp"/>
+                android:layout_marginRight="10dp"
+                android:background="@drawable/circle_profile"
+                android:text="ערוך פרופיל"
+                android:drawableLeft="@drawable/ic_format_align_center_black_24dp"
+                android:padding="10dp"
+                android:textColor="#fff"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/backToMain"
                 android:layout_width="0dp"
-                android:layout_weight="0.4"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:background="#fafafa"
                 android:layout_marginLeft="10dp"
-                android:padding="10dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/money_border"
                 android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
+                android:padding="10dp"
                 android:text="דף הבית"
                 android:textColor="@color/DarkGray"
                 android:textStyle="bold" />
-
         </LinearLayout>
 
-        <Button
-            android:id="@+id/signOut"
-            android:layout_marginTop="25dp"
-            android:layout_gravity="center"
+
+        <!-- Information -->
+        <ScrollView
             android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@color/lightGray"
-            android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
-            android:text="התנתק"
-            android:layout_alignParentTop="true"
-            android:textColor="@color/DarkGray"
-            android:textStyle="bold" />
+            android:layout_marginRight="25dp"
+            android:id="@+id/InformationLinear"
+            android:visibility="gone"
+            android:layout_marginLeft="25dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="25dp"
+                android:id="@+id/ivProfileLogo"
+                android:layout_height="150dp"
+                android:src="@drawable/miakhalifa"/>
+
+            <!--- NAME -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="25dp"
+                android:background="@color/lightGray"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_marginTop="3dp"
+
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_name"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="שם פרטי"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvFirstName"
+                        android:textSize="20sp"
+                        android:text="צבי"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="שם משפחה"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:id="@+id/tvLastName"
+                        android:textSize="20sp"
+                        android:layout_height="wrap_content"
+                        android:text="צבי"/>
+                    "
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+            <!--- EMAIL -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="25dp"
+                android:background="@color/lightGray"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_marginTop="3dp"
+
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_email"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="איימל"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:id="@+id/tvEmail"
+                        android:textSize="20sp"
+                        android:layout_height="wrap_content"
+                        android:text="example@gmail.com"/>
+                    "
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+
+
+            <!--- Number -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="25dp"
+                android:background="@color/lightGray"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_marginTop="3dp"
+
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_mobile"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="מספר פאלפון"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:id="@+id/tvNumber"
+                        android:textSize="20sp"
+                        android:layout_height="wrap_content"
+                        android:text="100"/>
+                    "
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--- Number -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="25dp"
+                android:background="@color/lightGray"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_marginTop="3dp"
+
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_address"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="כתובת"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:id="@+id/tvArea"
+                        android:textSize="20sp"
+                        android:layout_height="wrap_content"
+                        android:text="100"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
 
     </LinearLayout>
+        </ScrollView>
+
+    <Button
+        android:id="@+id/signOut"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:background="@color/lightGray"
+        android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
+        android:text="התנתק"
+        android:textColor="@color/DarkGray"
+        android:textStyle="bold"
+        android:visibility="gone" />
+</LinearLayout>
 
 
     <!-- Content -->
@@ -92,4 +321,4 @@
     <!-- End Content -->
 
 
-</LinearLayout>
+    </LinearLayout>

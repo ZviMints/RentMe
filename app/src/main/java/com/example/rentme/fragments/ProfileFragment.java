@@ -11,12 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.rentme.activities.MainActivity;
 import com.example.rentme.R;
-import com.example.rentme.dao.UserDAO;
+import com.example.rentme.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -25,18 +27,29 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.NoSuchElementException;
+
 public class ProfileFragment extends Fragment {
 
     TextView titleName;
     TextView titleLastName;
+    TextView titleNumber;
+    TextView titleArea;
+    TextView titleEmail;
+
 
     Button logoutBtn;
     Button back;
 
+    LinearLayout mainLinear;
+    LinearLayout informationLinear;
+
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
-
+    FirebaseDatabase firebaseDatabase;
     MainFragment mainFragment;
+    ProgressBar progressBar;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,19 +64,34 @@ public class ProfileFragment extends Fragment {
 
         titleName = view.findViewById(R.id.tvFirstName);
         titleLastName = view.findViewById(R.id.tvLastName);
+        progressBar = view.findViewById(R.id.progressbar);
+
+        titleNumber = view.findViewById(R.id.tvNumber);
+        titleArea = view.findViewById(R.id.tvArea);
+        titleEmail = view.findViewById(R.id.tvEmail);
 
         logoutBtn = view.findViewById(R.id.signOut);
         back = view.findViewById(R.id.backToMain);
+        mainLinear = view.findViewById(R.id.mainLinear);
+        informationLinear = view.findViewById(R.id.InformationLinear);
 
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
+        firebaseDatabase = FirebaseDatabase.getInstance();
 
-        UserDAO dao = new UserDAO(FirebaseDatabase.getInstance(),firebaseUser.getUid());
-
-        titleName.setText(dao.getFirstName());
-        titleLastName.setText(dao.getLastName());
-
+        // Initailize User
+        DatabaseReference ref = firebaseDatabase.getReference("Users").child(firebaseUser.getUid()).getRef();
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                if(user == null) throw new NoSuchElementException("Cant Retrieve user from database");
+                gotUserFromFireBase(user);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
 
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +117,28 @@ public class ProfileFragment extends Fragment {
         });
         return view;
     }
+
+    private void gotUserFromFireBase(User user) {
+
+        progressBar.setVisibility(View.GONE);
+        mainLinear.setVisibility(LinearLayout.VISIBLE);
+        informationLinear.setVisibility(LinearLayout.VISIBLE);
+        logoutBtn.setVisibility(LinearLayout.VISIBLE);
+
+        String name = user.getName();
+        String lastname = user.getLastname();
+        String area = user.getArea();
+        String number = user.getNumber();
+        String email = user.getEmail();
+
+        this.titleName.setText(name);
+        this.titleLastName.setText(lastname);
+        this.titleNumber.setText(number);
+        this.titleArea.setText(area);
+        this.titleEmail.setText(email);
+
+    }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
