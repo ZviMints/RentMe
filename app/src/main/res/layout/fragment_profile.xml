@@ -28,6 +28,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="35dp" />
 
+
         <LinearLayout
             android:id="@+id/mainLinear"
             android:layout_width="fill_parent"
@@ -44,7 +45,6 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="10dp"
-
                 android:background="@drawable/circle_profile"
                 android:text="ערוך פרופיל"
                 android:textColor="#fff"
@@ -57,7 +57,7 @@
                 android:layout_gravity="right"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="0.4"
-                android:background="#fafafa"
+                android:background="@drawable/money_border"
                 android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
                 android:padding="10dp"
                 android:text="דף הבית"
@@ -67,6 +67,10 @@
 
 
         <!-- Information -->
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -76,6 +80,14 @@
             android:layout_marginLeft="25dp"
             android:orientation="vertical">
 
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="25dp"
+                android:id="@+id/ivProfileLogo"
+                android:layout_height="150dp"
+                android:src="@drawable/miakhalifa"/>
 
             <!--- NAME -->
             <View
@@ -113,6 +125,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/tvFirstName"
+                        android:textSize="25sp"
                         android:text="צבי"/>
 
                 </LinearLayout>
@@ -134,6 +147,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:id="@+id/tvLastName"
+                        android:textSize="25sp"
                         android:layout_height="wrap_content"
                         android:text="צבי"/>
                     "
@@ -179,6 +193,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:id="@+id/tvEmail"
+                        android:textSize="25sp"
                         android:layout_height="wrap_content"
                         android:text="example@gmail.com"/>
                     "
@@ -226,6 +241,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:id="@+id/tvNumber"
+                        android:textSize="25sp"
                         android:layout_height="wrap_content"
                         android:text="100"/>
                     "
@@ -269,6 +285,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:id="@+id/tvArea"
+                        android:textSize="25sp"
                         android:layout_height="wrap_content"
                         android:text="100"/>
 
@@ -278,6 +295,7 @@
 
 
     </LinearLayout>
+        </ScrollView>
 
     <Button
         android:id="@+id/signOut"
