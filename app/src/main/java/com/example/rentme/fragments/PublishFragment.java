@@ -2,9 +2,12 @@ package com.example.rentme.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 
 
@@ -32,6 +35,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Date;
 
 import static android.app.Activity.RESULT_OK;
@@ -65,6 +71,8 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
     public String details = "";
 
     private MainFragment mainFragment;
+    private final int RESULT_LOAD_IMG = 1;
+    private final int RESULT_CAPTURE_IMG = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -152,7 +160,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
             @Override
             public void onClick(View v) {
                 Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(takePicture, 0);//zero can be replaced with any action code (called requestCode)
+                startActivityForResult(takePicture, RESULT_CAPTURE_IMG);//zero can be replaced with any action code (called requestCode)
 //                Toast.makeText(getContext(), ((MainActivity)(getActivity())).getImageview().toString(), Toast.LENGTH_LONG).show();
 
             }
@@ -161,9 +169,9 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         addGaleryPicBtm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent pickPhoto = new Intent(Intent.ACTION_PICK,
-                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(pickPhoto , 1);//one can be replaced with any action code
+                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+                photoPickerIntent.setType("image/*");
+                startActivityForResult(photoPickerIntent, RESULT_LOAD_IMG);
             }
         });
 
@@ -222,27 +230,79 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         transaction.commit();
     }
 
-    public void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
-        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
-        switch(requestCode) {
-            case 0:
-                if(resultCode == RESULT_OK){
-                    Uri selectedImage = imageReturnedIntent.getData();
-                    imageview.setImageURI(selectedImage);//check why not present photo
-//                    Bitmap photo = (Bitmap) imageReturnedIntent.getExtras().get("imageReturnedIntent");
-//                    imageview.setImageBitmap(photo);
+//    public void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
+//        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
+//        switch(requestCode) {
+//            case 0:
+//                if(resultCode == RESULT_OK){
+//                    Uri selectedImage = imageReturnedIntent.getData();
+//                    imageview.setImageURI(selectedImage);//check why not present photo
+////                    Bitmap photo = (Bitmap) imageReturnedIntent.getExtras().get("imageReturnedIntent");
+////                    imageview.setImageBitmap(photo);
+//
+////                    Toast.makeText(getContext(),selectedImage.toString(), Toast.LENGTH_SHORT).show();
+//                }
+//
+//                break;
+//            case 1:
+//                if(resultCode == RESULT_OK){
+//                    Uri selectedImage = imageReturnedIntent.getData();
+//                    imageview.setImageURI(selectedImage);
+//                }
+//                break;
+//        }
+//}
 
-//                    Toast.makeText(getContext(),selectedImage.toString(), Toast.LENGTH_SHORT).show();
-                }
 
-                break;
-            case 1:
-                if(resultCode == RESULT_OK){
-                    Uri selectedImage = imageReturnedIntent.getData();
-                    imageview.setImageURI(selectedImage);
+    @Override
+    public void onActivityResult(int reqCode, int resultCode, Intent data) {
+        super.onActivityResult(reqCode, resultCode, data);
+
+        switch(reqCode) {
+            case RESULT_LOAD_IMG:
+
+                if (resultCode == RESULT_OK) {
+                    try {
+                        final Uri imageUri = data.getData();
+                        final InputStream imageStream = getContext().getContentResolver().openInputStream(imageUri);
+                        final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                        imageview.setImageBitmap(selectedImage);
+//                        Toast.makeText(getContext(), imageUri.toString() , Toast.LENGTH_LONG).show();
+//                        EditText e = getView().findViewById(R.id.details);
+//                        e.setText(imageUri.toString());
+//
+//                        // Create a storage reference from our app
+//                        StorageReference storageRef = storage.getReference();
+//
+//// Create a reference to "mountains.jpg"
+//                        StorageReference mountainsRef = storageRef.child("mountains.jpg");
+//
+//// Create a reference to 'images/mountains.jpg'
+//                        StorageReference mountainImagesRef = storageRef.child("images/mountains.jpg");
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                        Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_LONG).show();
+                    }
+
+                } else {
+                    Toast.makeText(getContext(), "You haven't picked Image", Toast.LENGTH_LONG).show();
                 }
                 break;
+
+            case RESULT_CAPTURE_IMG:
+
+                if (resultCode == RESULT_OK ) {
+                    Bundle extras = data.getExtras();//finish converting and copy the image
+                    Bitmap bitmap = extras.getParcelable("data");//receive image to bitmap
+                    imageview.setImageBitmap(bitmap);
+                } else {
+                    Toast.makeText(getContext(), "You haven't take a picture", Toast.LENGTH_LONG).show();
+                }
+                break;
+
+
         }
     }
+
 
 }
