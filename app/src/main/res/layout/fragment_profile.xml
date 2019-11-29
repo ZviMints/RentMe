@@ -69,6 +69,8 @@
         <!-- Information -->
         <ScrollView
             android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content">
 
         <LinearLayout
@@ -125,7 +127,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/tvFirstName"
-                        android:textSize="25sp"
+                        android:textSize="20sp"
                         android:text="צבי"/>
 
                 </LinearLayout>
@@ -147,7 +149,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:id="@+id/tvLastName"
-                        android:textSize="25sp"
+                        android:textSize="20sp"
                         android:layout_height="wrap_content"
                         android:text="צבי"/>
                     "
@@ -193,7 +195,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:id="@+id/tvEmail"
-                        android:textSize="25sp"
+                        android:textSize="20sp"
                         android:layout_height="wrap_content"
                         android:text="example@gmail.com"/>
                     "
@@ -241,7 +243,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:id="@+id/tvNumber"
-                        android:textSize="25sp"
+                        android:textSize="20sp"
                         android:layout_height="wrap_content"
                         android:text="100"/>
                     "
@@ -285,7 +287,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:id="@+id/tvArea"
-                        android:textSize="25sp"
+                        android:textSize="20sp"
                         android:layout_height="wrap_content"
                         android:text="100"/>
 
