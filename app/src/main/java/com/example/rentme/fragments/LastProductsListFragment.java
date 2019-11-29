@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 
 
-public class ProductsListFragment extends Fragment {
+public class LastProductsListFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class ProductsListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_products_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_last_products_list, container, false);
         ListView listView = view.findViewById(R.id.products_list);
 
         //delete after database ready/////////////////////////////////////////////////////////////
