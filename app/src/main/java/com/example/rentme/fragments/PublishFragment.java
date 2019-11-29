@@ -32,9 +32,13 @@ import com.example.rentme.R;
 import com.example.rentme.activities.MainActivity;
 import com.example.rentme.model.Product;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.FirebaseDatabase;
 
+
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -230,29 +234,6 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         transaction.commit();
     }
 
-//    public void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
-//        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
-//        switch(requestCode) {
-//            case 0:
-//                if(resultCode == RESULT_OK){
-//                    Uri selectedImage = imageReturnedIntent.getData();
-//                    imageview.setImageURI(selectedImage);//check why not present photo
-////                    Bitmap photo = (Bitmap) imageReturnedIntent.getExtras().get("imageReturnedIntent");
-////                    imageview.setImageBitmap(photo);
-//
-////                    Toast.makeText(getContext(),selectedImage.toString(), Toast.LENGTH_SHORT).show();
-//                }
-//
-//                break;
-//            case 1:
-//                if(resultCode == RESULT_OK){
-//                    Uri selectedImage = imageReturnedIntent.getData();
-//                    imageview.setImageURI(selectedImage);
-//                }
-//                break;
-//        }
-//}
-
 
     @Override
     public void onActivityResult(int reqCode, int resultCode, Intent data) {
@@ -271,14 +252,23 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
 //                        EditText e = getView().findViewById(R.id.details);
 //                        e.setText(imageUri.toString());
 //
-//                        // Create a storage reference from our app
-//                        StorageReference storageRef = storage.getReference();
+
+//                        InputStream stream = new FileInputStream(new File(imageUri.toString()));
 //
-//// Create a reference to "mountains.jpg"
-//                        StorageReference mountainsRef = storageRef.child("mountains.jpg");
-//
-//// Create a reference to 'images/mountains.jpg'
-//                        StorageReference mountainImagesRef = storageRef.child("images/mountains.jpg");
+//                        UploadTask uploadTask = mountainsRef.putStream(stream);
+//                        uploadTask.addOnFailureListener(new OnFailureListener() {
+//                            @Override
+//                            public void onFailure(@NonNull Exception exception) {
+//                                // Handle unsuccessful uploads
+//                            }
+//                        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                            @Override
+//                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+//                                // ...
+//                            }
+//                        });
+
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                         Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_LONG).show();
