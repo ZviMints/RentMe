@@ -14,6 +14,7 @@ public class Product {
     private String rentPeriod;
     private String uploadTime;
 
+
     private final String DEF_IMAGE = "https://www.bitsinc.com/sca-dev-montblanc/img/no_image_available.jpeg";
     private final SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
@@ -29,7 +30,7 @@ public class Product {
         this.image = DEF_IMAGE;
     }
 
-    public Product(String title, String category, String details, String condition,String price, String rentPeriod,String image){
+    public Product(String title, String category, String details, String condition,String price, String rentPeriod, String image){
         this.title = title;
         this.category = category;
         this.details = details;
@@ -41,6 +42,7 @@ public class Product {
         this.condition = condition;
         this.price = price;
         this.uploadTime = formatter.format(new Date());
+
 
     }
 
@@ -75,4 +77,5 @@ public class Product {
     public String getUploadTime() {
         return uploadTime;
     }
+
 }

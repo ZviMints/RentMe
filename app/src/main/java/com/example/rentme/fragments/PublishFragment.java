@@ -32,6 +32,7 @@ import android.widget.Toast;
 import com.example.rentme.R;
 import com.example.rentme.activities.MainActivity;
 import com.example.rentme.model.Product;
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -77,6 +78,9 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
     public String rentPeriod ="";
     public String image = "";
     public String details = "";
+    private long currentTime;
+    private String downloadUri = "";
+
 
     private MainFragment mainFragment;
     private final int RESULT_LOAD_IMG = 1;
@@ -137,7 +141,8 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
 
                 if ((productTitle.length() > 0)&& (selectedCategory != "בחר קטגורייה...")&& (details.length() > 0) &&
                         (selectedCondition !=  "בחר מצב...") &&  (Price.length() > 0)) {
-                    Product addedProduct = new Product(productTitle, selectedCategory, details, selectedCondition, Price, rentPeriod );
+
+                    Product addedProduct = new Product(productTitle, selectedCategory, details, selectedCondition, Price, rentPeriod, downloadUri.toString());
                     FirebaseDatabase.getInstance().getReference("category")
                             .child(selectedCategory).child(new Date().getTime()+": "+productTitle).setValue(addedProduct)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -218,17 +223,6 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-//
-//    private String getRandomString(){
-//        Random r = new Random();
-//
-//        String alphabet = "123xyz";
-//        String ans="";
-//        for (int i = 0; i < 15; i++) {
-//            ans+=alphabet.charAt(r.nextInt(alphabet.length()));
-//        }
-//        return ans;
-//    }
 
 
     private void outerTransaction(Fragment fragment){
@@ -278,10 +272,15 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
                 break;
         }
 
+        UploadPicAndUpdateDownloadUri();
+    }
+
+    private void UploadPicAndUpdateDownloadUri() {
+        //start push choosen picture to fireBase storage
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
-
-        StorageReference choosenPicRef = storageRef.child(new Date().getTime()+".jpg");
+        currentTime = new Date().getTime();
+        StorageReference choosenPicRef = storageRef.child(currentTime + ".jpg");
         // Get the data from an ImageView as bytes
         imageview.setDrawingCacheEnabled(true);
         imageview.buildDrawingCache();
@@ -303,6 +302,38 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
                 // ...
             }
         });
+        //finnish push choosen picture to fireBase storage
+
+        //get the uploaded pic URL
+        //Uri file = Uri.fromFile(new File(currentTime+".jpg"));
+        final StorageReference ref = storageRef.child(currentTime + ".jpg");
+        //uploadTask = ref.putFile(file);
+
+        Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+            @Override
+            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                if (!task.isSuccessful()) {
+                    throw task.getException();
+                }
+
+                // Continue with the task to get the download URL
+                return ref.getDownloadUrl();
+            }
+        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+            @Override
+            public void onComplete(@NonNull Task<Uri> task) {
+                if (task.isSuccessful()) {
+                    downloadUri = task.getResult().toString();
+
+                    Toast.makeText(getContext(), downloadUri, Toast.LENGTH_LONG).show();
+
+                } else {
+                    Toast.makeText(getContext(), "not work", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        //get the uploaded pic URL
+
     }
 
 
