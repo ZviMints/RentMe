@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,15 +34,18 @@ import com.example.rentme.activities.MainActivity;
 import com.example.rentme.model.Product;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.*;
 
-
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.util.Date;
 
 import static android.app.Activity.RESULT_OK;
@@ -251,23 +255,6 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
 //                        Toast.makeText(getContext(), imageUri.toString() , Toast.LENGTH_LONG).show();
 //                        EditText e = getView().findViewById(R.id.details);
 //                        e.setText(imageUri.toString());
-//
-
-//                        InputStream stream = new FileInputStream(new File(imageUri.toString()));
-//
-//                        UploadTask uploadTask = mountainsRef.putStream(stream);
-//                        uploadTask.addOnFailureListener(new OnFailureListener() {
-//                            @Override
-//                            public void onFailure(@NonNull Exception exception) {
-//                                // Handle unsuccessful uploads
-//                            }
-//                        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                            @Override
-//                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
-//                                // ...
-//                            }
-//                        });
 
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -289,9 +276,33 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
                     Toast.makeText(getContext(), "You haven't take a picture", Toast.LENGTH_LONG).show();
                 }
                 break;
-
-
         }
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference();
+
+        StorageReference choosenPicRef = storageRef.child(new Date().getTime()+".jpg");
+        // Get the data from an ImageView as bytes
+        imageview.setDrawingCacheEnabled(true);
+        imageview.buildDrawingCache();
+        Bitmap bitmap = ((BitmapDrawable) imageview.getDrawable()).getBitmap();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] theData = baos.toByteArray();
+
+        UploadTask uploadTask = choosenPicRef.putBytes(theData);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle unsuccessful uploads
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+                // ...
+            }
+        });
     }
 
 
