@@ -246,9 +246,6 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
                         final InputStream imageStream = getContext().getContentResolver().openInputStream(imageUri);
                         final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
                         imageview.setImageBitmap(selectedImage);
-//                        Toast.makeText(getContext(), imageUri.toString() , Toast.LENGTH_LONG).show();
-//                        EditText e = getView().findViewById(R.id.details);
-//                        e.setText(imageUri.toString());
 
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -305,9 +302,8 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         //finnish push choosen picture to fireBase storage
 
         //get the uploaded pic URL
-        //Uri file = Uri.fromFile(new File(currentTime+".jpg"));
         final StorageReference ref = storageRef.child(currentTime + ".jpg");
-        //uploadTask = ref.putFile(file);
+
 
         Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
             @Override
@@ -335,6 +331,8 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         //get the uploaded pic URL
 
     }
+
+
 
 
 }

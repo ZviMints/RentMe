@@ -1,6 +1,8 @@
 package com.example.rentme.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -13,14 +15,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import androidx.annotation.NonNull;
+
 import com.example.rentme.model.Product;
 import com.example.rentme.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
 
 public class ProductListAdapter extends BaseAdapter {
-
+    Holder holder;
     public interface MoreDetailsButtonListener{
         void showMoreDetails();
     }
@@ -60,7 +68,7 @@ public class ProductListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Holder holder; // use holder
+         // use holder
         if (convertView == null) {
             convertView = LayoutInflater.from(this.context).inflate(R.layout.product_row, parent, false);
 
@@ -78,7 +86,8 @@ public class ProductListAdapter extends BaseAdapter {
         holder.title.setText(items.get(position).getTitle());
         holder.category.setText(items.get(position).getCategory());
         holder.details.setText(items.get(position).getDetails());
-        holder.image.setImageResource(R.drawable.chairs);
+        //holder.image.setImageResource(R.drawable.chairs);
+        updateImageFromUrl(items.get(position));
 
         holder.MoreDetailsBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -88,6 +97,30 @@ public class ProductListAdapter extends BaseAdapter {
         });
 
         return convertView;
+    }
+
+    private void updateImageFromUrl(Product currProduct){
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference httpsReference = storage.getReferenceFromUrl(currProduct.getImage());
+
+
+        final long ONE_MEGABYTE = 1024 * 1024;
+        httpsReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+
+                holder.image.setImageBitmap(Bitmap.createScaledBitmap(bmp, holder.image.getWidth(),
+                        holder.image.getHeight(), false));
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+            }
+        });
+
     }
 
     public class Holder {
@@ -104,6 +137,7 @@ public class ProductListAdapter extends BaseAdapter {
             image = view.findViewById(R.id.product_image);
             MoreDetailsBtn = view.findViewById(R.id.more_product_details);
         }
+
 
     }
 
