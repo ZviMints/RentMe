@@ -5,6 +5,12 @@
     android:background="@color/Sky"
     android:orientation="vertical">
 
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightGray"/>
+
     <ProgressBar
         android:id="@+id/progressBarOnLoad"
         style="?android:attr/progressBarStyle"
