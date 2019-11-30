@@ -339,10 +339,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         });
         //finnish push choosen picture to fireBase storage
 
-        //get the uploaded pic URL
-        //final StorageReference ref = storageRef.child(currentTime + ".jpg");
-
-
+        //start get the uploaded pic URL
         Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
             @Override
             public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
@@ -359,13 +356,12 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
                 if (task.isSuccessful()) {
                     downloadUri = task.getResult().toString();
                     progressBarAfterAddPic.setVisibility(View.GONE);
-                    Toast.makeText(getContext(), downloadUri, Toast.LENGTH_LONG).show();
 
                 } else {
                     Toast.makeText(getContext(), "not work", Toast.LENGTH_LONG).show();
                 }
             }
         });
-        //get the uploaded pic URL
+        //end get the uploaded pic URL
     }
 }
