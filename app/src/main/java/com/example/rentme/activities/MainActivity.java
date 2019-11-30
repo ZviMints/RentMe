@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements ProductListAdapte
     ProfileFragment profileFragment;
     LoginFragment loginFragment;
     InItemFragment inItemFragment;
+    ImageView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,14 +53,23 @@ public class MainActivity extends AppCompatActivity implements ProductListAdapte
 
         searchBtn = findViewById(R.id.Search);
         profileBtn = findViewById(R.id.Profile);
+        logo = findViewById(R.id.logo);
 
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mainFragment == null)
+                    mainFragment = new MainFragment();
+                outerTransaction(mainFragment);
+            }
+        });
         profileBtn.setText((firebaseUser != null) ? "פרופיל" : "התחבר/הרשם");
 
-        profileBtn.setOnClickListener(new View.OnClickListener(){
+        profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (firebaseUser != null) {
-                    if (profileFragment==null)
+                    if (profileFragment == null)
                         profileFragment = new ProfileFragment();
                     outerTransaction(profileFragment);
                 } else {
@@ -70,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements ProductListAdapte
                 }
             }
         });
-        searchBtn.setOnClickListener(new View.OnClickListener(){
+        searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (searchFragment == null)
@@ -78,7 +88,6 @@ public class MainActivity extends AppCompatActivity implements ProductListAdapte
                 outerTransaction(searchFragment);
             }
         });
-
 
         mainFragment = new MainFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.OuterFragmentContainer, mainFragment).commit();
@@ -93,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements ProductListAdapte
         outerTransaction(inItemFragment);
     }
 
-    private void outerTransaction(Fragment fragment){
+    private void outerTransaction(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.OuterFragmentContainer, fragment);
         transaction.addToBackStack(null);

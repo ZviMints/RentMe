@@ -51,6 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:id="@+id/logo"
+            android:clickable="true"
             android:layout_marginRight="5dp"
             android:layout_alignParentRight="true"
             android:background="@drawable/logo" />
