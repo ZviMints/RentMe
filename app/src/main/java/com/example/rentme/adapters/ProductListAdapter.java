@@ -35,7 +35,7 @@ import java.util.ArrayList;
 
 
 public class ProductListAdapter extends BaseAdapter {
-    Holder holder;
+
     public interface MoreDetailsButtonListener{
         void showMoreDetails();
     }
@@ -75,7 +75,7 @@ public class ProductListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-         // use holder
+        Holder holder;// use holder
         if (convertView == null) {
             convertView = LayoutInflater.from(this.context).inflate(R.layout.product_row, parent, false);
 
@@ -94,7 +94,7 @@ public class ProductListAdapter extends BaseAdapter {
         holder.category.setText(items.get(position).getCategory());
         holder.details.setText(items.get(position).getDetails());
         //holder.image.setImageResource(R.drawable.chairs);
-        updateImageFromUrl(items.get(position));
+        updateImageFromUrl(items.get(position), holder.image);
 
         holder.MoreDetailsBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -130,7 +130,7 @@ public class ProductListAdapter extends BaseAdapter {
 //
 //    }
 
-    private void updateImageFromUrl(Product currProduct){
+    private void updateImageFromUrl(Product currProduct,final ImageView image){
 //        storageReference = storage.getReference().child("images/").child(user.getUid());
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference httpsReference = storage.getReferenceFromUrl(currProduct.getImage());
@@ -143,7 +143,7 @@ public class ProductListAdapter extends BaseAdapter {
                             .load(task.getResult())
                             .apply(RequestOptions.circleCropTransform())
                             .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-                            .into(holder.image);
+                            .into(image);
 
 
                 }
