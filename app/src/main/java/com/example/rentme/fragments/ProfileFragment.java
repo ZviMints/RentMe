@@ -47,6 +47,7 @@ public class ProfileFragment extends Fragment {
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     FirebaseDatabase firebaseDatabase;
+
     MainFragment mainFragment;
     ProgressBar progressBar;
 
@@ -75,12 +76,11 @@ public class ProfileFragment extends Fragment {
         mainLinear = view.findViewById(R.id.mainLinear);
         informationLinear = view.findViewById(R.id.InformationLinear);
 
-
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
 
-        // Initailize User
+        // Initialize User
         DatabaseReference ref = firebaseDatabase.getReference("Users").child(firebaseUser.getUid()).getRef();
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -117,6 +117,7 @@ public class ProfileFragment extends Fragment {
         });
         return view;
     }
+
 
     private void gotUserFromFireBase(User user) {
 

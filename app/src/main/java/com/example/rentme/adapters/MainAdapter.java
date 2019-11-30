@@ -10,14 +10,16 @@ import android.widget.TextView;
 
 import com.example.rentme.R;
 
+import java.util.List;
+
 public class MainAdapter extends BaseAdapter  {
 
     private Context context;
     private LayoutInflater inflater;
-    private String[] titles;
-    private int[] numberImages;
+    private List<String> titles;
+    private List<Integer> numberImages;
 
-    public MainAdapter(Context c, String[] titles, int[] numberImages) {
+    public MainAdapter(Context c, List<String> titles, List<Integer> numberImages) {
         this.context = c;
         this.numberImages = numberImages;
         this.titles = titles;
@@ -26,7 +28,7 @@ public class MainAdapter extends BaseAdapter  {
 
     @Override
     public int getCount() {
-        return Math.min(titles.length,numberImages.length);
+        return Math.min(titles.size(),numberImages.size());
     }
 
     @Override
@@ -50,8 +52,8 @@ public class MainAdapter extends BaseAdapter  {
         ImageView imageView = convertView.findViewById(R.id.image_view);
         TextView textView = convertView.findViewById(R.id.text_view);
 
-        imageView.setImageResource(numberImages[position]);
-        textView.setText(titles[position]);
+        imageView.setImageResource(numberImages.get(position));
+        textView.setText(titles.get(position));
         return convertView;
     }
 }

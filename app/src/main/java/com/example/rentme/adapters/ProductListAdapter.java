@@ -26,7 +26,7 @@ public class ProductListAdapter extends BaseAdapter {
     }
 
     private MoreDetailsButtonListener listener;
-    private ArrayList<Product> items = new ArrayList<Product>();
+    private ArrayList<Product> items = new ArrayList<>();
     private Context context;
 
     public ProductListAdapter(ArrayList<Product> items, Context context) {
