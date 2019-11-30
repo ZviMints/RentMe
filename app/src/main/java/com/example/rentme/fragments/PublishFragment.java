@@ -115,9 +115,10 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
                         (selectedCondition != "בחר מצב...") &&
                         (Price.length() > 0)) {
 
-                    Product addedProduct = new Product(productTitle, selectedCategory, details, selectedCondition, Price, rentPeriod, downloadUri);
+                    Date Time = new Date();
+                    Product addedProduct = new Product(productTitle, selectedCategory, details, selectedCondition, Price, rentPeriod, Time, downloadUri);
                     FirebaseDatabase.getInstance().getReference("Categories")
-                            .child(selectedCategory).child(new Date().getTime() + ": " + productTitle).setValue(addedProduct)
+                            .child(selectedCategory).child(Time.getTime() + ": " + productTitle).setValue(addedProduct)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {

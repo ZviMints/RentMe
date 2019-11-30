@@ -15,7 +15,7 @@ import com.example.rentme.adapters.ProductListAdapter;
 import com.example.rentme.R;
 
 import java.util.ArrayList;
-
+import java.util.Date;
 
 
 public class LastProductsListFragment extends Fragment {
