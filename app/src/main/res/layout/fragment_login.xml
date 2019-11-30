@@ -1,156 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
     android:background="@color/Sky"
     android:orientation="vertical">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightGray" />
 
-    <!-- Menu -->
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layoutDirection="rtl"
-        android:orientation="vertical">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="5dp"
-            android:background="@color/lightGray"/>
-
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="התחבר"
-            android:textColor="@color/DarkGray"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layoutDirection="rtl"
-            android:orientation="vertical"
-            android:layout_marginRight="20dp">
-            <!-- Email -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_height="wrap_content"
-                android:text="איימל" />
-
-            <EditText
-                android:inputType="textNoSuggestions"
-                android:id="@+id/emailFromLogin"
-                android:layout_width="335dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="@drawable/form"
-                android:hint="example@gmail.com"
-                android:padding="10dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:text="סיסמא" />
-            <!-- Password -->
-            <EditText
-                android:inputType="textNoSuggestions"
-                android:id="@+id/passwordFromLogin"
-                android:layout_width="336dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:password="true"
-                android:background="@drawable/form"
-                android:hint="******"
-                android:padding="10dp" />
-
-        </LinearLayout> <!-- Finish Form -->
-
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="15dp"
-            android:background="@color/DarkBlue"
-            android:drawableLeft="@drawable/ic_chevron_left_white_24dp"
-            android:padding="4dp"
-            android:text="כניסה"
-            android:textColor="#fff"></Button>
-
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:visibility="gone"
-            style="?android:attr/progressBarStyle"
-            android:id="@+id/progressbar"/>
-
-        <View
             android:layout_width="match_parent"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:layout_height="1dp"
-            android:background="@color/lightGray"/>
-
-
-        <!--No Account-->
-        <LinearLayout
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="25dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textDirection="rtl"
-                android:text="אין לך משתמש?" />
+            android:orientation="vertical">
 
             <Button
-                android:id="@+id/btnGoToSignUp"
-                android:layout_width="wrap_content"
+                android:id="@+id/backToMain"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_marginRight="5dp"
-                android:paddingRight="7dp"
-                android:textColor="#0097e6"
-                android:text=" הרשם עכשיו" />
+                android:layout_alignParentTop="true"
+                android:background="@color/lightGray"
+                android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
+                android:text=" חזור לדף הבית"
+                android:textColor="@color/DarkGray"
+                android:textStyle="bold" />
+
+            <!-- Menu -->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layoutDirection="rtl"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/lightGray" />
+
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="התחבר"
+                    android:textColor="@color/DarkGray"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="60dp"
+                    android:adjustViewBounds="true"
+                    android:cropToPadding="true"
+                    android:src="@drawable/login_hero_image" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layoutDirection="rtl"
+                    android:orientation="vertical">
+                    <!-- Email -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:text="איימל" />
+
+                    <EditText
+                        android:id="@+id/emailFromLogin"
+                        android:layout_width="335dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/form"
+                        android:hint="example@gmail.com"
+                        android:inputType="textNoSuggestions"
+                        android:padding="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:text="סיסמא" />
+                    <!-- Password -->
+                    <EditText
+                        android:id="@+id/passwordFromLogin"
+                        android:layout_width="336dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/form"
+                        android:hint="******"
+                        android:inputType="textNoSuggestions"
+                        android:padding="10dp"
+                        android:password="true" />
+
+                </LinearLayout> <!-- Finish Form -->
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnLogin"
+                        android:layout_width="145dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="1dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@color/DarkBlue"
+                        android:drawableLeft="@drawable/ic_chevron_left_white_24dp"
+                        android:padding="4dp"
+                        android:text="כניסה"
+                        android:textColor="#fff"></Button>
+
+                    <!--No Account-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="או לחלופין"
+                            android:textDirection="rtl"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/btnGoToSignUp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:paddingRight="7dp"
+                            android:text=" הרשם עכשיו"
+                            android:textColor="#0097e6"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progressbar"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:visibility="gone" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@color/lightGray" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="אין לך משתמש? התחבר עם אחת מהפלטפורמות הבאות"
+                    android:textAlignment="center"
+                    android:textDirection="rtl"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:cropToPadding="true"
+                        android:src="@drawable/facebook_button" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:cropToPadding="true"
+                        android:src="@drawable/google_button" />
+                </LinearLayout>
+
+
+            </LinearLayout>
 
         </LinearLayout>
-
-        <Button
-            android:id="@+id/backToMain"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/lightGray"
-            android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
-            android:text=" חזור לדף הבית"
-            android:layout_alignParentTop="true"
-            android:textColor="@color/DarkGray"
-            android:textStyle="bold" />
-
-
-
-    </LinearLayout>
-
-
-    <!-- Content -->
-
-    <!-- End Content -->
-
+    </ScrollView>
 
 </LinearLayout>

@@ -11,4 +11,8 @@
     <color name="Orange">#d35400</color>
     <color name="Sky">#dfe6e9</color>
     <color name="DarkSky">#636e72</color>
+
+
+    <color name="blackTextColor">#000</color>
+    <color name="colorLoginPrimaryDark">#FDFFFF</color>
 </resources>
