@@ -18,23 +18,23 @@ public class Product {
     private final String DEF_IMAGE = "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/1575107154720.jpg?alt=media&token=349bb82d-a50f-4736-b5a0-6470031bad0e";
     private final SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
-    public Product(String title, String category, String details,String condition,  String price, String rentPeriod){
-        this.title = title;
-        this.category = category;
-        this.condition = condition;
-        this.details = details;
-        this.price = price;
-        this.rentPeriod = rentPeriod;
-
-        this.uploadTime = formatter.format(new Date());
-        this.image = DEF_IMAGE;
-    }
+//    public Product(String title, String category, String details,String condition,  String price, String rentPeriod){
+//        this.title = title;
+//        this.category = category;
+//        this.condition = condition;
+//        this.details = details;
+//        this.price = price;
+//        this.rentPeriod = rentPeriod;
+//
+//        this.uploadTime = formatter.format(new Date());
+//        this.image = DEF_IMAGE;
+//    }
 
     public Product(String title, String category, String details, String condition,String price, String rentPeriod, String image){
         this.title = title;
         this.category = category;
         this.details = details;
-        if (image=="")
+        if (image.length()<1)
             this.image = DEF_IMAGE;
         else
             this.image = image;

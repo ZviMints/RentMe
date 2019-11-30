@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Point;
+import android.net.Uri;
+import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,14 +15,23 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 
 
 import androidx.annotation.NonNull;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.rentme.model.Product;
 import com.example.rentme.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -99,28 +110,54 @@ public class ProductListAdapter extends BaseAdapter {
         return convertView;
     }
 
-    private void updateImageFromUrl(Product currProduct){
+//    private void updateImageFromUrl(Product currProduct){
+//
+//        FirebaseStorage storage = FirebaseStorage.getInstance();
+//        StorageReference httpsReference = storage.getReferenceFromUrl(currProduct.getImage());
+//
+//
+//        final long ONE_MEGABYTE = 1024 * 1024;
+//        httpsReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+//            @Override
+//            public void onSuccess(byte[] bytes) {
+//                Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+//
+//                holder.image.setImageBitmap(Bitmap.createScaledBitmap(bmp, holder.image.getWidth(),
+//                        holder.image.getHeight(), false));
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception exception) {
+//                // Handle any errors
+//            }
+//        });
+//
+//    }
 
+    private void updateImageFromUrl(Product currProduct){
+//        storageReference = storage.getReference().child("images/").child(user.getUid());
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference httpsReference = storage.getReferenceFromUrl(currProduct.getImage());
-
-
-        final long ONE_MEGABYTE = 1024 * 1024;
-        httpsReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+        httpsReference.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
             @Override
-            public void onSuccess(byte[] bytes) {
-                Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+            public void onComplete(@NonNull Task<Uri> task) {
+                if(task.isSuccessful())
+                {
+                    Glide.with(context)
+                            .load(task.getResult())
+                            .apply(RequestOptions.circleCropTransform())
+                            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                            .into(holder.image);
 
-                holder.image.setImageBitmap(Bitmap.createScaledBitmap(bmp, holder.image.getWidth(),
-                        holder.image.getHeight(), false));
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle any errors
+
+                }
+                else {
+                    Toast.makeText(context, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                  //  Log.d("Firebase id",user.getUid());
+                }
+
             }
         });
-
     }
 
     public class Holder {
