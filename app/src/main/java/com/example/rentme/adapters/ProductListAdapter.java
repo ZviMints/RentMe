@@ -1,8 +1,6 @@
 package com.example.rentme.adapters;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.net.Uri;
 import android.view.Display;
@@ -25,13 +23,12 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.rentme.model.Product;
 import com.example.rentme.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class ProductListAdapter extends BaseAdapter {
@@ -95,7 +92,8 @@ public class ProductListAdapter extends BaseAdapter {
         holder.details.setText(items.get(position).getDetails());
         holder.price.setText(items.get(position).getPrice());
         holder.productPriceTime.setText(items.get(position).getRentPeriod());
-        holder.publishTime.setText(items.get(position).getUploadTime());
+        long diff = new Date().getTime()- items.get(position).getUtcUploadTime();
+        holder.publishTime.setText(diff / (1000 * 60 * 60 * 24) +"");
         //holder.image.setImageResource(R.drawable.chairs);
         updateImageFromUrl(items.get(position), holder.image);
 
