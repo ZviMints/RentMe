@@ -18,181 +18,198 @@
             android:layout_marginBottom="5dp"
             android:background="@color/lightGray"/>
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="פתיחת חשבון"
-            android:textColor="@color/DarkGray"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layoutDirection="rtl"
-            android:orientation="vertical"
-            android:layout_marginRight="20dp">
-            <!-- Email -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_height="wrap_content"
-                android:text="איימל" />
-
-            <EditText
-                android:id="@+id/emailForm"
-                android:layout_width="335dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="@drawable/form"
-                android:hint="example@gmail.com"
-                android:padding="10dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:text="סיסמא" />
-            <!-- Password -->
-            <EditText
-                android:id="@+id/passwordForm"
-                android:layout_width="336dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:password="true"
-                android:background="@drawable/form"
-                android:hint="******"
-                android:padding="10dp" />
-
-            <!-- Name -->
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="130dp"
-                android:layout_height="wrap_content"
-                android:text="שם פרטי" />
 
                 <TextView
+                    android:id="@+id/title"
                     android:layout_width="wrap_content"
-                    android:layout_marginRight="5dp"
                     android:layout_height="wrap_content"
-                    android:text="שם משפחה" />
+                    android:layout_gravity="center"
+                    android:text="פתיחת חשבון"
+                    android:textColor="@color/DarkGray"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:adjustViewBounds="true"
+                    android:cropToPadding="true"
+                    android:src="@drawable/ic_register_hero" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layoutDirection="rtl"
+                    android:orientation="vertical"
+                    android:layout_marginRight="20dp">
+                    <!-- Email -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:layout_height="wrap_content"
+                        android:text="איימל" />
+
+                    <EditText
+                        android:id="@+id/emailForm"
+                        android:layout_width="335dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/form"
+                        android:hint="example@gmail.com"
+                        android:padding="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:text="סיסמא" />
+                    <!-- Password -->
+                    <EditText
+                        android:id="@+id/passwordForm"
+                        android:layout_width="336dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:password="true"
+                        android:background="@drawable/form"
+                        android:hint="******"
+                        android:padding="10dp" />
+
+                    <!-- Name -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginLeft="130dp"
+                            android:layout_height="wrap_content"
+                            android:text="שם פרטי" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:layout_height="wrap_content"
+                            android:text="שם משפחה" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/nameForm"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/form"
+                            android:hint="ישראל"
+                            android:padding="10dp" />
+
+                        <EditText
+                            android:id="@+id/lastnameForm"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/form"
+                            android:hint="ישראלי"
+                            android:padding="10dp" />
+
+                    </LinearLayout>
+
+
+
+                    <!-- Area -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="אזור" />
+
+                    <EditText
+                        android:id="@+id/areaForm"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/form"
+                        android:hint="מרכז"
+                        android:layout_gravity="center"
+                        android:padding="10dp" />
+
+                    <!-- Phone -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_height="wrap_content"
+                        android:text="מספר פאלפון" />
+
+                    <EditText
+                        android:id="@+id/numberForm"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/form"
+                        android:hint="052-3333333"
+                        android:padding="10dp" />
+
+
+
+
+                </LinearLayout> <!-- Finish Form -->
+
+                <Button
+                    android:id="@+id/btnSignUp"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/DarkBlue"
+                    android:drawableLeft="@drawable/ic_chevron_left_white_24dp"
+                    android:padding="4dp"
+                    android:text="הרשם"
+                    android:textColor="#fff"></Button>
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:visibility="gone"
+                    android:layout_marginLeft="15dp"
+                    style="?android:attr/progressBarStyle"
+                    android:id="@+id/progressbar"/>
+
+
+                <Button
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/backToLogin"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/lightGray"
+                    android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
+                    android:text=" חזור לדף התחברות"
+                    android:layout_alignParentTop="true"
+                    android:textColor="@color/DarkGray"
+                    android:textStyle="bold" />
 
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/nameForm"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/form"
-                    android:hint="ישראל"
-                    android:padding="10dp" />
-
-                <EditText
-                    android:id="@+id/lastnameForm"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/form"
-                    android:hint="ישראלי"
-                    android:padding="10dp" />
-
-            </LinearLayout>
-
-
-
-            <!-- Area -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="אזור" />
-
-            <EditText
-                android:id="@+id/areaForm"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="@drawable/form"
-                android:hint="מרכז"
-                android:layout_gravity="center"
-                android:padding="10dp" />
-
-            <!-- Phone -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:text="מספר פאלפון" />
-
-            <EditText
-                android:id="@+id/numberForm"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:background="@drawable/form"
-                android:hint="052-3333333"
-                android:padding="10dp" />
-
-
-
-
-        </LinearLayout> <!-- Finish Form -->
-
-        <Button
-            android:id="@+id/btnSignUp"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
-            android:background="@color/DarkBlue"
-            android:drawableLeft="@drawable/ic_chevron_left_white_24dp"
-            android:padding="4dp"
-            android:text="הרשם"
-            android:textColor="#fff"></Button>
-
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:visibility="gone"
-            android:layout_marginLeft="15dp"
-            style="?android:attr/progressBarStyle"
-            android:id="@+id/progressbar"/>
-
-
-        <Button
-            android:layout_marginTop="15dp"
-            android:id="@+id/backToLogin"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/lightGray"
-            android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
-            android:text=" חזור לדף התחברות"
-            android:layout_alignParentTop="true"
-            android:textColor="@color/DarkGray"
-            android:textStyle="bold" />
-
-
-
+        </ScrollView>
     </LinearLayout>
 
 
