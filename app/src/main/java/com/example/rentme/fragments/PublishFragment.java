@@ -119,7 +119,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
 
                     DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
                     Date date = new Date();
-                    String strDate = dateFormat.format(date).toString();
+                    String strDate = dateFormat.format(date);
 
                     Product addedProduct = new Product(productTitle, selectedCategory, details, selectedCondition, Price, rentPeriod, strDate, downloadUri);
                     FirebaseDatabase.getInstance().getReference("Categories")
