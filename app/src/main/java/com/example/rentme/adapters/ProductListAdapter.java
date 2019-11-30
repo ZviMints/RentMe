@@ -92,8 +92,8 @@ public class ProductListAdapter extends BaseAdapter {
         holder.details.setText(items.get(position).getDetails());
         holder.price.setText(items.get(position).getPrice());
         holder.productPriceTime.setText(items.get(position).getRentPeriod());
-        long diff = new Date().getTime()- items.get(position).getUtcUploadTime();
-        holder.publishTime.setText(diff / (1000 * 60 * 60 * 24) +"");
+        long diff = new Date().getTime()- (items.get(position).getUtcUploadTime());
+        holder.publishTime.setText(diff / (1000 * 60 * 60 * 24)+"");
         //holder.image.setImageResource(R.drawable.chairs);
         updateImageFromUrl(items.get(position), holder.image);
 
