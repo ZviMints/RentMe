@@ -95,6 +95,7 @@ public class ProductListAdapter extends BaseAdapter {
         holder.details.setText(items.get(position).getDetails());
         holder.price.setText(items.get(position).getPrice());
         holder.productPriceTime.setText(items.get(position).getRentPeriod());
+        holder.publishTime.setText(items.get(position).getUploadTime());
         //holder.image.setImageResource(R.drawable.chairs);
         updateImageFromUrl(items.get(position), holder.image);
 
@@ -164,6 +165,7 @@ public class ProductListAdapter extends BaseAdapter {
         private ImageView image;
         private TextView price;
         private TextView productPriceTime;
+        private TextView publishTime;
         private Button MoreDetailsBtn;
 
 
@@ -174,6 +176,7 @@ public class ProductListAdapter extends BaseAdapter {
             image = view.findViewById(R.id.product_image);
             price = view.findViewById(R.id.product_price);
             productPriceTime = view.findViewById(R.id.product_price_time);
+            publishTime = view.findViewById(R.id.Publish_time);
             MoreDetailsBtn = view.findViewById(R.id.more_product_details);
         }
 
