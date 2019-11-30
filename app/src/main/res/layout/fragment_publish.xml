@@ -62,8 +62,8 @@
             android:layout_height="wrap_content"
             android:layoutDirection="rtl"
             android:layout_marginTop="10dp"
-            android:orientation="vertical"
-            android:layout_marginRight="20dp">
+            android:layout_gravity="center"
+            android:orientation="vertical">
             <!-- product name -->
 
             <EditText
