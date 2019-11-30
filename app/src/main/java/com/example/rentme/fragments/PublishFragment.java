@@ -44,6 +44,8 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -115,10 +117,13 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
                         (selectedCondition != "בחר מצב...") &&
                         (Price.length() > 0)) {
 
-                    Date Time = new Date();
-                    Product addedProduct = new Product(productTitle, selectedCategory, details, selectedCondition, Price, rentPeriod, Time, downloadUri);
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                    Date date = new Date();
+                    String strDate = dateFormat.format(date).toString();
+
+                    Product addedProduct = new Product(productTitle, selectedCategory, details, selectedCondition, Price, rentPeriod, strDate, downloadUri);
                     FirebaseDatabase.getInstance().getReference("Categories")
-                            .child(selectedCategory).child(Time.getTime() + ": " + productTitle).setValue(addedProduct)
+                            .child(selectedCategory).child(date.getTime() + ": " + productTitle).setValue(addedProduct)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
