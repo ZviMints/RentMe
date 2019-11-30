@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:layout_weight="0.25"
+        android:layout_marginLeft="5dp"
         />
 
     <!-- All the Rest -->
