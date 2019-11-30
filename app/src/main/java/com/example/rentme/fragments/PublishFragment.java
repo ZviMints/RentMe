@@ -306,7 +306,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
         currentTime = new Date().getTime();
-        StorageReference choosenPicRef = storageRef.child("product/"+currentTime + ".jpg");
+        final StorageReference choosenPicRef = storageRef.child("product/"+currentTime + ".jpg");
 
         // Get the data from an ImageView as bytes
         imageview.setDrawingCacheEnabled(true);
@@ -332,7 +332,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         //finnish push choosen picture to fireBase storage
 
         //get the uploaded pic URL
-        final StorageReference ref = storageRef.child(currentTime + ".jpg");
+        //final StorageReference ref = storageRef.child(currentTime + ".jpg");
 
 
         Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
@@ -343,7 +343,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
                 }
 
                 // Continue with the task to get the download URL
-                return ref.getDownloadUrl();
+                return choosenPicRef.getDownloadUrl();
             }
         }).addOnCompleteListener(new OnCompleteListener<Uri>() {
             @Override
