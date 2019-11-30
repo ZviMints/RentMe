@@ -56,7 +56,8 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
     private Button backMenu;
     private Button addCameraPicBtm;
     private Button addGaleryPicBtm;
-    private ProgressBar progressBar_afterPublicBtn;
+    private ProgressBar progressBar_afterPublish;
+    private ProgressBar progressBarAfterAddPic;
     private Spinner categorySelectedSpin;
     private Spinner productConditionSpin;
     private Spinner rentPeriodSpin;
@@ -103,7 +104,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         publishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressBar_afterPublicBtn.setVisibility(View.VISIBLE);
+                progressBar_afterPublish.setVisibility(View.VISIBLE);
                 productTitle = titleLayer.getText().toString();
                 details = detailsLayer.getText().toString();
                 Price = priceLayer.getText().toString();
@@ -121,20 +122,20 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        progressBar_afterPublicBtn.setVisibility(View.GONE);
+                                        progressBar_afterPublish.setVisibility(View.GONE);
                                         Toast.makeText(getContext(), "פרסום " + productTitle + " בוצע בהצלחה", Toast.LENGTH_SHORT).show();
                                         if (mainFragment == null)
                                             mainFragment = new MainFragment();
                                         outerTransaction(mainFragment);
                                     } else {
-                                        progressBar_afterPublicBtn.setVisibility(View.GONE);
+                                        progressBar_afterPublish.setVisibility(View.GONE);
                                         Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                     }
                                 }
                             });
 
                 } else {
-                    progressBar_afterPublicBtn.setVisibility(View.GONE);
+                    progressBar_afterPublish.setVisibility(View.GONE);
                     Toast.makeText(getContext(), "קלט לא חוקי", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -153,7 +154,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
     public String image;
     public String details;
     private long currentTime;
-    private String downloadUri;
+    private String downloadUri = "";
 
     private MainFragment mainFragment;
     private final int RESULT_LOAD_IMG = 1;
@@ -180,7 +181,8 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         detailsLayer =  view.findViewById(R.id.details);
         priceLayer =  view.findViewById(R.id.price);
         backMenu = view.findViewById(R.id.backMain);
-        progressBar_afterPublicBtn = view.findViewById(R.id.progressBar_afterPublicBtn);
+        progressBar_afterPublish = view.findViewById(R.id.progressBar_afterPublish);
+        progressBarAfterAddPic = view.findViewById(R.id.progressBar_afterAddPic);
         progressBarOnLoad = view.findViewById(R.id.progressBarOnLoad);
         mainScrollView = view.findViewById(R.id.mainScrollView);
         progressBarOnLoad = view.findViewById(R.id.progressBarOnLoad);
@@ -297,7 +299,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
                 }
                 break;
         }
-
+        progressBarAfterAddPic.setVisibility(View.VISIBLE);
         UploadPicAndUpdateDownloadUri();
     }
 
@@ -350,7 +352,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
             public void onComplete(@NonNull Task<Uri> task) {
                 if (task.isSuccessful()) {
                     downloadUri = task.getResult().toString();
-
+                    progressBarAfterAddPic.setVisibility(View.GONE);
                     Toast.makeText(getContext(), downloadUri, Toast.LENGTH_LONG).show();
 
                 } else {
