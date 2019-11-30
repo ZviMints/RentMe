@@ -12,8 +12,8 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:layout_marginRight="5dp"
-        android:layout_weight="0.25"
-        android:layout_marginLeft="5dp"
+        android:layout_weight="0.4"
+        android:layout_marginLeft="2dp"
         />
 
     <!-- All the Rest -->
@@ -94,38 +94,45 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
         android:orientation="vertical">
 
-
-        <TextView
-            android:id="@+id/product_price"
-            android:layout_width="wrap_content"
-            android:background="@drawable/money_border"
-            android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:textColor="@color/DarkGray"
-            android:paddingLeft="3dp"
-            android:paddingRight="3dp"
-            android:layout_gravity="center"
-            android:textStyle="bold" />
-
-
-        <TextView
-            android:id="@+id/shekels"
-            android:textSize="10sp"
-            android:layout_marginRight="3dp"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="שקלים"
-            />
+            android:padding="5dp"
+            android:background="#D6DCDF"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/product_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:textColor="@color/DarkGray"
+                android:layout_gravity="center"
+                android:text="5555"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/shekels"
+                android:textSize="10sp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="שקלים"
+                />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/product_price_time"
             android:layout_width="wrap_content"
+            android:text="תקופה"
             android:layout_height="wrap_content"
-            android:layout_margin="3dp"
+            android:layout_marginTop="1dp"
             android:layout_gravity="center"
             android:textStyle="bold"
             android:textDirection="rtl"/>
@@ -136,12 +143,13 @@
 
     <Button
         android:id="@+id/more_product_details"
-        android:layout_width="67dp"
+        android:layout_width="47dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="5dp"
         android:layout_weight="0.3"
         android:background="@color/DarkBlue"
+        android:drawableLeft="@drawable/ic_chevron_left_black_24dp"
         android:text="עוד פרטים"
         android:textColor="#fff"
         android:textStyle="bold" />
