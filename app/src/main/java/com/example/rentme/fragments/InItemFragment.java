@@ -44,6 +44,7 @@ public class InItemFragment extends Fragment {
 
             }
         });
+
         return view;
     }
 }
