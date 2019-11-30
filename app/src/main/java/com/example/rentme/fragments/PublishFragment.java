@@ -306,7 +306,8 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
         currentTime = new Date().getTime();
-        StorageReference choosenPicRef = storageRef.child(currentTime + ".jpg");
+        StorageReference choosenPicRef = storageRef.child("product/"+currentTime + ".jpg");
+
         // Get the data from an ImageView as bytes
         imageview.setDrawingCacheEnabled(true);
         imageview.buildDrawingCache();
