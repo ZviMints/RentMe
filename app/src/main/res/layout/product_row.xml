@@ -189,6 +189,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:background="@color/DarkBlue"
+            android:layout_marginRight="2dp"
             android:drawableLeft="@drawable/ic_chevron_left_black_24dp"
             android:text="עוד"
             android:textColor="#fff"
