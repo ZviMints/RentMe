@@ -48,6 +48,39 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
+                <!-- Date -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="פורסם לפני"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Publish_time"
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:text="-1"
+                        android:textAlignment="center"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:background="#D6DCDF"
+                        android:textColor="#000"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ימים"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
                 <!-- Category -->
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -83,6 +116,7 @@
                 <TextView
                     android:id="@+id/product_details"
                     android:layout_width="wrap_content"
+                    android:textColor="#000"
                     android:layout_height="wrap_content"
                     android:textDirection="rtl" />
 
@@ -145,30 +179,18 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="18dp"
         android:orientation="vertical">
 
         <Button
             android:id="@+id/more_product_details"
-            android:layout_width="67dp"
+            android:layout_width="55dp"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="0.3"
             android:background="@color/DarkBlue"
-            android:text="עוד פרטים"
-            android:textColor="#fff"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/Publish_time"
-            android:layout_width="67dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="0.3"
-            android:background="@color/DarkBlue"
+            android:drawableLeft="@drawable/ic_chevron_left_black_24dp"
+            android:text="עוד"
             android:textColor="#fff"
             android:textStyle="bold" />
 
