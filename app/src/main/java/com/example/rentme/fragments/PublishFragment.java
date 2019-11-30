@@ -331,9 +331,8 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         //finnish push choosen picture to fireBase storage
 
         //get the uploaded pic URL
-        //Uri file = Uri.fromFile(new File(currentTime+".jpg"));
         final StorageReference ref = storageRef.child(currentTime + ".jpg");
-        //uploadTask = ref.putFile(file);
+
 
         Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
             @Override

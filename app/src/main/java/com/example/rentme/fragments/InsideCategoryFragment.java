@@ -63,7 +63,7 @@ public class InsideCategoryFragment extends Fragment{
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_inside_category, container, false);
-
+      
         backBtn = view.findViewById(R.id.back_to_last_page);
         listView = view.findViewById(R.id.products_list);
         CategoryTitle = view.findViewById(R.id.category_title);
