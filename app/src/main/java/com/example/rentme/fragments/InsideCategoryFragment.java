@@ -39,8 +39,9 @@ public class InsideCategoryFragment extends Fragment{
 
         //need to delete and change for data base/////////////////////////////////////////////////
         ArrayList<Product> items = new ArrayList<Product>();
-        Product p1 = new Product("מברגה חשמלית", "אביזרים", "מוצר מעולה עובד טוב","good" ,"8","99");
-        Product p2 = new Product("מברגה חשמלית", "אביזרים", "מוצר מעולה עובד טוב","good" ,"8","99");
+        Product p1 = new Product("במבה נוגט", "אביזרים", "מוצר מעולה עובד טוב","good" ,"8","day","https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/1575064589026.jpg?alt=media&token=1fccfb2a-15b3-4c66-957b-861657637f68");
+        Product p2 = new Product("במבה נוגט", "אביזרים", "מוצר מעולה עובד טוב",
+                "good" ,"8","day", "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/1575064589026.jpg?alt=media&token=1fccfb2a-15b3-4c66-957b-861657637f68");
         Product p3 = new Product("כיסאות", "אביזרים", "מאזור אשדוד","good","8","99");
         Product p4 = new Product("אחר", "אביזרים", "אחר אחר","goof","8","99");
         Product p5 = new Product("אחר 2", "אביזרים", "אחר אחר", "good","8","99");
