@@ -103,6 +103,8 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:background="#D6DCDF"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="3dp"
             android:orientation="vertical">
 
             <TextView
@@ -143,14 +145,13 @@
 
     <Button
         android:id="@+id/more_product_details"
-        android:layout_width="47dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginLeft="5dp"
-        android:layout_weight="0.3"
         android:background="@color/DarkBlue"
         android:drawableLeft="@drawable/ic_chevron_left_black_24dp"
-        android:text="עוד פרטים"
+        android:text="עוד"
         android:textColor="#fff"
         android:textStyle="bold" />
 
