@@ -38,11 +38,11 @@
             android:orientation="horizontal">
 
 
+
             <Button
                 android:id="@+id/change_name_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/circle_profile"
                 android:text="ערוך פרופיל"
@@ -52,17 +52,32 @@
                 android:textStyle="bold" />
 
             <Button
+                android:id="@+id/signOut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/circle_logout"
+                android:drawableRight="@drawable/ic_sentiment_very_dissatisfied_black_24dp"
+                android:text="התנתק"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <Button
                 android:id="@+id/backToMain"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_weight="0.4"
-                android:background="@drawable/money_border"
-                android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
+                android:background="@drawable/circle_search"
+                android:drawableRight="@drawable/ic_play_arrow_black_24dp"
                 android:padding="10dp"
                 android:text="דף הבית"
-                android:textColor="@color/DarkGray"
+                android:textColor="#fff"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -299,20 +314,6 @@
 
     </LinearLayout>
         </ScrollView>
-
-    <Button
-        android:id="@+id/signOut"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="25dp"
-        android:background="@color/lightGray"
-        android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
-        android:text="התנתק"
-        android:textColor="@color/DarkGray"
-        android:textStyle="bold"
-        android:visibility="gone" />
 </LinearLayout>
 
 

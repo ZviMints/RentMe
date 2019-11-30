@@ -1,10 +1,11 @@
 package com.example.rentme.model;
 
+import java.io.Serializable;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Product {
+public class Product implements Serializable {
     private String title;
     private String category;
     private String details;
@@ -29,6 +30,8 @@ public class Product {
         this.uploadTime = formatter.format(new Date());
         this.image = DEF_IMAGE;
     }
+
+    public Product() {}
 
     public Product(String title, String category, String details, String condition,String price, String rentPeriod, String image){
         this.title = title;
