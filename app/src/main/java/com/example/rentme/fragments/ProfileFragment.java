@@ -42,7 +42,6 @@ public class ProfileFragment extends Fragment {
     Button back;
 
     LinearLayout mainLinear;
-    LinearLayout informationLinear;
 
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
@@ -74,7 +73,6 @@ public class ProfileFragment extends Fragment {
         logoutBtn = view.findViewById(R.id.signOut);
         back = view.findViewById(R.id.backToMain);
         mainLinear = view.findViewById(R.id.mainLinear);
-        informationLinear = view.findViewById(R.id.InformationLinear);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
@@ -123,7 +121,6 @@ public class ProfileFragment extends Fragment {
 
         progressBar.setVisibility(View.GONE);
         mainLinear.setVisibility(LinearLayout.VISIBLE);
-        informationLinear.setVisibility(LinearLayout.VISIBLE);
         logoutBtn.setVisibility(LinearLayout.VISIBLE);
 
         String name = user.getName();
