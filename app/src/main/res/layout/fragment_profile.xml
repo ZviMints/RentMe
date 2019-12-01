@@ -16,6 +16,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:id="@+id/mainLinear"
+        android:visibility="gone"
         android:layout_height="wrap_content"
         android:layoutDirection="rtl"
         android:layout_gravity="center"
@@ -87,6 +88,8 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+
             android:stretchColumns="1">
 
             <TableRow>
@@ -257,6 +260,77 @@
             </TableRow>
         </TableLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/lightGray" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:padding="30dp"
+            android:layout_height="match_parent"
+            android:stretchColumns="1">
+
+            <TableRow>
+
+                <!-- I Published -->
+                <LinearLayout
+                    android:layout_gravity="right">
+
+                    <!--Title-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_height="wrap_content"
+                            android:textSize="17sp"
+                            android:textColor="@color/DarkBlue"
+                            android:text="מוצרים שלי"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/ic_storage_black_24dp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- I Liked -->
+                <LinearLayout
+                    android:layout_gravity="left">
+                    <!--Title-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/DarkBlue"
+                            android:textSize="17sp"
+                            android:text="מסומנים בכוכב"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/ic_star_black_24dp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </TableRow>
+
+        </TableLayout>
 
     </LinearLayout>
 

@@ -25,6 +25,7 @@
     <ScrollView
         android:layout_width="fill_parent"
         android:id="@+id/mainScrollView"
+        android:visibility="gone"
         android:layout_height="wrap_content">
 
     <!-- Menu -->
