@@ -185,11 +185,11 @@
 
         <Button
             android:id="@+id/more_product_details"
-            android:layout_width="55dp"
+            android:layout_width="57dp"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:background="@color/DarkBlue"
-            android:layout_marginRight="2dp"
+            android:paddingRight="10dp"
             android:drawableLeft="@drawable/ic_chevron_left_black_24dp"
             android:text="עוד"
             android:textColor="#fff"

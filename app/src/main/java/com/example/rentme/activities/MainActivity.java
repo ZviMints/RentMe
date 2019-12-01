@@ -18,6 +18,7 @@ import com.example.rentme.fragments.InItemFragment;
 import com.example.rentme.fragments.LoginFragment;
 import com.example.rentme.fragments.MainFragment;
 import com.example.rentme.fragments.ProfileFragment;
+import com.example.rentme.fragments.PublishFragment;
 import com.example.rentme.fragments.SearchFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements ProductListAdapte
 
     Button profileBtn;
     Button searchBtn;
+    Button publicBtn;
 
     MainFragment mainFragment;
     SearchFragment searchFragment;
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements ProductListAdapte
     LoginFragment loginFragment;
     InItemFragment inItemFragment;
     ImageView logo;
+    PublishFragment publishFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +55,26 @@ public class MainActivity extends AppCompatActivity implements ProductListAdapte
         firebaseUser = firebaseAuth.getCurrentUser();
 
         searchBtn = findViewById(R.id.Search);
+        publicBtn = findViewById(R.id.Publish);
         profileBtn = findViewById(R.id.Profile);
         logo = findViewById(R.id.logo);
+
+        publicBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(FirebaseAuth.getInstance().getCurrentUser() != null) {
+                    if (publishFragment == null)
+                        publishFragment = new PublishFragment();
+                    outerTransaction(publishFragment);
+                }
+                else {
+                    if (loginFragment == null)
+                        loginFragment = new LoginFragment();
+                    outerTransaction(loginFragment);
+                }
+            }
+        });
+
 
         logo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +84,14 @@ public class MainActivity extends AppCompatActivity implements ProductListAdapte
                 outerTransaction(mainFragment);
             }
         });
-        profileBtn.setText((firebaseUser != null) ? "פרופיל" : "התחבר/הרשם");
+
+        if(firebaseUser != null) {
+            profileBtn.setText("פרופיל");
+        }
+        else {
+            profileBtn.setText("התחבר/הרשם");
+
+        }
 
         profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,7 +143,13 @@ public class MainActivity extends AppCompatActivity implements ProductListAdapte
 
     public void setFirebaseUser(FirebaseUser firebaseUser) {
         this.firebaseUser = firebaseUser;
-        profileBtn.setText((firebaseUser != null) ? "פרופיל" : "התחבר/הרשם");
+        if(firebaseUser != null) {
+            profileBtn.setText("פרופיל");
+        }
+        else {
+            profileBtn.setText("התחבר/הרשם");
+
+        }
 
     }
 
