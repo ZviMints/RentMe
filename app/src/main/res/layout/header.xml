@@ -12,39 +12,48 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#fff"
-        >
+        android:background="#fff">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/logo"
+            android:clickable="true"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/logo" />
+
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="9dp"
             android:layout_height="wrap_content">
 
             <Button
                 android:id="@+id/Publish"
-                android:layout_marginLeft="5dp"
-                android:layout_width="75dp"
-                android:background="@drawable/circle_logout"
-                android:padding="4dp"
+                android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/circle_logout"
                 android:drawableTop="@drawable/ic_portrait_black_24dp"
+                android:padding="4dp"
                 android:text="פרסם"
                 android:textColor="#fff"></Button>
 
             <Button
                 android:id="@+id/Profile"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_width="100dp"
                 android:background="@drawable/circle_profile"
-                android:padding="4dp"
-                android:layout_height="50dp"
                 android:drawableTop="@drawable/ic_portrait_black_24dp"
+                android:padding="4dp"
                 android:text="פרופיל"
                 android:textColor="#fff"></Button>
 
             <Button
                 android:id="@+id/Search"
-                android:layout_width="75dp"
+                android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@drawable/circle_search"
                 android:drawableTop="@drawable/ic_search_black_24dp"
@@ -54,16 +63,6 @@
 
 
         </LinearLayout>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:layout_marginTop="5dp"
-            android:id="@+id/logo"
-            android:clickable="true"
-            android:layout_marginRight="5dp"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/logo" />
 
     </LinearLayout>
     <!-- Head -->
