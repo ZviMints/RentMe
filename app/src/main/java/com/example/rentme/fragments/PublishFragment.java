@@ -26,6 +26,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.rentme.R;
+import com.example.rentme.model.Configurations;
 import com.example.rentme.model.Product;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -49,6 +50,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -72,8 +74,10 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
     private ProgressBar progressBarOnLoad;
     private List<String> categoryNames = new ArrayList<>();
     private FirebaseDatabase firebaseDatabase;
-    private void gotCategoriesTitlesFromFireBase(List<String> categoryNames) {
-        this.categoryNames = categoryNames;
+    private void gotConfigurationsFromFireBase(Configurations conf) {
+        this.categoryNames = conf.getCategoriesOptions();
+        this.statusNames = conf.getStateOptions();
+        this.RentPeriodOptions = conf.getRentOptions();
         IntializeSpinners();
 
     }
@@ -112,9 +116,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
                 Price = priceLayer.getText().toString();
 
                 if ((productTitle.length() > 0) &&
-                        (selectedCategory != "בחר קטגורייה...") &&
                         (details.length() > 0) &&
-                        (selectedCondition != "בחר מצב...") &&
                         (Price.length() > 0)) {
 
                     DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -149,8 +151,8 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
     }
 
 
-    private String[] statusNames = {"בחר מצב...", "חדש", "כמו חדש", "משומש", "שבור"};  // Need to get data from Database
-    private String[] RentPeriodOptions = {"לשעה", "ליום", "לשבוע", "לחודש", "לשנה"};  // Need to get data from Database
+    private List<String> statusNames;
+    private List<String> RentPeriodOptions;
     public String selectedCategory = "קטגורייה...";
     public String selectedCondition = "בחר מצב...";
 
@@ -196,21 +198,21 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
 
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        // Initialize CategoriesTitles
-        if(this.categoryNames.isEmpty()) {
-            DatabaseReference ref = firebaseDatabase.getReference("Categories");
+        // Initialize Configurations
+        if(this.categoryNames.isEmpty()) { // Example category names
+            DatabaseReference ref = firebaseDatabase.getReference("Configurations").child("user_configurations").getRef();
             ref.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    List<String> categories = new ArrayList<>();
-                    for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                        String categoryName = ds.getKey();
-                        categories.add(categoryName);
-                    }
-                    gotCategoriesTitlesFromFireBase(categories);
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Configurations conf = dataSnapshot.getValue(Configurations.class);
+                    if (conf == null)
+                        throw new NoSuchElementException("Cant Retrieve Configurations from database");
+                    gotConfigurationsFromFireBase(conf);
                 }
+
                 @Override
-                public void onCancelled(DatabaseError databaseError) {}
+                public void onCancelled(DatabaseError databaseError) {
+                }
             });
         } else IntializeSpinners();
 
