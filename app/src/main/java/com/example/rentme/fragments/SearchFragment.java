@@ -71,7 +71,7 @@ public class SearchFragment extends Fragment  implements AdapterView.OnItemSelec
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         // Initialize Configurations
-        DatabaseReference ref = firebaseDatabase.getReference("Configurations").child("user_configurations").getRef();
+        DatabaseReference ref = firebaseDatabase.getReference("Configurations").child("configurations").getRef();
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

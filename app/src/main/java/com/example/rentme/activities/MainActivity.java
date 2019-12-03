@@ -1,5 +1,6 @@
 package com.example.rentme.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -20,8 +21,16 @@ import com.example.rentme.fragments.MainFragment;
 import com.example.rentme.fragments.ProfileFragment;
 import com.example.rentme.fragments.PublishFragment;
 import com.example.rentme.fragments.SearchFragment;
+import com.example.rentme.model.Configurations;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.NoSuchElementException;
 
 
 public class MainActivity extends AppCompatActivity implements ProductListAdapter.MoreDetailsButtonListener {
@@ -152,6 +161,4 @@ public class MainActivity extends AppCompatActivity implements ProductListAdapte
         }
 
     }
-
-
 }

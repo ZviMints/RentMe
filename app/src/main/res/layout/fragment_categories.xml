@@ -44,6 +44,58 @@
     </LinearLayout>
     <!-- End Footer -->
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/adminPanel"
+        android:visibility="gone"
+        android:background="#c0392b"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:id="@+id/admin_CategoriesManagement"
+            android:padding="10dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/Sky"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:text="נהל קטגוריות" />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:id="@+id/admin_UsersManagement"
+            android:padding="10dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/Sky"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:text="ניהול משתמשים" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:clickable="true"
+            android:id="@+id/admin_close"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:text="X" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:id="@+id/admin_open"
+        android:visibility="gone"
+        android:background="@color/DarkGreen"
+        android:layout_alignParentBottom="true"
+        android:text="ניהול"/>
+
 </LinearLayout>
 
 

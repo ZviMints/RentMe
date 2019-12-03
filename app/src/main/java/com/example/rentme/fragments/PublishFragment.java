@@ -200,7 +200,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         firebaseDatabase = FirebaseDatabase.getInstance();
         // Initialize Configurations
         if(this.categoryNames.isEmpty()) { // Example category names
-            DatabaseReference ref = firebaseDatabase.getReference("Configurations").child("user_configurations").getRef();
+            DatabaseReference ref = firebaseDatabase.getReference("Configurations").child("configurations").getRef();
             ref.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

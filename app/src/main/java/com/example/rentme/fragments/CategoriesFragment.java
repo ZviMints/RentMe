@@ -1,6 +1,7 @@
 package com.example.rentme.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,12 +11,17 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.rentme.R;
+import com.example.rentme.activities.MainActivity;
+import com.example.rentme.activities.admin.CategoriesManagement;
 import com.example.rentme.adapters.MainAdapter;
+import com.example.rentme.model.Configurations;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -38,6 +44,13 @@ public class CategoriesFragment extends Fragment {
     LoginFragment loginFragment;
 
     FirebaseDatabase firebaseDatabase;
+    Configurations conf;
+
+    LinearLayout adminPanel;
+    TextView admin_close;
+    Button admin_UsersManagement;
+    Button admin_CategoriesManagement;
+    Button admin_open;
 
     // Get From Database
     private List<String> titles = new ArrayList<>();
@@ -95,6 +108,13 @@ public class CategoriesFragment extends Fragment {
         gridView = view.findViewById(R.id.grid_view);
         footerLinear = view.findViewById(R.id.footerLinear);
 
+
+        adminPanel = view.findViewById(R.id.adminPanel);
+        admin_close = view.findViewById(R.id.admin_close);
+        admin_UsersManagement = view.findViewById(R.id.admin_UsersManagement);
+        admin_CategoriesManagement = view.findViewById(R.id.admin_CategoriesManagement);
+        admin_open = view.findViewById(R.id.admin_open);
+
         firebaseDatabase = FirebaseDatabase.getInstance();
 
         // Initialize Categories
@@ -115,8 +135,22 @@ public class CategoriesFragment extends Fragment {
             });
         } else IntializeGridView();
 
+        //Check For Admin User
+        DatabaseReference ref = firebaseDatabase.getReference("Configurations").child("configurations").getRef();
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Configurations conf = dataSnapshot.getValue(Configurations.class);
+                if (conf == null)
+                    throw new NoSuchElementException("Cant Retrieve Configurations from database");
+                checkAuth(conf);
+            }
 
-        // Buttons OnClick
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
         publishBtn = view.findViewById(R.id.publish);
         publishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,7 +168,49 @@ public class CategoriesFragment extends Fragment {
             }
         });
 
+        // Admin OnClick
+        admin_open.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                adminPanel.setVisibility(View.VISIBLE);
+                admin_open.setVisibility(View.GONE);
+            }
+        });
+        admin_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                adminPanel.setVisibility(View.GONE);
+                admin_open.setVisibility(View.VISIBLE);
+            }
+        });
+        admin_CategoriesManagement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), CategoriesManagement.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
+    }
+
+    public void checkAuth(Configurations conf) {
+        this.conf = conf;
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        if(firebaseAuth == null) return;
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        if(firebaseUser == null) return; // Can be removed
+        boolean admin = conf.getAdminsList().contains(firebaseUser.getEmail());
+        if(admin) {
+            admin_open.setVisibility(View.VISIBLE);
+
+        }
+        else {
+            adminPanel.setVisibility(View.GONE);
+            admin_open.setVisibility(View.GONE);
+
+        }
+
     }
 
     @Override

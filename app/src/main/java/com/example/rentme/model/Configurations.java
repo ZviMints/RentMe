@@ -11,13 +11,25 @@ public class Configurations implements Serializable {
     private List<String> rentOptions;
     private List<String> categoriesOptions;
     private List<String> rentTimes;
+    private List<String> adminsList;
 
-    public Configurations() {
-        this.areaNames = Arrays.asList("מרכז","דרום");
-        this.stateOptions = Arrays.asList("בחר מצב...", "חדש", "כמו חדש", "משומש", "שבור");
-        this.rentOptions = Arrays.asList("לשעה", "ליום", "לשבוע", "לחודש", "לשנה");
-        this.categoriesOptions = Arrays.asList("מוצרי חשמל","אביזרים","קטגורייה לדוגמא");
-        this.rentTimes = Arrays.asList("יום","שבוע");
+    public List<String> getAdminsList() {
+        return adminsList;
+    }
+
+    public void setAdminsList(List<String> adminsList) {
+        this.adminsList = adminsList;
+    }
+
+    public Configurations() {}
+
+    public Configurations(List<String> areaNames, List<String> stateOptions, List<String> rentOptions, List<String> categoriesOptions, List<String> rentTimes, List<String> adminsList) {
+        this.areaNames = areaNames;
+        this.stateOptions = stateOptions;
+        this.rentOptions = rentOptions;
+        this.categoriesOptions = categoriesOptions;
+        this.rentTimes = rentTimes;
+        this.adminsList = adminsList;
     }
 
     // Setters and Getters
