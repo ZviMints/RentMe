@@ -5,11 +5,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.rentme.R;
 import com.example.rentme.model.Product;
+import com.example.rentme.model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,16 +24,45 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class InItemFragment extends Fragment {
     Button backBtn;
     Product product;
+    User user;
     FirebaseDatabase firebaseDatabase;
+
+    TextView productTitle;
+    TextView categoryName;
+    TextView moreDetails;
+    TextView condition;
+    TextView price;
+    TextView nameOfTheSeller;
+    TextView cityOfTheSeller;
+    TextView uploadTime;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        product = (Product) getArguments().getSerializable("product");
+
+        // Initialize User//Toast.makeText(getContext(), userUid , Toast.LENGTH_SHORT).show();
+        String userUid = product.getUserUid();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference ref = firebaseDatabase.getReference("Users").child(userUid).getRef();
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                user = dataSnapshot.getValue(User.class);
+                if(user == null) throw new NoSuchElementException("Cant Retrieve user from database");
+                setTextByCurrProduct();
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,7 +70,19 @@ public class InItemFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_in_item, container, false);
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
+
+
+        productTitle =  view.findViewById(R.id.product_title);
+        categoryName = view.findViewById(R.id.category_name);
+        moreDetails = view.findViewById(R.id.info);
+        condition = view.findViewById(R.id.condition);
+        price = view.findViewById(R.id.price);
+        nameOfTheSeller = view.findViewById(R.id.nameOfTheSeller);
+        cityOfTheSeller = view.findViewById(R.id.cityOfTheSeller);
+        uploadTime = view.findViewById(R.id.upload_time);
+
+
+
 
         backBtn = view.findViewById(R.id.backToLastPage);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -46,5 +93,17 @@ public class InItemFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void setTextByCurrProduct() {
+        this.productTitle.setText(product.getTitle());
+        this.categoryName.setText(product.getCategory());
+        this.moreDetails.setText(product.getDetails());
+        this.condition.setText(product.getCondition());
+        this.price.setText(product.getPrice());
+        this.nameOfTheSeller.setText(user.getName());
+        this.cityOfTheSeller.setText(user.getArea());
+        this.uploadTime.setText(product.getUploadTime());
+
     }
 }
