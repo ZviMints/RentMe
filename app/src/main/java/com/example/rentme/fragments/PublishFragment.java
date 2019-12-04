@@ -28,11 +28,13 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.rentme.R;
 import com.example.rentme.model.Configurations;
 import com.example.rentme.model.Product;
+import com.example.rentme.model.User;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -70,10 +72,30 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
     private EditText priceLayer;
     public ImageView imageview;
 
+    private List<String> statusNames;
+    private List<String> RentPeriodOptions;
+    public String selectedCategory = "קטגורייה...";
+    public String selectedCondition = "בחר מצב...";
+
+    public String productTitle;
+    public String Price;
+    public String strDate;
+    public String userUid;
+    public String rentPeriod;
+    public String image;
+    public String details;
+    private long currentTime;
+    private String downloadUri = "";
+
+    private MainFragment mainFragment;
+    private final int RESULT_LOAD_IMG = 1;
+    private final int RESULT_CAPTURE_IMG = 0;
+
     private ScrollView mainScrollView;
     private ProgressBar progressBarOnLoad;
     private List<String> categoryNames = new ArrayList<>();
     private FirebaseDatabase firebaseDatabase;
+
     private void gotConfigurationsFromFireBase(Configurations conf) {
         this.categoryNames = conf.getCategoriesOptions();
         this.statusNames = conf.getStateOptions();
@@ -114,16 +136,15 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
                 productTitle = titleLayer.getText().toString();
                 details = detailsLayer.getText().toString();
                 Price = priceLayer.getText().toString();
+                Date date = new Date();
+                strDate = getDateByFormat(date);
+                userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
                 if ((productTitle.length() > 0) &&
                         (details.length() > 0) &&
                         (Price.length() > 0)) {
 
-                    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-                    Date date = new Date();
-                    String strDate = dateFormat.format(date);
-
-                    Product addedProduct = new Product(productTitle, selectedCategory, details, selectedCondition, Price, rentPeriod, strDate, downloadUri);
+                    Product addedProduct = new Product(productTitle, selectedCategory, details, selectedCondition, Price, rentPeriod, strDate, userUid,downloadUri);
                     FirebaseDatabase.getInstance().getReference("Categories")
                             .child(selectedCategory).child(date.getTime() + ": " + productTitle).setValue(addedProduct)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -151,22 +172,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
     }
 
 
-    private List<String> statusNames;
-    private List<String> RentPeriodOptions;
-    public String selectedCategory = "קטגורייה...";
-    public String selectedCondition = "בחר מצב...";
 
-    public String productTitle;
-    public String Price;
-    public String rentPeriod;
-    public String image;
-    public String details;
-    private long currentTime;
-    private String downloadUri = "";
-
-    private MainFragment mainFragment;
-    private final int RESULT_LOAD_IMG = 1;
-    private final int RESULT_CAPTURE_IMG = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -365,5 +371,9 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
             }
         });
         //end get the uploaded pic URL
+    }
+    private String getDateByFormat(Date date){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        return dateFormat.format(date);
     }
 }

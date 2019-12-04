@@ -13,6 +13,7 @@ import android.widget.ListView;
 import com.example.rentme.model.Product;
 import com.example.rentme.adapters.ProductListAdapter;
 import com.example.rentme.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -38,15 +39,15 @@ public class LastProductsListFragment extends Fragment {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         String strDate = dateFormat.format(date);
-
+        String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         ArrayList<Product> items3 = new ArrayList<Product>();
-        Product r1 = new Product("מברגה חשמלית", "מוצרי חשמל", "מוצר מעולה עובד טוב","good","8","שנה",strDate);
-        Product r2 = new Product("לפטופ", "גינה", "השכרה גם לשבוע","good","8","שנה",strDate);
-        Product r3 = new Product("כיסאות", "למטבח", "מאזור אשדוד","good","8","שנה",strDate);
-        Product r4 = new Product("אחר", "סקי", "אחר אחר","good","8","שנה",strDate);
-        Product r5 = new Product("אחר 2", "ספורט", "אחר אחר","good","8","שנה",strDate);
-        Product r6 = new Product("אחר", "מחנאות", "אחר אחר","good","8","שנה",strDate);
-        Product r7 = new Product("אחר 2", "פנאי", "אחר אחר","good","8","שנה",strDate);
+        Product r1 = new Product("מברגה חשמלית", "מוצרי חשמל", "מוצר מעולה עובד טוב","good","8","שנה",strDate,userUid);
+        Product r2 = new Product("לפטופ", "גינה", "השכרה גם לשבוע","good","8","שנה",strDate,userUid);
+        Product r3 = new Product("כיסאות", "למטבח", "מאזור אשדוד","good","8","שנה",strDate,userUid);
+        Product r4 = new Product("אחר", "סקי", "אחר אחר","good","8","שנה",strDate,userUid);
+        Product r5 = new Product("אחר 2", "ספורט", "אחר אחר","good","8","שנה",strDate,userUid);
+        Product r6 = new Product("אחר", "מחנאות", "אחר אחר","good","8","שנה",strDate,userUid);
+        Product r7 = new Product("אחר 2", "פנאי", "אחר אחר","good","8","שנה",strDate,userUid);
         items3.add(r1);
         items3.add(r2);
         items3.add(r3);
