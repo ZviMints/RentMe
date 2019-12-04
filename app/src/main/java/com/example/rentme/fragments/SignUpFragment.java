@@ -28,12 +28,10 @@ public class SignUpFragment extends Fragment {
     FirebaseAuth firebaseAuth;
     EditText email;
     EditText password;
-
     EditText area;
     EditText name;
     EditText lastname;
     EditText number;
-
 
     ProgressBar progressBar;
     LoginFragment loginFragment;

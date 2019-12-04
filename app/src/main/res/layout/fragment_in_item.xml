@@ -34,12 +34,12 @@
 
 
         <TextView
+            android:id="@+id/product_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="5dp"
             android:textColor="#000"
-            android:text="כותרת של המוצר"
             android:textDirection="rtl"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -70,8 +70,7 @@
                     <TextView
                         android:id="@+id/category_name"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="מוצרי בית" />
+                        android:layout_height="wrap_content"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -102,9 +101,9 @@
                         android:id="@+id/info"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="טקסט טקסט טקסט טקסט טקסט טקסט טקסט טקסט טקסט טקסט טקסט
-                                  טקסט טקסט טקסט טקסט טקסט טקסט טקסט טקסט טקסט טקסט טקסט
-                                  טקסט טקסט טקסט טקסט טקסט טקסט טקסט טקסט טקסט טקסט טקסט" />
+                        android:layoutDirection="rtl"
+                        android:layout_gravity="right"/>
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -120,8 +119,7 @@
                         <TextView
                             android:id="@+id/condition"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="חדש"/>
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -185,8 +183,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:textSize="25sp"
-            android:layout_marginLeft="5dp"
-            android:text="50" />
+            android:layout_marginLeft="5dp"/>
 
     </LinearLayout>
 
@@ -207,16 +204,14 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:layout_marginRight="10dp"
-            android:layout_gravity="left"
-            android:text="06/11/2017 12:26:18" />
+            android:layout_gravity="left" />
 
         <TextView
             android:id="@+id/cityOfTheSeller"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textColor="#0097e6"
-            android:text="אשדוד" />
+            android:textColor="#0097e6" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -230,8 +225,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textColor="#0097e6"
-            android:text="צבי מינץ" />
+            android:textColor="#0097e6" />
 
 
         <TextView

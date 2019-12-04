@@ -22,6 +22,7 @@ import com.example.rentme.fragments.ProfileFragment;
 import com.example.rentme.fragments.PublishFragment;
 import com.example.rentme.fragments.SearchFragment;
 import com.example.rentme.model.Configurations;
+import com.example.rentme.model.Product;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -133,9 +134,13 @@ public class MainActivity extends AppCompatActivity implements ProductListAdapte
     }
 
     @Override
-    public void showMoreDetails() {
+    public void showMoreDetails(Product product) {
         if (inItemFragment == null)
             inItemFragment = new InItemFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("product",product);
+        inItemFragment.setArguments(bundle);
         outerTransaction(inItemFragment);
     }
 

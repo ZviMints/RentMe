@@ -37,7 +37,7 @@ import java.util.Date;
 public class ProductListAdapter extends BaseAdapter {
 
     public interface MoreDetailsButtonListener{
-        void showMoreDetails();
+        void showMoreDetails(Product product);
     }
 
     private MoreDetailsButtonListener listener;
@@ -76,6 +76,7 @@ public class ProductListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Holder holder;// use holder
+        final Product currProduct = items.get(position);
         if (convertView == null) {
             convertView = LayoutInflater.from(this.context).inflate(R.layout.product_row, parent, false);
 
@@ -90,14 +91,14 @@ public class ProductListAdapter extends BaseAdapter {
         } else {
             holder = (Holder) convertView.getTag();
         }
-        holder.title.setText(items.get(position).getTitle());
-        holder.category.setText(items.get(position).getCategory());
-        holder.details.setText(items.get(position).getDetails());
-        holder.price.setText(items.get(position).getPrice());
-        holder.productPriceTime.setText(items.get(position).getRentPeriod());
+        holder.title.setText(currProduct.getTitle());
+        holder.category.setText(currProduct.getCategory());
+        holder.details.setText(currProduct.getDetails());
+        holder.price.setText(currProduct.getPrice());
+        holder.productPriceTime.setText(currProduct.getRentPeriod());
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        String strDate = (items.get(position).getUploadTime());
+        String strDate = (currProduct.getUploadTime());
         Date uploadDate = null;
         try {
             uploadDate = dateFormat.parse(strDate);
@@ -109,41 +110,17 @@ public class ProductListAdapter extends BaseAdapter {
 
         holder.publishTime.setText(diff / (1000 * 60 * 60 * 24)+"");
         //holder.image.setImageResource(R.drawable.chairs);
-        updateImageFromUrl(items.get(position), holder.image);
+        updateImageFromUrl(currProduct, holder.image);
 
         holder.MoreDetailsBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                listener.showMoreDetails();
+                listener.showMoreDetails(currProduct);
             }
         });
 
         return convertView;
     }
-
-//    private void updateImageFromUrl(Product currProduct){
-//
-//        FirebaseStorage storage = FirebaseStorage.getInstance();
-//        StorageReference httpsReference = storage.getReferenceFromUrl(currProduct.getImage());
-//
-//
-//        final long ONE_MEGABYTE = 1024 * 1024;
-//        httpsReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-//            @Override
-//            public void onSuccess(byte[] bytes) {
-//                Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-//
-//                holder.image.setImageBitmap(Bitmap.createScaledBitmap(bmp, holder.image.getWidth(),
-//                        holder.image.getHeight(), false));
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception exception) {
-//                // Handle any errors
-//            }
-//        });
-//
-//    }
 
     private void updateImageFromUrl(Product currProduct,final ImageView image){
 //        storageReference = storage.getReference().child("images/").child(user.getUid());
