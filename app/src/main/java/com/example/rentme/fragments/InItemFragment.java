@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.rentme.R;
 import com.example.rentme.adapters.ProductListAdapter;
+import com.example.rentme.adapters.commentAdapter;
 import com.example.rentme.model.Product;
 import com.example.rentme.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -51,6 +53,7 @@ public class InItemFragment extends Fragment {
     TextView cityOfTheSeller;
     TextView uploadTime;
     ImageView productPicture;
+    ListView commentsListView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,8 +84,6 @@ public class InItemFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_in_item, container, false);
 
-
-
         productTitle =  view.findViewById(R.id.product_title);
         categoryName = view.findViewById(R.id.category_name);
         moreDetails = view.findViewById(R.id.info);
@@ -92,7 +93,7 @@ public class InItemFragment extends Fragment {
         cityOfTheSeller = view.findViewById(R.id.cityOfTheSeller);
         uploadTime = view.findViewById(R.id.upload_time);
         productPicture = view.findViewById(R.id.product_picture);
-
+        commentsListView = view.findViewById(R.id.comments_list_view);
 
 
         backBtn = view.findViewById(R.id.backToLastPage);
@@ -115,7 +116,11 @@ public class InItemFragment extends Fragment {
         this.nameOfTheSeller.setText(user.getName());
         this.cityOfTheSeller.setText(user.getArea());
         this.uploadTime.setText(product.getUploadTime());
-        updateImageFromUrl(product, productPicture);
+        updateImageFromUrl(product, this.productPicture);
+
+        commentAdapter adapter;
+        adapter = new commentAdapter(this.product.getComments(), getContext());
+        commentsListView.setAdapter(adapter);
 
     }
 
