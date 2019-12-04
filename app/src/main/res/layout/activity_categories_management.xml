@@ -8,12 +8,30 @@
     tools:context=".activities.admin.CategoriesManagement"
     android:orientation="vertical">
 
+
+
     <ImageView
         android:layout_width="match_parent"
         android:padding="10dp"
         android:layout_height="70dp"
         android:src="@drawable/quickadminpanellogo"
         android:background="@color/DarkGreen"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000" />
+    <Button
+        android:id="@+id/backMain"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/lightGray"
+        android:layout_gravity="bottom"
+        android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
+        android:text=" חזור לדף הראשי"
+        android:textColor="@color/DarkGray"
+        android:textStyle="bold" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -132,16 +150,6 @@
         android:visibility="gone"
         android:layout_margin="35dp" />
 
-    <Button
-        android:id="@+id/backMain"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/lightGray"
-        android:layout_gravity="bottom"
-        android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
-        android:text=" חזור לדף הראשי"
-        android:textColor="@color/DarkGray"
-        android:textStyle="bold" />
 
 
 
