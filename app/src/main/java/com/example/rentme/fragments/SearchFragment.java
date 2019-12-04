@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-public class SearchFragment extends Fragment  implements AdapterView.OnItemSelectedListener {
+public class SearchFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     Button backBtn;
 
     private List<String> categoryNames = new ArrayList<>();

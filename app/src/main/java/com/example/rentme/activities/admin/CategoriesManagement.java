@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,7 +33,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-public class CategoriesManagement extends AppCompatActivity {
+public class CategoriesManagement extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     Button back;
     ListView categoriesListView;
     EditText category_form_add;
@@ -42,6 +43,9 @@ public class CategoriesManagement extends AppCompatActivity {
     Button removeFromConf;
     Button removeFromCategories;
     Spinner remove_from_categories_spinner;
+
+    String selectedCategory;
+    String selectedConf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,6 +148,8 @@ public class CategoriesManagement extends AppCompatActivity {
                                 progressBar.setVisibility(View.GONE);
                                 category_form_add.setText("");
                                 Toast.makeText(CategoriesManagement.this,   "קטגורייה " + input + " נוספה לקונפגרציות", Toast.LENGTH_SHORT).show();
+                                finish();
+                                startActivity(getIntent());
 
                             }
 
@@ -178,10 +184,23 @@ public class CategoriesManagement extends AppCompatActivity {
 
     private void gotCategories(List<String> categories) {
         //categories spinner
+        remove_from_categories_spinner.setOnItemSelectedListener(this);
         ArrayAdapter aaCat = new ArrayAdapter(this, android.R.layout.simple_spinner_item, categories);
         aaCat.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         remove_from_categories_spinner.setAdapter(aaCat);
         //categories spinner
+
+        removeFromCategories.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
+                FirebaseDatabase.getInstance().getReference("Categories").child(selectedCategory).removeValue();
+                progressBar.setVisibility(View.GONE);
+                finish();
+                startActivity(getIntent());
+
+            }
+        });
     }
 
 
@@ -204,10 +223,55 @@ public class CategoriesManagement extends AppCompatActivity {
 
     private void gotConfigurations(Configurations conf) {
         //conf spinner
+        remove_from_conf_spinner.setOnItemSelectedListener(this);
         ArrayAdapter aaConf = new ArrayAdapter(this, android.R.layout.simple_spinner_item, conf.getCategoriesOptions());
         aaConf.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         remove_from_conf_spinner.setAdapter(aaConf);
         //conf spinner
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        selectedCategory = remove_from_categories_spinner.getItemAtPosition(remove_from_categories_spinner.getSelectedItemPosition()).toString();
+        selectedConf = remove_from_conf_spinner.getItemAtPosition(remove_from_conf_spinner.getSelectedItemPosition()).toString();
+
+        removeFromConf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
+                final FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference ref = firebaseDatabase.getReference("Configurations").child("configurations").getRef();
+                ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        Configurations conf = dataSnapshot.getValue(Configurations.class);
+                        if (conf == null)
+                            throw new NoSuchElementException("Cant Retrieve Configurations from database");
+
+                        List<String> newCategoriesOptions = conf.getCategoriesOptions();
+                        int index = newCategoriesOptions.indexOf(selectedConf);
+                        newCategoriesOptions.remove(index);
+                        Configurations newConf = new Configurations(conf, newCategoriesOptions);
+                        firebaseDatabase.getReference("Configurations").child("configurations").removeValue();
+                        firebaseDatabase.getReference("Configurations").child("configurations").setValue(newConf);
+                        progressBar.setVisibility(View.GONE);
+                        finish();
+                        startActivity(getIntent());
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
+            }
+        });
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
     private class StableArrayAdapter extends ArrayAdapter<String> {
@@ -234,6 +298,7 @@ public class CategoriesManagement extends AppCompatActivity {
         }
 
     }
+
 
 }
 
