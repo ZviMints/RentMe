@@ -29,6 +29,7 @@ public class Product implements Serializable {
         this.uploadTime = uploadTime;
         this.userUid = userUid;
         this.comments = new ArrayList<String>();
+        this.comments.add("היה ראשון לתת תגובה על מוצר זה!");
     }
 
     public Product() {}
@@ -44,6 +45,7 @@ public class Product implements Serializable {
         this.uploadTime = uploadTime;
         this.userUid = userUid;
         this.comments = new ArrayList<String>();
+        this.comments.add("היה ראשון לתת תגובה על מוצר זה!");
 
     }
 
