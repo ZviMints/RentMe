@@ -1,6 +1,7 @@
 package com.example.rentme.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Product implements Serializable {
     private String title;
@@ -12,6 +13,7 @@ public class Product implements Serializable {
     private String rentPeriod;
     private String uploadTime;
     private String userUid;
+    private ArrayList<String> comments;
 
     private final String DEF_IMAGE = "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/1575107154720.jpg?alt=media&token=349bb82d-a50f-4736-b5a0-6470031bad0e";
 
@@ -26,6 +28,7 @@ public class Product implements Serializable {
         this.image = DEF_IMAGE;
         this.uploadTime = uploadTime;
         this.userUid = userUid;
+        this.comments = new ArrayList<String>();
     }
 
     public Product() {}
@@ -40,6 +43,7 @@ public class Product implements Serializable {
         this.price = price;
         this.uploadTime = uploadTime;
         this.userUid = userUid;
+        this.comments = new ArrayList<String>();
 
     }
 
@@ -77,5 +81,9 @@ public class Product implements Serializable {
 
     public String getUserUid() {
         return userUid;
+    }
+
+    public ArrayList<String> getComments() {
+        return comments;
     }
 }
