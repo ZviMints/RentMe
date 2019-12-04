@@ -123,7 +123,7 @@ public class ProductListAdapter extends BaseAdapter {
     }
 
     private void updateImageFromUrl(Product currProduct,final ImageView image){
-//        storageReference = storage.getReference().child("images/").child(user.getUid());
+
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference httpsReference = storage.getReferenceFromUrl(currProduct.getImage());
         httpsReference.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
