@@ -23,6 +23,15 @@ public class Configurations implements Serializable {
 
     public Configurations() {}
 
+    public Configurations(Configurations conf, List<String> newCategoriesOptions) {
+        this.areaNames = conf.getAreaNames();
+        this.stateOptions = conf.getStateOptions();
+        this.rentOptions = conf.getRentOptions();
+        this.categoriesOptions = newCategoriesOptions;
+        this.rentTimes = conf.getRentTimes();
+        this.adminsList = conf.getAdminsList();
+    }
+
     public Configurations(List<String> areaNames, List<String> stateOptions, List<String> rentOptions, List<String> categoriesOptions, List<String> rentTimes, List<String> adminsList) {
         this.areaNames = areaNames;
         this.stateOptions = stateOptions;
