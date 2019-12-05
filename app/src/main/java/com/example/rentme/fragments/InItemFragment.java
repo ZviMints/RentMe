@@ -1,5 +1,6 @@
 package com.example.rentme.fragments;
 
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -20,14 +20,14 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.rentme.R;
-import com.example.rentme.adapters.ProductListAdapter;
 import com.example.rentme.adapters.commentAdapter;
+import com.example.rentme.model.Favorites;
 import com.example.rentme.model.Product;
 import com.example.rentme.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,12 +37,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 public class InItemFragment extends Fragment {
@@ -65,6 +60,7 @@ public class InItemFragment extends Fragment {
     ListView commentsListView;
     Button sendCommentBtn;
     Button makeReservationBtn;
+    Button addToFavoritesBtm;
     EditText writeComment;
     ProgressBar progressBar_sendComment;
 
@@ -117,7 +113,7 @@ public class InItemFragment extends Fragment {
         backBtn = view.findViewById(R.id.backToLastPage);
         makeReservationBtn = view.findViewById(R.id.make_reservation);
         renterDetails = view.findViewById(R.id.renter_details);
-
+        addToFavoritesBtm = view.findViewById(R.id.addToFavorites);
 
         sendCommentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,18 +131,18 @@ public class InItemFragment extends Fragment {
                         newCommentArrayList = new ArrayList<String>();
                         newCommentArrayList.add(newComment);
                     }
-
+                    //upload the new comment
                     String productFather = product.getUtc() + ": " + product.getTitle();
                     FirebaseDatabase.getInstance().getReference("Categories")
                             .child(product.getCategory()).child(productFather).child("comments").setValue(newCommentArrayList)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
+                                    if (task.isSuccessful()) {//successful uploading
                                         progressBar_sendComment.setVisibility(View.GONE);
                                         writeComment.setText("");
                                         Toast.makeText(getContext(), "העלאת התגובה בוצעה בהצלחה", Toast.LENGTH_SHORT).show();
-                                        //update the comments
+                                        //download the updated comments
                                         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Categories").child(product.getCategory()).
                                                 child(product.getUtc()+ ": " + product.getTitle()).child("comments").getRef();
                                         ref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -155,7 +151,6 @@ public class InItemFragment extends Fragment {
                                                 GenericTypeIndicator<ArrayList<String>> tmp = new GenericTypeIndicator<ArrayList<String>>() {};
                                                 ArrayList<String> updatedComments = dataSnapshot.getValue(tmp);
 
-                                               // ArrayList<String> updatedComments = dataSnapshot.getValue(ArrayList.class);
                                                 if(updatedComments == null) throw new NoSuchElementException("Cant Retrieve comments ArrayList from database");
                                                 commentAdapter adapter;
                                                 adapter = new commentAdapter(updatedComments, getContext());
@@ -164,7 +159,7 @@ public class InItemFragment extends Fragment {
                                             @Override
                                             public void onCancelled(DatabaseError databaseError) {}
                                         });
-                                        //end update commits
+                                        //end download the updated comments
                                     } else {
                                         progressBar_sendComment.setVisibility(View.GONE);
                                         Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
@@ -190,6 +185,40 @@ public class InItemFragment extends Fragment {
             }
         });
 
+        addToFavoritesBtm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Drawable img = getContext().getResources().getDrawable( R.drawable.ic_star_yellow_24dp );
+                addToFavoritesBtm.setCompoundDrawablesWithIntrinsicBounds( null, null, img, null);
+
+                String productFather = product.getUtc() + ": " + product.getTitle();
+               final  Favorites newFavorite = new Favorites(productFather,product.getCategory());
+                //download the favorites arrayList
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users")
+                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            .child("Favorites").getRef();
+                    ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                              ArrayList<Favorites> favorites = new ArrayList<Favorites>();
+                              favorites = dataSnapshot.getValue(ArrayList.class);
+
+                            if (favorites == null) {
+                                favorites = new ArrayList<Favorites>();
+                            }
+                            favorites.add(newFavorite);
+                            //upload the new favorites arrayList
+                            updateFavorites(favorites);
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                        }
+                    });
+
+            }
+        });
+
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -204,6 +233,23 @@ public class InItemFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void updateFavorites(ArrayList<Favorites> favorites) {
+        //upload the new favorite
+        FirebaseDatabase.getInstance().getReference("Users")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Favorites")
+                .setValue(favorites)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {//successful uploading
+                            Toast.makeText(getContext(), "נוסף למועדפים שלך" + product.getTitle(), Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
     }
 
     private void setTextByCurrProduct() {
