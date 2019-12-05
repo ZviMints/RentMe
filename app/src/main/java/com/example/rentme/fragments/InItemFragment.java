@@ -60,9 +60,11 @@ public class InItemFragment extends Fragment {
     TextView nameOfTheSeller;
     TextView cityOfTheSeller;
     TextView uploadTime;
+    TextView renterDetails;
     ImageView productPicture;
     ListView commentsListView;
     Button sendCommentBtn;
+    Button makeReservationBtn;
     EditText writeComment;
     ProgressBar progressBar_sendComment;
 
@@ -83,7 +85,7 @@ public class InItemFragment extends Fragment {
         product = (Product) getArguments().getSerializable("product");
 
         // Initialize User//Toast.makeText(getContext(), userUid , Toast.LENGTH_SHORT).show();
-        String userUid = product.getUserUid();
+        final String userUid = product.getUserUid();
         firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference ref = firebaseDatabase.getReference("Users").child(userUid).getRef();
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -112,6 +114,9 @@ public class InItemFragment extends Fragment {
         sendCommentBtn = view.findViewById(R.id.sendBtn);
         writeComment = view.findViewById(R.id.writeComment);
         progressBar_sendComment = view.findViewById(R.id.progressBar_send_comment);
+        backBtn = view.findViewById(R.id.backToLastPage);
+        makeReservationBtn = view.findViewById(R.id.make_reservation);
+        renterDetails = view.findViewById(R.id.renter_details);
 
 
         sendCommentBtn.setOnClickListener(new View.OnClickListener() {
@@ -166,9 +171,6 @@ public class InItemFragment extends Fragment {
                                     }
                                 }
                             });
-
-
-
                 }
                 else {
                     Toast.makeText(getContext(),"תגובה לא חוקית", Toast.LENGTH_LONG).show();
@@ -178,7 +180,17 @@ public class InItemFragment extends Fragment {
             }
         });
 
-        backBtn = view.findViewById(R.id.backToLastPage);
+        makeReservationBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                makeReservationBtn.setVisibility(View.GONE);
+                renterDetails.setVisibility(View.VISIBLE);
+                renterDetails.setText(user.getName() + " " +user.getLastname()
+                        +" " +user.getEmail()+ " "+ user.getNumber());
+            }
+        });
+
+
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
