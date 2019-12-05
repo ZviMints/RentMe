@@ -2,13 +2,13 @@ package com.example.rentme.model;
 
 import java.io.Serializable;
 
-public class Favorites implements Serializable {
+public class productKey implements Serializable {
     private String father;
     private String category;
 
-    public Favorites(){};
+    public productKey(){};
 
-    public Favorites(String father, String category) {
+    public productKey(String father, String category) {
         this.father = father;
         this.category = category;
     }

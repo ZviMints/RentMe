@@ -27,9 +27,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.rentme.R;
 import com.example.rentme.model.Configurations;
-import com.example.rentme.model.Favorites;
+import com.example.rentme.model.productKey;
 import com.example.rentme.model.Product;
-import com.example.rentme.model.User;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -379,7 +378,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
     }
 
     private void upload2LasrProducts(final Date date, final Product addedProduct){
-        Favorites productDir = new Favorites(addedProduct.getFatherId(),addedProduct.getCategory()) ;
+        productKey productDir = new productKey(addedProduct.getFatherId(),addedProduct.getCategory()) ;
         FirebaseDatabase.getInstance().getReference("Last Products")
                 .child(addedProduct.getFatherId()).setValue(productDir)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -397,7 +396,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
     }
 
     private void upload2Renter(Date date, Product addedProduct){
-        Favorites productDir = new Favorites(addedProduct.getFatherId(),addedProduct.getCategory()) ;
+        productKey productDir = new productKey(addedProduct.getFatherId(),addedProduct.getCategory()) ;
         FirebaseDatabase.getInstance().getReference("Users")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .child("myProducts").child(addedProduct.getUtc()+": "+addedProduct.getTitle()).setValue(productDir)

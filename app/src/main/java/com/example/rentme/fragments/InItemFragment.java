@@ -15,7 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -23,7 +22,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.rentme.R;
 import com.example.rentme.adapters.commentAdapter;
-import com.example.rentme.model.Favorites;
+import com.example.rentme.model.productKey;
 import com.example.rentme.model.Product;
 import com.example.rentme.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -39,12 +38,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.NoSuchElementException;
-import java.util.Set;
 
 public class InItemFragment extends Fragment {
     InsideCategoryFragment insideCategoryFragment;
@@ -196,7 +191,7 @@ public class InItemFragment extends Fragment {
                 addToFavoritesBtm.setCompoundDrawablesWithIntrinsicBounds( null, null, img, null);
 
                String productFather = product.getUtc() + ": " + product.getTitle();
-               Favorites newFavorite = new Favorites(productFather,product.getCategory());
+               productKey newFavorite = new productKey(productFather,product.getCategory());
                             updateFavorites(newFavorite);
                         }
                     });
@@ -217,7 +212,7 @@ public class InItemFragment extends Fragment {
         return view;
     }
 
-    private void updateFavorites(Favorites favorites) {
+    private void updateFavorites(productKey favorites) {
         //upload the new favorite
         FirebaseDatabase.getInstance().getReference("Users")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Favorites")
@@ -226,7 +221,7 @@ public class InItemFragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {//successful uploading
-                            Toast.makeText(getContext(), "נוסף למועדפים שלך" + product.getTitle(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), " נוסף למועדפים שלך" + product.getTitle(), Toast.LENGTH_LONG).show();
                         } else {
                             Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
