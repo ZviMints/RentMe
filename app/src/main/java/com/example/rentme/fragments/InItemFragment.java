@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -38,7 +39,12 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 public class InItemFragment extends Fragment {
     InsideCategoryFragment insideCategoryFragment;
@@ -191,39 +197,42 @@ public class InItemFragment extends Fragment {
                 Drawable img = getContext().getResources().getDrawable( R.drawable.ic_star_yellow_24dp );
                 addToFavoritesBtm.setCompoundDrawablesWithIntrinsicBounds( null, null, img, null);
 
-                String productFather = product.getUtc() + ": " + product.getTitle();
-               final  Favorites newFavorite = new Favorites(productFather,product.getCategory());
-                //download the favorites arrayList
-                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users")
-                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                            .child("Favorites").getRef();
-                    ref.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            ArrayList<Favorites> favorites = new ArrayList<>();
-                            for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                                Favorites favorite = ds.getValue(Favorites.class);
-                                favorites.add(favorite);
-                            }
-
-//                              ArrayList<Favorites> favorites = new ArrayList<Favorites>();
-//                              favorites = dataSnapshot.getValue(ArrayList.class);
-
-                            if (favorites == null) {
-                                favorites = new ArrayList<Favorites>();
-                            }
-                            favorites.add(newFavorite);
+               String productFather = product.getUtc() + ": " + product.getTitle();
+               Favorites newFavorite = new Favorites(productFather,product.getCategory());
+//                //download the favorites arrayList
+//                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users")
+//                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+//                            .child("Favorites").getRef();
+//                    ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                            Set<Favorites> favorites = new HashSet<Favorites>() {};
+//                            try {
+//                                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+//                                    Favorites favorite = ds.getValue(Favorites.class);
+//                                    favorites.add(favorite);
+//                                }
+//                            }catch(Exception e){
+//                                favorites = new HashSet<Favorites>();
+//                            }
+////                              ArrayList<Favorites> favorites = new ArrayList<Favorites>();
+////                              favorites = dataSnapshot.getValue(ArrayList.class);
+//
+////                            if (favorites == null) {
+////                                favorites = new HashSet<Favorites>();
+////                            }
+//                            favorites.add(newFavorite);
                             //upload the new favorites arrayList
-                            updateFavorites(favorites);
+                            updateFavorites(newFavorite);
                         }
 
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                        }
+//                        @Override
+//                        public void onCancelled(DatabaseError databaseError) {
+//                        }
                     });
+//}
 
-            }
-        });
+//        });
 
 
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -241,11 +250,11 @@ public class InItemFragment extends Fragment {
         return view;
     }
 
-    private void updateFavorites(ArrayList<Favorites> favorites) {
+    private void updateFavorites(Favorites favorites) {
         //upload the new favorite
         FirebaseDatabase.getInstance().getReference("Users")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Favorites")
-                .setValue(favorites)
+                .child(new Date().getTime()+"").setValue(favorites)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
