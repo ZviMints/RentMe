@@ -50,7 +50,7 @@ public class commentAdapter extends BaseAdapter {
             Point size = new Point();
             display.getSize(size);
 
-            convertView.setLayoutParams(new ViewGroup.LayoutParams(size.x, size.y/7));
+            convertView.setLayoutParams(new ViewGroup.LayoutParams(size.x, size.y/14));
             holder = new Holder(convertView);
             convertView.setTag(holder);
         } else {
