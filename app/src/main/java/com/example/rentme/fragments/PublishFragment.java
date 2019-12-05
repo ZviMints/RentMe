@@ -27,6 +27,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.rentme.R;
 import com.example.rentme.model.Configurations;
+import com.example.rentme.model.Favorites;
 import com.example.rentme.model.Product;
 import com.example.rentme.model.User;
 import com.google.android.gms.tasks.Continuation;
@@ -377,9 +378,28 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         return dateFormat.format(date);
     }
 
-    private void upload2LasrProducts(Date date, Product addedProduct){
+    private void upload2LasrProducts(final Date date, final Product addedProduct){
         FirebaseDatabase.getInstance().getReference("Last Products")
                 .child(date.getTime() + ": " + productTitle).setValue(addedProduct)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            upload2Renter(date, addedProduct);
+                        } else {
+                            progressBar_afterPublish.setVisibility(View.GONE);
+                            Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+    }
+
+    private void upload2Renter(Date date, Product addedProduct){
+        Favorites productDir = new Favorites(addedProduct.getUtc()+": "+addedProduct.getTitle(),addedProduct.getCategory()) ;
+        FirebaseDatabase.getInstance().getReference("Users")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .child("myProducts").child(addedProduct.getUtc()+": "+addedProduct.getTitle()).setValue(productDir)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -397,4 +417,5 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
                 });
 
     }
+
 }

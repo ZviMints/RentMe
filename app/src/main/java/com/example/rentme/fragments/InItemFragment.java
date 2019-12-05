@@ -130,8 +130,6 @@ public class InItemFragment extends Fragment {
                     ArrayList<String> newCommentArrayList;
                     try {
                         newCommentArrayList = new ArrayList<String>(product.getComments());
-//                    if (newCommentArrayList.get(0)== "0")
-//                        newCommentArrayList.clear();
                         newCommentArrayList.add(newComment);
                     }catch (Exception e){
                         newCommentArrayList = new ArrayList<String>();
@@ -199,40 +197,9 @@ public class InItemFragment extends Fragment {
 
                String productFather = product.getUtc() + ": " + product.getTitle();
                Favorites newFavorite = new Favorites(productFather,product.getCategory());
-//                //download the favorites arrayList
-//                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users")
-//                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-//                            .child("Favorites").getRef();
-//                    ref.addListenerForSingleValueEvent(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                            Set<Favorites> favorites = new HashSet<Favorites>() {};
-//                            try {
-//                                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-//                                    Favorites favorite = ds.getValue(Favorites.class);
-//                                    favorites.add(favorite);
-//                                }
-//                            }catch(Exception e){
-//                                favorites = new HashSet<Favorites>();
-//                            }
-////                              ArrayList<Favorites> favorites = new ArrayList<Favorites>();
-////                              favorites = dataSnapshot.getValue(ArrayList.class);
-//
-////                            if (favorites == null) {
-////                                favorites = new HashSet<Favorites>();
-////                            }
-//                            favorites.add(newFavorite);
-                            //upload the new favorites arrayList
                             updateFavorites(newFavorite);
                         }
-
-//                        @Override
-//                        public void onCancelled(DatabaseError databaseError) {
-//                        }
                     });
-//}
-
-//        });
 
 
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -321,15 +288,4 @@ public class InItemFragment extends Fragment {
         transaction.commit();
     }
 
-//    private String dateFormat2UtcTime(String productDateFormat){
-//        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-//        String strDate = (productDateFormat);
-//        Date uploadDate = null;
-//        try {
-//            uploadDate = dateFormat.parse(strDate);
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//        return uploadDate.getTime()+"";
-//    }
 }
