@@ -141,17 +141,7 @@
                     android:layout_width="150dp"
                     android:layout_height="130dp"/>
 
-                <Button
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:background="@color/DarkGray"
-                    android:drawableLeft="@drawable/ic_photo_black_24dp"
-                    android:gravity="start"
-                    android:padding="10dp"
-                    android:text="עוד תמונות"
-                    android:textAlignment="center"
-                    android:textColor="#fff"></Button>
+
             </LinearLayout>
 
         </LinearLayout>
@@ -257,6 +247,7 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/make_reservation"
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:layout_marginLeft="5dp"
@@ -268,6 +259,19 @@
             android:text="בצע הזמנה"
             android:textAlignment="center"
             android:textColor="#fff"></Button>
+
+        <TextView
+            android:id="@+id/renter_details"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@color/Orange"
+            android:gravity="start"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:visibility="gone"></TextView>
 
 
         <Button
