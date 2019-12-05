@@ -80,4 +80,8 @@ public class Product implements Serializable {
     public String getUtc() {
         return utc;
     }
+
+    public String getFatherId() {
+        return utc+": "+title;
+    }
 }

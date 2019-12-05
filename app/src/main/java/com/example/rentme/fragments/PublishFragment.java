@@ -379,8 +379,9 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
     }
 
     private void upload2LasrProducts(final Date date, final Product addedProduct){
+        Favorites productDir = new Favorites(addedProduct.getFatherId(),addedProduct.getCategory()) ;
         FirebaseDatabase.getInstance().getReference("Last Products")
-                .child(date.getTime() + ": " + productTitle).setValue(addedProduct)
+                .child(addedProduct.getFatherId()).setValue(productDir)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -396,7 +397,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
     }
 
     private void upload2Renter(Date date, Product addedProduct){
-        Favorites productDir = new Favorites(addedProduct.getUtc()+": "+addedProduct.getTitle(),addedProduct.getCategory()) ;
+        Favorites productDir = new Favorites(addedProduct.getFatherId(),addedProduct.getCategory()) ;
         FirebaseDatabase.getInstance().getReference("Users")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .child("myProducts").child(addedProduct.getUtc()+": "+addedProduct.getTitle()).setValue(productDir)
