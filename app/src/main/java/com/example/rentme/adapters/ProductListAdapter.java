@@ -22,6 +22,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.rentme.model.Product;
 import com.example.rentme.R;
+import com.example.rentme.model.sortByLastUploaded;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
@@ -31,6 +32,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 
@@ -57,6 +59,7 @@ public class ProductListAdapter extends BaseAdapter {
             throw new ClassCastException(context.toString() + " must implement showButtons");
         }
     }
+
 
     @Override
     public int getCount() {
@@ -122,6 +125,11 @@ public class ProductListAdapter extends BaseAdapter {
         });
 
         return convertView;
+    }
+
+    public void addProduct(Product product){
+        items.add(product);
+        Collections.sort(items, new sortByLastUploaded());
     }
 
     private void updateImageFromUrl(Product currProduct,final ImageView image){

@@ -6,6 +6,8 @@ public class Favorites implements Serializable {
     private String father;
     private String category;
 
+    public Favorites(){};
+
     public Favorites(String father, String category) {
         this.father = father;
         this.category = category;
