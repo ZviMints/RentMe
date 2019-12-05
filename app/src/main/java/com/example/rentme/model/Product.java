@@ -13,12 +13,13 @@ public class Product implements Serializable {
     private String rentPeriod;
     private String uploadTime;
     private String userUid;
+    private String utc;
     private ArrayList<String> comments;
 
     private final String DEF_IMAGE = "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/1575107154720.jpg?alt=media&token=349bb82d-a50f-4736-b5a0-6470031bad0e";
 
     // Remove thjs constructor
-    public Product(String title, String category, String details,String condition,  String price, String rentPeriod,String uploadTime, String userUid){
+    public Product(String title, String category, String details,String condition,  String price, String rentPeriod,String uploadTime, String userUid,String utc){
         this.title = title;
         this.category = category;
         this.condition = condition;
@@ -29,12 +30,13 @@ public class Product implements Serializable {
         this.uploadTime = uploadTime;
         this.userUid = userUid;
         this.comments = new ArrayList<String>();
-        this.comments.add("היה ראשון לתת תגובה על מוצר זה!");
+        //this.comments.add("0");
+        this.utc = utc;
     }
 
     public Product() {}
 
-    public Product(String title, String category, String details, String condition,String price, String rentPeriod, String uploadTime,String userUid, String image){
+    public Product(String title, String category, String details, String condition,String price, String rentPeriod, String uploadTime,String userUid, String utc, String image){
         this.title = title;
         this.category = category;
         this.details = details;
@@ -44,8 +46,9 @@ public class Product implements Serializable {
         this.price = price;
         this.uploadTime = uploadTime;
         this.userUid = userUid;
+        this.utc = utc;
         this.comments = new ArrayList<String>();
-        this.comments.add("היה ראשון לתת תגובה על מוצר זה!");
+        //this.comments.add("0");
 
     }
 
@@ -87,5 +90,9 @@ public class Product implements Serializable {
 
     public ArrayList<String> getComments() {
         return comments;
+    }
+
+    public String getUtc() {
+        return utc;
     }
 }

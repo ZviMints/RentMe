@@ -93,7 +93,9 @@ public class ProductListAdapter extends BaseAdapter {
         }
         holder.title.setText(currProduct.getTitle());
         holder.category.setText(currProduct.getCategory());
-        holder.details.setText(currProduct.getDetails());
+        String detailsText = currProduct.getDetails();
+        detailsText = (detailsText.length()>21) ? detailsText.substring(0,21)+"..." : detailsText;
+        holder.details.setText(detailsText);
         holder.price.setText(currProduct.getPrice());
         holder.productPriceTime.setText(currProduct.getRentPeriod());
 

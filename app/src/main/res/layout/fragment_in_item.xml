@@ -326,7 +326,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/comment_section"
-            android:layout_marginBottom="0dp"/>
+            android:layout_marginBottom="0dp" />
 
 
         <LinearLayout
@@ -351,6 +351,15 @@
                 android:background="@color/Sky"
                 android:text="שלח"
                 />
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:visibility="gone"
+                style="?android:attr/progressBarStyle"
+                android:id="@+id/progressBar_send_comment"/>
 
             <EditText
                 android:id="@+id/writeComment"
