@@ -17,22 +17,7 @@ public class Product implements Serializable {
     private ArrayList<String> comments;
 
     private final String DEF_IMAGE = "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/1575107154720.jpg?alt=media&token=349bb82d-a50f-4736-b5a0-6470031bad0e";
-
-    // Remove thjs constructor
-    public Product(String title, String category, String details,String condition,  String price, String rentPeriod,String uploadTime, String userUid,String utc){
-        this.title = title;
-        this.category = category;
-        this.condition = condition;
-        this.details = details;
-        this.price = price;
-        this.rentPeriod = rentPeriod;
-        this.image = DEF_IMAGE;
-        this.uploadTime = uploadTime;
-        this.userUid = userUid;
-        this.comments = new ArrayList<String>();
-        //this.comments.add("0");
-        this.utc = utc;
-    }
+    
 
     public Product() {}
 
