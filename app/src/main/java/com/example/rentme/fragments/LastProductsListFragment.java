@@ -10,24 +10,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.example.rentme.model.Favorites;
+import com.example.rentme.model.productKey;
 import com.example.rentme.model.Product;
 import com.example.rentme.adapters.ProductListAdapter;
 import com.example.rentme.R;
-import com.example.rentme.model.sortByLastUploaded;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
 
 
 public class LastProductsListFragment extends Fragment {
@@ -55,9 +48,9 @@ public class LastProductsListFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    ArrayList<Favorites> lastProductsId = new ArrayList<>();
+                    ArrayList<productKey> lastProductsId = new ArrayList<>();
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                        Favorites productId = ds.getValue(Favorites.class);
+                        productKey productId = ds.getValue(productKey.class);
                         lastProductsId.add(productId);
                     }
                     for (int i=lastProductsId.size()-1; i>=0; i--) {
@@ -72,8 +65,8 @@ public class LastProductsListFragment extends Fragment {
         return view;
     }
 
-    //add product to lastProducts from a given Favorites
-    private void addProductByFavorites(Favorites productId) {
+    //add product to lastProducts from a given productKey
+    private void addProductByFavorites(productKey productId) {
         Product product;
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Categories").child(productId.getCategory())
                 .child(productId.getFather());
