@@ -200,8 +200,14 @@ public class InItemFragment extends Fragment {
                     ref.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                              ArrayList<Favorites> favorites = new ArrayList<Favorites>();
-                              favorites = dataSnapshot.getValue(ArrayList.class);
+                            ArrayList<Favorites> favorites = new ArrayList<>();
+                            for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                                Favorites favorite = ds.getValue(Favorites.class);
+                                favorites.add(favorite);
+                            }
+
+//                              ArrayList<Favorites> favorites = new ArrayList<Favorites>();
+//                              favorites = dataSnapshot.getValue(ArrayList.class);
 
                             if (favorites == null) {
                                 favorites = new ArrayList<Favorites>();
