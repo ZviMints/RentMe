@@ -136,7 +136,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
                 productTitle = titleLayer.getText().toString();
                 details = detailsLayer.getText().toString();
                 Price = priceLayer.getText().toString();
-                Date date = new Date();
+                final Date date = new Date();
                 strDate = getDateByFormat(date);
                 userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -144,24 +144,24 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
                         (details.length() > 0) &&
                         (Price.length() > 0)) {
 
-                    Product addedProduct = new Product(productTitle, selectedCategory, details, selectedCondition, Price, rentPeriod, strDate, userUid,date.getTime()+"",downloadUri);
+                    final Product addedProduct = new Product(productTitle, selectedCategory, details, selectedCondition, Price, rentPeriod, strDate, userUid,date.getTime()+"",downloadUri);
+                    //upload to database
                     FirebaseDatabase.getInstance().getReference("Categories")
                             .child(selectedCategory).child(date.getTime() + ": " + productTitle).setValue(addedProduct)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        progressBar_afterPublish.setVisibility(View.GONE);
-                                        Toast.makeText(getContext(), "פרסום " + productTitle + " בוצע בהצלחה", Toast.LENGTH_SHORT).show();
-                                        if (mainFragment == null)
-                                            mainFragment = new MainFragment();
-                                        outerTransaction(mainFragment);
+                                        //upload to last product list
+                                        upload2LasrProducts(date,addedProduct);
                                     } else {
                                         progressBar_afterPublish.setVisibility(View.GONE);
                                         Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                     }
                                 }
                             });
+
+
 
                 } else {
                     progressBar_afterPublish.setVisibility(View.GONE);
@@ -375,5 +375,26 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
     private String getDateByFormat(Date date){
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         return dateFormat.format(date);
+    }
+
+    private void upload2LasrProducts(Date date, Product addedProduct){
+        FirebaseDatabase.getInstance().getReference("Last Products")
+                .child(date.getTime() + ": " + productTitle).setValue(addedProduct)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            progressBar_afterPublish.setVisibility(View.GONE);
+                            Toast.makeText(getContext(), "פרסום " + productTitle + " בוצע בהצלחה", Toast.LENGTH_SHORT).show();
+                            if (mainFragment == null)
+                                mainFragment = new MainFragment();
+                            outerTransaction(mainFragment);
+                        } else {
+                            progressBar_afterPublish.setVisibility(View.GONE);
+                            Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
     }
 }

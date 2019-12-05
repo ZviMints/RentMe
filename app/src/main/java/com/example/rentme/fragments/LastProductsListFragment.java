@@ -13,16 +13,26 @@ import android.widget.ListView;
 import com.example.rentme.model.Product;
 import com.example.rentme.adapters.ProductListAdapter;
 import com.example.rentme.R;
+import com.example.rentme.model.sortByLastUploaded;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 
 
 public class LastProductsListFragment extends Fragment {
 
+
+    ListView listView;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,33 +43,26 @@ public class LastProductsListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_last_products_list, container, false);
-        ListView listView = view.findViewById(R.id.products_list);
+         listView = view.findViewById(R.id.products_list);
 
-        //delete after database ready/////////////////////////////////////////////////////////////
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Date date = new Date();
-        String strDate = dateFormat.format(date);
-        String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        ArrayList<Product> items3 = new ArrayList<Product>();
-        Product r1 = new Product("מברגה חשמלית", "מוצרי חשמל", "מוצר מעולה עובד טוב","good","8","שנה",strDate,userUid, date.getTime()+"");
-        Product r2 = new Product("לפטופ", "גינה", "השכרה גם לשבוע","good","8","שנה",strDate,userUid,date.getTime()+"");
-        Product r3 = new Product("כיסאות", "למטבח", "מאזור אשדוד","good","8","שנה",strDate,userUid, date.getTime()+"");
-        Product r4 = new Product("אחר", "סקי", "אחר אחר","good","8","שנה",strDate,userUid,date.getTime()+"");
-        Product r5 = new Product("אחר 2", "ספורט", "אחר אחר","good","8","שנה",strDate,userUid,date.getTime()+"");
-        Product r6 = new Product("אחר", "מחנאות", "אחר אחר","good","8","שנה",strDate,userUid,date.getTime()+"");
-        Product r7 = new Product("אחר 2", "פנאי", "אחר אחר","good","8","שנה",strDate,userUid,date.getTime()+"");
-        items3.add(r1);
-        items3.add(r2);
-        items3.add(r3);
-        items3.add(r4);
-        items3.add(r5);
-        items3.add(r6);
-        items3.add(r7);
-        //delete after database ready/////////////////////////////////////////////////////////////
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Last Products");
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<Product> lastProducts = new ArrayList<>();
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    Product product = ds.getValue(Product.class);
+                    lastProducts.add(product);
+                    Collections.sort(lastProducts,new sortByLastUploaded());
+                }
+                    //start the adapter of the listView
+                    ProductListAdapter adapter = new ProductListAdapter(lastProducts,getActivity());//suppose to get from the data base
+                    listView.setAdapter(adapter);
 
-        ProductListAdapter adapter = new ProductListAdapter(items3,getActivity());//suppose to get from the data base
-        listView.setAdapter(adapter);
-
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
 
         return view;
     }
