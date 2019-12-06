@@ -15,15 +15,19 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.rentme.R;
 import com.example.rentme.adapters.ProductListAdapter;
+import com.example.rentme.model.Author;
+import com.example.rentme.model.Comment;
 import com.example.rentme.model.Product;
+import com.example.rentme.model.ProductDetails;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
+import java.util.List;
 
 public class InsideCategoryFragment extends Fragment{
 
@@ -45,9 +49,9 @@ public class InsideCategoryFragment extends Fragment{
     }
 
     private void InitializeProductListAdapter() {
-
         InSideCategoryLinearLayout.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.GONE);
+
         ProductListAdapter adapter;
         adapter = new ProductListAdapter(products, getActivity());
         listView.setAdapter(adapter);
@@ -64,7 +68,7 @@ public class InsideCategoryFragment extends Fragment{
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_inside_category, container, false);
-      
+
         backBtn = view.findViewById(R.id.back_to_last_page);
         listView = view.findViewById(R.id.products_list);
         CategoryTitle = view.findViewById(R.id.category_title);
@@ -88,8 +92,13 @@ public class InsideCategoryFragment extends Fragment{
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     ArrayList<Product> products = new ArrayList<>();
                     for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                        Product product = ds.getValue(Product.class);
-                        products.add(product);
+                        Author author = ds.child("author").getValue(Author.class);
+                        ProductDetails productDetails = ds.child("productDetails").getValue(ProductDetails.class);
+
+                        GenericTypeIndicator<List<Comment>> t = new GenericTypeIndicator<List<Comment>>() {};
+                        List<Comment> comments = dataSnapshot.child("comments_list").getValue(t);
+
+                        products.add(new Product(productDetails,author,comments));
                     }
                     gotProductsFromFireBase(products);
                 }
@@ -118,5 +127,3 @@ public class InsideCategoryFragment extends Fragment{
         transaction.commit();
     }
 }
-
-

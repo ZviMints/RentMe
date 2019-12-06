@@ -20,9 +20,9 @@ import androidx.annotation.NonNull;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.rentme.comperators.sortByLastUploaded;
 import com.example.rentme.model.Product;
 import com.example.rentme.R;
-import com.example.rentme.Comperators.sortByLastUploaded;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
@@ -53,7 +53,7 @@ public class ProductListAdapter extends BaseAdapter {
 
 
         try {
-           this.listener = (MoreDetailsButtonListener) context;
+            this.listener = (MoreDetailsButtonListener) context;
 
         } catch (ClassCastException e) {
 
@@ -81,7 +81,6 @@ public class ProductListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         Holder holder;// use holder
         final Product currProduct = items.get(position);
-
         if (convertView == null) {
             convertView = LayoutInflater.from(this.context).inflate(R.layout.product_row, parent, false);
 
@@ -96,15 +95,23 @@ public class ProductListAdapter extends BaseAdapter {
         } else {
             holder = (Holder) convertView.getTag();
         }
-        holder.title.setText(currProduct.getTitle());
-        holder.category.setText(currProduct.getCategory());
-        String detailsText = currProduct.getDetails();
-        detailsText = (detailsText.length() > 15) ? detailsText.substring(0,21) + "..." : detailsText;
+        holder.title.setText(currProduct.getProductDetails().getTitle());
+        holder.category.setText(currProduct.getProductDetails().getCategory());
+        String detailsText = currProduct.getProductDetails().getDetails();
+        detailsText = (detailsText.length()>21) ? detailsText.substring(0,21)+"..." : detailsText;
         holder.details.setText(detailsText);
-        holder.price.setText(currProduct.getPrice());
-        holder.productPriceTime.setText(currProduct.getRentPeriod());
+        holder.price.setText(currProduct.getProductDetails().getPrice());
+        holder.productPriceTime.setText(currProduct.getProductDetails().getRentPeriod());
 
-        Date uploadDate = currProduct.getDate();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        String strDate = (currProduct.getProductDetails().getUploadTime());
+        Date uploadDate = null;
+        try {
+            uploadDate = dateFormat.parse(strDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         long diff = new Date().getTime() - uploadDate.getTime();
 
         holder.publishTime.setText(diff / (1000 * 60 * 60 * 24)+"");
@@ -114,6 +121,7 @@ public class ProductListAdapter extends BaseAdapter {
         holder.MoreDetailsBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                if(currProduct == null) throw new NoSuchElementException("showMoreDetails() Going to get null input");
                 listener.showMoreDetails(currProduct);
             }
         });
@@ -129,7 +137,7 @@ public class ProductListAdapter extends BaseAdapter {
     private void updateImageFromUrl(Product currProduct,final ImageView image){
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference httpsReference = storage.getReferenceFromUrl(currProduct.getImage());
+        StorageReference httpsReference = storage.getReferenceFromUrl(currProduct.getProductDetails().getImage());
         httpsReference.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
             @Override
             public void onComplete(@NonNull Task<Uri> task) {
@@ -177,4 +185,3 @@ public class ProductListAdapter extends BaseAdapter {
     }
 
 }
-

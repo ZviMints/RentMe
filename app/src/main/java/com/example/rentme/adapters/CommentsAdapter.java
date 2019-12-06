@@ -14,15 +14,14 @@ import com.example.rentme.R;
 import com.example.rentme.model.Comment;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 
-public class commentAdapter extends BaseAdapter {
+public class CommentsAdapter extends BaseAdapter {
     private ArrayList<Comment> comments;
     private Context context;
 
-    public commentAdapter(ArrayList<Comment> comments, Context context) {
-        this.comments = comments;
+    public CommentsAdapter(ArrayList<Comment> comments, Context context) {
+        this.comments = new ArrayList<>(comments);
         this.context = context;
 
     }
@@ -59,9 +58,8 @@ public class commentAdapter extends BaseAdapter {
         } else {
             holder = (Holder) convertView.getTag();
         }
-        String msg = comments.get(position).getMsg();
-        String name = comments.get(position).getFullname();
 
+        String msg = comments.get(position).getMsg();
         holder.details.setText(msg);
 
         return convertView;
@@ -80,4 +78,3 @@ public class commentAdapter extends BaseAdapter {
     }
 
 }
-

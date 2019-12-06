@@ -24,7 +24,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="ניתן להכניס כאן מודעות" />
+            android:text="אודות" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:text="צור קשר" />
 
     </LinearLayout>
 

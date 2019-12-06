@@ -1,6 +1,5 @@
 package com.example.rentme.fragments;
 
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -21,14 +21,15 @@ import androidx.fragment.app.FragmentTransaction;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.rentme.R;
-import com.example.rentme.adapters.commentAdapter;
+import com.example.rentme.adapters.CommentsAdapter;
+import com.example.rentme.model.Author;
 import com.example.rentme.model.Comment;
-import com.example.rentme.model.RelationCategoryProduct;
 import com.example.rentme.model.Product;
 import com.example.rentme.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,16 +38,16 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class InItemFragment extends Fragment {
     InsideCategoryFragment insideCategoryFragment;
     Button backBtn;
-    Product product;
-    User user;
     FirebaseDatabase firebaseDatabase;
 
     TextView productTitle;
@@ -61,26 +62,48 @@ public class InItemFragment extends Fragment {
     ImageView productPicture;
     ListView commentsListView;
     Button sendCommentBtn;
-    Button makeReservationBtn;
-    Button addToFavoritesBtm;
+    Button makeOrder;
     EditText writeComment;
     ProgressBar SendCommentProgressBar;
 
-    commentAdapter adapter;
+    ProgressBar progressBar;
+    LinearLayout MainLinear;
+    LinearLayout comment_section;
+
+    View view;
+    private Product product;
+    private User author;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
-
     @Override
+
+    // Step 1.
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_in_item, container, false);
+        view = inflater.inflate(R.layout.fragment_in_item, container, false);
+
+        progressBar = view.findViewById(R.id.progressBar);
+        MainLinear = view.findViewById(R.id.MainLinear);
+        comment_section = view.findViewById(R.id.comment_section);
+
+        //Initialize product and user
+        Product product = (Product) getArguments().getSerializable("Product");
+        gotProductFromBundle(product);
+
+
+        return view;
+    }
+
+    // Step 2.
+    private void gotProductFromBundle(Product product) {
+
+        this.product = product;
 
         productTitle = view.findViewById(R.id.product_title);
         categoryName = view.findViewById(R.id.category_name);
@@ -96,167 +119,171 @@ public class InItemFragment extends Fragment {
         writeComment = view.findViewById(R.id.writeComment);
         SendCommentProgressBar = view.findViewById(R.id.progressBar_send_comment);
         backBtn = view.findViewById(R.id.backToLastPage);
-        makeReservationBtn = view.findViewById(R.id.make_reservation);
+        makeOrder = view.findViewById(R.id.make_reservation);
         renterDetails = view.findViewById(R.id.renter_details);
-        addToFavoritesBtm = view.findViewById(R.id.addToFavorites);
 
-        // init product and user
-        product = (Product) getArguments().getSerializable("Product");
-
-        // Initialize User//Toast.makeText(getContext(), userUid , Toast.LENGTH_SHORT).show();
-        final String userUid = product.getUserUid();
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference ref = firebaseDatabase.getReference("Users").child(userUid).getRef();
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                user = dataSnapshot.getValue(User.class);
-                if (user == null)
-                    throw new NoSuchElementException("Cant Retrieve user from database");
-                gotUserFromFireBase(user);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
-
-
-        return view;
-    }
-
-    private void updateFavorites(RelationCategoryProduct favorites) {
-        //upload the new favorite
-        FirebaseDatabase.getInstance().getReference("Users")
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Favorites")
-                .child(new Date().getTime() + "").setValue(favorites)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {//successful uploading
-                            Toast.makeText(getContext(), " נוסף למועדפים שלך" + product.getTitle(), Toast.LENGTH_LONG).show();
-                        } else {
-                            Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-    }
-
-    private void gotUserFromFireBase(User user) {
-        this.productTitle.setText(product.getTitle());
-        this.categoryName.setText(product.getCategory());
-        this.moreDetails.setText(product.getDetails());
-        this.condition.setText(product.getCondition());
-        this.price.setText(product.getPrice());
-        this.nameOfTheSeller.setText(this.user.getName());
-        this.cityOfTheSeller.setText(this.user.getArea());
-
-        Date date = product.getDate();
-        SimpleDateFormat sm = new SimpleDateFormat("MM-dd-yyyy");
-        String strDate = sm.format(date);
-
-        this.uploadTime.setText("בתאריך " + strDate);
-        updateImageFromUrl(product, this.productPicture);
-
-        InitializeComments(user);
-
-    }
-
-    private void InitializeComments(final User user) {
-
-        //Read Comments From FireBase
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        // Initialize User
-        DatabaseReference ref = firebaseDatabase.getReference("Categories")
-                .child(product.getCategory())
-                .child(product.getProductIDInCategory())
-                .child("comments")
-                .getRef();
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ArrayList<Comment> comments = new ArrayList<>();
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    Comment comment = ds.getValue(Comment.class);
-                    comments.add(comment);
-                }
-                gotCommentsFromDataBase(comments, user);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
-    }
-
-    private void gotCommentsFromDataBase(ArrayList<Comment> comments, final User user) {
-
-        // Updating The Comments
-        adapter = new commentAdapter(comments, getContext());
+        ArrayList<Comment> comments = (ArrayList<Comment>) product.getCommentsList();
+        CommentsAdapter adapter;
+        adapter = new CommentsAdapter(comments, getContext());
         commentsListView.setAdapter(adapter);
 
+        InitializeText();
+    }
+
+
+    // Step 3.
+    private void InitializeText() {
+
+        this.productTitle.setText(product.getProductDetails().getTitle());
+        this.categoryName.setText(product.getProductDetails().getCategory());
+        this.moreDetails.setText(product.getProductDetails().getDetails());
+        this.condition.setText(product.getProductDetails().getCondition());
+        this.price.setText(product.getProductDetails().getPrice());
+
+        NowNeedProductOwnerDetails();
+
+
+    }
+
+    // Step 4.
+    public void NowNeedProductOwnerDetails() {
+
+        String userUID = product.getAuthor().getUserUid();
+        /**
+         *         if (true) throw new NoSuchElementException(product.toString());
+         *   Outputs:
+                productDetails: [Zvi Mints TV,מוצרי חשמל,TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT ,https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1575636785602.jpg?alt=media&token=cafa5c71-c43c-4083-bb99-60d7aca6de5c,חדש מהמפעל,20,לשעה,2019/12/06 14:53:29]
+                author: (5AvwrkLTrSaj6bK9mAYU3YYxZFx1,Israel,Israeli)
+                Product_UID: מוצרי חשמל: Zvi Mints TV
+                comments: []
+         */
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference ref = firebaseDatabase.getReference("Users").child(userUID).getRef();
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                if (user == null)
+                    throw new NoSuchElementException("Cant Retrieve user from database");
+                gotUserNowInitializeAll(user);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+    }
+
+    //Step 5.
+    public void gotUserNowInitializeAll(User author) {
+        this.author = author;
+
+        this.nameOfTheSeller.setText(author.getName());
+        this.cityOfTheSeller.setText(author.getArea());
+        this.uploadTime.setText(product.getProductDetails().getUploadTime());
+        updateImageFromUrl(product, this.productPicture);
+
+        progressBar.setVisibility(View.GONE);
+        MainLinear.setVisibility(View.VISIBLE);
+
+
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        // Check if Connected or not!
+        if (firebaseUser == null)
+            comment_section.setVisibility(View.GONE);
+
+        else
+            comment_section.setVisibility(View.VISIBLE);
+
+        InitializeOnClickListener();
+    }
+
+    // Step 6.
+    private void InitializeOnClickListener() {
+
+        // On Click Send Comment Button
         sendCommentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SendCommentProgressBar.setVisibility(View.VISIBLE);
-                String msg = writeComment.getText().toString();
+                GetCurrentUserToCommentFromFireBase();
+            }
 
+            private void GetCurrentUserToCommentFromFireBase() {
+                FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                DatabaseReference ref = firebaseDatabase.getReference("Users").child(firebaseUser.getUid()).getRef();
+                ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        User user = dataSnapshot.getValue(User.class);
+                        if (user == null)
+                            throw new NoSuchElementException("Cant Retrieve user from database");
+                        GotCurrentUser(user);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
+            }
+
+            private void GotCurrentUser(User user) {
+
+                String msg = writeComment.getText().toString();
+                String USER_UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                if (USER_UID == null) throw new NoSuchElementException("USED_ID is Null");
+                Author author = new Author(USER_UID, user.getName(), user.getLastname());
+                Comment comment = new Comment(author, msg);
                 if (msg.length() > 0) {
-                    final ArrayList<Comment> comments = product.getComments();
-                    Comment comment = new Comment(user.getName() + " " + user.getLastname(), msg);
+                    List<Comment> comments = product.getCommentsList();
                     comments.add(comment);
 
-                    // Remove Last Comments
-                    firebaseDatabase.getReference("Categories")
-                            .child(product.getCategory())
-                            .child(product.getProductIDInCategory())
-                            .child("comments").removeValue();
+                    //Upload the new comment at Product
+                    String ProductUID = product.getPRODUCT_UID();
+                    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
 
-                    //Update new Comment On Database
+                    // Remove Last Comments In Product FireBase
                     firebaseDatabase.getReference("Categories")
-                            .child(product.getCategory())
-                            .child(product.getProductIDInCategory())
-                            .child("comments")
+                            .child(product.getProductDetails().getCategory())
+                            .child(ProductUID)
+                            .child("comments_list")
+                            .removeValue();
+                    // Update New Comment In Product FireBase
+                    firebaseDatabase.getReference("Categories")
+                            .child(product.getProductDetails().getCategory())
+                            .child(ProductUID)
+                            .child("comments_list")
                             .setValue(comments);
 
-
                     writeComment.setText("");
-                    Toast.makeText(getContext(), "העלאת התגובה בוצעה בהצלחה", Toast.LENGTH_SHORT).show();
-                    SendCommentProgressBar.setVisibility(View.GONE);
-
-                    adapter = new commentAdapter(comments, getContext());
+                    CommentsAdapter adapter;
+                    adapter = new CommentsAdapter((ArrayList<Comment>) comments, getContext());
                     commentsListView.setAdapter(adapter);
-
+                    SendCommentProgressBar.setVisibility(View.GONE);
 
                 } else {
                     Toast.makeText(getContext(), "תגובה לא חוקית", Toast.LENGTH_LONG).show();
                     SendCommentProgressBar.setVisibility(View.GONE);
                 }
-
             }
-
         });
 
-        makeReservationBtn.setOnClickListener(new View.OnClickListener() {
+
+        makeOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                makeReservationBtn.setVisibility(View.GONE);
+                makeOrder.setVisibility(View.GONE);
                 renterDetails.setVisibility(View.VISIBLE);
-                renterDetails.setText(user.getName() + " " + user.getLastname()
-                        + " " + user.getEmail() + " " + user.getNumber());
+                renterDetails.setText(
+                        author.getName()
+                                + " "
+                                + author.getLastname() + "\n"
+                                + author.getEmail() + "\n"
+                                + author.getNumber());
             }
         });
 
-        addToFavoritesBtm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Drawable img = getContext().getResources().getDrawable(R.drawable.ic_star_yellow_24dp);
-                addToFavoritesBtm.setCompoundDrawablesWithIntrinsicBounds(null, null, img, null);
-                String productUID = product.getProductIDInCategory();
-                RelationCategoryProduct newFavorite = new RelationCategoryProduct(product.getCategory(), productUID);
-                updateFavorites(newFavorite);
-            }
-        });
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -264,17 +291,17 @@ public class InItemFragment extends Fragment {
                 if (insideCategoryFragment == null)
                     insideCategoryFragment = new InsideCategoryFragment();
                 Bundle bundle = new Bundle();
-                bundle.putString("Categories", product.getCategory());
+                bundle.putString("Categories", product.getProductDetails().getCategory());
                 insideCategoryFragment.setArguments(bundle);
                 outerTransaction(insideCategoryFragment);
             }
         });
     }
 
-    private void updateImageFromUrl(Product currProduct, final ImageView image) {
 
+    private void updateImageFromUrl(Product currProduct, final ImageView image) {
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference httpsReference = storage.getReferenceFromUrl(currProduct.getImage());
+        StorageReference httpsReference = storage.getReferenceFromUrl(currProduct.getProductDetails().getImage());
         httpsReference.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
             @Override
             public void onComplete(@NonNull Task<Uri> task) {
@@ -287,7 +314,6 @@ public class InItemFragment extends Fragment {
 
                 } else {
                     Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    //  Log.d("Firebase id",user.getUid());
                 }
 
             }
@@ -300,5 +326,6 @@ public class InItemFragment extends Fragment {
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
 
 }

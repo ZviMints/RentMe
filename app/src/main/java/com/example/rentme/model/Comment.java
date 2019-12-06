@@ -1,23 +1,29 @@
 package com.example.rentme.model;
+
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
-import java.util.Date;
 
 public class Comment implements Serializable {
-    String fullname;
+    Author author;
     String msg;
 
-    public Comment() {}
-
-    public Comment(String fullname, String msg) {
-        this.fullname = fullname;
+    public Comment(Author author, String msg) {
+        this.author = author;
         this.msg = msg;
     }
-
-    public String getFullname() {
-        return fullname;
+    public Author getAuthor() {
+        return author;
     }
-
     public String getMsg() {
-        return this.msg;
+        return msg;
     }
+
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "[" + author + "] : " + msg;
+    }
+
 }

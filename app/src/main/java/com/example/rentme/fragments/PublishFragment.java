@@ -27,9 +27,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.rentme.R;
+import com.example.rentme.fragments.MainFragment;
+import com.example.rentme.model.Author;
 import com.example.rentme.model.Configurations;
-import com.example.rentme.model.RelationCategoryProduct;
 import com.example.rentme.model.Product;
+import com.example.rentme.model.ProductDetails;
+import com.example.rentme.model.User;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -49,6 +52,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -72,25 +76,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
     private EditText detailsLayer;
     private EditText priceLayer;
     public ImageView imageview;
-    private CheckBox checkBox;
-
-    private List<String> statusNames;
-    private List<String> RentPeriodOptions;
-    public String selectedCategory = "קטגורייה...";
-    public String selectedCondition = "בחר מצב...";
-
-    public String productTitle;
-    public String Price;
-    public String userUid;
-    public String rentPeriod;
-    public String image;
-    public String details;
-    private long currentTime;
-    private String downloadUri = "";
-
-    private MainFragment mainFragment;
-    private final int RESULT_LOAD_IMG = 1;
-    private final int RESULT_CAPTURE_IMG = 0;
+    public CheckBox checkbox;
 
     private ScrollView mainScrollView;
     private ProgressBar progressBarOnLoad;
@@ -137,39 +123,28 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
                 productTitle = titleLayer.getText().toString();
                 details = detailsLayer.getText().toString();
                 Price = priceLayer.getText().toString();
-                Date date = new Date();
-                userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
                 if ((productTitle.length() > 0) &&
                         (details.length() > 0) &&
                         (Price.length() > 0) &&
-                        checkBox.isChecked()) {
+                        checkbox.isChecked()) {
 
-                    final Product product = new Product(productTitle,
-                                                        selectedCategory,
-                                                        details,
-                                                        selectedCondition,
-                                                        Price,
-                                                        rentPeriod,
-                                                        userUid,
-                                                        date,
-                                                        downloadUri);
-                    FirebaseDatabase.getInstance().getReference("Categories")
-                            .child(selectedCategory).child(product.getProductIDInCategory()).setValue(product)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        AddToLastProducts(product);
-                                    } else {
-                                        progressBar_afterPublish.setVisibility(View.GONE);
-                                        Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                                    }
-                                }
-                            });
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                    Date date = new Date();
+                    String strDate = dateFormat.format(date);
 
+                    ProductDetails productDetails = new ProductDetails(
+                            productTitle,
+                            selectedCategory,
+                            details,
+                            selectedCondition,
+                            Price,
+                            rentPeriod,
+                            strDate,
+                            downloadUri,
+                            date.getTime());
 
-
+                    getUser(productDetails);
                 } else {
                     progressBar_afterPublish.setVisibility(View.GONE);
                     Toast.makeText(getContext(), "קלט לא חוקי", Toast.LENGTH_SHORT).show();
@@ -178,8 +153,70 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         });
     }
 
+    private void getUser(final ProductDetails productDetails) {
+
+        // Initialize User
+        DatabaseReference ref = firebaseDatabase.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).getRef();
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                if(user == null) throw new NoSuchElementException("Cant Retrieve user from database");
+                gotUser(user,productDetails);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
+
+    }
+    private void gotUser(User user, ProductDetails productDetails) {
+
+        String USER_UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        if(USER_UID == null) throw new NoSuchElementException("USED_ID is Null");
+        Author author = new Author(USER_UID,user.getName(),user.getLastname());
 
 
+        Product addedProduct = new Product(productDetails,author);
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+
+
+        firebaseDatabase.getReference("Categories")
+                .child(selectedCategory).child(productDetails.getUtc() + ": " + productTitle).setValue(addedProduct)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            progressBar_afterPublish.setVisibility(View.GONE);
+                            Toast.makeText(getContext(), "פרסום " + productTitle + " בוצע בהצלחה", Toast.LENGTH_SHORT).show();
+                            if (mainFragment == null)
+                                mainFragment = new MainFragment();
+                            outerTransaction(mainFragment);
+                        } else {
+                            progressBar_afterPublish.setVisibility(View.GONE);
+                            Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+    }
+
+
+    private List<String> statusNames;
+    private List<String> RentPeriodOptions;
+    public String selectedCategory = "קטגורייה...";
+    public String selectedCondition = "בחר מצב...";
+
+    public String productTitle;
+    public String Price;
+    public String rentPeriod;
+    public String image;
+    public String details;
+    private long currentTime;
+    private String downloadUri = "";
+
+    private MainFragment mainFragment;
+    private final int RESULT_LOAD_IMG = 1;
+    private final int RESULT_CAPTURE_IMG = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -196,6 +233,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         productConditionSpin =  view.findViewById(R.id.product_condition);
         rentPeriodSpin =  view.findViewById(R.id.rent_period);
         publishBtn = view.findViewById(R.id.addBtn);
+        checkbox = view.findViewById(R.id.checkbox);
         addCameraPicBtm = view.findViewById(R.id.add_camera_pic_Btm);
         addGaleryPicBtm = view.findViewById(R.id.add_galery_pic_Btm);
         titleLayer =  view.findViewById(R.id.product_title);
@@ -208,7 +246,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         mainScrollView = view.findViewById(R.id.mainScrollView);
         progressBarOnLoad = view.findViewById(R.id.progressBarOnLoad);
         imageview = view.findViewById(R.id.product_pic);
-        checkBox = view.findViewById(R.id.checkbox);
+
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         // Initialize Configurations
@@ -379,51 +417,4 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         });
         //end get the uploaded pic URL
     }
-    private String getDateByFormat(Date date){
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        return dateFormat.format(date);
-    }
-
-    private void AddToLastProducts(final Product product){
-        RelationCategoryProduct relation = new RelationCategoryProduct(product.getCategory(),product.getProductIDInCategory());
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        firebaseDatabase.getReference("Last Products")
-                .child(product.getProductIDInCategory()).setValue(relation)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            UpdateToUser(product);
-                        } else {
-                            progressBar_afterPublish.setVisibility(View.GONE);
-                            Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-
-    }
-
-    private void UpdateToUser(Product product){
-        RelationCategoryProduct relation = new RelationCategoryProduct(product.getCategory(), product.getProductIDInCategory()) ;
-        FirebaseDatabase.getInstance().getReference("Users")
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                .child("Products").child(product.getProductIDInCategory()).setValue(relation)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            progressBar_afterPublish.setVisibility(View.GONE);
-                            Toast.makeText(getContext(), "פרסום " + productTitle + " בוצע בהצלחה", Toast.LENGTH_SHORT).show();
-                            if (mainFragment == null)
-                                mainFragment = new MainFragment();
-                            outerTransaction(mainFragment);
-                        } else {
-                            progressBar_afterPublish.setVisibility(View.GONE);
-                            Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-
-    }
-
 }

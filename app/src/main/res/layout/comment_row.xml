@@ -9,12 +9,8 @@
         android:id="@+id/comment_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
         android:layout_gravity="right"
-        android:text="דוגמא לדוגמא"
         android:textDirection="rtl">
-    </TextView>
 
+    </TextView>
 </LinearLayout>
