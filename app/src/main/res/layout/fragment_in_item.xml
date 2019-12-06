@@ -19,9 +19,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/MainLinear"
-
-
-
+        android:visibility="gone"
         android:orientation="vertical">
 
         <!-- Content -->
