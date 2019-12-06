@@ -100,10 +100,22 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemSelect
             public void onClick(View v) {
                 String low = lowerPrice.getText().toString();
                 String high = higherPrice.getText().toString();
-                double lowerPriceValue = (low.length()>0)? Double.parseDouble(low) : Double.MIN_VALUE;
-                double higherPriceValue = (high.length()>0)? Double.parseDouble(high) : Double.MAX_VALUE;
-                findFilterProducts(lowerPriceValue,higherPriceValue);
-                showListOfFilterProduct();
+
+
+                if (searchReasultFragment == null)
+                    searchReasultFragment = new SearchReasultFragment();
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("lower price",low);
+                bundle.putSerializable("higher price",high);
+                bundle.putSerializable("state",selectedState);
+                bundle.putSerializable("area",selectedArea);
+                bundle.putSerializable("category",selectedCategory);
+
+                searchReasultFragment.setArguments(bundle);
+                outerTransaction(searchReasultFragment);
+                //findFilterProducts(lowerPriceValue,higherPriceValue);
+                //showListOfFilterProduct();
             }
         });
 
@@ -119,49 +131,18 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemSelect
 
         return view;
     }
-
-    private void showListOfFilterProduct() {
-        if (searchReasultFragment == null)
-            searchReasultFragment = new SearchReasultFragment();
-
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("filter products",filterProducts);
-        searchReasultFragment.setArguments(bundle);
-        outerTransaction(searchReasultFragment);
-    }
-
-    private void findFilterProducts(final double lowerPriceValue, final double higherPriceValue) {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Categories").child(selectedCategory).getRef();
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    for (DataSnapshot productId : dataSnapshot.getChildren()) {
-                        Author author = productId.child("author").getValue(Author.class);
-                        ProductDetails productDetails = productId.child("productDetails").getValue(ProductDetails.class);
-                        double productPrice = Double.parseDouble(productDetails.getPrice());
-                        if ((author.getArea() == selectedArea) &&(productDetails.getCondition()==selectedState)
-                                &&(productPrice >= lowerPriceValue) && (productPrice <= higherPriceValue)){
-                            List<Comment> comments = new ArrayList<>();
-                            for(DataSnapshot dsComments: productId.child("comments_list").getChildren()){
-                                String msg =dsComments.child("msg").getValue().toString();
-                                Author commentAuthor = dsComments.child("author").getValue(Author.class);
-                                comments.add(new Comment(commentAuthor,msg));
-                            }
-                            Product product = new Product(productDetails,author,comments);
-                            filterProducts.add(product);
-                        }
-
-                    }
-                }
+//
+//    private void showListOfFilterProduct() {
+//        if (searchReasultFragment == null)
+//            searchReasultFragment = new SearchReasultFragment();
+//
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable("filter products",filterProducts);
+//        searchReasultFragment.setArguments(bundle);
+//        outerTransaction(searchReasultFragment);
+//    }
 
 
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-        });
-
-    }
 
     private void gotConfigurationsFromFireBase(Configurations conf) {
         progressBar.setVisibility(View.GONE);
