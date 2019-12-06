@@ -181,7 +181,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
 
         final String USER_UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         if(USER_UID == null) throw new NoSuchElementException("USED_ID is Null");
-        Author author = new Author(USER_UID,user.getName(),user.getLastname());
+        Author author = new Author(USER_UID,user.getName(),user.getLastname(),user.getArea());
 
 
         Product addedProduct = new Product(productDetails,author);

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.LastProductsListFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:orientation="vertical">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/lightGray"
+            android:textStyle="bold"
+            android:id="@+id/back_to_search_page"
+            android:textColor="@color/DarkGray"
+            android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
+            android:text="חזור לדף הקודם" />
+
+        <ListView
+            android:id="@+id/filter_products"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+        </ListView>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/DarkGreen"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:drawableTop="@drawable/ic_expand_more_white_24dp"
+            android:text="עוד תוצאות" />
+
+    </LinearLayout>
+
+</FrameLayout>

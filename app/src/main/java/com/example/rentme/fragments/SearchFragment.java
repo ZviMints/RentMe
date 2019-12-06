@@ -12,18 +12,22 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.rentme.R;
+import com.example.rentme.model.Author;
+import com.example.rentme.model.Comment;
 import com.example.rentme.model.Configurations;
-import com.example.rentme.model.User;
+import com.example.rentme.model.Product;
+import com.example.rentme.model.ProductDetails;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -31,17 +35,22 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class SearchFragment extends Fragment implements AdapterView.OnItemSelectedListener {
-    Button backBtn;
 
     private List<String> categoryNames = new ArrayList<>();
     private List<String> areaNames = new ArrayList<>();
     private List<String> stateNames = new ArrayList<>();
+    ArrayList<Product> filterProducts;
 
     MainFragment mainFragment;
+    SearchReasultFragment searchReasultFragment;
 
     Spinner mainCategorySpin;
     Spinner areaSpin;
     Spinner stateSpin;
+    EditText lowerPrice;
+    EditText higherPrice;
+    Button searchBtm;
+    Button backBtn;
 
     String selectedCategory;
     String selectedArea;
@@ -66,8 +75,11 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemSelect
         progressBar = view.findViewById(R.id.progressbar);
         areaSpin = view.findViewById(R.id.area);
         stateSpin = view.findViewById(R.id.state);
-
         mainCategorySpin =  view.findViewById(R.id.MainCategory);
+        lowerPrice = view.findViewById(R.id.lower_price);
+        higherPrice = view.findViewById(R.id.higher_price);
+        searchBtm = view.findViewById(R.id.search_btm);
+        backBtn = view.findViewById(R.id.back);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         // Initialize Configurations
@@ -83,7 +95,19 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemSelect
             public void onCancelled(DatabaseError databaseError) {}
         });
 
-        backBtn = view.findViewById(R.id.back);
+        searchBtm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String low = lowerPrice.getText().toString();
+                String high = higherPrice.getText().toString();
+                double lowerPriceValue = (low.length()>0)? Double.parseDouble(low) : Double.MIN_VALUE;
+                double higherPriceValue = (high.length()>0)? Double.parseDouble(high) : Double.MAX_VALUE;
+                findFilterProducts(lowerPriceValue,higherPriceValue);
+                showListOfFilterProduct();
+            }
+        });
+
+
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,15 +120,58 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemSelect
         return view;
     }
 
+    private void showListOfFilterProduct() {
+        if (searchReasultFragment == null)
+            searchReasultFragment = new SearchReasultFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("filter products",filterProducts);
+        searchReasultFragment.setArguments(bundle);
+        outerTransaction(searchReasultFragment);
+    }
+
+    private void findFilterProducts(final double lowerPriceValue, final double higherPriceValue) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Categories").child(selectedCategory).getRef();
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot productId : dataSnapshot.getChildren()) {
+                        Author author = productId.child("author").getValue(Author.class);
+                        ProductDetails productDetails = productId.child("productDetails").getValue(ProductDetails.class);
+                        double productPrice = Double.parseDouble(productDetails.getPrice());
+                        if ((author.getArea() == selectedArea) &&(productDetails.getCondition()==selectedState)
+                                &&(productPrice >= lowerPriceValue) && (productPrice <= higherPriceValue)){
+                            List<Comment> comments = new ArrayList<>();
+                            for(DataSnapshot dsComments: productId.child("comments_list").getChildren()){
+                                String msg =dsComments.child("msg").getValue().toString();
+                                Author commentAuthor = dsComments.child("author").getValue(Author.class);
+                                comments.add(new Comment(commentAuthor,msg));
+                            }
+                            Product product = new Product(productDetails,author,comments);
+                            filterProducts.add(product);
+                        }
+
+                    }
+                }
+
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
+
+    }
+
     private void gotConfigurationsFromFireBase(Configurations conf) {
-            progressBar.setVisibility(View.GONE);
-            mainLinear.setVisibility(LinearLayout.VISIBLE);
+        progressBar.setVisibility(View.GONE);
+        mainLinear.setVisibility(LinearLayout.VISIBLE);
 
-            this.categoryNames = conf.getCategoriesOptions();
-            this.areaNames = conf.getAreaNames();
-            this.stateNames = conf.getStateOptions();
+        this.categoryNames = conf.getCategoriesOptions();
+        this.areaNames = conf.getAreaNames();
+        this.stateNames = conf.getStateOptions();
 
-            InitializeSpinners();
+        InitializeSpinners();
     }
 
     private void InitializeSpinners() {
@@ -131,17 +198,16 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemSelect
         //end category spinner
     }
 
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
-
     private void outerTransaction(Fragment fragment){
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.OuterFragmentContainer, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
     }
 
     @Override
