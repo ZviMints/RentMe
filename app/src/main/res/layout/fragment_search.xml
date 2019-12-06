@@ -162,7 +162,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btnSignUp"
+            android:id="@+id/btnSearch"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_gravity="center"

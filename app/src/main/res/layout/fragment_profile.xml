@@ -14,12 +14,12 @@
         android:layout_marginTop="35dp" />
 
     <LinearLayout
-        android:layout_width="fill_parent"
         android:id="@+id/mainLinear"
+        android:layout_width="fill_parent"
         android:visibility="gone"
         android:layout_height="wrap_content"
-        android:layoutDirection="rtl"
         android:layout_gravity="center"
+        android:layoutDirection="rtl"
         android:orientation="vertical">
 
         <View
@@ -49,7 +49,7 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/change_name_btn"
+                android:id="@+id/change_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -107,12 +107,12 @@
 
                         <ImageView
                             android:layout_width="100dp"
-                            android:layout_gravity="center"
-                            android:paddingRight="5dp"
-                            android:paddingLeft="5dp"
                             android:layout_height="100dp"
+                            android:layout_gravity="center"
                             android:layout_marginLeft="15dp"
                             android:background="@drawable/money_border"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
                             android:src="@drawable/eladhorev" />
 
                         <LinearLayout
@@ -124,27 +124,27 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="שם פרטי"/>
+                                android:text="שם פרטי" />
 
                             <TextView
                                 android:id="@+id/tvFirstName"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textStyle="bold"
-                                android:text="צבי" />
+                                android:text="צבי"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:layout_marginTop="15dp"
                                 android:layout_height="wrap_content"
-                                android:text="שם משפחה"/>
+                                android:layout_marginTop="15dp"
+                                android:text="שם משפחה" />
 
                             <TextView
                                 android:id="@+id/tvLastName"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="צבי"
-                                android:textStyle="bold"/>
+                                android:textStyle="bold" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -191,8 +191,8 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
                     android:layout_marginTop="15dp"
+                    android:layout_marginRight="5dp"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -209,7 +209,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="איימל"/>
+                            android:text="איימל" />
 
                         <TextView
                             android:id="@+id/tvEmail"
@@ -225,9 +225,9 @@
                 <!--- Number -->
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_marginRight="25dp"
-                    android:layout_marginTop="15dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="25dp"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -245,7 +245,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="מספר פאלפון"/>
+                            android:text="מספר פאלפון" />
 
                         <TextView
                             android:id="@+id/tvNumber"
@@ -266,78 +266,40 @@
             android:layout_marginTop="10dp"
             android:background="@color/lightGray" />
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:padding="30dp"
-            android:layout_height="match_parent"
-            android:stretchColumns="1">
+        <!-- I Published -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
-            <TableRow>
+            <!--Title-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="מוצרים שלי"
+                android:textColor="@color/DarkBlue"
+                android:textSize="17sp"
+                android:textStyle="bold" />
 
-                <!-- I Published -->
-                <LinearLayout
-                    android:layout_gravity="right">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/ic_storage_black_24dp" />
+        </LinearLayout>
 
-                    <!--Title-->
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+        <ListView
+            android:id="@+id/mylist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:textStyle="bold"
-                            android:layout_height="wrap_content"
-                            android:textSize="17sp"
-                            android:textColor="@color/DarkBlue"
-                            android:text="מוצרים שלי"/>
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="10dp"
-                            android:background="@drawable/ic_storage_black_24dp"/>
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <!-- I Liked -->
-                <LinearLayout
-                    android:layout_gravity="left">
-                    <!--Title-->
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:textStyle="bold"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/DarkBlue"
-                            android:textSize="17sp"
-                            android:text="מסומנים בכוכב"/>
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_marginRight="10dp"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/ic_star_black_24dp"/>
-
-                    </LinearLayout>
-                </LinearLayout>
-
-
-            </TableRow>
-
-        </TableLayout>
 
     </LinearLayout>
 
 
-    <!-- Content -->
-
-    <!-- End Content -->
 
 
 </LinearLayout>

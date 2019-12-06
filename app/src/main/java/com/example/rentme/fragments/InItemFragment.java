@@ -142,7 +142,6 @@ public class InItemFragment extends Fragment {
 
         NowNeedProductOwnerDetails();
 
-
     }
 
     // Step 4.

@@ -40,6 +40,7 @@ public class ProfileFragment extends Fragment {
 
     Button logoutBtn;
     Button back;
+    Button change_profile;
 
     LinearLayout mainLinear;
 
@@ -48,6 +49,7 @@ public class ProfileFragment extends Fragment {
     FirebaseDatabase firebaseDatabase;
 
     MainFragment mainFragment;
+    EditProfileFragment editProfileFragment;
     ProgressBar progressBar;
 
 
@@ -73,6 +75,7 @@ public class ProfileFragment extends Fragment {
         logoutBtn = view.findViewById(R.id.signOut);
         back = view.findViewById(R.id.backToMain);
         mainLinear = view.findViewById(R.id.mainLinear);
+        change_profile = view.findViewById(R.id.change_profile);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
@@ -111,6 +114,16 @@ public class ProfileFragment extends Fragment {
                 if (mainFragment == null)
                     mainFragment = new MainFragment();
                 outerTransaction(mainFragment);
+            }
+        });
+
+        //Edit Profile
+        change_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (editProfileFragment == null)
+                    editProfileFragment = new EditProfileFragment();
+                outerTransaction(editProfileFragment);
             }
         });
         return view;

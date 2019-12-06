@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.rentme.R;
 import com.example.rentme.activities.MainActivity;
+import com.example.rentme.activities.admin.CategoriesManagement;
 import com.example.rentme.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,15 +33,17 @@ import java.util.NoSuchElementException;
 
 public class EditProfileFragment extends Fragment {
 
-    TextView titleName;
-    TextView titleLastName;
-    TextView titleNumber;
-    TextView titleArea;
-    TextView titleEmail;
+    EditText firstname;
+    EditText lastname;
+    EditText number;
+    EditText area;
+    EditText mail;
 
 
     Button logoutBtn;
     Button back;
+    Button btnSave;
+    Button back_to_profile;
 
     LinearLayout mainLinear;
 
@@ -48,7 +52,9 @@ public class EditProfileFragment extends Fragment {
     FirebaseDatabase firebaseDatabase;
 
     MainFragment mainFragment;
+    ProfileFragment profileFragment;
     ProgressBar progressBar;
+    ProgressBar progressbar_aftersave;
 
 
     @Override
@@ -62,14 +68,18 @@ public class EditProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_edit_profile, container, false);
 
-        titleName = view.findViewById(R.id.tvFirstName);
-        titleLastName = view.findViewById(R.id.tvLastName);
+        firstname = view.findViewById(R.id.firstname);
+        lastname = view.findViewById(R.id.lastname);
+
+        area = view.findViewById(R.id.address);
+        number = view.findViewById(R.id.number);
+        mail = view.findViewById(R.id.email);
+
         progressBar = view.findViewById(R.id.progressbar);
+        progressbar_aftersave = view.findViewById(R.id.progressbar_aftersave);
 
-        titleNumber = view.findViewById(R.id.tvNumber);
-        titleArea = view.findViewById(R.id.tvArea);
-        titleEmail = view.findViewById(R.id.tvEmail);
-
+        btnSave = view.findViewById(R.id.btnSave);
+        back_to_profile = view.findViewById(R.id.back_to_profile);
         logoutBtn = view.findViewById(R.id.signOut);
         back = view.findViewById(R.id.backToMain);
         mainLinear = view.findViewById(R.id.mainLinear);
@@ -113,6 +123,25 @@ public class EditProfileFragment extends Fragment {
                 outerTransaction(mainFragment);
             }
         });
+
+        //back to profile
+        back_to_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (profileFragment == null)
+                    profileFragment = new ProfileFragment();
+                outerTransaction(profileFragment);
+            }
+        });
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                progressbar_aftersave.setVisibility(View.VISIBLE);
+                Toast.makeText(getContext(), "קלט ריק", Toast.LENGTH_SHORT).show();
+            }
+        });
         return view;
     }
 
@@ -129,11 +158,11 @@ public class EditProfileFragment extends Fragment {
         String number = user.getNumber();
         String email = user.getEmail();
 
-        this.titleName.setText(name);
-        this.titleLastName.setText(lastname);
-        this.titleNumber.setText(number);
-        this.titleArea.setText(area);
-        this.titleEmail.setText(email);
+        this.firstname.setHint(name);
+        this.lastname.setHint(lastname);
+        this.number.setHint(number);
+        this.area.setHint(area);
+        this.mail.setHint(email);
 
     }
 
