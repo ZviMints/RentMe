@@ -32,6 +32,7 @@ import com.example.rentme.model.Author;
 import com.example.rentme.model.Configurations;
 import com.example.rentme.model.Product;
 import com.example.rentme.model.ProductDetails;
+import com.example.rentme.model.Relation;
 import com.example.rentme.model.User;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -161,7 +162,14 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                if(user == null) throw new NoSuchElementException("Cant Retrieve user from database");
+                if(user == null)
+                    throw new NoSuchElementException("Cant Retrieve user from database");
+                List<Relation> posts = new ArrayList<>();
+                for(DataSnapshot ds : dataSnapshot.child("posts_list").getChildren()) {
+                    Relation relation = ds.getValue(Relation.class);
+                    posts.add(relation);
+                }
+                user.setPosts(posts);
                 gotUser(user,productDetails);
             }
             @Override
@@ -169,23 +177,30 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         });
 
     }
-    private void gotUser(User user, ProductDetails productDetails) {
+    private void gotUser(final User user, ProductDetails productDetails) {
 
-        String USER_UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        final String USER_UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         if(USER_UID == null) throw new NoSuchElementException("USED_ID is Null");
         Author author = new Author(USER_UID,user.getName(),user.getLastname());
 
 
         Product addedProduct = new Product(productDetails,author);
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        final FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
 
+        final String ProductUid = productDetails.getUtc() + ": " + productTitle;
 
         firebaseDatabase.getReference("Categories")
-                .child(selectedCategory).child(productDetails.getUtc() + ": " + productTitle).setValue(addedProduct)
+                .child(selectedCategory).child(ProductUid).setValue(addedProduct)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
+                            List<Relation> posts = user.getPosts();
+                            posts.add(new Relation(productTitle,ProductUid));
+
+                            firebaseDatabase.getReference("Users").child(USER_UID).child("posts_list").removeValue();
+                            firebaseDatabase.getReference("Users").child(USER_UID).child("posts_list").setValue(posts);
+
                             progressBar_afterPublish.setVisibility(View.GONE);
                             Toast.makeText(getContext(), "פרסום " + productTitle + " בוצע בהצלחה", Toast.LENGTH_SHORT).show();
                             if (mainFragment == null)
