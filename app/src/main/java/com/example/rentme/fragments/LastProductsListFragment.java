@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.example.rentme.model.productKey;
+import com.example.rentme.model.RelationCategoryProduct;
 import com.example.rentme.model.Product;
 import com.example.rentme.adapters.ProductListAdapter;
 import com.example.rentme.R;
@@ -21,11 +21,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
 
 
 public class LastProductsListFragment extends Fragment {
     ProductListAdapter adapter;
     ListView listView;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,29 +37,27 @@ public class LastProductsListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
+        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_last_products_list, container, false);
-         listView = view.findViewById(R.id.products_list);
+        listView = view.findViewById(R.id.products_list);
 
         //start the adapter of the listView
-        adapter = new ProductListAdapter(new ArrayList<Product>(),getActivity());//suppose to get from the data base
+        adapter = new ProductListAdapter(new ArrayList<Product>(), getActivity());
         listView.setAdapter(adapter);
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Last Products");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    ArrayList<productKey> lastProductsId = new ArrayList<>();
-                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                        productKey productId = ds.getValue(productKey.class);
-                        lastProductsId.add(productId);
-                    }
-                    for (int i=lastProductsId.size()-1; i>=0; i--) {
-                        addProductByFavorites(lastProductsId.get(i));
-                    }
+                ArrayList<RelationCategoryProduct> relations = new ArrayList<>();
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    RelationCategoryProduct relation = ds.getValue(RelationCategoryProduct.class);
+                    relations.add(relation);
                 }
+                // WHY ITS NULL?!?!?!?
+                if(true) throw new NoSuchElementException(relations.toString());
+                GotAllRelations(relations);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {}
@@ -65,24 +66,31 @@ public class LastProductsListFragment extends Fragment {
         return view;
     }
 
-    //add product to lastProducts from a given productKey
-    private void addProductByFavorites(productKey productId) {
-        Product product;
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Categories").child(productId.getCategory())
-                .child(productId.getFather());
+    private void GotAllRelations(List<RelationCategoryProduct> relations) {
+        for (int i = relations.size() - 1; i >= 0; i--) {
+            InitializeRelation(relations.get(i));
+        }
+    }
+
+    private void InitializeRelation(RelationCategoryProduct relation) {
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference ref = firebaseDatabase.getReference("Categories")
+                .child(relation.getCategoryName())
+                .child(relation.getProductUID());
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-               if (dataSnapshot.exists()) {
-                   Product product = dataSnapshot.getValue(Product.class);
-                  // lastProducts.add(product);
-                   adapter.addProduct(product);
-                   adapter.notifyDataSetChanged();
-               }
+                if (dataSnapshot.exists()) {
+                    Product product = dataSnapshot.getValue(Product.class);
+                    adapter.addProduct(product);
+                    adapter.notifyDataSetChanged();
+                }
 
             }
+
             @Override
-            public void onCancelled(DatabaseError databaseError) {}
+            public void onCancelled(DatabaseError databaseError) {
+            }
         });
     }
 

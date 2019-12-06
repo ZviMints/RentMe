@@ -11,15 +11,18 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.rentme.R;
+import com.example.rentme.model.Comment;
+
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class commentAdapter extends BaseAdapter {
-    private ArrayList<String> comments;
+    private ArrayList<Comment> comments;
     private Context context;
 
-    public commentAdapter(ArrayList<String> items, Context context) {
-        this.comments = new ArrayList<String>(items);
+    public commentAdapter(ArrayList<Comment> comments, Context context) {
+        this.comments = comments;
         this.context = context;
 
     }
@@ -56,8 +59,10 @@ public class commentAdapter extends BaseAdapter {
         } else {
             holder = (Holder) convertView.getTag();
         }
-        holder.details.setText(comments.get(position));
-//        holder.details.setText("not working well");
+        String msg = comments.get(position).getMsg();
+        String name = comments.get(position).getFullname();
+
+        holder.details.setText(msg);
 
         return convertView;
     }

@@ -1,9 +1,10 @@
 package com.example.rentme.model;
 
 
+import java.io.Serializable;
 import java.util.List;
 
-public class CategoryWarper {
+public class CategoryWarper implements Serializable {
     private String categoryName;
     private List<Product> prodcuts;
 

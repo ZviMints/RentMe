@@ -22,7 +22,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.rentme.model.Product;
 import com.example.rentme.R;
-import com.example.rentme.model.sortByLastUploaded;
+import com.example.rentme.Comperators.sortByLastUploaded;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
@@ -34,6 +34,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.NoSuchElementException;
 
 
 public class ProductListAdapter extends BaseAdapter {
@@ -80,6 +81,7 @@ public class ProductListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         Holder holder;// use holder
         final Product currProduct = items.get(position);
+
         if (convertView == null) {
             convertView = LayoutInflater.from(this.context).inflate(R.layout.product_row, parent, false);
 
@@ -97,20 +99,12 @@ public class ProductListAdapter extends BaseAdapter {
         holder.title.setText(currProduct.getTitle());
         holder.category.setText(currProduct.getCategory());
         String detailsText = currProduct.getDetails();
-        detailsText = (detailsText.length()>21) ? detailsText.substring(0,21)+"..." : detailsText;
+        detailsText = (detailsText.length() > 15) ? detailsText.substring(0,21) + "..." : detailsText;
         holder.details.setText(detailsText);
         holder.price.setText(currProduct.getPrice());
         holder.productPriceTime.setText(currProduct.getRentPeriod());
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        String strDate = (currProduct.getUploadTime());
-        Date uploadDate = null;
-        try {
-            uploadDate = dateFormat.parse(strDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
+        Date uploadDate = currProduct.getDate();
         long diff = new Date().getTime() - uploadDate.getTime();
 
         holder.publishTime.setText(diff / (1000 * 60 * 60 * 24)+"");

@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements ProductListAdapte
             inItemFragment = new InItemFragment();
 
         Bundle bundle = new Bundle();
-        bundle.putSerializable("product",product);
+        bundle.putSerializable("Product",product);
         inItemFragment.setArguments(bundle);
         outerTransaction(inItemFragment);
     }

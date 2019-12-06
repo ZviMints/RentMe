@@ -23,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 public class InsideCategoryFragment extends Fragment{
 
@@ -44,9 +45,9 @@ public class InsideCategoryFragment extends Fragment{
     }
 
     private void InitializeProductListAdapter() {
+
         InSideCategoryLinearLayout.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.GONE);
-
         ProductListAdapter adapter;
         adapter = new ProductListAdapter(products, getActivity());
         listView.setAdapter(adapter);

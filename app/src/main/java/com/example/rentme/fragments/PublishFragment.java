@@ -27,7 +27,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.rentme.R;
 import com.example.rentme.model.Configurations;
-import com.example.rentme.model.productKey;
+import com.example.rentme.model.RelationCategoryProduct;
 import com.example.rentme.model.Product;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -79,7 +79,6 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
 
     public String productTitle;
     public String Price;
-    public String strDate;
     public String userUid;
     public String rentPeriod;
     public String image;
@@ -136,24 +135,29 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
                 productTitle = titleLayer.getText().toString();
                 details = detailsLayer.getText().toString();
                 Price = priceLayer.getText().toString();
-                final Date date = new Date();
-                strDate = getDateByFormat(date);
+                Date date = new Date();
                 userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
                 if ((productTitle.length() > 0) &&
                         (details.length() > 0) &&
                         (Price.length() > 0)) {
 
-                    final Product addedProduct = new Product(productTitle, selectedCategory, details, selectedCondition, Price, rentPeriod, strDate, userUid,date.getTime()+"",downloadUri);
-                    //upload to database
+                    final Product product = new Product(productTitle,
+                                                        selectedCategory,
+                                                        details,
+                                                        selectedCondition,
+                                                        Price,
+                                                        rentPeriod,
+                                                        userUid,
+                                                        date,
+                                                        downloadUri);
                     FirebaseDatabase.getInstance().getReference("Categories")
-                            .child(selectedCategory).child(date.getTime() + ": " + productTitle).setValue(addedProduct)
+                            .child(selectedCategory).child(product.getProductIDInCategory()).setValue(product)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        //upload to last product list
-                                        upload2LasrProducts(date,addedProduct);
+                                        AddToLastProducts(product);
                                     } else {
                                         progressBar_afterPublish.setVisibility(View.GONE);
                                         Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
@@ -377,15 +381,16 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         return dateFormat.format(date);
     }
 
-    private void upload2LasrProducts(final Date date, final Product addedProduct){
-        productKey productDir = new productKey(addedProduct.getFatherId(),addedProduct.getCategory()) ;
-        FirebaseDatabase.getInstance().getReference("Last Products")
-                .child(addedProduct.getFatherId()).setValue(productDir)
+    private void AddToLastProducts(final Product product){
+        RelationCategoryProduct relation = new RelationCategoryProduct(product.getCategory(),product.getProductIDInCategory());
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseDatabase.getReference("Last Products")
+                .child(product.getProductIDInCategory()).setValue(relation)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            upload2Renter(date, addedProduct);
+                            UpdateToUser(product);
                         } else {
                             progressBar_afterPublish.setVisibility(View.GONE);
                             Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
@@ -395,11 +400,11 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
 
     }
 
-    private void upload2Renter(Date date, Product addedProduct){
-        productKey productDir = new productKey(addedProduct.getFatherId(),addedProduct.getCategory()) ;
+    private void UpdateToUser(Product product){
+        RelationCategoryProduct relation = new RelationCategoryProduct(product.getCategory(), product.getProductIDInCategory()) ;
         FirebaseDatabase.getInstance().getReference("Users")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                .child("myProducts").child(addedProduct.getUtc()+": "+addedProduct.getTitle()).setValue(productDir)
+                .child("Products").child(product.getProductIDInCategory()).setValue(relation)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
