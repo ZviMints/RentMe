@@ -14,6 +14,7 @@ import com.example.rentme.R;
 import com.example.rentme.model.Comment;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 
 public class CommentsAdapter extends BaseAdapter {
@@ -60,6 +61,9 @@ public class CommentsAdapter extends BaseAdapter {
         }
 
         String msg = comments.get(position).getMsg();
+        String fullname = comments.get(position).getAuthor().getFullName();
+
+        holder.author.setText(fullname);
         holder.details.setText(msg);
 
         return convertView;
@@ -68,10 +72,12 @@ public class CommentsAdapter extends BaseAdapter {
 
     public class Holder {
         private TextView details;
+        private TextView author;
 
 
         public Holder(View view) {
             details = view.findViewById(R.id.comment_details);
+            author = view.findViewById(R.id.comment_fullname);
         }
 
 
