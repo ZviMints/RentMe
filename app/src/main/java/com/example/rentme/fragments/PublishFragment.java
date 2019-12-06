@@ -196,10 +196,13 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             List<Relation> posts = user.getPosts();
-                            posts.add(new Relation(productTitle,ProductUid));
-
+                            Relation newRelation = new Relation(selectedCategory,ProductUid);
+                            posts.add(newRelation);
+                            //upload Relation to User
                             firebaseDatabase.getReference("Users").child(USER_UID).child("posts_list").removeValue();
                             firebaseDatabase.getReference("Users").child(USER_UID).child("posts_list").setValue(posts);
+                            //upload Relation to LastProduct
+                            firebaseDatabase.getReference("Last Products").child(ProductUid).setValue(newRelation);
 
                             progressBar_afterPublish.setVisibility(View.GONE);
                             Toast.makeText(getContext(), "פרסום " + productTitle + " בוצע בהצלחה", Toast.LENGTH_SHORT).show();
