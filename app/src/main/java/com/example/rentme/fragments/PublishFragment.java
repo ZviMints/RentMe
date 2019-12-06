@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -71,6 +72,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
     private EditText detailsLayer;
     private EditText priceLayer;
     public ImageView imageview;
+    private CheckBox checkBox;
 
     private List<String> statusNames;
     private List<String> RentPeriodOptions;
@@ -140,7 +142,8 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
 
                 if ((productTitle.length() > 0) &&
                         (details.length() > 0) &&
-                        (Price.length() > 0)) {
+                        (Price.length() > 0) &&
+                        checkBox.isChecked()) {
 
                     final Product product = new Product(productTitle,
                                                         selectedCategory,
@@ -205,7 +208,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
         mainScrollView = view.findViewById(R.id.mainScrollView);
         progressBarOnLoad = view.findViewById(R.id.progressBarOnLoad);
         imageview = view.findViewById(R.id.product_pic);
-
+        checkBox = view.findViewById(R.id.checkbox);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         // Initialize Configurations
