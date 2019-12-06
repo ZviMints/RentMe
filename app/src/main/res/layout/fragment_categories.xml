@@ -73,7 +73,7 @@
             android:background="@color/Sky"
             android:textColor="#000"
             android:textStyle="bold"
-            android:text="ניהול משתמשים" />
+            android:text="ניהול קונגפרציות" />
 
         <TextView
             android:layout_width="100dp"

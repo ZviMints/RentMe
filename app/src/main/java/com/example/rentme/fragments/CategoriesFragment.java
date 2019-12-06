@@ -18,8 +18,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.rentme.R;
-import com.example.rentme.activities.MainActivity;
 import com.example.rentme.activities.admin.CategoriesManagement;
+import com.example.rentme.activities.admin.ConfManagement;
 import com.example.rentme.adapters.MainAdapter;
 import com.example.rentme.model.Configurations;
 import com.google.firebase.auth.FirebaseAuth;
@@ -48,7 +48,7 @@ public class CategoriesFragment extends Fragment {
 
     LinearLayout adminPanel;
     TextView admin_close;
-    Button admin_UsersManagement;
+    Button admin_ConfManagement;
     Button admin_CategoriesManagement;
     Button admin_open;
 
@@ -111,7 +111,7 @@ public class CategoriesFragment extends Fragment {
 
         adminPanel = view.findViewById(R.id.adminPanel);
         admin_close = view.findViewById(R.id.admin_close);
-        admin_UsersManagement = view.findViewById(R.id.admin_UsersManagement);
+        admin_ConfManagement = view.findViewById(R.id.admin_UsersManagement);
         admin_CategoriesManagement = view.findViewById(R.id.admin_CategoriesManagement);
         admin_open = view.findViewById(R.id.admin_open);
 
@@ -187,6 +187,14 @@ public class CategoriesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), CategoriesManagement.class);
+                startActivity(intent);
+            }
+        });
+
+        admin_ConfManagement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ConfManagement.class);
                 startActivity(intent);
             }
         });

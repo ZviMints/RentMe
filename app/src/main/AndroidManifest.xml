@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.admin.UsersManagement"></activity>
+        <activity android:name=".activities.admin.ConfManagement"></activity>
         <activity android:name=".activities.admin.CategoriesManagement" />
         <activity android:name=".fragments.InsideCategoryFragment" />
         <activity android:name=".fragments.SignUpFragment" />
