@@ -177,7 +177,7 @@ public class InItemFragment extends Fragment {
     public void gotUserNowInitializeAll(User author) {
         this.author = author;
 
-        this.nameOfTheSeller.setText(author.getName());
+        this.nameOfTheSeller.setText(author.getFullName());
         this.cityOfTheSeller.setText(author.getArea());
         this.uploadTime.setText(product.getProductDetails().getUploadTime());
         updateImageFromUrl(product, this.productPicture);

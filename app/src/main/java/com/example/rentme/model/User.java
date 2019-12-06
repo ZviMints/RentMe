@@ -82,4 +82,6 @@ public class User {
     public void setNumber(String number) {
         this.number = number;
     }
+
+    public String getFullName() { return this.getName() + " " + this.getLastname(); }
 }
