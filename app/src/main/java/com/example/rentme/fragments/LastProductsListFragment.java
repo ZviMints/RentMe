@@ -10,18 +10,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.example.rentme.model.Author;
+import com.example.rentme.model.Comment;
+import com.example.rentme.model.ProductDetails;
+import com.example.rentme.model.Relation;
 import com.example.rentme.model.Product;
 import com.example.rentme.adapters.ProductListAdapter;
 import com.example.rentme.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.List;
 
 
 public class LastProductsListFragment extends Fragment {
-
+    ProductListAdapter adapter;
+    ListView listView;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,13 +39,65 @@ public class LastProductsListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_last_products_list, container, false);
-        ListView listView = view.findViewById(R.id.products_list);
 
-        ProductListAdapter adapter = new ProductListAdapter(new ArrayList<Product>(),getActivity());//suppose to get from the data base
+        View view = inflater.inflate(R.layout.fragment_last_products_list, container, false);
+        listView = view.findViewById(R.id.products_list);
+
+        //start the adapter of the listView
+        adapter = new ProductListAdapter(new ArrayList<Product>(),getActivity());//suppose to get from the data base
         listView.setAdapter(adapter);
 
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Last Products");
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    ArrayList<Relation> lastProductsId = new ArrayList<>();
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        Relation productId = ds.getValue(Relation.class);
+                        lastProductsId.add(productId);
+                    }
+                    for (int i=lastProductsId.size()-1; i>=0; i--) {
+                        addProductByRelation(lastProductsId.get(i));
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
+
         return view;
+    }
+
+    //add product to lastProducts from a given productKey
+    private void addProductByRelation(Relation productId) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Categories").child(productId.getCategoryName())
+                .child(productId.getProductUid());
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot ds) {
+                if (ds.exists()) {
+
+                    Author author = ds.child("author").getValue(Author.class);
+                    ProductDetails productDetails = ds.child("productDetails").getValue(ProductDetails.class);
+
+                    List<Comment> comments = new ArrayList<>();
+                    for(DataSnapshot dsComments: ds.child("comments_list").getChildren()){
+                        String msg =dsComments.child("msg").getValue().toString();
+                        Author commentAuthor = dsComments.child("author").getValue(Author.class);
+                        comments.add(new Comment(commentAuthor,msg));
+                    }
+
+                   Product product = new Product(productDetails,author,comments);
+
+                    adapter.addProduct(product);
+                    adapter.notifyDataSetChanged();
+                }
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
     }
 
 
