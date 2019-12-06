@@ -9,13 +9,15 @@ public class Author implements Serializable {
     String userUid;
     String firstname;
     String lastname;
+    String area;
 
     public Author() {}
 
-    public Author(String userUid, String firstname, String lastname) {
+    public Author(String userUid, String firstname, String lastname, String area) {
         this.userUid = userUid;
         this.firstname = firstname;
         this.lastname = lastname;
+        this.area = area;
     }
 
 
@@ -32,6 +34,10 @@ public class Author implements Serializable {
     }
     public String getFullName() {
         return firstname + " " + lastname;
+    }
+
+    public String getArea() {
+        return area;
     }
 
     @NonNull

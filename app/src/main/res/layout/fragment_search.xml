@@ -141,7 +141,7 @@
             android:gravity="center">
 
             <EditText
-                android:id="@+id/price1"
+                android:id="@+id/higher_price"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
@@ -150,7 +150,7 @@
                 android:padding="10dp" />
 
             <EditText
-                android:id="@+id/price2"
+                android:id="@+id/lower_price"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
@@ -162,7 +162,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btnSearch"
+            android:id="@+id/search_btm"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_gravity="center"

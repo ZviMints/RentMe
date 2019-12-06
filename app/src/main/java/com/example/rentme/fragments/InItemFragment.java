@@ -232,7 +232,7 @@ public class InItemFragment extends Fragment {
                 String msg = writeComment.getText().toString();
                 String USER_UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 if (USER_UID == null) throw new NoSuchElementException("USED_ID is Null");
-                Author author = new Author(USER_UID, user.getName(), user.getLastname());
+                Author author = new Author(USER_UID, user.getName(), user.getLastname(),user.getArea());
                 Comment comment = new Comment(author, msg);
                 if (msg.length() > 0) {
                     List<Comment> comments = product.getCommentsList();
