@@ -94,12 +94,37 @@ public class EditProfileFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                if(user == null) throw new NoSuchElementException("Cant Retrieve user from database");
+                if (user == null)
+                    throw new NoSuchElementException("Cant Retrieve user from database");
                 gotUserFromFireBase(user);
             }
+
             @Override
-            public void onCancelled(DatabaseError databaseError) {}
+            public void onCancelled(DatabaseError databaseError) {
+            }
         });
+
+        return view;
+    }
+
+
+    private void gotUserFromFireBase(User user) {
+
+        progressBar.setVisibility(View.GONE);
+        mainLinear.setVisibility(LinearLayout.VISIBLE);
+        logoutBtn.setVisibility(LinearLayout.VISIBLE);
+
+        String current_name = user.getName();
+        String current_lastname = user.getLastname();
+        String current_area = user.getArea();
+        String current_number = user.getNumber();
+        String current_email = user.getEmail();
+
+        this.firstname.setHint(current_name);
+        this.lastname.setHint(current_lastname);
+        this.number.setHint(current_number);
+        this.area.setHint(current_area);
+        this.mail.setHint(current_email);
 
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,7 +133,7 @@ public class EditProfileFragment extends Fragment {
                 Intent intent = new Intent(getContext(), MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                Toast.makeText(getContext(),"התנתקת בהצלחה",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "התנתקת בהצלחה", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });
@@ -134,35 +159,39 @@ public class EditProfileFragment extends Fragment {
             }
         });
 
+
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                progressbar_aftersave.setVisibility(View.VISIBLE);
-                Toast.makeText(getContext(), "קלט ריק", Toast.LENGTH_SHORT).show();
+                final String firstname_string = firstname.getText().toString();
+                final String lastname_string = lastname.getText().toString();
+                final String area_string = area.getText().toString();
+                final String email_string = mail.getText().toString();
+                final String number_string = number.getText().toString();
+
+
+                if (firstname_string.length() > 0 &&
+                        lastname_string.length() > 0 &&
+                        area_string.length() > 0 &&
+                        email_string.length() > 0 &&
+                        number_string.length() > 0) {
+                    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                    progressbar_aftersave.setVisibility(View.VISIBLE);
+
+                    firebaseDatabase.getReference("Users").child(firebaseUser.getUid()).child("area").setValue(area_string);
+                    firebaseDatabase.getReference("Users").child(firebaseUser.getUid()).child("email").setValue(email_string);
+                    firebaseDatabase.getReference("Users").child(firebaseUser.getUid()).child("lastname").setValue(lastname_string);
+                    firebaseDatabase.getReference("Users").child(firebaseUser.getUid()).child("name").setValue(firstname_string);
+                    firebaseDatabase.getReference("Users").child(firebaseUser.getUid()).child("number").setValue(number_string);
+
+                    progressbar_aftersave.setVisibility(View.GONE);
+                } else {
+                    Toast.makeText(getContext(), "קלט ריק", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
-        return view;
-    }
-
-
-    private void gotUserFromFireBase(User user) {
-
-        progressBar.setVisibility(View.GONE);
-        mainLinear.setVisibility(LinearLayout.VISIBLE);
-        logoutBtn.setVisibility(LinearLayout.VISIBLE);
-
-        String name = user.getName();
-        String lastname = user.getLastname();
-        String area = user.getArea();
-        String number = user.getNumber();
-        String email = user.getEmail();
-
-        this.firstname.setHint(name);
-        this.lastname.setHint(lastname);
-        this.number.setHint(number);
-        this.area.setHint(area);
-        this.mail.setHint(email);
 
     }
 
@@ -171,7 +200,7 @@ public class EditProfileFragment extends Fragment {
         super.onAttach(context);
     }
 
-    private void outerTransaction(Fragment fragment){
+    private void outerTransaction(Fragment fragment) {
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.OuterFragmentContainer, fragment);
         transaction.addToBackStack(null);
