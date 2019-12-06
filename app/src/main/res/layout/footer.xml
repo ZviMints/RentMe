@@ -9,26 +9,18 @@
         android:layout_width="match_parent"
         android:background="#ffeaa7"
         android:gravity="center"
-        android:paddingTop="5dp"
         android:layout_marginTop="1dp"
         android:orientation="horizontal"
         android:layout_height="wrap_content">
-
-        <ImageView
-            android:layout_width="250dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_height="50dp"
-            android:background="@drawable/ad_example"/>
 
     <Button
         android:id="@+id/publish"
         android:layout_width="wrap_content"
         android:background="@color/Orange"
         android:layout_height="30dp"
-        android:layout_marginTop="10dp"
-        android:textColor="#fff"
+        android:layout_marginTop="4dp"
         android:layout_marginBottom="5dp"
+        android:textColor="#fff"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:paddingLeft="15dp"

@@ -95,8 +95,12 @@ public class InsideCategoryFragment extends Fragment{
                         Author author = ds.child("author").getValue(Author.class);
                         ProductDetails productDetails = ds.child("productDetails").getValue(ProductDetails.class);
 
-                        GenericTypeIndicator<List<Comment>> t = new GenericTypeIndicator<List<Comment>>() {};
-                        List<Comment> comments = dataSnapshot.child("comments_list").getValue(t);
+                        List<Comment> comments = new ArrayList<>();
+                        for(DataSnapshot dsComments: ds.child("comments_list").getChildren()){
+                            String msg =dsComments.child("msg").getValue().toString();
+                            Author commentAuthor = dsComments.child("author").getValue(Author.class);
+                            comments.add(new Comment(commentAuthor,msg));
+                        }
 
                         products.add(new Product(productDetails,author,comments));
                     }
