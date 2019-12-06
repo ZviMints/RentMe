@@ -55,6 +55,7 @@ public class LastProductsListFragment extends Fragment {
                     RelationCategoryProduct relation = ds.getValue(RelationCategoryProduct.class);
                     relations.add(relation);
                 }
+
                 // WHY ITS NULL?!?!?!?
                 if(true) throw new NoSuchElementException(relations.toString());
                 GotAllRelations(relations);
