@@ -20,7 +20,7 @@ import androidx.annotation.NonNull;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.rentme.comperators.sortByLastUploaded;
+import com.example.rentme.Comperators.sortByLastUploaded;
 import com.example.rentme.model.Product;
 import com.example.rentme.R;
 import com.google.android.gms.tasks.OnCompleteListener;

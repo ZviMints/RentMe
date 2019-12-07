@@ -141,7 +141,7 @@
             android:gravity="center">
 
             <EditText
-                android:id="@+id/higher_price"
+                android:id="@+id/lower_price"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
@@ -150,7 +150,7 @@
                 android:padding="10dp" />
 
             <EditText
-                android:id="@+id/lower_price"
+                android:id="@+id/higher_price"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"

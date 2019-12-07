@@ -1,4 +1,4 @@
-package com.example.rentme.comperators;
+package com.example.rentme.Comperators;
 
 import com.example.rentme.model.Product;
 
@@ -24,6 +24,6 @@ public class sortByLastUploaded implements java.util.Comparator<Product> {
         catch (ParseException e) {
             e.printStackTrace();
         }
-        return uploadDate1.compareTo(uploadDate2);
+        return uploadDate2.compareTo(uploadDate1);
     }
 }
