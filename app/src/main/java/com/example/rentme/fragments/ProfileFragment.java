@@ -112,6 +112,8 @@ public class ProfileFragment extends Fragment {
 
         buildMyPublishedProductList();
 
+
+
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -171,7 +173,7 @@ public class ProfileFragment extends Fragment {
     private void showMyPublishedProducts(final ArrayList<Relation> myProductsId) {
         newMyProductsId = new ArrayList<Relation>();
         //start the adapter of the listView
-        adapter = new ProductListAdapter(new ArrayList<Product>(),getActivity());//suppose to get from the data base
+        adapter = new ProductListAdapter(new ArrayList<Product>(),getContext());//suppose to get from the data base
         myPublishedProduct.setAdapter(adapter);
 
         for (final Relation myProductId : myProductsId){
@@ -203,17 +205,14 @@ public class ProfileFragment extends Fragment {
 
                         }
                     }//update user post list if some product was allready removed
-                    if (newMyProductsId.size() != myProductsId.size()) {
-                        FirebaseDatabase.getInstance().getReference("Users")
-                                .child(firebaseUser.getUid()).child("posts_list").removeValue();
-                        FirebaseDatabase.getInstance().getReference("Users")
-                                .child(firebaseUser.getUid()).child("posts_list")
-                                .setValue(newMyProductsId);
-
-                    }
-
+//                    if (newMyProductsId.size() != myProductsId.size()) {
+//                        FirebaseDatabase.getInstance().getReference("Users")
+//                                .child(firebaseUser.getUid()).child("posts_list").removeValue();
+//                        FirebaseDatabase.getInstance().getReference("Users")
+//                                .child(firebaseUser.getUid()).child("posts_list")
+//                                .setValue(newMyProductsId);
+//                    }
                 }
-
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
                 }

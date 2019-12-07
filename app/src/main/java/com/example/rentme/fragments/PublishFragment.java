@@ -206,6 +206,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
 
                             progressBar_afterPublish.setVisibility(View.GONE);
                             Toast.makeText(getContext(), "פרסום " + productTitle + " בוצע בהצלחה", Toast.LENGTH_SHORT).show();
+                            resetSelections();
                             if (mainFragment == null)
                                 mainFragment = new MainFragment();
                             outerTransaction(mainFragment);
@@ -312,7 +313,16 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
                 outerTransaction(mainFragment);
             }
         });
+
         return view;
+    }
+
+    private void resetSelections() {
+        titleLayer.setText("");
+        detailsLayer.setText("");
+        priceLayer.setText("");
+        downloadUri = "";
+
     }
 
     @Override
