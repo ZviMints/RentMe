@@ -47,7 +47,7 @@ public class LastProductsListFragment extends Fragment {
         adapter = new ProductListAdapter(new ArrayList<Product>(),getActivity());//suppose to get from the data base
         listView.setAdapter(adapter);
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Last Products");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Last Products").getRef();
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -72,7 +72,7 @@ public class LastProductsListFragment extends Fragment {
     //add product to lastProducts from a given productKey
     private void addProductByRelation(Relation productId) {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Categories").child(productId.getCategoryName())
-                .child(productId.getProductUid());
+                .child(productId.getProductUid()).getRef();
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot ds) {

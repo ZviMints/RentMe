@@ -25,6 +25,7 @@ import com.example.rentme.model.Product;
 import com.example.rentme.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -38,6 +39,7 @@ import java.util.NoSuchElementException;
 
 
 public class ProductListAdapter extends BaseAdapter {
+    Holder holder;
 
     public interface MoreDetailsButtonListener{
         void showMoreDetails(Product product);
@@ -79,7 +81,7 @@ public class ProductListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Holder holder;// use holder
+
         final Product currProduct = items.get(position);
         if (convertView == null) {
             convertView = LayoutInflater.from(this.context).inflate(R.layout.product_row, parent, false);
@@ -126,12 +128,29 @@ public class ProductListAdapter extends BaseAdapter {
             }
         });
 
+        String currUserUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        if (currUserUid.compareTo(currProduct.getAuthor().getUserUid())==0){
+            holder.RemoveProductBtm.setVisibility(View.VISIBLE);
+        }
+        holder.RemoveProductBtm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //remove product////////////////////
+            }
+        });
+
+
+
         return convertView;
     }
 
     public void addProduct(Product product){
         items.add(product);
         Collections.sort(items, new sortByLastUploaded());
+    }
+
+    public void addProductFromProfile(Product product){
+        items.add(product);
     }
 
     private void updateImageFromUrl(Product currProduct,final ImageView image){
@@ -168,6 +187,7 @@ public class ProductListAdapter extends BaseAdapter {
         private TextView productPriceTime;
         private TextView publishTime;
         private Button MoreDetailsBtn;
+        private Button RemoveProductBtm;
 
 
         public Holder(View view) {
@@ -179,6 +199,7 @@ public class ProductListAdapter extends BaseAdapter {
             productPriceTime = view.findViewById(R.id.product_price_time);
             publishTime = view.findViewById(R.id.Publish_time);
             MoreDetailsBtn = view.findViewById(R.id.more_product_details);
+            RemoveProductBtm = view.findViewById(R.id.remove_product);
         }
 
 
