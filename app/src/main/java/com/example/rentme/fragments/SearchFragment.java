@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.rentme.R;
 import com.example.rentme.model.Author;
@@ -100,6 +101,9 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemSelect
             public void onClick(View v) {
                 String low = lowerPrice.getText().toString();
                 String high = higherPrice.getText().toString();
+                try {
+                    Double.parseDouble(low);
+                    Double.parseDouble(high);
 
 
                 if (searchReasultFragment == null)
@@ -114,8 +118,9 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemSelect
 
                 searchReasultFragment.setArguments(bundle);
                 outerTransaction(searchReasultFragment);
-                //findFilterProducts(lowerPriceValue,higherPriceValue);
-                //showListOfFilterProduct();
+                }catch (Exception e){
+                    Toast.makeText(getContext(), "קלט לא חוקי", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -131,17 +136,6 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemSelect
 
         return view;
     }
-//
-//    private void showListOfFilterProduct() {
-//        if (searchReasultFragment == null)
-//            searchReasultFragment = new SearchReasultFragment();
-//
-//        Bundle bundle = new Bundle();
-//        bundle.putSerializable("filter products",filterProducts);
-//        searchReasultFragment.setArguments(bundle);
-//        outerTransaction(searchReasultFragment);
-//    }
-
 
 
     private void gotConfigurationsFromFireBase(Configurations conf) {
