@@ -21,6 +21,7 @@ import com.example.rentme.R;
 import com.example.rentme.activities.admin.CategoriesManagement;
 import com.example.rentme.activities.admin.ConfManagement;
 import com.example.rentme.adapters.MainAdapter;
+import com.example.rentme.model.Category;
 import com.example.rentme.model.Configurations;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -53,8 +54,7 @@ public class CategoriesFragment extends Fragment {
     Button admin_open;
 
     // Get From Database
-    private List<String> titles = new ArrayList<>();
-    private  List<Integer> titles_images = new ArrayList<>();
+    private List<Category> categories = new ArrayList<>();
 
     ProgressBar progressBar;
 
@@ -64,14 +64,10 @@ public class CategoriesFragment extends Fragment {
 
     }
 
-    private void gotCategoriesFromFireBase(List<String> categories) {
+    private void gotCategoriesFromFireBase(List<Category> categories) {
 
         // Initialize titles
-        this.titles = categories;
-
-        // Initialize images
-        for(int i=0; i<categories.size(); i++)
-            this.titles_images.add(R.drawable.vacation);
+        this.categories = categories;
 
 
         IntializeGridView();
@@ -80,7 +76,7 @@ public class CategoriesFragment extends Fragment {
     private void IntializeGridView() {
         progressBar.setVisibility(View.GONE);
         gridView.setVisibility(View.VISIBLE);
-        MainAdapter adapter = new MainAdapter(getContext(),titles, titles_images);
+        MainAdapter adapter = new MainAdapter(getContext(),categories);
         gridView.setAdapter(adapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -88,7 +84,7 @@ public class CategoriesFragment extends Fragment {
                 if (insideCategoryFragment == null)
                     insideCategoryFragment = new InsideCategoryFragment();
                 Bundle bundle = new Bundle();
-                bundle.putString("Categories",titles.get(+position));
+                bundle.putString("Categories",categories.get(+position).getTitle());
                 insideCategoryFragment.setArguments(bundle);
                 outerTransaction(insideCategoryFragment);
             }
@@ -115,15 +111,17 @@ public class CategoriesFragment extends Fragment {
         firebaseDatabase = FirebaseDatabase.getInstance();
 
         // Initialize Categories
-        if(this.titles.isEmpty()) {
+        if(this.categories.isEmpty()) {
             DatabaseReference ref = firebaseDatabase.getReference("Categories");
             ref.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    List<String> categories = new ArrayList<>();
+                    List<Category> categories = new ArrayList<>();
                     for(DataSnapshot ds : dataSnapshot.getChildren()) {
                         String categoryName = ds.getKey();
-                        categories.add(categoryName);
+                        String image = ds.child("img").getValue(String.class);
+                        Category category = new Category(categoryName,image);
+                        categories.add(category);
                     }
                     gotCategoriesFromFireBase(categories);
                 }
