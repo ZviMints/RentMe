@@ -58,6 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:textStyle="bold"
+                android:layout_marginRight="25dp"
                 android:text="תוכן ההודעה:"
                 android:textDirection="rtl"/>
 
