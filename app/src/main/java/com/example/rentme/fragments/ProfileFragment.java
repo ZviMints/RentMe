@@ -54,7 +54,7 @@ public class ProfileFragment extends Fragment {
     Button change_profile;
     ProgressBar progressBar;
 
-
+    TextView empty_list;
     LinearLayout mainLinear;
 
     FirebaseAuth firebaseAuth;
@@ -97,6 +97,7 @@ public class ProfileFragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
+        empty_list = view.findViewById(R.id.empty_list);
 
         // Initialize User
         DatabaseReference ref = firebaseDatabase.getReference("Users").child(firebaseUser.getUid()).getRef();
@@ -179,6 +180,7 @@ public class ProfileFragment extends Fragment {
         adapter = new myProductListAdapter(new ArrayList<Product>(),getContext());//suppose to get from the data base
         myPublishedProduct.setAdapter(adapter);
 
+
         for (final Relation myProductId : myProductsId){
             DatabaseReference ref = FirebaseDatabase.getInstance()
                     .getReference("Categories")
@@ -205,6 +207,8 @@ public class ProfileFragment extends Fragment {
                             adapter.addProductFromProfile(product);
                             adapter.notifyDataSetChanged();
 
+                            empty_list.setVisibility(View.GONE);
+
 
                         }
                     }//update user post list if some product was allready removed
@@ -220,6 +224,7 @@ public class ProfileFragment extends Fragment {
                 public void onCancelled(DatabaseError databaseError) {
                 }
             });
+
         }
     }
 
