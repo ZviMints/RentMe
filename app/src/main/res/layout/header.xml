@@ -34,7 +34,7 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="5dp"
                 android:background="@drawable/circle_logout"
-                android:drawableTop="@drawable/ic_portrait_black_24dp"
+                android:drawableTop="@drawable/ic_receipt_black_24dp"
                 android:padding="4dp"
                 android:text="פרסם"
                 android:textColor="#fff"></Button>
@@ -46,7 +46,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/circle_profile"
-                android:drawableTop="@drawable/ic_portrait_black_24dp"
+                android:drawableTop="@drawable/ic_account_circle_black_24dp"
                 android:padding="4dp"
                 android:text="פרופיל"
                 android:textColor="#fff"></Button>
