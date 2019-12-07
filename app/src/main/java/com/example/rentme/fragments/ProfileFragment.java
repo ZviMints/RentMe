@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.example.rentme.activities.MainActivity;
 import com.example.rentme.R;
 import com.example.rentme.adapters.ProductListAdapter;
+import com.example.rentme.adapters.myProductListAdapter;
 import com.example.rentme.interfaces.UpdateMyProductList;
 import com.example.rentme.model.Author;
 import com.example.rentme.model.Comment;
@@ -62,7 +63,7 @@ public class ProfileFragment extends Fragment {
 
     MainFragment mainFragment;
     EditProfileFragment editProfileFragment;
-    ProductListAdapter adapter;
+    myProductListAdapter adapter;
 
     ArrayList<Relation> newMyProductsId;
 
@@ -175,7 +176,7 @@ public class ProfileFragment extends Fragment {
     private void showMyPublishedProducts(final ArrayList<Relation> myProductsId) {
         newMyProductsId = new ArrayList<Relation>();
         //start the adapter of the listView
-        adapter = new ProductListAdapter(new ArrayList<Product>(),getContext());//suppose to get from the data base
+        adapter = new myProductListAdapter(new ArrayList<Product>(),getContext());//suppose to get from the data base
         myPublishedProduct.setAdapter(adapter);
 
         for (final Relation myProductId : myProductsId){

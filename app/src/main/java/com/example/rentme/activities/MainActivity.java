@@ -16,11 +16,13 @@ import android.widget.Toast;
 import com.example.rentme.R;
 import com.example.rentme.adapters.ProductListAdapter;
 import com.example.rentme.fragments.InItemFragment;
+import com.example.rentme.fragments.LastProductsListFragment;
 import com.example.rentme.fragments.LoginFragment;
 import com.example.rentme.fragments.MainFragment;
 import com.example.rentme.fragments.ProfileFragment;
 import com.example.rentme.fragments.PublishFragment;
 import com.example.rentme.fragments.SearchFragment;
+import com.example.rentme.interfaces.MoreDetailsButtonListener;
 import com.example.rentme.interfaces.UpdateMyProductList;
 import com.example.rentme.model.Configurations;
 import com.example.rentme.model.Product;
@@ -35,7 +37,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.NoSuchElementException;
 
 
-public class MainActivity extends AppCompatActivity implements ProductListAdapter.MoreDetailsButtonListener, UpdateMyProductList {
+public class MainActivity extends AppCompatActivity implements MoreDetailsButtonListener, UpdateMyProductList {
 
 
     FirebaseAuth firebaseAuth;
