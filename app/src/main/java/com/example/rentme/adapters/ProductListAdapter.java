@@ -23,9 +23,15 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.rentme.Comperators.sortByLastUploaded;
 import com.example.rentme.model.Product;
 import com.example.rentme.R;
+import com.example.rentme.model.Relation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -39,7 +45,7 @@ import java.util.NoSuchElementException;
 
 
 public class ProductListAdapter extends BaseAdapter {
-    Holder holder;
+
 
     public interface MoreDetailsButtonListener{
         void showMoreDetails(Product product);
@@ -81,7 +87,7 @@ public class ProductListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
+        Holder holder;
         final Product currProduct = items.get(position);
         if (convertView == null) {
             convertView = LayoutInflater.from(this.context).inflate(R.layout.product_row, parent, false);
@@ -135,7 +141,35 @@ public class ProductListAdapter extends BaseAdapter {
         holder.RemoveProductBtm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //remove product////////////////////
+                //delete from category
+                FirebaseDatabase.getInstance().getReference("Categories").child(currProduct.getProductDetails().getCategory())
+                        .child(currProduct.getPRODUCT_UID()).removeValue();
+                //delete from last product
+                FirebaseDatabase.getInstance().getReference("Last Products")
+                        .child(currProduct.getPRODUCT_UID()).removeValue();
+//                //delete from user "my list"
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users").child(currProduct.getAuthor().getUserUid())
+                        .child("posts_list").getRef();
+                ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            ArrayList<Relation> myProductsId = new ArrayList<>();
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                Relation productId = ds.getValue(Relation.class);
+                                if (productId.getProductUid().compareTo(currProduct.getPRODUCT_UID())!=0)
+                                    myProductsId.add(productId);
+                            }
+                            FirebaseDatabase.getInstance().getReference("Users").child(currProduct.getAuthor()
+                                    .getUserUid()).child("posts_list").removeValue();
+                            FirebaseDatabase.getInstance().getReference("Users").child(currProduct.getAuthor()
+                                   .getUserUid()).child("posts_list").setValue(myProductsId);
+
+                        }
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {}
+                });
             }
         });
 
