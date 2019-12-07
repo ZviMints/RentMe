@@ -63,6 +63,8 @@ public class LastProductsListFragment extends Fragment {
                         addProductByRelation(lastProductsId.get(i));
                     }
                 }
+                lastProductProgressBar.setVisibility(View.GONE);
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {}
@@ -96,7 +98,6 @@ public class LastProductsListFragment extends Fragment {
 
                     adapter.addProduct(product);
                     adapter.notifyDataSetChanged();
-                    lastProductProgressBar.setVisibility(View.GONE);
                 }
 
             }
