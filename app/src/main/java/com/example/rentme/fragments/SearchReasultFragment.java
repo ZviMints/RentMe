@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.rentme.R;
 import com.example.rentme.adapters.ProductListAdapter;
@@ -117,6 +118,8 @@ public class SearchReasultFragment extends Fragment {
 
                     }
                     adapter.notifyDataSetChanged();
+                    if (filterProducts.size()==0)
+                        Toast.makeText(getContext(), "אין תוצאות המתאימות לחיפוש.  נסה להרחיב את החיפוש", Toast.LENGTH_SHORT).show();
 
                 }
 
