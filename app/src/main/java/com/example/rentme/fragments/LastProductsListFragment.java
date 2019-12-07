@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.example.rentme.model.Author;
 import com.example.rentme.model.Comment;
@@ -30,6 +31,7 @@ import java.util.List;
 public class LastProductsListFragment extends Fragment {
     ProductListAdapter adapter;
     ListView listView;
+    ProgressBar lastProductProgressBar;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +68,8 @@ public class LastProductsListFragment extends Fragment {
             public void onCancelled(DatabaseError databaseError) {}
         });
 
+        lastProductProgressBar = view.findViewById(R.id.last_product_progress_bar);
+
         return view;
     }
 
@@ -92,6 +96,7 @@ public class LastProductsListFragment extends Fragment {
 
                     adapter.addProduct(product);
                     adapter.notifyDataSetChanged();
+                    lastProductProgressBar.setVisibility(View.GONE);
                 }
 
             }

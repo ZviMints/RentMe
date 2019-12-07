@@ -4,11 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.LastProductsListFragment">
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="1"
         android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/last_product_progress_bar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="55dp"
+            android:layout_marginBottom="55dp" />
 
         <ListView
             android:id="@+id/products_list"
