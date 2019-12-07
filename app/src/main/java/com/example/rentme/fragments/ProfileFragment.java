@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.example.rentme.activities.MainActivity;
 import com.example.rentme.R;
 import com.example.rentme.adapters.ProductListAdapter;
+import com.example.rentme.interfaces.UpdateMyProductList;
 import com.example.rentme.model.Author;
 import com.example.rentme.model.Comment;
 import com.example.rentme.model.Product;
@@ -170,6 +171,7 @@ public class ProfileFragment extends Fragment {
         });
     }
 
+
     private void showMyPublishedProducts(final ArrayList<Relation> myProductsId) {
         newMyProductsId = new ArrayList<Relation>();
         //start the adapter of the listView
@@ -253,5 +255,6 @@ public class ProfileFragment extends Fragment {
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
 }
 

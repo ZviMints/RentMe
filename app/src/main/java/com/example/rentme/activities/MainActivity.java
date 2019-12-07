@@ -21,6 +21,7 @@ import com.example.rentme.fragments.MainFragment;
 import com.example.rentme.fragments.ProfileFragment;
 import com.example.rentme.fragments.PublishFragment;
 import com.example.rentme.fragments.SearchFragment;
+import com.example.rentme.interfaces.UpdateMyProductList;
 import com.example.rentme.model.Configurations;
 import com.example.rentme.model.Product;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,7 +35,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.NoSuchElementException;
 
 
-public class MainActivity extends AppCompatActivity implements ProductListAdapter.MoreDetailsButtonListener {
+public class MainActivity extends AppCompatActivity implements ProductListAdapter.MoreDetailsButtonListener, UpdateMyProductList {
 
 
     FirebaseAuth firebaseAuth;
@@ -165,5 +166,11 @@ public class MainActivity extends AppCompatActivity implements ProductListAdapte
 
         }
 
+    }
+
+    @Override
+    public void updateMyPublishedProducts() {
+        profileFragment = new ProfileFragment();
+        outerTransaction(profileFragment);
     }
 }
