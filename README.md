@@ -1,4 +1,4 @@
-# RentMe
+<img src="./app/src/main/res/drawable/logo.png">
 <p>Created during a computer <strong>Software Design</strong> during the third year at <em>Ariel University</em> in the Department of Computer Science, 2019 <br /> <strong>Project site:</strong>&nbsp;<a href="https://zvimints.github.io/OOP_3/.">https://github.com/ZviMints/RentMe</a><br /> <strong>Made by: </strong> <a href="https://github.com/ZviMints">Zvi Mints</a>, <a href="https://github.com/eilon26">Eilon Tsadok</a>, and <a href="https://github.com/orabu103">Or Abuhazira</a></p>
 <h1>About The Project:</h1>
 
