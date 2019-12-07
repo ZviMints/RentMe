@@ -4,8 +4,9 @@
 
 <h1>UML Diagram:</h1>
 
-<h1>Features:</h1>
+<h1>Class Hierarchy</h1>
 
+<h1>Features:</h1>
 
 <h1>Technology:</h1>
 
