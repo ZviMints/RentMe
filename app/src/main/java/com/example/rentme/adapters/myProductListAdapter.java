@@ -16,12 +16,11 @@ import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.rentme.Comperators.sortByLastUploaded;
+import com.example.rentme.comperators.sortByLastUploaded;
 import com.example.rentme.interfaces.MoreDetailsButtonListener;
 import com.example.rentme.interfaces.UpdateMyProductList;
 import com.example.rentme.model.Product;
@@ -29,7 +28,6 @@ import com.example.rentme.R;
 import com.example.rentme.model.Relation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

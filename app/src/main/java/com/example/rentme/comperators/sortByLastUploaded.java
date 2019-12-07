@@ -1,4 +1,4 @@
-package com.example.rentme.Comperators;
+package com.example.rentme.comperators;
 
 import com.example.rentme.model.Product;
 

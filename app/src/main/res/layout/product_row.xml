@@ -205,7 +205,7 @@
             android:background="@drawable/red"
             android:paddingRight="10dp"
             android:text="הסר"
-            android:textColor="#000"
+            android:textColor="#fff"
             android:textStyle="bold"
             android:visibility="gone"/>
 
