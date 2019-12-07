@@ -216,9 +216,7 @@ public class CategoriesFragment extends Fragment {
         else {
             adminPanel.setVisibility(View.GONE);
             admin_open.setVisibility(View.GONE);
-
         }
-
     }
 
     @Override

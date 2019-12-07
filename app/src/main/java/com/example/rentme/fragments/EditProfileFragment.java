@@ -159,7 +159,6 @@ public class EditProfileFragment extends Fragment {
             }
         });
 
-
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
