@@ -92,17 +92,19 @@ public class InsideCategoryFragment extends Fragment{
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     ArrayList<Product> products = new ArrayList<>();
                     for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                        Author author = ds.child("author").getValue(Author.class);
-                        ProductDetails productDetails = ds.child("productDetails").getValue(ProductDetails.class);
+                        if(ds.getKey().compareTo("img") != 0) {
+                            Author author = ds.child("author").getValue(Author.class);
+                            ProductDetails productDetails = ds.child("productDetails").getValue(ProductDetails.class);
 
-                        List<Comment> comments = new ArrayList<>();
-                        for(DataSnapshot dsComments: ds.child("comments_list").getChildren()){
-                            String msg =dsComments.child("msg").getValue().toString();
-                            Author commentAuthor = dsComments.child("author").getValue(Author.class);
-                            comments.add(new Comment(commentAuthor,msg));
+                            List<Comment> comments = new ArrayList<>();
+                            for (DataSnapshot dsComments : ds.child("comments_list").getChildren()) {
+                                String msg = dsComments.child("msg").getValue().toString();
+                                Author commentAuthor = dsComments.child("author").getValue(Author.class);
+                                comments.add(new Comment(commentAuthor, msg));
+                            }
+
+                            products.add(new Product(productDetails, author, comments));
                         }
-
-                        products.add(new Product(productDetails,author,comments));
                     }
                     gotProductsFromFireBase(products);
                 }
