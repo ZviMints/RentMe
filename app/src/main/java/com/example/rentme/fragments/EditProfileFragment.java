@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +23,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.rentme.R;
 import com.example.rentme.activities.MainActivity;
 import com.example.rentme.activities.admin.CategoriesManagement;
+import com.example.rentme.model.Configurations;
 import com.example.rentme.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,14 +33,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
-public class EditProfileFragment extends Fragment {
+public class EditProfileFragment extends Fragment implements AdapterView.OnItemSelectedListener  {
 
     EditText firstname;
     EditText lastname;
     EditText number;
-    EditText area;
+    Spinner area;
     EditText mail;
 
 
@@ -56,6 +61,8 @@ public class EditProfileFragment extends Fragment {
     ProgressBar progressBar;
     ProgressBar progressbar_aftersave;
 
+    String selectedArea;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,7 +78,7 @@ public class EditProfileFragment extends Fragment {
         firstname = view.findViewById(R.id.firstname);
         lastname = view.findViewById(R.id.lastname);
 
-        area = view.findViewById(R.id.address);
+        area = view.findViewById(R.id.area_from);
         number = view.findViewById(R.id.number);
         mail = view.findViewById(R.id.email);
 
@@ -108,7 +115,30 @@ public class EditProfileFragment extends Fragment {
     }
 
 
-    private void gotUserFromFireBase(User user) {
+    private void gotUserFromFireBase(final User user) {
+
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Configurations")
+                .child("configurations").getRef();
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Configurations conf = dataSnapshot.getValue(Configurations.class);
+                if (conf == null)
+                    throw new NoSuchElementException("Cant Retrieve Configurations from database");
+                List<String> areaNames = conf.getAreaNames();
+                GotConfigurationForSpinner(user, areaNames);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
+    }
+    private void GotConfigurationForSpinner(User user, List<String> areaNames) {
+
 
         progressBar.setVisibility(View.GONE);
         mainLinear.setVisibility(LinearLayout.VISIBLE);
@@ -123,7 +153,14 @@ public class EditProfileFragment extends Fragment {
         this.firstname.setHint(current_name);
         this.lastname.setHint(current_lastname);
         this.number.setHint(current_number);
-        this.area.setHint(current_area);
+
+        //start category spinner
+        area.setOnItemSelectedListener(this);
+        ArrayAdapter aaArea = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, areaNames);
+        aaArea.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        area.setAdapter(aaArea);
+        //end category spinner
+
         this.mail.setHint(current_email);
 
         logoutBtn.setOnClickListener(new View.OnClickListener() {
@@ -165,7 +202,7 @@ public class EditProfileFragment extends Fragment {
 
                 final String firstname_string = firstname.getText().toString();
                 final String lastname_string = lastname.getText().toString();
-                final String area_string = area.getText().toString();
+                final String area_string = selectedArea;
                 final String email_string = mail.getText().toString();
                 final String number_string = number.getText().toString();
 
@@ -204,6 +241,17 @@ public class EditProfileFragment extends Fragment {
         transaction.replace(R.id.OuterFragmentContainer, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        selectedArea = area.getItemAtPosition(area.getSelectedItemPosition()).toString();
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
 
