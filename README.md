@@ -10,12 +10,6 @@
 
 <h1>Technology:</h1>
 
-<h1>About The Project:</h1>
-
-<h1>UML Diagram:</h1>
-
-<h1>Features:</h1>
-
 <h1>Firebase Scheme:</h1>
 
 <br>
