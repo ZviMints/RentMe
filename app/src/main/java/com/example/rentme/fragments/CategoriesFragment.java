@@ -57,7 +57,6 @@ public class CategoriesFragment extends Fragment {
     private  List<Integer> titles_images = new ArrayList<>();
 
     ProgressBar progressBar;
-    LinearLayout footerLinear;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -80,7 +79,6 @@ public class CategoriesFragment extends Fragment {
 
     private void IntializeGridView() {
         progressBar.setVisibility(View.GONE);
-        footerLinear.setVisibility(View.VISIBLE);
         gridView.setVisibility(View.VISIBLE);
         MainAdapter adapter = new MainAdapter(getContext(),titles, titles_images);
         gridView.setAdapter(adapter);
@@ -106,7 +104,6 @@ public class CategoriesFragment extends Fragment {
 
         progressBar = view.findViewById(R.id.progressbar);
         gridView = view.findViewById(R.id.grid_view);
-        footerLinear = view.findViewById(R.id.footerLinear);
 
 
         adminPanel = view.findViewById(R.id.adminPanel);
