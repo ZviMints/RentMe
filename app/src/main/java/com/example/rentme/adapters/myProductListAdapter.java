@@ -47,13 +47,13 @@ import java.util.Date;
 import java.util.NoSuchElementException;
 
 
-public class ProductListAdapter extends BaseAdapter {
+public class myProductListAdapter extends BaseAdapter {
 
     private MoreDetailsButtonListener listener;
     private ArrayList<Product> items = new ArrayList<>();
     private Context context;
 
-    public ProductListAdapter(ArrayList<Product> items, Context context) {
+    public myProductListAdapter(ArrayList<Product> items, Context context) {
         this.items = items;
         this.context = context;
 
@@ -121,7 +121,7 @@ public class ProductListAdapter extends BaseAdapter {
         long diff = new Date().getTime() - uploadDate.getTime();
 
         holder.publishTime.setText(diff / (1000 * 60 * 60 * 24)+"");
-
+        //holder.image.setImageResource(R.drawable.chairs);
         updateImageFromUrl(currProduct, holder.image);
 
         holder.MoreDetailsBtn.setOnClickListener(new View.OnClickListener(){
@@ -131,6 +131,47 @@ public class ProductListAdapter extends BaseAdapter {
                 listener.showMoreDetails(currProduct);
             }
         });
+
+        holder.RemoveProductBtm.setVisibility(View.VISIBLE);
+        holder.RemoveProductBtm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //delete from category
+                FirebaseDatabase.getInstance().getReference("Categories").child(currProduct.getProductDetails().getCategory())
+                        .child(currProduct.getPRODUCT_UID()).removeValue();
+                //delete from last product
+                FirebaseDatabase.getInstance().getReference("Last Products")
+                        .child(currProduct.getPRODUCT_UID()).removeValue();
+//                //delete from user "my list"
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users").child(currProduct.getAuthor().getUserUid())
+                        .child("posts_list").getRef();
+                ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            ArrayList<Relation> myProductsId = new ArrayList<>();
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                Relation productId = ds.getValue(Relation.class);
+                                if (productId.getProductUid().compareTo(currProduct.getPRODUCT_UID())!=0)
+                                    myProductsId.add(productId);
+                            }
+                            FirebaseDatabase.getInstance().getReference("Users").child(currProduct.getAuthor()
+                                    .getUserUid()).child("posts_list").removeValue();
+                            FirebaseDatabase.getInstance().getReference("Users").child(currProduct.getAuthor()
+                                    .getUserUid()).child("posts_list").setValue(myProductsId);
+
+                            UpdateMyProductList updateProductList = (UpdateMyProductList)context;
+                            updateProductList.updateMyPublishedProducts();
+
+                        }
+
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {}
+                });
+            }
+        });
+
 
 
         return convertView;
@@ -164,7 +205,7 @@ public class ProductListAdapter extends BaseAdapter {
                 }
                 else {
                     Toast.makeText(context, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-
+                    //  Log.d("Firebase id",user.getUid());
                 }
 
             }
@@ -179,7 +220,7 @@ public class ProductListAdapter extends BaseAdapter {
         private TextView productPriceTime;
         private TextView publishTime;
         private Button MoreDetailsBtn;
-
+        private Button RemoveProductBtm;
 
 
         public Holder(View view) {
@@ -191,7 +232,7 @@ public class ProductListAdapter extends BaseAdapter {
             productPriceTime = view.findViewById(R.id.product_price_time);
             publishTime = view.findViewById(R.id.Publish_time);
             MoreDetailsBtn = view.findViewById(R.id.more_product_details);
-
+            RemoveProductBtm = view.findViewById(R.id.remove_product);
         }
 
 

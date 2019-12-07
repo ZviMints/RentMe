@@ -124,11 +124,15 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
                 productTitle = titleLayer.getText().toString();
                 details = detailsLayer.getText().toString();
                 Price = priceLayer.getText().toString();
+                boolean isPriceLegal = true;
+                try{
+                    Double.parseDouble(Price);
+                }catch (Exception e){
+                    isPriceLegal = false;
+                }
 
-                if ((productTitle.length() > 0) &&
-                        (details.length() > 0) &&
-                        (Price.length() > 0) &&
-                        checkbox.isChecked()) {
+                if ((productTitle.length() > 0) && (details.length() > 0) &&
+                        (Price.length() > 0) && isPriceLegal &&  checkbox.isChecked()) {
 
                     DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
                     Date date = new Date();
