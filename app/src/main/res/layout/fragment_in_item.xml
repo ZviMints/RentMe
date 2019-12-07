@@ -155,6 +155,7 @@
                     <ImageView
                         android:id="@+id/product_picture"
                         android:layout_width="160dp"
+                        android:paddingRight="15dp"
                         android:layout_height="160dp" />
 
 
@@ -185,8 +186,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:background="@drawable/money_border"
+                android:background="@drawable/circle_search"
                 android:paddingLeft="10dp"
+                android:layout_margin="10dp"
                 android:paddingRight="10dp"
                 android:textSize="25sp"
                 android:textStyle="bold" />
