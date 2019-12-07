@@ -110,21 +110,22 @@ public class SearchResultFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot productId : dataSnapshot.getChildren()) {
-                        Author author = productId.child("author").getValue(Author.class);
-                        ProductDetails productDetails = productId.child("productDetails").getValue(ProductDetails.class);
-                        double productPrice = Double.parseDouble(productDetails.getPrice());
-                        if ((author.getArea().compareTo(selectedArea)==0) &&(productDetails.getCondition().compareTo(selectedState)==0)
-                                &&(productPrice >= lowerPriceValue) && (productPrice <= higherPriceValue)){
-                            List<Comment> comments = new ArrayList<>();
-                            for(DataSnapshot dsComments: productId.child("comments_list").getChildren()){
-                                String msg =dsComments.child("msg").getValue().toString();
-                                Author commentAuthor = dsComments.child("author").getValue(Author.class);
-                                comments.add(new Comment(commentAuthor,msg));
+                        if (productId.getKey().compareTo("img") != 0) {
+                            Author author = productId.child("author").getValue(Author.class);
+                            ProductDetails productDetails = productId.child("productDetails").getValue(ProductDetails.class);
+                            double productPrice = Double.parseDouble(productDetails.getPrice());
+                            if ((author.getArea().compareTo(selectedArea) == 0) && (productDetails.getCondition().compareTo(selectedState) == 0)
+                                    && (productPrice >= lowerPriceValue) && (productPrice <= higherPriceValue)) {
+                                List<Comment> comments = new ArrayList<>();
+                                for (DataSnapshot dsComments : productId.child("comments_list").getChildren()) {
+                                    String msg = dsComments.child("msg").getValue().toString();
+                                    Author commentAuthor = dsComments.child("author").getValue(Author.class);
+                                    comments.add(new Comment(commentAuthor, msg));
+                                }
+                                Product product = new Product(productDetails, author, comments);
+                                filterProducts.add(product);
                             }
-                            Product product = new Product(productDetails,author,comments);
-                            filterProducts.add(product);
                         }
-
                     }
                     adapter.notifyDataSetChanged();
                     progressBar.setVisibility(View.GONE);
