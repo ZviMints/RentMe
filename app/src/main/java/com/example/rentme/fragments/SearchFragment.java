@@ -98,8 +98,10 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemSelect
                 String low = lowerPrice.getText().toString();
                 String high = higherPrice.getText().toString();
                 try {
-                    Double.parseDouble(low);
-                    Double.parseDouble(high);
+                    if (low.length() > 0)
+                        Double.parseDouble(low);
+                    if (high.length() > 0)
+                        Double.parseDouble(high);
 
 
                 if (searchReasultFragment == null)
