@@ -311,8 +311,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
-                android:background="@color/Orange"
+                android:background="@drawable/circle_search"
                 android:gravity="start"
+                android:layout_marginRight="5dp"
                 android:textAlignment="center"
                 android:textColor="#fff"
                 android:visibility="gone"></TextView>
