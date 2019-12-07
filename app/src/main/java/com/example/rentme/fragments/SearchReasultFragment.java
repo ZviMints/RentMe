@@ -54,7 +54,7 @@ public class SearchReasultFragment extends Fragment {
 
         String highPrice = (String) getArguments().getSerializable("higher price");
         String lowPrice = (String) getArguments().getSerializable("lower price");
-        String condition = (String) getArguments().getSerializable("higher price");
+        String condition = (String) getArguments().getSerializable("state");
         String area = (String) getArguments().getSerializable("area");
         String category = (String) getArguments().getSerializable("category");
 
@@ -103,7 +103,7 @@ public class SearchReasultFragment extends Fragment {
                         Author author = productId.child("author").getValue(Author.class);
                         ProductDetails productDetails = productId.child("productDetails").getValue(ProductDetails.class);
                         double productPrice = Double.parseDouble(productDetails.getPrice());
-                        if ((author.getArea() == selectedArea) &&(productDetails.getCondition()==selectedState)
+                        if ((author.getArea().compareTo(selectedArea)==0) &&(productDetails.getCondition().compareTo(selectedState)==0)
                                 &&(productPrice >= lowerPriceValue) && (productPrice <= higherPriceValue)){
                             List<Comment> comments = new ArrayList<>();
                             for(DataSnapshot dsComments: productId.child("comments_list").getChildren()){
