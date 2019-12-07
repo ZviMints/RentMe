@@ -9,31 +9,42 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.rentme.R;
+import com.example.rentme.model.Configurations;
 import com.example.rentme.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class SignUpFragment extends Fragment {
+import java.util.List;
+import java.util.NoSuchElementException;
+
+public class SignUpFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     Button back;
     Button signUpBtn;
     FirebaseAuth firebaseAuth;
     EditText email;
     EditText password;
 
-    EditText area;
+    Spinner areaSpin;
     EditText name;
     EditText lastname;
     EditText number;
-
+    String selectedArea;
 
     ProgressBar progressBar;
     LoginFragment loginFragment;
@@ -62,11 +73,14 @@ public class SignUpFragment extends Fragment {
 
         name = (EditText) view.findViewById(R.id.nameForm);
         lastname = (EditText) view.findViewById(R.id.lastnameForm);
-        area = (EditText) view.findViewById(R.id.areaForm);
+        areaSpin = (Spinner) view.findViewById(R.id.area_from);
         number = (EditText) view.findViewById(R.id.numberForm);
 
-
         progressBar = view.findViewById(R.id.progressbar);
+
+
+
+        findAreaConfigurations();
 
         // FireBash Button
         signUpBtn.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +101,7 @@ public class SignUpFragment extends Fragment {
                                     if (task.isSuccessful()) {
                                         User user = new User(name.getText().toString(),
                                                 lastname.getText().toString(),
-                                                area.getText().toString(),
+                                                selectedArea,
                                                 number.getText().toString(),
                                                 firebaseAuth.getCurrentUser().getEmail());
                                         FirebaseDatabase.getInstance().getReference("Users")
@@ -132,6 +146,35 @@ public class SignUpFragment extends Fragment {
         return view;
     }
 
+    private void findAreaConfigurations() {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Configurations")
+                .child("configurations").getRef();
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Configurations conf = dataSnapshot.getValue(Configurations.class);
+                if (conf == null)
+                    throw new NoSuchElementException("Cant Retrieve Configurations from database");
+                List<String> areaNames = conf.getAreaNames();
+                initAreaSpin(areaNames);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+    }
+
+    private void initAreaSpin(List<String> areaNames) {
+        //start category spinner
+        areaSpin.setOnItemSelectedListener(this);
+        ArrayAdapter aaArea = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, areaNames);
+        aaArea.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        areaSpin.setAdapter(aaArea);
+        //end category spinner
+    }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -142,5 +185,15 @@ public class SignUpFragment extends Fragment {
         transaction.replace(R.id.OuterFragmentContainer, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        selectedArea = areaSpin.getItemAtPosition(areaSpin.getSelectedItemPosition()).toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

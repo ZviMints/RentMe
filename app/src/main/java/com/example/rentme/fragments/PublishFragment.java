@@ -81,8 +81,25 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
 
     private ScrollView mainScrollView;
     private ProgressBar progressBarOnLoad;
-    private List<String> categoryNames = new ArrayList<>();
     private FirebaseDatabase firebaseDatabase;
+
+    private List<String> categoryNames = new ArrayList<>();
+    private List<String> statusNames;
+    private List<String> RentPeriodOptions;
+    public String selectedCategory = "קטגורייה...";
+    public String selectedCondition = "בחר מצב...";
+
+    public String productTitle;
+    public String Price;
+    public String rentPeriod;
+    public String image;
+    public String details;
+    private long currentTime;
+    private String downloadUri = "";
+
+    private MainFragment mainFragment;
+    private final int RESULT_LOAD_IMG = 1;
+    private final int RESULT_CAPTURE_IMG = 0;
 
     private void gotConfigurationsFromFireBase(Configurations conf) {
         this.categoryNames = conf.getCategoriesOptions();
@@ -224,22 +241,6 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
     }
 
 
-    private List<String> statusNames;
-    private List<String> RentPeriodOptions;
-    public String selectedCategory = "קטגורייה...";
-    public String selectedCondition = "בחר מצב...";
-
-    public String productTitle;
-    public String Price;
-    public String rentPeriod;
-    public String image;
-    public String details;
-    private long currentTime;
-    private String downloadUri = "";
-
-    private MainFragment mainFragment;
-    private final int RESULT_LOAD_IMG = 1;
-    private final int RESULT_CAPTURE_IMG = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
