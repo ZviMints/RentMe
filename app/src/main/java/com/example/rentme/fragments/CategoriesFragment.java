@@ -53,6 +53,8 @@ public class CategoriesFragment extends Fragment {
     Button admin_CategoriesManagement;
     Button admin_open;
 
+    TextView how_many_products_tv;
+
     // Get From Database
     private List<Category> categories = new ArrayList<>();
 
@@ -65,6 +67,9 @@ public class CategoriesFragment extends Fragment {
     }
 
     private void gotCategoriesFromFireBase(List<Category> categories) {
+
+        int size = (categories == null) ? 0 : categories.size();
+        how_many_products_tv.setText(size + "");
 
         // Initialize titles
         this.categories = categories;
@@ -101,6 +106,7 @@ public class CategoriesFragment extends Fragment {
         progressBar = view.findViewById(R.id.progressbar);
         gridView = view.findViewById(R.id.grid_view);
 
+        how_many_products_tv = view.findViewById(R.id.how_many_products_tv);
 
         adminPanel = view.findViewById(R.id.adminPanel);
         admin_close = view.findViewById(R.id.admin_close);
