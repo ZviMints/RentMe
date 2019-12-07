@@ -19,16 +19,12 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.rentme.R;
-import com.example.rentme.model.Author;
-import com.example.rentme.model.Comment;
 import com.example.rentme.model.Configurations;
 import com.example.rentme.model.Product;
-import com.example.rentme.model.ProductDetails;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -43,7 +39,7 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemSelect
     ArrayList<Product> filterProducts;
 
     MainFragment mainFragment;
-    SearchReasultFragment searchReasultFragment;
+    SearchResultFragment searchReasultFragment;
 
     Spinner mainCategorySpin;
     Spinner areaSpin;
@@ -107,7 +103,7 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemSelect
 
 
                 if (searchReasultFragment == null)
-                    searchReasultFragment = new SearchReasultFragment();
+                    searchReasultFragment = new SearchResultFragment();
 
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("lower price",low);

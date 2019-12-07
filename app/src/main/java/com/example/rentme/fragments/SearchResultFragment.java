@@ -11,7 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.rentme.R;
@@ -30,13 +33,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class SearchReasultFragment extends Fragment {
+public class SearchResultFragment extends Fragment {
     SearchFragment searchFragment;
 
     Button backBtn;
     ListView filterProductListView;
     ProductListAdapter adapter;
     ArrayList<Product> filterProducts;
+
+    LinearLayout notfound;
+    ProgressBar progressBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,6 +58,9 @@ public class SearchReasultFragment extends Fragment {
         backBtn = view.findViewById(R.id.back_to_search_page);
         filterProductListView = view.findViewById(R.id.filter_products);
         filterProducts = new ArrayList<Product>();
+
+        notfound = view.findViewById(R.id.notfound);
+        progressBar = view.findViewById(R.id.progressBar);
 
         String highPrice = (String) getArguments().getSerializable("higher price");
         String lowPrice = (String) getArguments().getSerializable("lower price");
@@ -118,9 +127,11 @@ public class SearchReasultFragment extends Fragment {
 
                     }
                     adapter.notifyDataSetChanged();
-                    if (filterProducts.size()==0)
-                        Toast.makeText(getContext(), "אין תוצאות המתאימות לחיפוש.  נסה להרחיב את החיפוש", Toast.LENGTH_SHORT).show();
-
+                    progressBar.setVisibility(View.GONE);
+                    if (filterProducts.size()==0) {
+                        if(filterProducts.isEmpty())
+                            notfound.setVisibility(View.VISIBLE);
+                    }
                 }
 
 
