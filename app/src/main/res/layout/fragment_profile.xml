@@ -290,6 +290,16 @@
                 android:background="@drawable/ic_storage_black_24dp" />
         </LinearLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            android:text="רשימה ריקה"
+            android:id="@+id/empty_list"
+            android:visibility="visible"
+            android:layout_margin="15dp"/>
+
         <ListView
             android:id="@+id/my_published_product"
             android:layout_width="wrap_content"
