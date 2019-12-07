@@ -12,12 +12,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.rentme.activities.MainActivity;
 import com.example.rentme.R;
+import com.example.rentme.adapters.ProductListAdapter;
+import com.example.rentme.model.Author;
+import com.example.rentme.model.Comment;
+import com.example.rentme.model.Product;
+import com.example.rentme.model.ProductDetails;
+import com.example.rentme.model.Relation;
 import com.example.rentme.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,6 +34,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class ProfileFragment extends Fragment {
@@ -37,10 +46,12 @@ public class ProfileFragment extends Fragment {
     TextView titleArea;
     TextView titleEmail;
 
-
+    ListView myPublishedProduct;
     Button logoutBtn;
     Button back;
     Button change_profile;
+    ProgressBar progressBar;
+
 
     LinearLayout mainLinear;
 
@@ -50,12 +61,15 @@ public class ProfileFragment extends Fragment {
 
     MainFragment mainFragment;
     EditProfileFragment editProfileFragment;
-    ProgressBar progressBar;
+    ProductListAdapter adapter;
+
+    ArrayList<Relation> newMyProductsId;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        newMyProductsId = new ArrayList<Relation>();
     }
 
     @Override
@@ -76,6 +90,7 @@ public class ProfileFragment extends Fragment {
         back = view.findViewById(R.id.backToMain);
         mainLinear = view.findViewById(R.id.mainLinear);
         change_profile = view.findViewById(R.id.change_profile);
+        myPublishedProduct = view.findViewById(R.id.my_published_product);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
@@ -93,6 +108,9 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
+
+
+        buildMyPublishedProductList();
 
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,8 +144,83 @@ public class ProfileFragment extends Fragment {
                 outerTransaction(editProfileFragment);
             }
         });
+
         return view;
     }
+
+    private void buildMyPublishedProductList() {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users")
+                .child(firebaseUser.getUid()).child("posts_list").getRef();
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    ArrayList<Relation> myProductsId = new ArrayList<>();
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        Relation productId = ds.getValue(Relation.class);
+                        myProductsId.add(productId);
+                    }
+                    showMyPublishedProducts(myProductsId);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
+    }
+
+    private void showMyPublishedProducts(final ArrayList<Relation> myProductsId) {
+        newMyProductsId = new ArrayList<Relation>();
+        //start the adapter of the listView
+        adapter = new ProductListAdapter(new ArrayList<Product>(),getActivity());//suppose to get from the data base
+        myPublishedProduct.setAdapter(adapter);
+
+        for (final Relation myProductId : myProductsId){
+            DatabaseReference ref = FirebaseDatabase.getInstance()
+                    .getReference("Categories")
+                    .child(myProductId.getCategoryName()).getRef();
+            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot category) {
+                    if (category.exists()) {
+                        DataSnapshot currProductUid = category.child(myProductId.getProductUid());
+                        if (currProductUid.exists()) {
+                            newMyProductsId.add(myProductId);
+                            Author author = currProductUid.child("author").getValue(Author.class);
+                            ProductDetails productDetails = currProductUid.child("productDetails").getValue(ProductDetails.class);
+
+                            List<Comment> comments = new ArrayList<>();
+                            for (DataSnapshot dsComments : currProductUid.child("comments_list").getChildren()) {
+                                String msg = dsComments.child("msg").getValue().toString();
+                                Author commentAuthor = dsComments.child("author").getValue(Author.class);
+                                comments.add(new Comment(commentAuthor, msg));
+                            }
+
+                            Product product = new Product(productDetails, author, comments);
+
+                            adapter.addProductFromProfile(product);
+                            adapter.notifyDataSetChanged();
+
+
+                        }
+                    }//update user post list if some product was allready removed
+                    if (newMyProductsId.size() != myProductsId.size()) {
+                        FirebaseDatabase.getInstance().getReference("Users")
+                                .child(firebaseUser.getUid()).child("posts_list").removeValue();
+                        FirebaseDatabase.getInstance().getReference("Users")
+                                .child(firebaseUser.getUid()).child("posts_list")
+                                .setValue(newMyProductsId);
+
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                }
+            });
+        }
+    }
+
 
 
     private void gotUserFromFireBase(User user) {

@@ -137,7 +137,7 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:background="#D6DCDF"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="2dp"
             android:layout_marginTop="3dp"
             android:orientation="vertical">
 
@@ -190,10 +190,24 @@
             android:layout_gravity="top"
             android:background="@drawable/more"
             android:paddingRight="10dp"
+            android:layout_marginBottom="5dp"
             android:drawableLeft="@drawable/ic_chevron_left_white_24dp"
             android:text="עוד"
             android:textColor="#fff"
             android:textStyle="bold" />
+
+
+        <Button
+            android:id="@+id/remove_product"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="@drawable/red"
+            android:paddingRight="10dp"
+            android:text="הסר"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:visibility="gone"/>
 
     </LinearLayout>
 
