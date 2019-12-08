@@ -29,9 +29,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 public class CategoriesManagement extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     Button back;
@@ -46,6 +49,8 @@ public class CategoriesManagement extends AppCompatActivity implements AdapterVi
 
     String selectedCategory;
     String selectedConf;
+
+    private String DEFAULT_IMAGE = "https://i.ytimg.com/vi/8tPnX7OPo0Q/maxresdefault.jpg";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,10 +145,10 @@ public class CategoriesManagement extends AppCompatActivity implements AdapterVi
                                 if (conf == null)
                                     throw new NoSuchElementException("Cant Retrieve Configurations from database");
 
-                                List<String> newCategoriesOptions = conf.getCategoriesOptions();
-                                newCategoriesOptions.add(input);
+                                Map<String,String> newCategoriesOptions = conf.getCategoriesOptions();
+                                newCategoriesOptions.put(input,DEFAULT_IMAGE);
                                 Configurations newConf = new Configurations(conf,newCategoriesOptions);
-                                firebaseDatabase.getReference("Configurations").child("configurations").removeValue();
+                                // firebaseDatabase.getReference("Configurations").child("configurations").removeValue();
                                 firebaseDatabase.getReference("Configurations").child("configurations").setValue(newConf);
                                 progressBar.setVisibility(View.GONE);
                                 category_form_add.setText("");
@@ -224,7 +229,11 @@ public class CategoriesManagement extends AppCompatActivity implements AdapterVi
     private void gotConfigurations(Configurations conf) {
         //conf spinner
         remove_from_conf_spinner.setOnItemSelectedListener(this);
-        ArrayAdapter aaConf = new ArrayAdapter(this, android.R.layout.simple_spinner_item, conf.getCategoriesOptions());
+
+        Set<String> arr = conf.getCategoriesOptions().keySet();
+        List<String> categoryNames = new ArrayList<String>(arr);
+
+        ArrayAdapter aaConf = new ArrayAdapter(this, android.R.layout.simple_spinner_item,categoryNames);
         aaConf.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         remove_from_conf_spinner.setAdapter(aaConf);
         //conf spinner
@@ -232,8 +241,9 @@ public class CategoriesManagement extends AppCompatActivity implements AdapterVi
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Object possibleString = remove_from_categories_spinner.getItemAtPosition(remove_from_categories_spinner.getSelectedItemPosition());
 
-        selectedCategory = remove_from_categories_spinner.getItemAtPosition(remove_from_categories_spinner.getSelectedItemPosition()).toString();
+        selectedCategory = (possibleString == null) ? "" : possibleString.toString();
         selectedConf = remove_from_conf_spinner.getItemAtPosition(remove_from_conf_spinner.getSelectedItemPosition()).toString();
 
         removeFromConf.setOnClickListener(new View.OnClickListener() {
@@ -249,11 +259,10 @@ public class CategoriesManagement extends AppCompatActivity implements AdapterVi
                         if (conf == null)
                             throw new NoSuchElementException("Cant Retrieve Configurations from database");
 
-                        List<String> newCategoriesOptions = conf.getCategoriesOptions();
-                        int index = newCategoriesOptions.indexOf(selectedConf);
-                        newCategoriesOptions.remove(index);
+                        Map<String,String> newCategoriesOptions = conf.getCategoriesOptions();
+                        newCategoriesOptions.remove(selectedConf);
                         Configurations newConf = new Configurations(conf, newCategoriesOptions);
-                        firebaseDatabase.getReference("Configurations").child("configurations").removeValue();
+                        // firebaseDatabase.getReference("Configurations").child("configurations").removeValue();
                         firebaseDatabase.getReference("Configurations").child("configurations").setValue(newConf);
                         progressBar.setVisibility(View.GONE);
                         finish();
@@ -266,7 +275,6 @@ public class CategoriesManagement extends AppCompatActivity implements AdapterVi
                 });
             }
         });
-
     }
 
     @Override

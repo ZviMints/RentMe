@@ -28,8 +28,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 public class SearchFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
@@ -140,7 +142,9 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemSelect
         progressBar.setVisibility(View.GONE);
         mainLinear.setVisibility(LinearLayout.VISIBLE);
 
-        this.categoryNames = conf.getCategoriesOptions();
+        Set<String> arr = conf.getCategoriesOptions().keySet();
+        this.categoryNames = new ArrayList<String>(arr);
+
         this.areaNames = conf.getAreaNames();
         this.stateNames = conf.getStateOptions();
 

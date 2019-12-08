@@ -3,13 +3,14 @@ package com.example.rentme.model;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class Configurations implements Serializable {
 
     private List<String> areaNames;
     private List<String> stateOptions;
     private List<String> rentOptions;
-    private List<String> categoriesOptions;
+    private Map<String,String> categoriesOptions;
     private List<String> rentTimes;
     private List<String> adminsList;
 
@@ -23,7 +24,7 @@ public class Configurations implements Serializable {
 
     public Configurations() {}
 
-    public Configurations(Configurations conf, List<String> newCategoriesOptions) {
+    public Configurations(Configurations conf, Map<String, String> newCategoriesOptions) {
         this.areaNames = conf.getAreaNames();
         this.stateOptions = conf.getStateOptions();
         this.rentOptions = conf.getRentOptions();
@@ -32,7 +33,7 @@ public class Configurations implements Serializable {
         this.adminsList = conf.getAdminsList();
     }
 
-    public Configurations(List<String> areaNames, List<String> stateOptions, List<String> rentOptions, List<String> categoriesOptions, List<String> rentTimes, List<String> adminsList) {
+    public Configurations(List<String> areaNames, List<String> stateOptions, List<String> rentOptions, Map<String,String> categoriesOptions, List<String> rentTimes, List<String> adminsList) {
         this.areaNames = areaNames;
         this.stateOptions = stateOptions;
         this.rentOptions = rentOptions;
@@ -66,11 +67,11 @@ public class Configurations implements Serializable {
         this.rentOptions = rentOptions;
     }
 
-    public List<String> getCategoriesOptions() {
+    public Map<String,String> getCategoriesOptions() {
         return categoriesOptions;
     }
 
-    public void setCategoriesOptions(List<String> categoriesOptions) {
+    public void setCategoriesOptions(Map<String,String> categoriesOptions) {
         this.categoriesOptions = categoriesOptions;
     }
 

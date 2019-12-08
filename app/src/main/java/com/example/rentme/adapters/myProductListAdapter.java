@@ -153,8 +153,8 @@ public class myProductListAdapter extends BaseAdapter {
                                 if (productId.getProductUid().compareTo(currProduct.getPRODUCT_UID())!=0)
                                     myProductsId.add(productId);
                             }
-                            FirebaseDatabase.getInstance().getReference("Users").child(currProduct.getAuthor()
-                                    .getUserUid()).child("posts_list").removeValue();
+                            // FirebaseDatabase.getInstance().getReference("Users").child(currProduct.getAuthor()
+                             //       .getUserUid()).child("posts_list").removeValue();
                             FirebaseDatabase.getInstance().getReference("Users").child(currProduct.getAuthor()
                                     .getUserUid()).child("posts_list").setValue(myProductsId);
 
