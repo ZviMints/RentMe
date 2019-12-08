@@ -32,8 +32,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 
 public class CategoriesFragment extends Fragment {
@@ -118,17 +122,28 @@ public class CategoriesFragment extends Fragment {
 
         // Initialize Categories
         if(this.categories.isEmpty()) {
-            DatabaseReference ref = firebaseDatabase.getReference("Categories");
+            DatabaseReference ref = firebaseDatabase.getReference("Configurations").child("configurations").getRef();
             ref.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    Configurations conf = dataSnapshot.getValue(Configurations.class);
+                    if (conf == null)
+                        throw new NoSuchElementException("Cant Retrieve Configurations from database");
+
+                    Map<String,String> categoriesOptions = conf.getCategoriesOptions();
+                    Set<String> names = categoriesOptions.keySet();
+                    Collection<String> images = categoriesOptions.values();
                     List<Category> categories = new ArrayList<>();
-                    for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                        String categoryName = ds.getKey();
-                        String image = ds.child("img").getValue(String.class);
-                        Category category = new Category(categoryName,image);
+
+                    Iterator<String> itrNames = names.iterator();
+                    Iterator<String> itrImages = images.iterator();
+
+                    while(itrNames.hasNext() && itrImages.hasNext()){
+                        Category category = new Category(itrNames.next(),itrImages.next());
                         categories.add(category);
                     }
+
                     gotCategoriesFromFireBase(categories);
                 }
                 @Override

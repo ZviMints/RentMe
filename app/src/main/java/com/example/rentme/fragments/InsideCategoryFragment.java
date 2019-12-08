@@ -19,6 +19,7 @@ import com.example.rentme.model.Author;
 import com.example.rentme.model.Comment;
 import com.example.rentme.model.Product;
 import com.example.rentme.model.ProductDetails;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +38,12 @@ public class InsideCategoryFragment extends Fragment{
     ListView listView;
     TextView CategoryTitle;
 
+    LinearLayout noitems;
+    Button publicBtn;
+
+    PublishFragment publishFragment;
+    LoginFragment loginFragment;
+
     LinearLayout InSideCategoryLinearLayout;
     ProgressBar progressBar;
 
@@ -49,6 +56,27 @@ public class InsideCategoryFragment extends Fragment{
     }
 
     private void InitializeProductListAdapter() {
+
+        if(products.isEmpty()) {
+            noitems.setVisibility(View.VISIBLE);
+
+            publicBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(FirebaseAuth.getInstance().getCurrentUser() != null) {
+                        if (publishFragment == null)
+                            publishFragment = new PublishFragment();
+                        outerTransaction(publishFragment);
+                    }
+                    else {
+                        if (loginFragment == null)
+                            loginFragment = new LoginFragment();
+                        outerTransaction(loginFragment);
+                    }
+                }
+            });
+        }
+
         InSideCategoryLinearLayout.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.GONE);
 
@@ -68,6 +96,9 @@ public class InsideCategoryFragment extends Fragment{
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_inside_category, container, false);
+
+        noitems = view.findViewById(R.id.noitems);
+        publicBtn = view.findViewById(R.id.Publish);
 
         backBtn = view.findViewById(R.id.back_to_last_page);
         listView = view.findViewById(R.id.products_list);
@@ -92,7 +123,6 @@ public class InsideCategoryFragment extends Fragment{
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     ArrayList<Product> products = new ArrayList<>();
                     for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                        if(ds.getKey().compareTo("img") != 0) {
                             Author author = ds.child("author").getValue(Author.class);
                             ProductDetails productDetails = ds.child("productDetails").getValue(ProductDetails.class);
 
@@ -104,7 +134,6 @@ public class InsideCategoryFragment extends Fragment{
                             }
 
                             products.add(new Product(productDetails, author, comments));
-                        }
                     }
                     gotProductsFromFireBase(products);
                 }
@@ -123,6 +152,8 @@ public class InsideCategoryFragment extends Fragment{
                 outerTransaction(mainFragment);
             }
         });
+
+
         return view;
     }
 

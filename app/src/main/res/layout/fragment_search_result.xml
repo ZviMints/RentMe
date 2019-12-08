@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".fragments.LastProductsListFragment">
     <LinearLayout
+        android:background="@color/Sky"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="1"
@@ -28,32 +29,23 @@
             android:text="תוצאות חיפוש"
             android:layout_margin="5dp"/>
 
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/progressBar"
-            android:layout_gravity="center"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:visibility="gone"
+            android:layout_marginTop="35dp"
             android:id="@+id/notfound"
             android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/search_image" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textSize="25sp"
+                android:textStyle="bold"
                 android:text="לא נמצאו תוצאות"
+                android:textColor="@color/DarkBlue"
                 android:layout_margin="5dp"/>
             <TextView
                 android:layout_width="wrap_content"

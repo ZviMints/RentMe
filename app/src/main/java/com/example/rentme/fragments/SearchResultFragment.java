@@ -42,7 +42,6 @@ public class SearchResultFragment extends Fragment {
     ArrayList<Product> filterProducts;
 
     LinearLayout notfound;
-    ProgressBar progressBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,7 +59,6 @@ public class SearchResultFragment extends Fragment {
         filterProducts = new ArrayList<Product>();
 
         notfound = view.findViewById(R.id.notfound);
-        progressBar = view.findViewById(R.id.progressBar);
 
         String highPrice = (String) getArguments().getSerializable("higher price");
         String lowPrice = (String) getArguments().getSerializable("lower price");
@@ -127,11 +125,7 @@ public class SearchResultFragment extends Fragment {
 
                     }
                     adapter.notifyDataSetChanged();
-                    progressBar.setVisibility(View.GONE);
-                    if (filterProducts.size()==0) {
-                        if(filterProducts.isEmpty())
-                            notfound.setVisibility(View.VISIBLE);
-                    }
+                    notfound.setVisibility(View.GONE);
                 }
 
 

@@ -96,6 +96,49 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="35dp"
+            android:id="@+id/noitems"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="25sp"
+                android:text="לא נמצאו תוצאות"
+                android:textStyle="bold"
+                android:textColor="@color/DarkBlue"
+                android:layout_margin="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:text="תהיו הראשונים להוסיף מוצר!"/>
+
+            <Button
+                android:id="@+id/Publish"
+                android:layout_width="250dp"
+                android:background="@color/Orange"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="#fff"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="פרסם מוצר עכשיו  "
+                android:drawableLeft="@drawable/ic_add_circle_white_24dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
         <ListView
             android:id="@+id/products_list"
             android:layout_width="match_parent"

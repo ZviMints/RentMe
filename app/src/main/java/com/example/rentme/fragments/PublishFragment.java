@@ -56,9 +56,11 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -102,7 +104,10 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
     private final int RESULT_CAPTURE_IMG = 0;
 
     private void gotConfigurationsFromFireBase(Configurations conf) {
-        this.categoryNames = conf.getCategoriesOptions();
+
+        Set<String> arr = conf.getCategoriesOptions().keySet();
+        this.categoryNames = new ArrayList<String>(arr);
+
         this.statusNames = conf.getStateOptions();
         this.RentPeriodOptions = conf.getRentOptions();
         IntializeSpinners();
@@ -220,7 +225,7 @@ public class PublishFragment extends Fragment implements AdapterView.OnItemSelec
                             Relation newRelation = new Relation(selectedCategory,ProductUid);
                             posts.add(newRelation);
                             //upload Relation to User
-                            firebaseDatabase.getReference("Users").child(USER_UID).child("posts_list").removeValue();
+                            // firebaseDatabase.getReference("Users").child(USER_UID).child("posts_list").removeValue();
                             firebaseDatabase.getReference("Users").child(USER_UID).child("posts_list").setValue(posts);
                             //upload Relation to LastProduct
                             firebaseDatabase.getReference("Last Products").child(ProductUid).setValue(newRelation);
