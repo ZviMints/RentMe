@@ -16,16 +16,17 @@
 <td><img src="./images/Edit_profile.png" width="170px" height="300px" /></td>
 <td><img src="./images/Publish.png" width="170px" height="300px" /></td>
   <td><img src="./images/Search.png" width="170px" height="300px"/></td>
-
 </tr>
 <tr>
 <td><img src="./images/Login_page.png" width="170px" height="300px" /></td>
 <td><img src="./images/SignIn_page.png" width="170px" height="300px" /></td>
 <td><img src="./images/Search_1.png" width="170px" height="300px" /></td>
-<td><img src="./images/Configure_Management.png" width="170px" height="300px"/></td>
+<td><img src="./images/Configure_Management.jpeg" width="170px" height="300px"/></td>
   </tr>
 </tbody>
 </table>
+<h1>Use Case Diagram:</h1>
+<img src="./images/Use Case Diagram.jpg" width="700px" height="500px"/>
 <h1>Class Diagram</h1>
 <p><a href="./images/RentMeClassDiagram.jpeg"><img src="./images/RentMeClassDiagram.jpeg" width="800px" height="500px" /></a></p>
 <h1>Features:</h1>
