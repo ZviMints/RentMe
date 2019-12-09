@@ -4,7 +4,7 @@
 <p>&nbsp;</p>
 <h1>Gallery:</h1>
 <p style="text-align: center;"><strong>Quick Overview:</strong></p>
-<p style="text-align: center;"><strong><img src="./images/GIF.gif" alt="" width="190" height="340" /></strong></p>
+<p style="text-align: center;"><strong><img src="./images/GIF.gif" width="300px" height="600px" /></strong></p>
 <table cellspacing="10">
 <tbody>
 <tr>
