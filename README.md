@@ -5,6 +5,7 @@
 <h1>Gallery:</h1>
 <p style="text-align: center;"><strong>Quick Overview:</strong></p>
 <p style="text-align: center;"><strong><img src="./images/GIF.gif" width="300px" height="600px" /></strong></p>
+<p style="text-align: center;"><strong>More Photos:</strong></p>
 <table cellspacing="10">
 <tbody>
 <tr>
