@@ -3,9 +3,34 @@
 <h1>About The Project:</h1>
 <p>&nbsp;</p>
 <h1>Gallery:</h1>
-<h1>&nbsp;</h1>
+<p style="text-align: center;"><strong>Quick Overview:</strong></p>
+<p style="text-align: center;"><strong><img src="./images/GIF.gif" alt="" width="190" height="340" /></strong></p>
+<table cellspacing="10">
+<tbody>
+<tr>
+<td><img src="./images/Home_page.png" width="170px" height="300px" /></td>
+<td><img src="./images/Last_products.png" width="170px" height="300px" /></td>
+<td><img src="./images/Profile.png" width="170px" height="300px" /></td>
+<td><img src="./images/Empty_search.png" width="170px" height="300px" /></td>
+</tr>
+<tr>
+<td><img src="./images/Manage_categories.png" width="170px" height="300px" /></td>
+<td><img src="./images/Edit_profile.png" width="170px" height="300px" /></td>
+<td><img src="./images/Publish.png" width="170px" height="300px" /></td>
+<td><img src="./images/Search.png" width="170px" height="300px" /></td>
+</tr>
+<tr>
+<td><img src="./images/Login_page.png" width="170px" height="300px" /></td>
+<td><img src="./images/SignIn_page.png" width="170px" height="300px" /></td>
+<td><img src="./images/Search_1.png" width="170px" height="300px" /></td>
+<td><img src="./images/Configure_Managment.jpeg" width="170px" height="300px" /></td>
+</tr>
+</tbody>
+</table>
+<h1>Use Case Diagram:</h1>
+<p><img src="./images/Use Case Diagram.jpg" width="550px" height="400px" /></p>
 <h1>Class Diagram</h1>
-<a href="./images/RentMeClassDiagram.jpeg"><img src="./images/RentMeClassDiagram.jpeg" width="800px" height="500px"/></a>
+<p><a href="./images/RentMeClassDiagram.jpeg"><img src="./images/RentMeClassDiagram.jpeg" width="800px" height="500px" /></a></p>
 <h1>Features:</h1>
 <p>The application supports the following features:</p>
 <p>&nbsp;</p>
