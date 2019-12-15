@@ -58,6 +58,224 @@
     <td><img src="https://tinuiti.com/wp-content/uploads/2019/05/Google-Firebase-logo-e1494819679178-1080x675.png" width="100px" height="70px" /></td>
     <td><img src="https://upload.wikimedia.org/wikipedia/he/thumb/0/05/Java_Logo.svg.png/140px-Java_Logo.svg.png" width="35px" height="60px" /></td>
     <td><img src="https://cdn.mos.cms.futurecdn.net/Ju3ceiZzGSSQacR2juGN98-320-80.png" alt="" width="134" height="75" /></td>
+        <td><img src="https://files.geektime.co.il/wp-content/uploads/2013/11/git-logo.png" alt="" width="134" height="67" /></td>
     </tr>
     </table>
-<h1>Firebase JSON:</h1>
+<h1>Firebase Exported JSON:</h1>
+
+Can be imported into Firebase
+
+```
+{
+  "Categories" : {
+    "חופשה" : {
+      "1575925076784: TV 50\"" : {
+        "author" : {
+          "area" : "מרכז",
+          "firstname" : "אלעד",
+          "fullName" : "אלעד חורב",
+          "lastname" : "חורב",
+          "userUid" : "5AvwrkLTrSaj6bK9mAYU3YYxZFx1"
+        },
+        "productDetails" : {
+          "category" : "חופשה",
+          "condition" : "חדש מהמפעל",
+          "details" : "Example Text",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1575925067233.jpg?alt=media&token=ee3be1af-e1c5-4872-b146-eac3656c38a6",
+          "price" : "20",
+          "rentPeriod" : "לחודש",
+          "title" : "TV 50\"",
+          "uploadTime" : "2019/12/09 20:57:56",
+          "utc" : 1575925076784
+        },
+        "product_UID" : "1575925076784: TV 50\""
+      }
+    },
+    "מוצרי חשמל" : {
+      "1575780921265: Zvi Mints TV 50\"" : {
+        "author" : {
+          "area" : "מרכז",
+          "firstname" : "אלעד",
+          "fullName" : "אלעד חורב",
+          "lastname" : "חורב",
+          "userUid" : "5AvwrkLTrSaj6bK9mAYU3YYxZFx1"
+        },
+        "comments_list" : [ {
+          "author" : {
+            "area" : "מרכז",
+            "firstname" : "אלעד",
+            "fullName" : "אלעד חורב",
+            "lastname" : "חורב",
+            "userUid" : "5AvwrkLTrSaj6bK9mAYU3YYxZFx1"
+          },
+          "msg" : "בבב"
+        }, {
+          "author" : {
+            "area" : "מרכז",
+            "firstname" : "אלעד",
+            "fullName" : "אלעד חורב",
+            "lastname" : "חורב",
+            "userUid" : "5AvwrkLTrSaj6bK9mAYU3YYxZFx1"
+          },
+          "msg" : "תגובה\n"
+        } ],
+        "productDetails" : {
+          "category" : "מוצרי חשמל",
+          "condition" : "חדש מהמפעל",
+          "details" : "Example Of Text",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1575780909252.jpg?alt=media&token=672f0a86-1c63-4922-a935-9715f5cf1d8d",
+          "price" : "100",
+          "rentPeriod" : "לשעה",
+          "title" : "Zvi Mints TV 50\"",
+          "uploadTime" : "2019/12/08 06:55:21",
+          "utc" : 1575780921265
+        },
+        "product_UID" : "1575780921265: Zvi Mints TV 50\""
+      }
+    }
+  },
+  "Configurations" : {
+    "configurations" : {
+      "adminsList" : [ "zvioreilon@gmail.com" ],
+      "areaNames" : [ "מרכז", "דרום", "צפון", "השרון" ],
+      "categoriesOptions" : {
+        "חופשה" : "https://i.ibb.co/1GHJMtW/vacation.jpg",
+        "כלי עבודה" : "https://www.osheastimber.com.au/wp-content/gallery/powertools/osheas-power-tools-display.jpg",
+        "מוצרי חשמל" : "https://foxnomad.com/wp-content/uploads/2011/02/desktop-computer.jpg",
+        "ספורט" : "https://i.ibb.co/nQfg5r7/sport.jpg"
+      },
+      "rentOptions" : [ "לשעה", "ליום", "לשבוע", "לחודש", "לשנה", "בלי הגבלה" ],
+      "rentTimes" : [ "יום", "שבוע" ],
+      "stateOptions" : [ "חדש מהמפעל", "חדש", "כמו חדש", "משומש", "שבור" ]
+    }
+  },
+  "Last Products" : {
+    "1575730003036: עכבר" : {
+      "categoryName" : "מוצרי חשמל",
+      "productUid" : "1575730003036: עכבר"
+    },
+    "1575730054398: ריק" : {
+      "categoryName" : "ספורט",
+      "productUid" : "1575730054398: ריק"
+    },
+    "1575730154875: מחשב" : {
+      "categoryName" : "אביזרים",
+      "productUid" : "1575730154875: מחשב"
+    },
+    "1575733163771: לדרמן" : {
+      "categoryName" : "כלי עבודה",
+      "productUid" : "1575733163771: לדרמן"
+    },
+    "1575733194630: מחשב" : {
+      "categoryName" : "מוצרי חשמל",
+      "productUid" : "1575733194630: מחשב"
+    },
+    "1575733261163: משקולות" : {
+      "categoryName" : "ספורט",
+      "productUid" : "1575733261163: משקולות"
+    },
+    "1575733295342: נעלי ספורט" : {
+      "categoryName" : "ספורט",
+      "productUid" : "1575733295342: נעלי ספורט"
+    },
+    "1575734167145: קומקום חשמלי" : {
+      "categoryName" : "מוצרי חשמל",
+      "productUid" : "1575734167145: קומקום חשמלי"
+    },
+    "1575734994193: פקךל קפה" : {
+      "categoryName" : "ציוד טיולים",
+      "productUid" : "1575734994193: פקךל קפה"
+    },
+    "1575780921265: Zvi Mints TV 50\"" : {
+      "categoryName" : "מוצרי חשמל",
+      "productUid" : "1575780921265: Zvi Mints TV 50\""
+    },
+    "1575925076784: TV 50\"" : {
+      "categoryName" : "חופשה",
+      "productUid" : "1575925076784: TV 50\""
+    }
+  },
+  "Users" : {
+    "5AvwrkLTrSaj6bK9mAYU3YYxZFx1" : {
+      "area" : "מרכז",
+      "email" : "zvioreilon@gmail.com",
+      "lastname" : "חורב",
+      "name" : "אלעד",
+      "number" : "0523333333",
+      "posts_list" : [ {
+        "categoryName" : "מוצרי חשמל",
+        "productUid" : "1575780921265: Zvi Mints TV 50\""
+      }, {
+        "categoryName" : "חופשה",
+        "productUid" : "1575925076784: TV 50\""
+      } ]
+    },
+    "MF7K6giCAiY35nIw15mfV3sKRN62" : {
+      "area" : "מרכז",
+      "email" : "ei@gmail.com",
+      "fullName" : "Ei Ts",
+      "lastname" : "Ts",
+      "name" : "Ei",
+      "number" : "050483",
+      "posts_list" : [ {
+        "categoryName" : "מוצרי חשמל",
+        "productUid" : "1575725562617: ריק "
+      }, {
+        "categoryName" : "מוצרי חשמל",
+        "productUid" : "1575730003036: עכבר"
+      }, {
+        "categoryName" : "ספורט",
+        "productUid" : "1575730054398: ריק"
+      }, {
+        "categoryName" : "אביזרים",
+        "productUid" : "1575730154875: מחשב"
+      }, {
+        "categoryName" : "כלי עבודה",
+        "productUid" : "1575733163771: לדרמן"
+      }, {
+        "categoryName" : "מוצרי חשמל",
+        "productUid" : "1575733194630: מחשב"
+      }, {
+        "categoryName" : "ספורט",
+        "productUid" : "1575733261163: משקולות"
+      }, {
+        "categoryName" : "ספורט",
+        "productUid" : "1575733295342: נעלי ספורט"
+      }, {
+        "categoryName" : "ציוד טיולים",
+        "productUid" : "1575734994193: פקךל קפה"
+      } ]
+    },
+    "ouIC4DovN2NRINQU2xNKteH33jL2" : {
+      "area" : "דרום",
+      "email" : "zvimints@gmail.com",
+      "fullName" : "צבי מינץ",
+      "lastname" : "מינץ",
+      "name" : "צבי",
+      "number" : "0523348262",
+      "posts_list" : [ {
+        "categoryName" : "ספורט",
+        "productUid" : "1575726203843: Example"
+      }, {
+        "categoryName" : "ספורט",
+        "productUid" : "1575726228963: Example Sport"
+      }, {
+        "categoryName" : "אביזרים",
+        "productUid" : "1575726252393: Example For Other"
+      } ]
+    },
+    "rh7ZQ1CXzdTlmEYziBWdpVuKiPm2" : {
+      "area" : "צפון",
+      "email" : "eilon26@gmail.com",
+      "fullName" : "אילון צדוק",
+      "lastname" : "צדוק",
+      "name" : "אילון",
+      "number" : "087999777",
+      "posts_list" : [ {
+        "categoryName" : "מוצרי חשמל",
+        "productUid" : "1575734167145: קומקום חשמלי"
+      } ]
+    }
+  }
+}
+```
