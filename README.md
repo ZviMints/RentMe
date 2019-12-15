@@ -34,6 +34,24 @@
 <p><a href="./images/RentMeClassDiagram.jpeg"><img src="./images/RentMeClassDiagram.jpeg" width="800px" height="500px" /></a></p>
 <h1>Features:</h1>
 <p>The application supports the following features:</p>
+<ul>
+<li>Publish a&nbsp;<em><strong>Product&nbsp;</strong></em>which includes:
+<ul>
+<li>Name, Category, Details, Image (can be uploaded from Gallery, Camera Shot), Area and etc</li>
+</ul>
+</li>
+<li>Search for a&nbsp;<em><strong>Product&nbsp;</strong></em>by fields</li>
+<li>Login Activity</li>
+<li>Sign In Activity</li>
+<li>Profile Activity<br />
+<ul>
+<li>Possibility to edit profile</li>
+</ul>
+</li>
+<li>Last Products List (by Date)</li>
+<li>Admin Management Panel</li>
+</ul>
+<p><strong>&nbsp; &nbsp; And Much More!</strong></p>
 <h1>Technology:</h1>
 <table cellspacing="10">
   <tr>
