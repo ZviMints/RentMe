@@ -32,6 +32,15 @@
 </table>
 <h1>Use Case Diagram:</h1>
 <p><img src="./images/Use Case Diagram.jpg" width="550px" height="400px" /></p>
+<h1>Technology:</h1>
+<table cellspacing="10">
+  <tr>
+    <td><img src="https://tinuiti.com/wp-content/uploads/2019/05/Google-Firebase-logo-e1494819679178-1080x675.png" width="100px" height="70px" /></td>
+    <td><img src="https://upload.wikimedia.org/wikipedia/he/thumb/0/05/Java_Logo.svg.png/140px-Java_Logo.svg.png" width="35px" height="60px" /></td>
+    <td><img src="https://cdn.mos.cms.futurecdn.net/Ju3ceiZzGSSQacR2juGN98-320-80.png" alt="" width="134" height="75" /></td>
+        <td><img src="https://files.geektime.co.il/wp-content/uploads/2013/11/git-logo.png" alt="" width="134" height="67" /></td>
+    </tr>
+    </table>
 <h1>Class Diagram</h1>
 <p><a href="./images/RentMeClassDiagram.jpeg"><img src="./images/RentMeClassDiagram.jpeg" width="800px" height="500px" /></a></p>
 <h1>Features:</h1>
@@ -54,15 +63,6 @@
 <li>Admin Management Panel</li>
 </ul>
 <p><strong>&nbsp; &nbsp; And Much More!</strong></p>
-<h1>Technology:</h1>
-<table cellspacing="10">
-  <tr>
-    <td><img src="https://tinuiti.com/wp-content/uploads/2019/05/Google-Firebase-logo-e1494819679178-1080x675.png" width="100px" height="70px" /></td>
-    <td><img src="https://upload.wikimedia.org/wikipedia/he/thumb/0/05/Java_Logo.svg.png/140px-Java_Logo.svg.png" width="35px" height="60px" /></td>
-    <td><img src="https://cdn.mos.cms.futurecdn.net/Ju3ceiZzGSSQacR2juGN98-320-80.png" alt="" width="134" height="75" /></td>
-        <td><img src="https://files.geektime.co.il/wp-content/uploads/2013/11/git-logo.png" alt="" width="134" height="67" /></td>
-    </tr>
-    </table>
 <h1>Firebase Exported JSON:</h1>
 
 Can be imported into Firebase
