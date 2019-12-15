@@ -6,7 +6,19 @@
 </p>
 <h1>Gallery:</h1>
 <p style="text-align: center;"><strong>Quick Overview:</strong></p>
-<p style="text-align: center;"><strong><img src="./images/GIF.gif" width="300px" height="600px" /></strong></p>
+<table>
+  <tr>
+    <td>
+      <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/387eb18b-ab74-4503-a97f-b5e6143eb21d/d2cwpxy-ffb570c2-beb7-4c84-bc7c-e00f05d03b95.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzM4N2ViMThiLWFiNzQtNDUwMy1hOTdmLWI1ZTYxNDNlYjIxZFwvZDJjd3B4eS1mZmI1NzBjMi1iZWI3LTRjODQtYmM3Yy1lMDBmMDVkMDNiOTUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.efhwAkNI0kwwtLu6evVLqFk0uhqiyENDDjGdAt0LMeY" width="280px" height=600px"/>
+    </td>
+    <td>
+<img src="./images/GIF.gif" width="300px" height="600px" />
+    </td>
+                                                         <td>
+      <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/387eb18b-ab74-4503-a97f-b5e6143eb21d/d2cwpxy-ffb570c2-beb7-4c84-bc7c-e00f05d03b95.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzM4N2ViMThiLWFiNzQtNDUwMy1hOTdmLWI1ZTYxNDNlYjIxZFwvZDJjd3B4eS1mZmI1NzBjMi1iZWI3LTRjODQtYmM3Yy1lMDBmMDVkMDNiOTUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.efhwAkNI0kwwtLu6evVLqFk0uhqiyENDDjGdAt0LMeY" width="280px" height=600px"/>
+    </td>
+  </tr>
+  </table>
 <p style="text-align: center;"><strong>More Photos:</strong></p>
 <table cellspacing="10">
 <tbody>
