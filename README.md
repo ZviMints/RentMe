@@ -101,3 +101,6 @@
 </tr>
 </tbody>
 </table>
+<h1>Firebase Exported JSON:</h1>
+<p>Can be imported into Firebase</p>
+<a href="/images/jsonfile.txt"><img src="https://cdn2.iconfinder.com/data/icons/file-formats-43/48/json-512.png" width="100px" height="100px"></a>
