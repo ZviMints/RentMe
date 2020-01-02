@@ -120,10 +120,10 @@
 <td style="text-align: center;"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://miro.medium.com/max/552/1*PiduCtSA7kMwdPiMZo1nHw.jpeg" alt="" width="134" height="67" /> Git <strong>Branches</strong></td>
 </tr>
   <tr>
-  <td style="text-align: center;"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://pbs.twimg.com/media/Domt8akU4AU0EyN.jpg" alt="" width="204" height="117" /></td>
+  <td style="text-align: center;"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://pbs.twimg.com/media/Domt8akU4AU0EyN.jpg" alt="" width="204" height="100" /></td>
 <td style="text-align: center;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Server-based-network.svg/1200px-Server-based-network.svg.png" alt="" width="134" height="100" /> <strong>Client-Server</strong> Model</td>
-<td style="text-align: center;"><img src="https://miro.medium.com/proxy/1*qpD1rt8_od8y-x-Uq_pwag.png" alt="" width="134" height="100" /> Agile Methodology - <strong>Scrum</strong></td>
-<td style="text-align: center;"><img src="https://www.israelhayom.com/wp-content/uploads/2019/07/D5VP2AhXsAAlNdd.jpg" alt="" width="134" height="100" /> Agile Methodology - <strong>Monday.com Board</strong></td>
+<td style="text-align: center;"><img src="https://miro.medium.com/proxy/1*qpD1rt8_od8y-x-Uq_pwag.png" alt="" width="134" height="100" /><br> Agile Methodology - <strong>Scrum</strong></td>
+<td style="text-align: center;"><img src="https://www.israelhayom.com/wp-content/uploads/2019/07/D5VP2AhXsAAlNdd.jpg" alt="" width="134" height="100" /> Monday.com <strong>Board</strong></td>
   </tr>
 </tbody>
 </table>
