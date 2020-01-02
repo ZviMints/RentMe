@@ -78,38 +78,38 @@
     <td style="text-align: center;">
 <p style="text-align: center;"><strong>ERD Diagram</strong></p>
 <p><img src="./images/ERD.png" width="200px" height="170px" /></p>
-<a href="#">Full Size</a>
+<a href="./images/ERD.png">Full Size</a>
   </td>
 <td style="text-align: center;">
 <p style="text-align: center;"><strong>Use Case Diagram</strong></p>
 <p><img src="./images/Use Case Diagram.jpg" width="170px" height="170px" /></p>
-<a href="#">Full Size</a>
+<a href="./images/Use Case Diagram.jpg">Full Size</a>
   </td>
   <td style="text-align: center;">
 <p style="text-align: center;"><strong>Object Diagram</strong></p>
 <p><img src="./images/ObjectDiagram.png" width="210px" height="170px" /></p>
-<a href="#">Full Size</a>
+<a href="./images/ObjectDiagram.png">Full Size</a>
   </td>
   <td style="text-align: center;">
 <p style="text-align: center;"><strong>Activity Diagram</strong></p>
 <p><img src="./images/Activity.png" width="170px" height="170px" /></p>
-<a href="#">Full Size</a>
+<a href="./images/Activity.png">Full Size</a>
   </td>
 </tr>
 <tr>
 <td style="text-align: center;">
 <p style="text-align: center;"><strong>Class Diagram</strong></p>
 <p><a href="./images/RentMeClassDiagram.jpeg"><img src="./images/RentMeClassDiagram.jpeg" width="170px" height="170px" /></a></p>
-<a href="#">Full Size</a></td>
+<a href="./images/RentMeClassDiagram.jpeg">Full Size</a></td>
   <td style="text-align: center;">
 <p style="text-align: center;"><strong>Sequence Diagram</strong></p>
 <p><img src="./images/Sequence.png" width="200px" height="170px" /></p>
-<a href="#">Full Size</a>
+<a href="./images/Sequence.png">Full Size</a>
   </td>
     <td style="text-align: center;">
 <p style="text-align: center;"><strong>State Machine Diagram</strong></p>
 <p><img src="./images/State.png" width="200px" height="170px" /></p>
-<a href="#">Full Size</a>
+<a href="./images/State.png">Full Size</a>
   </td>
 </tr>
 </tbody>
