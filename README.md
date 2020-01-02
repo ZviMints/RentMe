@@ -78,7 +78,7 @@
 <ul>
 <li>Admin<strong> Broadcast </strong>Message that follows by<strong> Notification</strong></li>
 <li><strong>Chat</strong>:</li>
-<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./images/Chat.png" width="700px" height="170px" /></p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./images/Chat.png" width="70px" height="170px" /></p>
 <h1>Diagrams:</h1>
 <table cellspacing="10">
 <tbody>
