@@ -75,42 +75,36 @@
 <table cellspacing="10">
 <tbody>
 <tr>
-    <td style="text-align: center;">
+<td style="text-align: center;">
 <p style="text-align: center;"><strong>ERD Diagram</strong></p>
 <p><img src="./images/ERD.png" width="200px" height="170px" /></p>
-<a href="./images/ERD.png">Full Size</a>
-  </td>
+<a href="./images/ERD.png">Full Size</a></td>
 <td style="text-align: center;">
 <p style="text-align: center;"><strong>Use Case Diagram</strong></p>
 <p><img src="./images/Use Case Diagram.jpg" width="170px" height="170px" /></p>
-<a href="./images/Use Case Diagram.jpg">Full Size</a>
-  </td>
-  <td style="text-align: center;">
+<a href="./images/Use Case Diagram.jpg">Full Size</a></td>
+<td style="text-align: center;">
 <p style="text-align: center;"><strong>Object Diagram</strong></p>
 <p><img src="./images/ObjectDiagram.png" width="210px" height="170px" /></p>
-<a href="./images/ObjectDiagram.png">Full Size</a>
-  </td>
-  <td style="text-align: center;">
+<a href="./images/ObjectDiagram.png">Full Size</a></td>
+<td style="text-align: center;">
 <p style="text-align: center;"><strong>Activity Diagram</strong></p>
 <p><img src="./images/Activity.png" width="170px" height="170px" /></p>
-<a href="./images/Activity.png">Full Size</a>
-  </td>
+<a href="./images/Activity.png">Full Size</a></td>
 </tr>
 <tr>
 <td style="text-align: center;">
 <p style="text-align: center;"><strong>Class Diagram</strong></p>
 <p><a href="./images/RentMeClassDiagram.jpeg"><img src="./images/RentMeClassDiagram.jpeg" width="170px" height="170px" /></a></p>
 <a href="./images/RentMeClassDiagram.jpeg">Full Size</a></td>
-  <td style="text-align: center;">
+<td style="text-align: center;">
 <p style="text-align: center;"><strong>Sequence Diagram</strong></p>
 <p><img src="./images/Sequence.png" width="200px" height="170px" /></p>
-<a href="./images/Sequence.png">Full Size</a>
-  </td>
-    <td style="text-align: center;">
+<a href="./images/Sequence.png">Full Size</a></td>
+<td style="text-align: center;">
 <p style="text-align: center;"><strong>State Machine Diagram</strong></p>
 <p><img src="./images/State.png" width="200px" height="170px" /></p>
-<a href="./images/State.png">Full Size</a>
-  </td>
+<a href="./images/State.png">Full Size</a></td>
 </tr>
 </tbody>
 </table>
@@ -118,10 +112,16 @@
 <table cellspacing="10">
 <tbody>
 <tr>
+  
 <td><img src="https://tinuiti.com/wp-content/uploads/2019/05/Google-Firebase-logo-e1494819679178-1080x675.png" width="100px" height="70px" /></td>
 <td><img src="https://upload.wikimedia.org/wikipedia/he/thumb/0/05/Java_Logo.svg.png/140px-Java_Logo.svg.png" width="35px" height="60px" /></td>
 <td><img src="https://cdn.mos.cms.futurecdn.net/Ju3ceiZzGSSQacR2juGN98-320-80.png" alt="" width="134" height="75" /></td>
 <td><img src="https://files.geektime.co.il/wp-content/uploads/2013/11/git-logo.png" alt="" width="134" height="67" /></td>
+<td style="text-align: center;"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://miro.medium.com/max/552/1*PiduCtSA7kMwdPiMZo1nHw.jpeg" alt="" width="134" height="67" /> Git <strong>Branches</strong></td>
+  <td style="text-align: center;"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://pbs.twimg.com/media/Domt8akU4AU0EyN.jpg" alt="" width="204" height="117" /></td>
+<td style="text-align: center;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Server-based-network.svg/1200px-Server-based-network.svg.png" alt="" width="134" height="100" /> <strong>Client-Server</strong> Model</td>
+<td style="text-align: center;"><img src="https://miro.medium.com/proxy/1*qpD1rt8_od8y-x-Uq_pwag.png" alt="" width="134" height="100" /> Agile Methodology - <strong>Scrum</strong></td>
+<td style="text-align: center;"><img src="https://www.israelhayom.com/wp-content/uploads/2019/07/D5VP2AhXsAAlNdd.jpg" alt="" width="134" height="100" /> Agile Methodology - <strong>Monday.com Board</strong></td>
 </tr>
 </tbody>
 </table>
