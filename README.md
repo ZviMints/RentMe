@@ -61,9 +61,7 @@
 <li>Admin Management Panel</li>
 </ul>
 <p><strong>&nbsp; &nbsp; And Much More!</strong></p>
-<h1>
-  Selected Features:
-</h1>
+<h1>Selected Features:</h1>
 <table cellspacing="10">
 <tbody>
 <tr>
@@ -77,16 +75,42 @@
 <table cellspacing="10">
 <tbody>
 <tr>
+    <td style="text-align: center;">
+<p style="text-align: center;"><strong>ERD Diagram</strong></p>
+<p><img src="./images/ERD.png" width="200px" height="170px" /></p>
+<a href="#">Full Size</a>
+  </td>
 <td style="text-align: center;">
 <p style="text-align: center;"><strong>Use Case Diagram</strong></p>
 <p><img src="./images/Use Case Diagram.jpg" width="170px" height="170px" /></p>
-<a href="#">Full Size</a></td>
+<a href="#">Full Size</a>
+  </td>
+  <td style="text-align: center;">
+<p style="text-align: center;"><strong>Object Diagram</strong></p>
+<p><img src="./images/ObjectDiagram.png" width="210px" height="170px" /></p>
+<a href="#">Full Size</a>
+  </td>
+  <td style="text-align: center;">
+<p style="text-align: center;"><strong>Activity Diagram</strong></p>
+<p><img src="./images/Activity.png" width="170px" height="170px" /></p>
+<a href="#">Full Size</a>
+  </td>
 </tr>
 <tr>
 <td style="text-align: center;">
 <p style="text-align: center;"><strong>Class Diagram</strong></p>
 <p><a href="./images/RentMeClassDiagram.jpeg"><img src="./images/RentMeClassDiagram.jpeg" width="170px" height="170px" /></a></p>
 <a href="#">Full Size</a></td>
+  <td style="text-align: center;">
+<p style="text-align: center;"><strong>Sequence Diagram</strong></p>
+<p><img src="./images/Sequence.png" width="200px" height="170px" /></p>
+<a href="#">Full Size</a>
+  </td>
+    <td style="text-align: center;">
+<p style="text-align: center;"><strong>State Machine Diagram</strong></p>
+<p><img src="./images/State.png" width="200px" height="170px" /></p>
+<a href="#">Full Size</a>
+  </td>
 </tr>
 </tbody>
 </table>
@@ -103,4 +127,4 @@
 </table>
 <h1>Firebase Exported JSON:</h1>
 <p>Can be imported into Firebase</p>
-<a href="/images/jsonfile.txt"><img src="https://cdn2.iconfinder.com/data/icons/file-formats-43/48/json-512.png" width="100px" height="100px"></a>
+<p><a href="/images/jsonfile.txt"><img src="https://cdn2.iconfinder.com/data/icons/file-formats-43/48/json-512.png" width="100px" height="100px" /></a></p>
