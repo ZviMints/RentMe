@@ -115,9 +115,9 @@
   
 <td><img src="https://tinuiti.com/wp-content/uploads/2019/05/Google-Firebase-logo-e1494819679178-1080x675.png" width="100px" height="70px" /></td>
 <td><img src="https://upload.wikimedia.org/wikipedia/he/thumb/0/05/Java_Logo.svg.png/140px-Java_Logo.svg.png" width="35px" height="60px" /></td>
-<td><img src="https://cdn.mos.cms.futurecdn.net/Ju3ceiZzGSSQacR2juGN98-320-80.png" alt="" width="134" height="75" /></td>
-<td><img src="https://files.geektime.co.il/wp-content/uploads/2013/11/git-logo.png" alt="" width="134" height="67" /></td>
-<td style="text-align: center;"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://miro.medium.com/max/552/1*PiduCtSA7kMwdPiMZo1nHw.jpeg" alt="" width="134" height="67" /> Git <strong>Branches</strong></td>
+<td><img src="https://cdn.mos.cms.futurecdn.net/Ju3ceiZzGSSQacR2juGN98-320-80.png" alt="" width="134px" height="75px" /></td>
+<td><img src="https://files.geektime.co.il/wp-content/uploads/2013/11/git-logo.png" alt="" width="134px" height="67px" /></td>
+<td style="text-align: center;"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://miro.medium.com/max/552/1*PiduCtSA7kMwdPiMZo1nHw.jpeg" alt="" width="134px" height="67px" /> Git <strong>Branches</strong></td>
 </tr>
   <tr>
   <td style="text-align: center;"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://pbs.twimg.com/media/Domt8akU4AU0EyN.jpg" alt="" width="204" height="100" /></td>
