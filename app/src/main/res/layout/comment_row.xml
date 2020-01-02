@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="5dp"
+    android:padding="15dp"
     android:textDirection="rtl">
 
     <LinearLayout
@@ -37,11 +37,11 @@
               <TextView
                   android:id="@+id/comment_fullname"
                   android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
+                  android:layout_height="match_parent"
                   android:layout_gravity="right"
-                  android:textStyle="bold"
                   android:text="צבי מינץ"
-                  android:textDirection="rtl"/>
+                  android:textDirection="rtl"
+                  android:textStyle="bold" />
 
               <TextView
                   android:layout_width="wrap_content"
@@ -51,16 +51,6 @@
                   android:textDirection="rtl"/>
 
           </LinearLayout>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:textStyle="bold"
-                android:layout_marginRight="25dp"
-                android:text="תוכן ההודעה:"
-                android:textDirection="rtl"/>
 
 
         </LinearLayout>
