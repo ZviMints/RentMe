@@ -128,6 +128,6 @@
 </table>
 <h1>Firebase Exported JSON:</h1>
 <p>Can be imported into Firebase</p>
-<p><a href="/images/jsonbackup.json"><img src="https://cdn2.iconfinder.com/data/icons/file-formats-43/48/json-512.png" width="100px" height="100px" /></a></p>
+<p><a href="/jsonbackup.json"><img src="https://cdn2.iconfinder.com/data/icons/file-formats-43/48/json-512.png" width="100px" height="100px" /></a></p>
 <h1>How to use:</h1>
 <p>Clone the project and run the app <img src="https://cdn2.iconfinder.com/data/icons/large-glossy-svg-icons/512/go_arrow_next_up_green_forward-512.png" width="15px" height="15px" /></p>
