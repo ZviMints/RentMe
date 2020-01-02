@@ -75,9 +75,10 @@
 </tbody>
 </table>
 <ul>
-<li>Admin<strong> Broadcast </strong>Message that follows by<strong> notification</strong></li>
+<ul>
+<li>Admin<strong> Broadcast </strong>Message that follows by<strong> Notification</strong></li>
 <li><strong>Chat</strong>:</li>
-</ul>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./images/Chat.png" width="170px" height="270px" /></p>
 <h1>Diagrams:</h1>
 <table cellspacing="10">
 <tbody>
