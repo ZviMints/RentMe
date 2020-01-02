@@ -62,6 +62,9 @@
 </ul>
 <p><strong>&nbsp; &nbsp; And Much More!</strong></p>
 <h1>Selected Features:</h1>
+<ul>
+<li>Upload Image from <strong>Gallery/Camera:</strong></li>
+</ul>
 <table cellspacing="10">
 <tbody>
 <tr>
@@ -71,6 +74,10 @@
 </tr>
 </tbody>
 </table>
+<ul>
+<li>Admin<strong> Broadcast </strong>Message that follows by<strong> notification</strong></li>
+<li><strong>Chat</strong>:</li>
+</ul>
 <h1>Diagrams:</h1>
 <table cellspacing="10">
 <tbody>
