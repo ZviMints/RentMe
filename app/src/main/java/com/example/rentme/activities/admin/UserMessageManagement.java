@@ -17,6 +17,7 @@ import android.widget.EditText;
 
 import com.example.rentme.R;
 import com.example.rentme.activities.MainActivity;
+import com.example.rentme.fragments.MainFragment;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Date;
@@ -34,6 +35,13 @@ public class UserMessageManagement extends AppCompatActivity {
 
         messageContent = findViewById(R.id.message_content);
         sendMessage = findViewById(R.id.publish_message);
+        Button back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            }
+        });
 
         sendMessage.setOnClickListener(new View.OnClickListener() {
             @Override

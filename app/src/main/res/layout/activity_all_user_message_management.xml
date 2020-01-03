@@ -8,13 +8,34 @@
     tools:context=".activities.admin.CategoriesManagement"
     android:orientation="vertical">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_height="70dp"
+        android:src="@drawable/quickadminpanellogo"
+        android:background="@color/DarkGreen"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000" />
+    <Button
+        android:id="@+id/back"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/lightGray"
+        android:drawableRight="@drawable/ic_chevron_right_darksky_24dp"
+        android:text=" חזור לדף הקודם"
+        android:layout_alignParentTop="true"
+        android:textColor="@color/DarkGray"
+        android:textStyle="bold" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:text="שלח הודעה לכלל המשתמשים"
+        android:text="שלח הודעה (עם התראה) לכלל המשתמשים"
         android:textColor="@color/DarkGray"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -27,7 +48,7 @@
         android:layout_marginBottom="15dp"
         android:background="@drawable/form"
         android:layout_gravity="center_vertical"
-        android:hint="הכנס מודעה לכלל המשמתמשים"
+        android:hint="תוכן ההודעה"
         android:padding="10dp" />
 
 
@@ -41,7 +62,7 @@
         android:drawableTop="@drawable/ic_file_upload_black_24dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:text="שלח מודעה"
+        android:text="שלח"
         android:textColor="#fff"
         android:textStyle="bold" />
 
