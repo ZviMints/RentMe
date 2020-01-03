@@ -287,8 +287,7 @@ public class InItemFragment extends Fragment {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (insideCategoryFragment == null)
-                    insideCategoryFragment = new InsideCategoryFragment();
+                insideCategoryFragment = new InsideCategoryFragment();
                 Bundle bundle = new Bundle();
                 bundle.putString("Categories", product.getProductDetails().getCategory());
                 insideCategoryFragment.setArguments(bundle);
