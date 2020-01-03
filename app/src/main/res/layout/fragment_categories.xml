@@ -186,7 +186,7 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_margin="10dp"
             android:id="@+id/admin_CategoriesManagement"
@@ -195,10 +195,10 @@
             android:background="@color/Sky"
             android:textColor="#000"
             android:textStyle="bold"
-            android:text="נהל קטגוריות" />
+            android:text="קטגוריות" />
 
         <Button
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_margin="10dp"
             android:id="@+id/admin_UsersManagement"
@@ -207,7 +207,19 @@
             android:background="@color/Sky"
             android:textColor="#000"
             android:textStyle="bold"
-            android:text="ניהול קונגפרציות" />
+            android:text="קונגפרציות" />
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:id="@+id/admin_all_user_message"
+            android:padding="10dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/Sky"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:text="מודעות" />
 
         <TextView
             android:layout_width="100dp"

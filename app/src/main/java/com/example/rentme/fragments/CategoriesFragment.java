@@ -18,8 +18,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.rentme.R;
-import com.example.rentme.activities.admin.CategoriesManagement;
-import com.example.rentme.activities.admin.ConfManagement;
+import com.example.rentme.activities.admin.*;
 import com.example.rentme.adapters.MainAdapter;
 import com.example.rentme.model.Category;
 import com.example.rentme.model.Configurations;
@@ -55,6 +54,7 @@ public class CategoriesFragment extends Fragment {
     TextView admin_close;
     Button admin_ConfManagement;
     Button admin_CategoriesManagement;
+    Button admin_messageManagement;
     Button admin_open;
 
     TextView how_many_products_tv;
@@ -115,6 +115,7 @@ public class CategoriesFragment extends Fragment {
         adminPanel = view.findViewById(R.id.adminPanel);
         admin_close = view.findViewById(R.id.admin_close);
         admin_ConfManagement = view.findViewById(R.id.admin_UsersManagement);
+        admin_messageManagement = view.findViewById(R.id.admin_all_user_message);
         admin_CategoriesManagement = view.findViewById(R.id.admin_CategoriesManagement);
         admin_open = view.findViewById(R.id.admin_open);
 
@@ -214,6 +215,15 @@ public class CategoriesFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        admin_messageManagement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), UserMessageManagement.class);
+                startActivity(intent);
+            }
+        });
+
 
         return view;
     }
