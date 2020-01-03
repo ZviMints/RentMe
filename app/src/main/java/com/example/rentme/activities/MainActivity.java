@@ -2,11 +2,18 @@ package com.example.rentme.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +35,7 @@ import com.example.rentme.model.Configurations;
 import com.example.rentme.model.Product;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -133,7 +141,42 @@ public class MainActivity extends AppCompatActivity implements MoreDetailsButton
         mainFragment = new MainFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.OuterFragmentContainer, mainFragment).commit();
 
+        managementMessageListener();
+    }
 
+    private void managementMessageListener() {
+//
+//        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+//        firebaseDatabase.getReference("Management Message").limitToLast(1).on('child_added', function(snapshot) {
+//        });
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseDatabase.getReference("Management Message").limitToLast(1).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                String message = dataSnapshot.getValue().toString();
+                createNotification(message);
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -174,5 +217,44 @@ public class MainActivity extends AppCompatActivity implements MoreDetailsButton
     public void updateMyPublishedProducts() {
         profileFragment = new ProfileFragment();
         outerTransaction(profileFragment);
+    }
+
+    private void createNotification(String message) {
+        Intent landingIntent = new Intent(this, MainActivity.class);
+        PendingIntent pendingLandingIntent = PendingIntent.getActivity(this, 0,
+                landingIntent,0);
+//        Notification notification = notificationBuilder;
+
+        NotificationManager notificationManager = (NotificationManager)
+                getSystemService(Context.NOTIFICATION_SERVICE);
+
+
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            String channelId =
+                    "MY_CHANNEL_ID";
+            NotificationChannel channel = new NotificationChannel(channelId, "Message to Users",
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription("deliver message from admin to users");
+            notificationManager.createNotificationChannel(channel);
+
+            NotificationCompat.Builder builder = new
+                    NotificationCompat.Builder(getApplicationContext(), channelId);
+
+            Notification notification = builder.setContentIntent(pendingLandingIntent)
+                    .setWhen(System.currentTimeMillis())
+                    .setAutoCancel(true)
+                    .setSmallIcon(R.drawable.logo)
+                    .setContentTitle("new message from RentMe")
+                    .setContentText(message).build();
+
+            notificationManager.notify(1, notification);
+        }
+
+
+
+
     }
 }
