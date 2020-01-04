@@ -126,7 +126,8 @@ public class SearchResultFragment extends Fragment {
                         }
                     }
                     adapter.notifyDataSetChanged();
-                    notfound.setVisibility(View.GONE);
+                    if (filterProducts.size() == 0)
+                        notfound.setVisibility(View.VISIBLE);
                 }
 
 

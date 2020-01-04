@@ -36,6 +36,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="35dp"
             android:id="@+id/notfound"
+            android:visibility="gone"
             android:orientation="vertical">
 
             <TextView
