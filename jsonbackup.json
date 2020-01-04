@@ -1,13 +1,13 @@
 {
   "Categories" : {
-    "חופשה" : {
-      "1575925076784: TV 50\"" : {
+    "כלי עבודה" : {
+      "1578066982456: לדרמן" : {
         "author" : {
-          "area" : "מרכז",
-          "firstname" : "אלעד",
-          "fullName" : "אלעד חורב",
-          "lastname" : "חורב",
-          "userUid" : "5AvwrkLTrSaj6bK9mAYU3YYxZFx1"
+          "area" : "צפון",
+          "firstname" : "אילון",
+          "fullName" : "אילון צדוק",
+          "lastname" : "צדוק",
+          "userUid" : "rh7ZQ1CXzdTlmEYziBWdpVuKiPm2"
         },
         "comments_list" : [ {
           "author" : {
@@ -17,92 +17,162 @@
             "lastname" : "חורב",
             "userUid" : "5AvwrkLTrSaj6bK9mAYU3YYxZFx1"
           },
-          "msg" : "csעעע\n"
+          "msg" : "מוצר כמו חדש מומלץ מאוד"
         }, {
           "author" : {
             "area" : "מרכז",
-            "firstname" : "אלעד",
-            "fullName" : "אלעד חורב",
-            "lastname" : "חורב",
-            "userUid" : "5AvwrkLTrSaj6bK9mAYU3YYxZFx1"
+            "firstname" : "אור",
+            "fullName" : "אור אבוחצירה",
+            "lastname" : "אבוחצירה",
+            "userUid" : "jCZB5WY4IeOX589dXxwDLiZYhr23"
           },
-          "msg" : "dfdsfdsעייחכנfdsfdsdfsfdsfdsfds"
+          "msg" : "שבור"
         } ],
         "productDetails" : {
-          "category" : "חופשה",
+          "category" : "כלי עבודה",
           "condition" : "חדש מהמפעל",
-          "details" : "Example Text",
-          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1575925067233.jpg?alt=media&token=ee3be1af-e1c5-4872-b146-eac3656c38a6",
-          "price" : "20",
-          "rentPeriod" : "לחודש",
-          "title" : "TV 50\"",
-          "uploadTime" : "2019/12/09 20:57:56",
-          "utc" : 1575925076784
-        },
-        "product_UID" : "1575925076784: TV 50\""
-      }
-    },
-    "מאכלים" : {
-      "1577097153940: Zvi Mints Salat" : {
-        "author" : {
-          "area" : "מרכז",
-          "firstname" : "אלעד",
-          "fullName" : "אלעד חורב",
-          "lastname" : "חורב",
-          "userUid" : "5AvwrkLTrSaj6bK9mAYU3YYxZFx1"
-        },
-        "productDetails" : {
-          "category" : "מאכלים",
-          "condition" : "חדש מהמפעל",
-          "details" : "Best Text Ever",
-          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1577097138409.jpg?alt=media&token=ae98a905-58f0-4ec2-9d31-514d33ebd127",
+          "details" : "לדרמן מושחר",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578066967740.jpg?alt=media&token=59aee144-be3e-431f-9ce9-3299f2cae0a2",
           "price" : "30",
-          "rentPeriod" : "לשעה",
-          "title" : "Zvi Mints Salat",
-          "uploadTime" : "2019/12/23 12:32:33",
-          "utc" : 1577097153940
+          "rentPeriod" : "ליום",
+          "title" : "לדרמן",
+          "uploadTime" : "2020/01/03 17:56:22",
+          "utc" : 1578066982456
         },
-        "product_UID" : "1577097153940: Zvi Mints Salat"
+        "product_UID" : "1578066982456: לדרמן"
       },
-      "1577097435143: אנחנו" : {
+      "1578067032075: מספריים" : {
         "author" : {
-          "area" : "מרכז",
-          "firstname" : "Ei",
-          "fullName" : "Ei Ts",
-          "lastname" : "Ts",
-          "userUid" : "MF7K6giCAiY35nIw15mfV3sKRN62"
+          "area" : "צפון",
+          "firstname" : "אילון",
+          "fullName" : "אילון צדוק",
+          "lastname" : "צדוק",
+          "userUid" : "rh7ZQ1CXzdTlmEYziBWdpVuKiPm2"
         },
         "comments_list" : [ {
           "author" : {
             "area" : "מרכז",
-            "firstname" : "Ei",
-            "fullName" : "Ei Ts",
-            "lastname" : "Ts",
-            "userUid" : "MF7K6giCAiY35nIw15mfV3sKRN62"
+            "firstname" : "אלעד",
+            "fullName" : "אלעד חורב",
+            "lastname" : "חורב",
+            "userUid" : "5AvwrkLTrSaj6bK9mAYU3YYxZFx1"
           },
-          "msg" : "אחלה אנשים"
+          "msg" : "שווה כבר לקנות חדש"
         }, {
           "author" : {
             "area" : "מרכז",
-            "firstname" : "Ei",
-            "fullName" : "Ei Ts",
-            "lastname" : "Ts",
-            "userUid" : "MF7K6giCAiY35nIw15mfV3sKRN62"
+            "firstname" : "אלעד",
+            "fullName" : "אלעד חורב",
+            "lastname" : "חורב",
+            "userUid" : "5AvwrkLTrSaj6bK9mAYU3YYxZFx1"
           },
-          "msg" : "יעבכ"
+          "msg" : "לא גוזר טוב בכלל"
+        }, {
+          "author" : {
+            "area" : "מרכז",
+            "firstname" : "אלעד",
+            "fullName" : "אלעד חורב",
+            "lastname" : "חורב",
+            "userUid" : "5AvwrkLTrSaj6bK9mAYU3YYxZFx1"
+          },
+          "msg" : "להתרחק לא מומלץ!! "
         } ],
         "productDetails" : {
-          "category" : "מאכלים",
-          "condition" : "חדש מהמפעל",
-          "details" : "סטודנטים",
-          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1577097406225.jpg?alt=media&token=c174ca2c-dadf-4915-bccb-5937a3f1e495",
-          "price" : "9999",
+          "category" : "כלי עבודה",
+          "condition" : "כמו חדש",
+          "details" : "מספריים רגילים",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578067017280.jpg?alt=media&token=848e7e6b-810d-4a09-951e-5ca8bda7c443",
+          "price" : "5",
           "rentPeriod" : "לשעה",
-          "title" : "אנחנו",
-          "uploadTime" : "2019/12/23 12:37:15",
-          "utc" : 1577097435143
+          "title" : "מספריים",
+          "uploadTime" : "2020/01/03 17:57:12",
+          "utc" : 1578067032075
         },
-        "product_UID" : "1577097435143: אנחנו"
+        "product_UID" : "1578067032075: מספריים"
+      },
+      "1578072468240: מסור חשמלי" : {
+        "author" : {
+          "area" : "מרכז",
+          "firstname" : "אור",
+          "fullName" : "אור אבוחצירה",
+          "lastname" : "אבוחצירה",
+          "userUid" : "jCZB5WY4IeOX589dXxwDLiZYhr23"
+        },
+        "productDetails" : {
+          "category" : "כלי עבודה",
+          "condition" : "כמו חדש",
+          "details" : "עבר בירושה",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578072455879.jpg?alt=media&token=7573845c-82e2-4a1a-9b3a-83e3f439c31c",
+          "price" : "50",
+          "rentPeriod" : "לשעה",
+          "title" : "מסור חשמלי",
+          "uploadTime" : "2020/01/03 17:27:48",
+          "utc" : 1578072468240
+        },
+        "product_UID" : "1578072468240: מסור חשמלי"
+      },
+      "1578072495613: מברגה" : {
+        "author" : {
+          "area" : "מרכז",
+          "firstname" : "אור",
+          "fullName" : "אור אבוחצירה",
+          "lastname" : "אבוחצירה",
+          "userUid" : "jCZB5WY4IeOX589dXxwDLiZYhr23"
+        },
+        "productDetails" : {
+          "category" : "כלי עבודה",
+          "condition" : "חדש מהמפעל",
+          "details" : "בלי ביטים",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578072485851.jpg?alt=media&token=652cd3f2-c0c0-4185-803a-9c2fe9c41620",
+          "price" : "20",
+          "rentPeriod" : "לשעה",
+          "title" : "מברגה",
+          "uploadTime" : "2020/01/03 17:28:15",
+          "utc" : 1578072495613
+        },
+        "product_UID" : "1578072495613: מברגה"
+      },
+      "1578072533924: מקדחה" : {
+        "author" : {
+          "area" : "מרכז",
+          "firstname" : "אור",
+          "fullName" : "אור אבוחצירה",
+          "lastname" : "אבוחצירה",
+          "userUid" : "jCZB5WY4IeOX589dXxwDLiZYhr23"
+        },
+        "productDetails" : {
+          "category" : "כלי עבודה",
+          "condition" : "חדש",
+          "details" : "אלחוטי",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578072518546.jpg?alt=media&token=f08c69f7-0b9b-4089-9cd5-8b11abf4a217",
+          "price" : "60",
+          "rentPeriod" : "לשעה",
+          "title" : "מקדחה",
+          "uploadTime" : "2020/01/03 17:28:53",
+          "utc" : 1578072533924
+        },
+        "product_UID" : "1578072533924: מקדחה"
+      },
+      "1578072565156: ארגז כלים" : {
+        "author" : {
+          "area" : "מרכז",
+          "firstname" : "אור",
+          "fullName" : "אור אבוחצירה",
+          "lastname" : "אבוחצירה",
+          "userUid" : "jCZB5WY4IeOX589dXxwDLiZYhr23"
+        },
+        "productDetails" : {
+          "category" : "כלי עבודה",
+          "condition" : "חדש מהמפעל",
+          "details" : "מכיל הכל",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578072554859.jpg?alt=media&token=393bfcb8-ca97-4fa7-838d-a1cc2b6aa468",
+          "price" : "100",
+          "rentPeriod" : "ליום",
+          "title" : "ארגז כלים",
+          "uploadTime" : "2020/01/03 17:29:25",
+          "utc" : 1578072565156
+        },
+        "product_UID" : "1578072565156: ארגז כלים"
       }
     },
     "מוצרי חשמל" : {
@@ -154,6 +224,517 @@
           "utc" : 1575780921265
         },
         "product_UID" : "1575780921265: Zvi Mints TV 50\""
+      },
+      "1578066288613: אוזניות" : {
+        "author" : {
+          "area" : "צפון",
+          "firstname" : "אילון",
+          "fullName" : "אילון צדוק",
+          "lastname" : "צדוק",
+          "userUid" : "rh7ZQ1CXzdTlmEYziBWdpVuKiPm2"
+        },
+        "comments_list" : [ {
+          "author" : {
+            "area" : "מרכז",
+            "firstname" : "אלעד",
+            "fullName" : "אלעד חורב",
+            "lastname" : "חורב",
+            "userUid" : "5AvwrkLTrSaj6bK9mAYU3YYxZFx1"
+          },
+          "msg" : "איכות סאונד מעולה"
+        }, {
+          "author" : {
+            "area" : "מרכז",
+            "firstname" : "אלעד",
+            "fullName" : "אלעד חורב",
+            "lastname" : "חורב",
+            "userUid" : "5AvwrkLTrSaj6bK9mAYU3YYxZFx1"
+          },
+          "msg" : "סוללה מחזיקה 15 שעות. מומלץ! "
+        }, {
+          "author" : {
+            "area" : "מרכז",
+            "firstname" : "אור",
+            "fullName" : "אור אבוחצירה",
+            "lastname" : "אבוחצירה",
+            "userUid" : "jCZB5WY4IeOX589dXxwDLiZYhr23"
+          },
+          "msg" : "מעולה"
+        } ],
+        "productDetails" : {
+          "category" : "מוצרי חשמל",
+          "condition" : "כמו חדש",
+          "details" : "אוזניות גדולות של חברת bludio. איכות sound מעולה! ",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578066244205.jpg?alt=media&token=666a81a9-d0f1-4e85-9850-e6e2e31d56ee",
+          "price" : "35",
+          "rentPeriod" : "ליום",
+          "title" : "אוזניות",
+          "uploadTime" : "2020/01/03 17:44:48",
+          "utc" : 1578066288613
+        },
+        "product_UID" : "1578066288613: אוזניות"
+      },
+      "1578069248742: אוזניות " : {
+        "author" : {
+          "area" : "מרכז",
+          "firstname" : "אלעד",
+          "fullName" : "אלעד חורב",
+          "lastname" : "חורב",
+          "userUid" : "5AvwrkLTrSaj6bK9mAYU3YYxZFx1"
+        },
+        "productDetails" : {
+          "category" : "מוצרי חשמל",
+          "condition" : "כמו חדש",
+          "details" : "אוזניות מעולות",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578069231450.jpg?alt=media&token=1b9d1d2f-27c8-4fd9-974f-d73045cfc64b",
+          "price" : "245",
+          "rentPeriod" : "לחודש",
+          "title" : "אוזניות ",
+          "uploadTime" : "2020/01/03 18:34:08",
+          "utc" : 1578069248742
+        },
+        "product_UID" : "1578069248742: אוזניות "
+      },
+      "1578070505471: מחשב" : {
+        "author" : {
+          "area" : "מרכז",
+          "firstname" : "אור",
+          "fullName" : "אור אבוחצירה",
+          "lastname" : "אבוחצירה",
+          "userUid" : "jCZB5WY4IeOX589dXxwDLiZYhr23"
+        },
+        "productDetails" : {
+          "category" : "מוצרי חשמל",
+          "condition" : "חדש מהמפעל",
+          "details" : "עם 150 אוגרים",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578070480604.jpg?alt=media&token=73fb8233-0fd0-4bac-8791-b18d0c5271ca",
+          "price" : "15",
+          "rentPeriod" : "לשעה",
+          "title" : "מחשב",
+          "uploadTime" : "2020/01/03 16:55:05",
+          "utc" : 1578070505471
+        },
+        "product_UID" : "1578070505471: מחשב"
+      }
+    },
+    "ספורט" : {
+      "1578066098949: משקולות" : {
+        "author" : {
+          "area" : "צפון",
+          "firstname" : "אילון",
+          "fullName" : "אילון צדוק",
+          "lastname" : "צדוק",
+          "userUid" : "rh7ZQ1CXzdTlmEYziBWdpVuKiPm2"
+        },
+        "comments_list" : [ {
+          "author" : {
+            "area" : "מרכז",
+            "firstname" : "אור",
+            "fullName" : "אור אבוחצירה",
+            "lastname" : "אבוחצירה",
+            "userUid" : "jCZB5WY4IeOX589dXxwDLiZYhr23"
+          },
+          "msg" : "ממש כבד"
+        } ],
+        "productDetails" : {
+          "category" : "ספורט",
+          "condition" : "משומש",
+          "details" : "משקל כולל 22 קג",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578066077140.jpg?alt=media&token=71ced3a6-2b8a-4dfb-b16b-d8e69466c2ba",
+          "price" : "20",
+          "rentPeriod" : "ליום",
+          "title" : "משקולות",
+          "uploadTime" : "2020/01/03 17:41:38",
+          "utc" : 1578066098949
+        },
+        "product_UID" : "1578066098949: משקולות"
+      },
+      "1578066213493: נעלי ריצה" : {
+        "author" : {
+          "area" : "צפון",
+          "firstname" : "אילון",
+          "fullName" : "אילון צדוק",
+          "lastname" : "צדוק",
+          "userUid" : "rh7ZQ1CXzdTlmEYziBWdpVuKiPm2"
+        },
+        "comments_list" : [ {
+          "author" : {
+            "area" : "מרכז",
+            "firstname" : "אור",
+            "fullName" : "אור אבוחצירה",
+            "lastname" : "אבוחצירה",
+            "userUid" : "jCZB5WY4IeOX589dXxwDLiZYhr23"
+          },
+          "msg" : "תאורר קצת"
+        } ],
+        "productDetails" : {
+          "category" : "ספורט",
+          "condition" : "משומש",
+          "details" : "מעלי ריצה של חברת hoka חדשות. בקושי נלבשו. מידה 46",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578066161521.jpg?alt=media&token=552e1609-26b0-4f4c-ad7b-cc1a006cec80",
+          "price" : "30",
+          "rentPeriod" : "ליום",
+          "title" : "נעלי ריצה",
+          "uploadTime" : "2020/01/03 17:43:33",
+          "utc" : 1578066213493
+        },
+        "product_UID" : "1578066213493: נעלי ריצה"
+      },
+      "1578070786391: חולצה של מסי" : {
+        "author" : {
+          "area" : "מרכז",
+          "firstname" : "אור",
+          "fullName" : "אור אבוחצירה",
+          "lastname" : "אבוחצירה",
+          "userUid" : "jCZB5WY4IeOX589dXxwDLiZYhr23"
+        },
+        "productDetails" : {
+          "category" : "ספורט",
+          "condition" : "חדש מהמפעל",
+          "details" : "להחזיר מכובס",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578070774765.jpg?alt=media&token=66eb39c9-2b13-4840-8cc2-c990707dd453",
+          "price" : "150",
+          "rentPeriod" : "לשעה",
+          "title" : "חולצה של מסי",
+          "uploadTime" : "2020/01/03 16:59:46",
+          "utc" : 1578070786391
+        },
+        "product_UID" : "1578070786391: חולצה של מסי"
+      },
+      "1578070835073: כדורגל" : {
+        "author" : {
+          "area" : "מרכז",
+          "firstname" : "אור",
+          "fullName" : "אור אבוחצירה",
+          "lastname" : "אבוחצירה",
+          "userUid" : "jCZB5WY4IeOX589dXxwDLiZYhr23"
+        },
+        "productDetails" : {
+          "category" : "ספורט",
+          "condition" : "כמו חדש",
+          "details" : "ללא תוספת ניפוח",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578070812956.jpg?alt=media&token=1b5bdfbc-fedc-4d4a-8ac5-a4497f93d445",
+          "price" : "10",
+          "rentPeriod" : "ליום",
+          "title" : "כדורגל",
+          "uploadTime" : "2020/01/03 17:00:35",
+          "utc" : 1578070835073
+        },
+        "product_UID" : "1578070835073: כדורגל"
+      }
+    },
+    "ציוד טיולים" : {
+      "1578065581231: פק\"ל קפה" : {
+        "author" : {
+          "area" : "מרכז",
+          "firstname" : "אלעד",
+          "fullName" : "אלעד חורב",
+          "lastname" : "חורב",
+          "userUid" : "5AvwrkLTrSaj6bK9mAYU3YYxZFx1"
+        },
+        "comments_list" : [ {
+          "author" : {
+            "area" : "מרכז",
+            "firstname" : "אלעד",
+            "fullName" : "אלעד חורב",
+            "lastname" : "חורב",
+            "userUid" : "5AvwrkLTrSaj6bK9mAYU3YYxZFx1"
+          },
+          "msg" : "מומלץ ביותר"
+        }, {
+          "author" : {
+            "area" : "מרכז",
+            "firstname" : "אלעד",
+            "fullName" : "אלעד חורב",
+            "lastname" : "חורב",
+            "userUid" : "5AvwrkLTrSaj6bK9mAYU3YYxZFx1"
+          },
+          "msg" : "נוח בשביל להכין קפה בשטח"
+        } ],
+        "productDetails" : {
+          "category" : "ציוד טיולים",
+          "condition" : "משומש",
+          "details" : "כל מה שאתה צריך כל לבשל בשטח! ",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578065543222.jpg?alt=media&token=c3c4129f-3c9d-4aa0-8a9d-4fb1091823fa",
+          "price" : "60",
+          "rentPeriod" : "ליום",
+          "title" : "פק\"ל קפה",
+          "uploadTime" : "2020/01/03 17:33:01",
+          "utc" : 1578065581231
+        },
+        "product_UID" : "1578065581231: פק\"ל קפה"
+      },
+      "1578065649242: ערכת עזרה ראשונה" : {
+        "author" : {
+          "area" : "מרכז",
+          "firstname" : "אלעד",
+          "fullName" : "אלעד חורב",
+          "lastname" : "חורב",
+          "userUid" : "5AvwrkLTrSaj6bK9mAYU3YYxZFx1"
+        },
+        "comments_list" : [ {
+          "author" : {
+            "area" : "מרכז",
+            "firstname" : "אלעד",
+            "fullName" : "אלעד חורב",
+            "lastname" : "חורב",
+            "userUid" : "5AvwrkLTrSaj6bK9mAYU3YYxZFx1"
+          },
+          "msg" : "ערכה בסיסית אבל מאוד יעילה"
+        } ],
+        "productDetails" : {
+          "category" : "ציוד טיולים",
+          "condition" : "חדש",
+          "details" : "ערכת עזרה ראשונה בסיסית",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578065639469.jpg?alt=media&token=99f9f438-bbf0-4643-be5b-e2351d3f9066",
+          "price" : "30",
+          "rentPeriod" : "ליום",
+          "title" : "ערכת עזרה ראשונה",
+          "uploadTime" : "2020/01/03 17:34:09",
+          "utc" : 1578065649242
+        },
+        "product_UID" : "1578065649242: ערכת עזרה ראשונה"
+      },
+      "1578065707363: כיסוי מתקפל למיטה" : {
+        "author" : {
+          "area" : "מרכז",
+          "firstname" : "אלעד",
+          "fullName" : "אלעד חורב",
+          "lastname" : "חורב",
+          "userUid" : "5AvwrkLTrSaj6bK9mAYU3YYxZFx1"
+        },
+        "productDetails" : {
+          "category" : "ציוד טיולים",
+          "condition" : "כמו חדש",
+          "details" : "כיסוי מיטה לטיולים (ליינר) ",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578065692662.jpg?alt=media&token=6708428d-8151-4e67-a8f6-16518cf826ca",
+          "price" : "20",
+          "rentPeriod" : "לשבוע",
+          "title" : "כיסוי מתקפל למיטה",
+          "uploadTime" : "2020/01/03 17:35:07",
+          "utc" : 1578065707363
+        },
+        "product_UID" : "1578065707363: כיסוי מתקפל למיטה"
+      },
+      "1578065776119: גזייה" : {
+        "author" : {
+          "area" : "מרכז",
+          "firstname" : "אלעד",
+          "fullName" : "אלעד חורב",
+          "lastname" : "חורב",
+          "userUid" : "5AvwrkLTrSaj6bK9mAYU3YYxZFx1"
+        },
+        "productDetails" : {
+          "category" : "ציוד טיולים",
+          "condition" : "משומש",
+          "details" : "גזייה עם ראש רחב",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578065750541.jpg?alt=media&token=2726628b-9afa-4474-bc50-33348fda73c9",
+          "price" : "40",
+          "rentPeriod" : "ליום",
+          "title" : "גזייה",
+          "uploadTime" : "2020/01/03 17:36:16",
+          "utc" : 1578065776119
+        },
+        "product_UID" : "1578065776119: גזייה"
+      },
+      "1578065921013: מגבת לטיולים " : {
+        "author" : {
+          "area" : "מרכז",
+          "firstname" : "אלעד",
+          "fullName" : "אלעד חורב",
+          "lastname" : "חורב",
+          "userUid" : "5AvwrkLTrSaj6bK9mAYU3YYxZFx1"
+        },
+        "productDetails" : {
+          "category" : "ציוד טיולים",
+          "condition" : "כמו חדש",
+          "details" : "מגבת שמתייבשת מהר לטיולים ",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578065876990.jpg?alt=media&token=c31abf5c-86b6-4609-8647-3107956898de",
+          "price" : "20",
+          "rentPeriod" : "לשעה",
+          "title" : "מגבת לטיולים ",
+          "uploadTime" : "2020/01/03 17:38:41",
+          "utc" : 1578065921013
+        },
+        "product_UID" : "1578065921013: מגבת לטיולים "
+      },
+      "1578065990487: בלון גז" : {
+        "author" : {
+          "area" : "מרכז",
+          "firstname" : "אלעד",
+          "fullName" : "אלעד חורב",
+          "lastname" : "חורב",
+          "userUid" : "5AvwrkLTrSaj6bK9mAYU3YYxZFx1"
+        },
+        "productDetails" : {
+          "category" : "ציוד טיולים",
+          "condition" : "חדש",
+          "details" : "בלון גז מותאם לכירת שטח",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578065968600.jpg?alt=media&token=2282d31c-9047-4775-b790-cac63d205a18",
+          "price" : "20",
+          "rentPeriod" : "בלי הגבלה",
+          "title" : "בלון גז",
+          "uploadTime" : "2020/01/03 17:39:50",
+          "utc" : 1578065990487
+        },
+        "product_UID" : "1578065990487: בלון גז"
+      },
+      "1578066402682: כובע" : {
+        "author" : {
+          "area" : "צפון",
+          "firstname" : "אילון",
+          "fullName" : "אילון צדוק",
+          "lastname" : "צדוק",
+          "userUid" : "rh7ZQ1CXzdTlmEYziBWdpVuKiPm2"
+        },
+        "productDetails" : {
+          "category" : "ציוד טיולים",
+          "condition" : "משומש",
+          "details" : "אחלה של כובע ",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578066389496.jpg?alt=media&token=e17aa2e6-657a-4b1d-93d8-8a68499e84ca",
+          "price" : "22",
+          "rentPeriod" : "ליום",
+          "title" : "כובע",
+          "uploadTime" : "2020/01/03 17:46:42",
+          "utc" : 1578066402682
+        },
+        "product_UID" : "1578066402682: כובע"
+      },
+      "1578070671218: כרית" : {
+        "author" : {
+          "area" : "מרכז",
+          "firstname" : "אור",
+          "fullName" : "אור אבוחצירה",
+          "lastname" : "אבוחצירה",
+          "userUid" : "jCZB5WY4IeOX589dXxwDLiZYhr23"
+        },
+        "productDetails" : {
+          "category" : "ציוד טיולים",
+          "condition" : "משומש",
+          "details" : "לשינה בטוחה יותר",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578070654495.jpg?alt=media&token=3b02d72f-9dcb-4bc6-8237-e150f066e6b7",
+          "price" : "5",
+          "rentPeriod" : "ליום",
+          "title" : "כרית",
+          "uploadTime" : "2020/01/03 16:57:51",
+          "utc" : 1578070671218
+        },
+        "product_UID" : "1578070671218: כרית"
+      },
+      "1578078277766: קולב" : {
+        "author" : {
+          "area" : "מרכז",
+          "firstname" : "אור",
+          "fullName" : "אור אבוחצירה",
+          "lastname" : "אבוחצירה",
+          "userUid" : "jCZB5WY4IeOX589dXxwDLiZYhr23"
+        },
+        "productDetails" : {
+          "category" : "ציוד טיולים",
+          "condition" : "חדש מהמפעל",
+          "details" : "חדש",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578078241140.jpg?alt=media&token=208c2a8e-af00-44d2-befd-108daff12f4f",
+          "price" : "5",
+          "rentPeriod" : "לחודש",
+          "title" : "קולב",
+          "uploadTime" : "2020/01/03 19:04:37",
+          "utc" : 1578078277766
+        },
+        "product_UID" : "1578078277766: קולב"
+      }
+    },
+    "רהיטים" : {
+      "1578066877879: ארון  בגדים" : {
+        "author" : {
+          "area" : "צפון",
+          "firstname" : "אילון",
+          "fullName" : "אילון צדוק",
+          "lastname" : "צדוק",
+          "userUid" : "rh7ZQ1CXzdTlmEYziBWdpVuKiPm2"
+        },
+        "comments_list" : [ {
+          "author" : {
+            "area" : "מרכז",
+            "firstname" : "אלעד",
+            "fullName" : "אלעד חורב",
+            "lastname" : "חורב",
+            "userUid" : "5AvwrkLTrSaj6bK9mAYU3YYxZFx1"
+          },
+          "msg" : "ארון גדול במיוחד! חדש ונוח "
+        }, {
+          "author" : {
+            "area" : "מרכז",
+            "firstname" : "אור",
+            "fullName" : "אור אבוחצירה",
+            "lastname" : "אבוחצירה",
+            "userUid" : "jCZB5WY4IeOX589dXxwDLiZYhr23"
+          },
+          "msg" : "יקר מאוד"
+        } ],
+        "productDetails" : {
+          "category" : "רהיטים",
+          "condition" : "כמו חדש",
+          "details" : "ארון בגדים גדול",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578066853624.jpg?alt=media&token=fd1b2a73-3aff-4c91-a4ab-91dab2c1b512",
+          "price" : "6000",
+          "rentPeriod" : "בלי הגבלה",
+          "title" : "ארון  בגדים",
+          "uploadTime" : "2020/01/03 17:54:37",
+          "utc" : 1578066877879
+        },
+        "product_UID" : "1578066877879: ארון  בגדים"
+      },
+      "1578066930757: כיסא לימודים" : {
+        "author" : {
+          "area" : "צפון",
+          "firstname" : "אילון",
+          "fullName" : "אילון צדוק",
+          "lastname" : "צדוק",
+          "userUid" : "rh7ZQ1CXzdTlmEYziBWdpVuKiPm2"
+        },
+        "comments_list" : [ {
+          "author" : {
+            "area" : "מרכז",
+            "firstname" : "אור",
+            "fullName" : "אור אבוחצירה",
+            "lastname" : "אבוחצירה",
+            "userUid" : "jCZB5WY4IeOX589dXxwDLiZYhr23"
+          },
+          "msg" : "מה ממוצע ציונים ?"
+        } ],
+        "productDetails" : {
+          "category" : "רהיטים",
+          "condition" : "חדש מהמפעל",
+          "details" : "כיסא לימודים לסטודנטים ",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578066900533.jpg?alt=media&token=51759c10-0896-4f60-9aba-a14f1ecc90d0",
+          "price" : "30",
+          "rentPeriod" : "לשבוע",
+          "title" : "כיסא לימודים",
+          "uploadTime" : "2020/01/03 17:55:30",
+          "utc" : 1578066930757
+        },
+        "product_UID" : "1578066930757: כיסא לימודים"
+      },
+      "1578075336237: ספה" : {
+        "author" : {
+          "area" : "מרכז",
+          "firstname" : "אור",
+          "fullName" : "אור אבוחצירה",
+          "lastname" : "אבוחצירה",
+          "userUid" : "jCZB5WY4IeOX589dXxwDLiZYhr23"
+        },
+        "productDetails" : {
+          "category" : "רהיטים",
+          "condition" : "משומש",
+          "details" : "כולל חתול",
+          "image" : "https://firebasestorage.googleapis.com/v0/b/rentme-cdf84.appspot.com/o/product%2F1578075322840.jpg?alt=media&token=76b6653d-b0da-4116-9e90-cc0f8e345181",
+          "price" : "300",
+          "rentPeriod" : "לחודש",
+          "title" : "ספה",
+          "uploadTime" : "2020/01/03 18:15:36",
+          "utc" : 1578075336237
+        },
+        "product_UID" : "1578075336237: ספה"
       }
     }
   },
@@ -162,11 +743,11 @@
       "adminsList" : [ "zvioreilon@gmail.com" ],
       "areaNames" : [ "מרכז", "דרום", "צפון", "השרון" ],
       "categoriesOptions" : {
-        "חופשה" : "https://i.ibb.co/1GHJMtW/vacation.jpg",
         "כלי עבודה" : "https://www.osheastimber.com.au/wp-content/gallery/powertools/osheas-power-tools-display.jpg",
-        "מאכלים" : "https://www.gstatic.com/mobilesdk/160503_mobilesdk/logo/2x/firebase_28dp.png",
         "מוצרי חשמל" : "https://foxnomad.com/wp-content/uploads/2011/02/desktop-computer.jpg",
-        "ספורט" : "https://i.ibb.co/nQfg5r7/sport.jpg"
+        "ספורט" : "https://i.ibb.co/nQfg5r7/sport.jpg",
+        "ציוד טיולים" : "https://i.ibb.co/t3KQGQm/camping1.jpg",
+        "רהיטים" : "https://i.ibb.co/W0hD7Jc/image.jpg"
       },
       "rentOptions" : [ "לשעה", "ליום", "לשבוע", "לחודש", "לשנה", "בלי הגבלה" ],
       "rentTimes" : [ "יום", "שבוע" ],
@@ -225,7 +806,110 @@
     "1577097435143: אנחנו" : {
       "categoryName" : "מאכלים",
       "productUid" : "1577097435143: אנחנו"
+    },
+    "1578065581231: פק\"ל קפה" : {
+      "categoryName" : "ציוד טיולים",
+      "productUid" : "1578065581231: פק\"ל קפה"
+    },
+    "1578065649242: ערכת עזרה ראשונה" : {
+      "categoryName" : "ציוד טיולים",
+      "productUid" : "1578065649242: ערכת עזרה ראשונה"
+    },
+    "1578065707363: כיסוי מתקפל למיטה" : {
+      "categoryName" : "ציוד טיולים",
+      "productUid" : "1578065707363: כיסוי מתקפל למיטה"
+    },
+    "1578065776119: גזייה" : {
+      "categoryName" : "ציוד טיולים",
+      "productUid" : "1578065776119: גזייה"
+    },
+    "1578065921013: מגבת לטיולים " : {
+      "categoryName" : "ציוד טיולים",
+      "productUid" : "1578065921013: מגבת לטיולים "
+    },
+    "1578065990487: בלון גז" : {
+      "categoryName" : "ציוד טיולים",
+      "productUid" : "1578065990487: בלון גז"
+    },
+    "1578066098949: משקולות" : {
+      "categoryName" : "ספורט",
+      "productUid" : "1578066098949: משקולות"
+    },
+    "1578066213493: נעלי ריצה" : {
+      "categoryName" : "ספורט",
+      "productUid" : "1578066213493: נעלי ריצה"
+    },
+    "1578066288613: אוזניות" : {
+      "categoryName" : "מוצרי חשמל",
+      "productUid" : "1578066288613: אוזניות"
+    },
+    "1578066402682: כובע" : {
+      "categoryName" : "ציוד טיולים",
+      "productUid" : "1578066402682: כובע"
+    },
+    "1578066877879: ארון  בגדים" : {
+      "categoryName" : "רהיטים",
+      "productUid" : "1578066877879: ארון  בגדים"
+    },
+    "1578066930757: כיסא לימודים" : {
+      "categoryName" : "רהיטים",
+      "productUid" : "1578066930757: כיסא לימודים"
+    },
+    "1578066982456: לדרמן" : {
+      "categoryName" : "כלי עבודה",
+      "productUid" : "1578066982456: לדרמן"
+    },
+    "1578067032075: מספריים" : {
+      "categoryName" : "כלי עבודה",
+      "productUid" : "1578067032075: מספריים"
+    },
+    "1578069248742: אוזניות " : {
+      "categoryName" : "מוצרי חשמל",
+      "productUid" : "1578069248742: אוזניות "
+    },
+    "1578070505471: מחשב" : {
+      "categoryName" : "מוצרי חשמל",
+      "productUid" : "1578070505471: מחשב"
+    },
+    "1578070671218: כרית" : {
+      "categoryName" : "ציוד טיולים",
+      "productUid" : "1578070671218: כרית"
+    },
+    "1578070786391: חולצה של מסי" : {
+      "categoryName" : "ספורט",
+      "productUid" : "1578070786391: חולצה של מסי"
+    },
+    "1578070835073: כדורגל" : {
+      "categoryName" : "ספורט",
+      "productUid" : "1578070835073: כדורגל"
+    },
+    "1578072468240: מסור חשמלי" : {
+      "categoryName" : "כלי עבודה",
+      "productUid" : "1578072468240: מסור חשמלי"
+    },
+    "1578072495613: מברגה" : {
+      "categoryName" : "כלי עבודה",
+      "productUid" : "1578072495613: מברגה"
+    },
+    "1578072533924: מקדחה" : {
+      "categoryName" : "כלי עבודה",
+      "productUid" : "1578072533924: מקדחה"
+    },
+    "1578072565156: ארגז כלים" : {
+      "categoryName" : "כלי עבודה",
+      "productUid" : "1578072565156: ארגז כלים"
+    },
+    "1578075336237: ספה" : {
+      "categoryName" : "רהיטים",
+      "productUid" : "1578075336237: ספה"
+    },
+    "1578078277766: קולב" : {
+      "categoryName" : "ציוד טיולים",
+      "productUid" : "1578078277766: קולב"
     }
+  },
+  "Management Message" : {
+    "last massage" : "שלום! "
   },
   "Users" : {
     "5AvwrkLTrSaj6bK9mAYU3YYxZFx1" : {
@@ -243,6 +927,27 @@
       }, {
         "categoryName" : "מאכלים",
         "productUid" : "1577097153940: Zvi Mints Salat"
+      }, {
+        "categoryName" : "ציוד טיולים",
+        "productUid" : "1578065581231: פק\"ל קפה"
+      }, {
+        "categoryName" : "ציוד טיולים",
+        "productUid" : "1578065649242: ערכת עזרה ראשונה"
+      }, {
+        "categoryName" : "ציוד טיולים",
+        "productUid" : "1578065707363: כיסוי מתקפל למיטה"
+      }, {
+        "categoryName" : "ציוד טיולים",
+        "productUid" : "1578065776119: גזייה"
+      }, {
+        "categoryName" : "ציוד טיולים",
+        "productUid" : "1578065921013: מגבת לטיולים "
+      }, {
+        "categoryName" : "ציוד טיולים",
+        "productUid" : "1578065990487: בלון גז"
+      }, {
+        "categoryName" : "מוצרי חשמל",
+        "productUid" : "1578069248742: אוזניות "
       } ]
     },
     "MF7K6giCAiY35nIw15mfV3sKRN62" : {
@@ -284,6 +989,45 @@
         "productUid" : "1577097435143: אנחנו"
       } ]
     },
+    "jCZB5WY4IeOX589dXxwDLiZYhr23" : {
+      "area" : "מרכז",
+      "email" : "orabu1@walla.com",
+      "fullName" : "אור אבוחצירה",
+      "lastname" : "אבוחצירה",
+      "name" : "אור",
+      "number" : "0525020540",
+      "posts_list" : [ {
+        "categoryName" : "מוצרי חשמל",
+        "productUid" : "1578070505471: מחשב"
+      }, {
+        "categoryName" : "ציוד טיולים",
+        "productUid" : "1578070671218: כרית"
+      }, {
+        "categoryName" : "ספורט",
+        "productUid" : "1578070786391: חולצה של מסי"
+      }, {
+        "categoryName" : "ספורט",
+        "productUid" : "1578070835073: כדורגל"
+      }, {
+        "categoryName" : "כלי עבודה",
+        "productUid" : "1578072468240: מסור חשמלי"
+      }, {
+        "categoryName" : "כלי עבודה",
+        "productUid" : "1578072495613: מברגה"
+      }, {
+        "categoryName" : "כלי עבודה",
+        "productUid" : "1578072533924: מקדחה"
+      }, {
+        "categoryName" : "כלי עבודה",
+        "productUid" : "1578072565156: ארגז כלים"
+      }, {
+        "categoryName" : "רהיטים",
+        "productUid" : "1578075336237: ספה"
+      }, {
+        "categoryName" : "ציוד טיולים",
+        "productUid" : "1578078277766: קולב"
+      } ]
+    },
     "ouIC4DovN2NRINQU2xNKteH33jL2" : {
       "area" : "דרום",
       "email" : "zvimints@gmail.com",
@@ -312,6 +1056,30 @@
       "posts_list" : [ {
         "categoryName" : "מוצרי חשמל",
         "productUid" : "1575734167145: קומקום חשמלי"
+      }, {
+        "categoryName" : "ספורט",
+        "productUid" : "1578066098949: משקולות"
+      }, {
+        "categoryName" : "ספורט",
+        "productUid" : "1578066213493: נעלי ריצה"
+      }, {
+        "categoryName" : "מוצרי חשמל",
+        "productUid" : "1578066288613: אוזניות"
+      }, {
+        "categoryName" : "ציוד טיולים",
+        "productUid" : "1578066402682: כובע"
+      }, {
+        "categoryName" : "רהיטים",
+        "productUid" : "1578066877879: ארון  בגדים"
+      }, {
+        "categoryName" : "רהיטים",
+        "productUid" : "1578066930757: כיסא לימודים"
+      }, {
+        "categoryName" : "כלי עבודה",
+        "productUid" : "1578066982456: לדרמן"
+      }, {
+        "categoryName" : "כלי עבודה",
+        "productUid" : "1578067032075: מספריים"
       } ]
     }
   }
