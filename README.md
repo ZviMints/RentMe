@@ -62,9 +62,7 @@
 </ul>
 <p><strong>&nbsp; &nbsp; And Much More!</strong></p>
 <h1>Selected Features:</h1>
-<ul>
-<li>Upload Image from <strong>Gallery/Camera:</strong></li>
-</ul>
+Upload Image from <strong>Gallery/Camera:</strong></li>
 <table cellspacing="10">
 <tbody>
 <tr>
@@ -74,9 +72,9 @@
 </tr>
 </tbody>
 </table>
-<ul>
-<ul>
-<li>Admin<strong> Broadcast </strong>Message that follows by<strong> Notification</strong></li>
+
+Admin<strong> Broadcast </strong>Message that follows by<strong> Notification</strong>
+
 <table cellspacing="10">
 <tbody>
 <tr>
@@ -86,9 +84,9 @@
 </tr>
 </tbody>
 </table>
-<ul>
-<ul>
-<li><strong>Chat</strong>:</li>
+
+<strong>Chat</strong>:
+
 <p><img src="./images/Chat.png" width="290px" height="350px" /></p>
 <h1>Diagrams:</h1>
 <table cellspacing="10">
