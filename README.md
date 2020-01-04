@@ -78,9 +78,9 @@ Admin<strong> Broadcast </strong>Message that follows by<strong> Notification</s
 <table cellspacing="10">
 <tbody>
 <tr>
-<td><img src="./images/entering message.jpeg" width="200px" height="200px" /></td>
-<td><img src="./images/wrighting message.jpeg" width="130px" height="200px" /></td>
-<td><img src="./images/user got notification.jpeg" width="130px" height="200px" /></td>
+<td><img src="./images/entering message.jpeg" width="200px" height="270px" /></td>
+<td><img src="./images/wrighting message.jpeg" width="130px" height="270px" /></td>
+<td><img src="./images/user got notification.jpeg" width="130px" height="270px" /></td>
 </tr>
 </tbody>
 </table>
