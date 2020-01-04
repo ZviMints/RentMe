@@ -77,6 +77,17 @@
 <ul>
 <ul>
 <li>Admin<strong> Broadcast </strong>Message that follows by<strong> Notification</strong></li>
+<table cellspacing="10">
+<tbody>
+<tr>
+<td><img src="./images/entering message.jpeg" width="200px" height="200px" /></td>
+<td><img src="./images/wrighting message.jpeg" width="130px" height="200px" /></td>
+<td><img src="./images/user got notification.jpeg" width="130px" height="200px" /></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<ul>
 <li><strong>Chat</strong>:</li>
 <p><img src="./images/Chat.png" width="290px" height="350px" /></p>
 <h1>Diagrams:</h1>
