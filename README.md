@@ -3,10 +3,17 @@
 <h1>About The Project:</h1>
 <h3>A social application that enables the rental and sale of products</h3>
 <p>The app was built to facilitate the renters audience and allow the general public to rent items to avoid buying for one-time use or for a short period</p>
-<h4>Renter</h4>
+<h4>Lessor</h4>
 <p>First you need to download the app to your personal device, create a trusted profile that includes identification details, then you can add all the items you want to rent and share with others.</p>
 <p>In the process of inserting the new items, you must enter a price, usage status, image, and product notes.</p>
 
+<h4>Rent</h4>
+<p>After downloading the app you must enter identification details and the app will allow you to start your search for the item you need.
+</p>
+<p>On the search page, you will find filters for you, including: price broker, item status, region ...</p>
+<p>After clicking "Search", a list of all products that meet your requirement will appear, and when you click on them, the contact details with the renters will appear.</p>
+<h4>Finally</h4>
+<p>At the end of use, the option for grading the product stands by responding to facilitate the search process of those following you</p>
 <h1>Gallery:</h1>
 <p style="text-align: center;"><strong>Quick Overview:</strong></p>
 <table>
