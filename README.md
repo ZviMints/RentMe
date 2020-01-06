@@ -5,12 +5,12 @@
 <p>The app was built to facilitate the renters audience and allow the general public to rent items to avoid buying for one-time use or for a short period</p>
 <h4>Lessor</h4>
 <p>First you need to download the app to your personal device, create a trusted profile that includes identification details, then you can add all the items you want to rent and share with others.</br>
-In the process of inserting the new items, you must enter a price, usage status, image, and product notes.</p>
+In the process of inserting the new items, you must enter a category , price, usage status, image, and product notes.</p>
 
 <h4>Rent</h4>
 <p>After downloading the app you must enter identification details and the app will allow you to start your search for the item you need.
 </br>
-On the search page, you will find filters for you, including: price broker, item status, region ...
+On the search page, you will find filters for you, including:category , price range , item status, area.
 </br>
 After clicking "Search", a list of all products that meet your requirement will appear, and when you click on them, the contact details with the renters will appear.</p>
 <h4>Finally</h4>
