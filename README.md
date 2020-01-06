@@ -1,7 +1,8 @@
 <p><img src="./app/src/main/res/drawable/logo.png" /></p>
 <p>Created during a computer <strong>Software Engineering</strong> during the third year at <em>Ariel University</em> in the Department of Computer Science, 2019 <br /> <strong>Project site:</strong>&nbsp;<a href="https://github.com/ZviMints/RentMe">https://github.com/ZviMints/RentMe</a><br /> <strong>Made by: </strong> <a href="https://github.com/ZviMints">Zvi Mints</a>, <a href="https://github.com/eilon26">Eilon Tsadok</a>, and <a href="https://github.com/orabu103">Or Abuhazira</a></p>
 <h1>About The Project:</h1>
-<p>A social application that enables the rental and sale of products</p>
+<h3>A social application that enables the rental and sale of products</h3>
+<p>The app was built to facilitate the renters audience and allow the general public to rent items to avoid buying for one-time use or for a short period</p>
 <h1>Gallery:</h1>
 <p style="text-align: center;"><strong>Quick Overview:</strong></p>
 <table>
