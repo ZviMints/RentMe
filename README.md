@@ -7,7 +7,7 @@
 <p>First, you'll need to download the app to your personal device, create a trusted profile that includes identification details and then you can add all the items you would like to rent or to share with others.</br>
 In the process of adding new items, you will asked to enter the category, price, usage status, image, and notes.</p>
 
-<h4>The rente</h4>
+<h4>The rente :</h4>
 <p>First, you should download the app and then you'll need to enter prenasal details. 
 After you'll create a profile you'll be able to start searching for items you need.
 </br>
