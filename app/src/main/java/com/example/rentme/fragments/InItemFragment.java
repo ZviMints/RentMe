@@ -1,5 +1,7 @@
 package com.example.rentme.fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -272,14 +274,32 @@ public class InItemFragment extends Fragment {
         makeOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                makeOrder.setVisibility(View.GONE);
-                renterDetails.setVisibility(View.VISIBLE);
-                renterDetails.setText(
-                        author.getName()
-                                + " "
-                                + author.getLastname() + "\n"
-                                + author.getEmail() + "\n"
-                                + author.getNumber());
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage( author.getName() + " "
+                        + author.getLastname() + "\n"
+                        + author.getEmail() + " " +  "\n"
+                        + author.getNumber()+ " ");
+                builder.setTitle("פרטי המשכיר");
+
+
+                builder.setNegativeButton("סגור חלון", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+
+
+//                makeOrder.setVisibility(View.GONE);
+//                renterDetails.setVisibility(View.VISIBLE);
+//                renterDetails.setText(
+//                        author.getName()
+//                                + " "
+//                                + author.getLastname() + "\n"
+//                                + author.getEmail() + "\n"
+//                                + author.getNumber());
             }
         });
 
