@@ -290,16 +290,6 @@ public class InItemFragment extends Fragment {
                 });
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
-
-
-//                makeOrder.setVisibility(View.GONE);
-//                renterDetails.setVisibility(View.VISIBLE);
-//                renterDetails.setText(
-//                        author.getName()
-//                                + " "
-//                                + author.getLastname() + "\n"
-//                                + author.getEmail() + "\n"
-//                                + author.getNumber());
             }
         });
 
