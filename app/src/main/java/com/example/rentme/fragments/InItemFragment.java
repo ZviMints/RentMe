@@ -275,11 +275,11 @@ public class InItemFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setMessage( author.getName() + " "
+                builder.setMessage( "שם: " + author.getName() + " "
                         + author.getLastname() + "\n"
-                        + author.getEmail() + " " +  "\n"
-                        + author.getNumber()+ " ");
-                builder.setTitle("פרטי המשכיר");
+                        + "אימייל: " + author.getEmail() +  "\n"
+                        + "טלפון: " + author.getNumber());
+                builder.setTitle("פרטי המשכיר\t\t\t\t\t\t\t\t\t\t\t\t\t\t");
 
 
                 builder.setNegativeButton("סגור חלון", new DialogInterface.OnClickListener() {
