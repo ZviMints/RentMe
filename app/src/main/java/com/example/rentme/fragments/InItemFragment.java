@@ -274,7 +274,7 @@ public class InItemFragment extends Fragment {
         makeOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), android.R.style.Theme_Holעןo_Light_Dialog);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), android.R.style.Theme_Holo_Light_Dialog);
                 builder.setMessage(  "שם:" + author.getName() + " "
                         + author.getLastname() + "\n"
                         + "אימייל: " + author.getEmail() +  "\n"
