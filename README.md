@@ -91,7 +91,7 @@ Upload Image from <strong>Gallery/Camera:</strong></li>
 Admin<strong> Broadcast </strong>Message that follows by<strong> Notification</strong>
 
 <table cellspacing="10">
-<tbody>
+<tbody> 
 <tr>
 <td><img src="./images/entering message.jpeg" width="130px" height="270px" /></td>
 <td><img src="./images/wrighting message.jpeg" width="130px" height="270px" /></td>
