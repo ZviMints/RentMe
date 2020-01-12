@@ -113,16 +113,16 @@ Admin<strong> Broadcast </strong>Message that follows by<strong> Notification</s
 <a href="./images/ERD.png">Full Size</a></td>
 <td style="text-align: center;">
 <p style="text-align: center;"><strong>Use Case Diagram</strong></p>
-<p><img src="./images/Use Case Diagram.jpg" width="170px" height="170px" /></p>
-<a href="./images/Use Case Diagram.jpg">Full Size</a></td>
+<p><img src="./images/Use Case Diagram.png" width="170px" height="170px" /></p>
+<a href="./images/Use Case Diagram.png">Full Size</a></td>
 <td style="text-align: center;">
 <p style="text-align: center;"><strong>Object Diagram</strong></p>
 <p><img src="./images/ObjectDiagram.png" width="210px" height="170px" /></p>
 <a href="./images/ObjectDiagram.png">Full Size</a></td>
 <td style="text-align: center;">
 <p style="text-align: center;"><strong>Activity Diagram</strong></p>
-<p><img src="./images/Activity.png" width="170px" height="170px" /></p>
-<a href="./images/Activity.png">Full Size</a></td>
+<p><img src="./images/activity.png" width="170px" height="170px" /></p>
+<a href="./images/activity.png">Full Size</a></td>
 </tr>
 <tr>
 <td style="text-align: center;">
