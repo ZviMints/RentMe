@@ -12,6 +12,7 @@ public class CategoryWarper {
         this.prodcuts = products;
     }
     public String getCategoryName() { return this.categoryName; }
+
     public List<Product> getProdcuts() { return this.prodcuts; }
     public int getNumberOfProducts() { return this.prodcuts.size(); }
 }
